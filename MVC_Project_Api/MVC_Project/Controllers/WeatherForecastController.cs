@@ -20,7 +20,7 @@ namespace MVC_Project.Controllers
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
-            Console.WriteLine("dupaaaaa");
+            Console.WriteLine("kutassssss");
             _logger = logger;
         }
 

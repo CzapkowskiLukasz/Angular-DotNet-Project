@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC_Project.Api", "MVC_Project\MVC_Project.Api.csproj", "{DE280038-008E-45DF-9976-0DF2E4FC8A5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AF15F9B2-4BF8-4408-82C9-E0B645C5F4E4} = {AF15F9B2-4BF8-4408-82C9-E0B645C5F4E4}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Project.Domain", "MVC_Project.Domain\MVC_Project.Domain.csproj", "{AF15F9B2-4BF8-4408-82C9-E0B645C5F4E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC_Project.Domain", "MVC_Project.Domain\MVC_Project.Domain.csproj", "{AF15F9B2-4BF8-4408-82C9-E0B645C5F4E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

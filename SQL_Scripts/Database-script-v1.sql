@@ -455,7 +455,8 @@ CREATE TABLE "User"
      LanguageId INTEGER NOT NULL , 
      TemporaryCartId INTEGER NOT NULL , 
      ThemeId INTEGER NOT NULL , 
-     ProductOnPageCount INTEGER NOT NULL 
+     ProductOnPageCount INTEGER NOT NULL ,
+     Provider INTEGER NOT NULL  
     )
 GO
 

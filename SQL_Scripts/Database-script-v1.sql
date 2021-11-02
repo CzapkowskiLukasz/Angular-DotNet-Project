@@ -159,13 +159,13 @@ GO
 CREATE TABLE Address 
     (
      AddressId INTEGER NOT NULL , 
-     UserId INTEGER , 
-     City VARCHAR (30) , 
+     UserId INTEGER NOT NULL , 
+     City VARCHAR (30) NOT NULL , 
      Street VARCHAR (30) , 
-     BuildingNumber VARCHAR (5) , 
+     BuildingNumber VARCHAR (5) NOT NULL , 
      ApartmentNumber VARCHAR (5) , 
-     ZipCode VARCHAR (6) , 
-     Country VARCHAR (20) 
+     ZipCode VARCHAR (6) NOT NULL , 
+     Country VARCHAR (20) NOT NULL 
     )
 GO
 
@@ -193,7 +193,7 @@ CREATE TABLE CartProduct
     (
      CartId INTEGER NOT NULL , 
      ProductId INTEGER NOT NULL , 
-     Quantity INTEGER , 
+     Quantity INTEGER NOT NULL , 
      Price DECIMAL (6,2) 
     )
 GO
@@ -208,7 +208,7 @@ CREATE TABLE Category
     (
      CategoryId INTEGER NOT NULL , 
      ParentCategoryId INTEGER NOT NULL , 
-     Name VARCHAR (50) 
+     Name VARCHAR (50) NOT NULL 
     )
 GO
 
@@ -221,7 +221,7 @@ GO
 CREATE TABLE Continent 
     (
      ContinentId INTEGER NOT NULL , 
-     Name VARCHAR (30) 
+     Name VARCHAR (30) NOT NULL 
     )
 GO
 
@@ -234,7 +234,7 @@ GO
 CREATE TABLE Country 
     (
      CountryId INTEGER NOT NULL , 
-     Name VARCHAR (20) , 
+     Name VARCHAR (20) NOT NULL , 
      ContinentId INTEGER NOT NULL , 
      FlagUri VARCHAR (50) 
     )
@@ -250,9 +250,9 @@ CREATE TABLE Delivery
     (
      DeliveryId INTEGER NOT NULL , 
      DeliveryTypeId INTEGER NOT NULL , 
-     ShipmentIdFromDeliveryCompany VARCHAR (40) , 
+     ShipmentIdFromDeliveryCompany VARCHAR (40) NOT NULL , 
      TrackingUrl VARCHAR (60) , 
-     SendDate DATE 
+     SendDate DATE NOT NULL 
     )
 GO
 
@@ -265,7 +265,7 @@ GO
 CREATE TABLE DeliveryCompany 
     (
      DeliveryCompanyId INTEGER NOT NULL , 
-     Name VARCHAR , 
+     Name VARCHAR NOT NULL , 
      BaseTrackingUrl VARCHAR (40) 
     )
 GO
@@ -280,9 +280,9 @@ CREATE TABLE DeliveryType
     (
      DeliveryTypeId INTEGER NOT NULL , 
      DeliveryCompanyId INTEGER NOT NULL , 
-     Name VARCHAR (40) , 
-     Price DECIMAL (5,2) , 
-     MaxWeight DECIMAL (5,2) 
+     Name VARCHAR (40) NOT NULL , 
+     Price DECIMAL (5,2) NOT NULL , 
+     MaxWeight DECIMAL (5,2) NOT NULL 
     )
 GO
 
@@ -295,9 +295,9 @@ GO
 CREATE TABLE Discount 
     (
      DiscountId INTEGER NOT NULL , 
-     Name VARCHAR (30) , 
-     DiscountPercent DECIMAL (5,2) , 
-     EndDate DATE 
+     Name VARCHAR (30) NOT NULL , 
+     DiscountPercent DECIMAL (5,2) NOT NULL , 
+     EndDate DATE
     )
 GO
 
@@ -310,7 +310,7 @@ GO
 CREATE TABLE Language 
     (
      LanguageId INTEGER NOT NULL , 
-     Name VARCHAR (15) 
+     Name VARCHAR (15) NOT NULL 
     )
 GO
 
@@ -325,7 +325,7 @@ CREATE TABLE "Order"
      OrderId INTEGER NOT NULL , 
      UserId INTEGER NOT NULL , 
      CartId INTEGER NOT NULL , 
-     Date DATE , 
+     Date DATE NOT NULL , 
      AddressId INTEGER NOT NULL , 
      Comment VARCHAR (200) , 
      OrderStatusId INTEGER NOT NULL , 
@@ -345,7 +345,7 @@ GO
 CREATE TABLE OrderStatus 
     (
      OrderStatusId INTEGER NOT NULL , 
-     Name VARCHAR (20) 
+     Name VARCHAR (20) NOT NULL 
     )
 GO
 
@@ -358,7 +358,7 @@ GO
 CREATE TABLE PaymentStatus 
     (
      PaymentStatusId INTEGER NOT NULL , 
-     Name VARCHAR (10) 
+     Name VARCHAR (10) NOT NULL 
     )
 GO
 
@@ -371,7 +371,7 @@ GO
 CREATE TABLE PaymentType 
     (
      PaymentTypeId INTEGER NOT NULL , 
-     Name VARCHAR (20) 
+     Name VARCHAR (20) NOT NULL 
     )
 GO
 
@@ -384,14 +384,14 @@ GO
 CREATE TABLE Product 
     (
      ProductId INTEGER NOT NULL , 
-     Name VARCHAR (50) , 
-     Price DECIMAL (5,2) , 
-     WarehouseQuantity INTEGER , 
+     Name VARCHAR (50) NOT NULL , 
+     Price DECIMAL (5,2) NOT NULL , 
+     WarehouseQuantity INTEGER NOT NULL , 
      ExpertId INTEGER , 
      Description VARCHAR (500) , 
      CategoryId INTEGER NOT NULL , 
      DiscountId INTEGER , 
-     CreateDate DATE , 
+     CreateDate DATE NOT NULL , 
      CountryId INTEGER NOT NULL 
     )
 GO
@@ -418,7 +418,7 @@ GO
 CREATE TABLE Role 
     (
      RoleId INTEGER NOT NULL , 
-     Name VARCHAR (20) 
+     Name VARCHAR (20) NOT NULL 
     )
 GO
 
@@ -431,7 +431,7 @@ GO
 CREATE TABLE Theme 
     (
      ThemeID INTEGER NOT NULL , 
-     Name VARCHAR (10) 
+     Name VARCHAR (10) NOT NULL 
     )
 GO
 
@@ -444,16 +444,16 @@ GO
 CREATE TABLE "User" 
     (
      UserId INTEGER NOT NULL , 
-     Name VARCHAR (30) , 
-     Surname VARCHAR (40) , 
+     Name VARCHAR (30) NOT NULL , 
+     Surname VARCHAR (40) NOT NULL , 
      RoleId INTEGER NOT NULL , 
      NewsletterOn BIT , 
-     Phone VARCHAR (10) , 
-     Email VARCHAR (30) , 
+     Phone VARCHAR (10) NOT NULL , 
+     Email VARCHAR (30) NOT NULL , 
      Password VARCHAR (100) , 
-     IsActive BIT , 
+     IsActive BIT NOT NULL , 
      LanguageId INTEGER NOT NULL , 
-     TemporaryCartId INTEGER , 
+     TemporaryCartId INTEGER NOT NULL , 
      ThemeId INTEGER NOT NULL , 
      ProductOnPageCount INTEGER NOT NULL 
     )
@@ -468,9 +468,9 @@ GO
 CREATE TABLE Voucher 
     (
      VoucherId INTEGER NOT NULL , 
-     Rebate DECIMAL (5,2) , 
-     Code VARCHAR (10) , 
-     ExpirationDate DATE , 
+     Rebate DECIMAL (5,2) NOT NULL , 
+     Code VARCHAR (10) NOT NULL , 
+     ExpirationDate DATE NOT NULL , 
      Status INTEGER , 
      UserId INTEGER NOT NULL 
     )

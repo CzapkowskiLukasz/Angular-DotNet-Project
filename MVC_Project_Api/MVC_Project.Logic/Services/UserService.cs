@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Requests;
+using MVC_Project.Logic.Settings;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,10 +15,14 @@ namespace MVC_Project.Logic.Services
     public class UserService : IUserService
     {
         private readonly DataContext _dataContext;
+        private readonly JwtSettings _jwtSettings;
+        private readonly UserManager<User> _userManager;
 
-        public UserService(DataContext dataContext)
+        public UserService(DataContext dataContext, JwtSettings jwtSettings, UserManager<User> userManager)
         {
             _dataContext = dataContext;
+            _jwtSettings = jwtSettings;
+            _userManager = userManager;
         }
 
         public Task<bool> DeleteAsync(int id)
@@ -36,21 +42,20 @@ namespace MVC_Project.Logic.Services
 
         public async Task<string> LoginAsync(LoginRequest request)
         {
-            var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var user = await _userManager.FindByEmailAsync(request.Email);
             bool error = user == null;
-
-            var hasher = new PasswordHasher();
 
             if (!error)
             {
-                var verificationResult = hasher.VerifyHashedPassword(user.PasswordHash, request.Password);
-                error = verificationResult != PasswordVerificationResult.Success;
+                error = !await _userManager.CheckPasswordAsync(user, request.Password);
             }
 
             if (error)
                 throw new Exception("Wrong email or password.");
 
-            return "Success";
+            var tokenGenerator = new TokenGenerator(_jwtSettings);
+            var result = tokenGenerator.GenerateToken(user);
+            return result;
         }
 
         public async Task<string> RegisterAsync(RegisterRequest request)

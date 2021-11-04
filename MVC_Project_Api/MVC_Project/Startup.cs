@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVC_Project.Api.Configurations;
+using MVC_Project.Api.Middlewares;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Interfaces;
@@ -55,6 +56,8 @@ namespace MVC_Project
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

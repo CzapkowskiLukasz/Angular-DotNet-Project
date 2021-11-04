@@ -5,6 +5,7 @@ using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Requests;
+using MVC_Project.Logic.Responses;
 using MVC_Project.Logic.Settings;
 using System;
 using System.Collections.Generic;
@@ -42,26 +43,32 @@ namespace MVC_Project.Logic.Services
             throw new NotImplementedException();
         }
 
-        public async Task<string> LoginAsync(LoginRequest request)
+        public async Task<HandleResult<AuthenticationResponse>> LoginAsync(LoginRequest request)
         {
+            var result = new HandleResult<AuthenticationResponse>();
+
             var user = await _userManager.FindByEmailAsync(request.Email);
             bool error = user == null;
 
             if (!error)
-            {
                 error = !await _userManager.CheckPasswordAsync(user, request.Password);
-            }
 
             if (error)
-                throw new Exception("Wrong email or password.");
+            {
+                result.ErrorResponse = new ErrorResponse("Wrong email or password.", 404);
+            }
+            else
+            {
+                result.Response = GenerateAuthenticationResponse(user);
+            }
 
-            var tokenGenerator = new TokenGenerator(_jwtSettings);
-            var result = tokenGenerator.GenerateToken(user);
             return result;
         }
 
-        public async Task<string> RegisterAsync(RegisterRequest request)
+        public async Task<HandleResult<AuthenticationResponse>> RegisterAsync(RegisterRequest request)
         {
+            var result = new HandleResult<AuthenticationResponse>();
+
             var existingUser = await _userManager.FindByEmailAsync(request.Email);
             if (existingUser != null)
                 throw new Exception($"Email {request.Email} is already used.");
@@ -77,10 +84,10 @@ namespace MVC_Project.Logic.Services
 
             var createdUser = await _userManager.CreateAsync(user, request.Password);
             if (!createdUser.Succeeded)
-                throw new Exception($"Register error");
+                result.ErrorResponse = new ErrorResponse("Register error", 404);
 
-            var tokenGenerator = new TokenGenerator(_jwtSettings);
-            var result = tokenGenerator.GenerateToken(user);
+            result.Response = GenerateAuthenticationResponse(user);
+
             return result;
         }
 
@@ -89,26 +96,44 @@ namespace MVC_Project.Logic.Services
             throw new NotImplementedException();
         }
 
-        public async Task<string> ChangePasswordAsync(ChangePasswordRequest request)
+        public async Task<HandleResult<string>> ChangePasswordAsync(ChangePasswordRequest request)
         {
+            var result = new HandleResult<string>();
+
             // Get logged user because only logged user can change own password
             var loggedInUserEmail = _userManager.GetUserId(_httpContext.User);
             var loggedUser = await _userManager.FindByEmailAsync(loggedInUserEmail);
 
             if (loggedUser == null)
-                throw new Exception($"Not found");
+            {
+                result.ErrorResponse = new ErrorResponse("Not found", 404);
+                return result;
+            }
 
             var passwordChanged = await _userManager.ChangePasswordAsync(loggedUser, request.OldPassword, request.NewPassword);
 
             if (!passwordChanged.Succeeded)
-                throw new Exception($"Change password error");
+                result.ErrorResponse = new ErrorResponse("Change password error", 500);
 
-            return "Success";
+            result.Response = "Success";
+            return result;
         }
 
         public Task<User> UpdateRoleAsync(int id, string role)
         {
             throw new NotImplementedException();
+        }
+
+        private AuthenticationResponse GenerateAuthenticationResponse(User user)
+        {
+            var tokenGenerator = new TokenGenerator(_jwtSettings);
+
+            var response = new AuthenticationResponse
+            {
+                Token = tokenGenerator.GenerateToken(user)
+            };
+
+            return response;
         }
     }
 }

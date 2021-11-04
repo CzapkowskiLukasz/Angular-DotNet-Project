@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Commons;
@@ -17,12 +17,14 @@ namespace MVC_Project.Logic.Services
         private readonly DataContext _dataContext;
         private readonly JwtSettings _jwtSettings;
         private readonly UserManager<User> _userManager;
+        private readonly HttpContext _httpContext;
 
-        public UserService(DataContext dataContext, JwtSettings jwtSettings, UserManager<User> userManager)
+        public UserService(DataContext dataContext, JwtSettings jwtSettings, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _dataContext = dataContext;
             _jwtSettings = jwtSettings;
             _userManager = userManager;
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
         public Task<bool> DeleteAsync(int id)
@@ -69,7 +71,7 @@ namespace MVC_Project.Logic.Services
                 Name = request.Name,
                 Surname = request.Surname,
                 Email = request.Email,
-                UserName=request.Email,
+                UserName = request.Email,
                 PasswordHash = request.Password
             };
 
@@ -87,9 +89,21 @@ namespace MVC_Project.Logic.Services
             throw new NotImplementedException();
         }
 
-        public Task<User> UpdatePasswordAsync(int id, string password)
+        public async Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            throw new NotImplementedException();
+            // Get logged user because only logged user can change own password
+            var loggedInUserEmail = _userManager.GetUserId(_httpContext.User);
+            var loggedUser = await _userManager.FindByEmailAsync(loggedInUserEmail);
+
+            if (loggedUser == null)
+                throw new Exception($"Not found");
+
+            var passwordChanged = await _userManager.ChangePasswordAsync(loggedUser, request.OldPassword, request.NewPassword);
+
+            if (!passwordChanged.Succeeded)
+                throw new Exception($"Change password error");
+
+            return "Success";
         }
 
         public Task<User> UpdateRoleAsync(int id, string role)

@@ -19,7 +19,7 @@ namespace MVC_Project.Logic.Interfaces
 
         public Task<User> UpdateAsync(int id, UpdateUserRequest request);
 
-        public Task<User> UpdatePasswordAsync(int id, string password);
+        public Task<string> ChangePasswordAsync(ChangePasswordRequest request);
 
         public Task<User> UpdateRoleAsync(int id, string role);
     }

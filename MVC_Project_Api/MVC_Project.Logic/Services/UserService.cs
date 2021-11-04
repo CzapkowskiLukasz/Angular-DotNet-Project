@@ -60,24 +60,26 @@ namespace MVC_Project.Logic.Services
 
         public async Task<string> RegisterAsync(RegisterRequest request)
         {
-            var existingUser = await _dataContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var existingUser = await _userManager.FindByEmailAsync(request.Email);
             if (existingUser != null)
                 throw new Exception($"Email {request.Email} is already used.");
-
-            request.Password = HashPassword(request.Password);
 
             var user = new User
             {
                 Name = request.Name,
                 Surname = request.Surname,
                 Email = request.Email,
+                UserName=request.Email,
                 PasswordHash = request.Password
             };
 
-            await _dataContext.Users.AddAsync(user);
-            await _dataContext.SaveChangesAsync();
+            var createdUser = await _userManager.CreateAsync(user, request.Password);
+            if (!createdUser.Succeeded)
+                throw new Exception($"Register error");
 
-            return "Success";
+            var tokenGenerator = new TokenGenerator(_jwtSettings);
+            var result = tokenGenerator.GenerateToken(user);
+            return result;
         }
 
         public Task<User> UpdateAsync(int id, UpdateUserRequest request)
@@ -93,14 +95,6 @@ namespace MVC_Project.Logic.Services
         public Task<User> UpdateRoleAsync(int id, string role)
         {
             throw new NotImplementedException();
-        }
-
-
-        private string HashPassword(string password)
-        {
-            var hasher = new PasswordHasher();
-            string hashedPassword = hasher.HashPassword(password);
-            return hashedPassword;
         }
     }
 }

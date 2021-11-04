@@ -4,14 +4,16 @@ using MVC_Project.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Project.Domain.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211104124628_TemporaryCartAllowNull")]
+    partial class TemporaryCartAllowNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -503,7 +505,7 @@ namespace MVC_Project.Domain.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("LanguageId")
+                    b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -559,7 +561,7 @@ namespace MVC_Project.Domain.Migrations
                     b.Property<int?>("TemporaryCartId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ThemeId")
+                    b.Property<int>("ThemeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -915,7 +917,8 @@ namespace MVC_Project.Domain.Migrations
                     b.HasOne("MVC_Project.Domain.Entities.Language", "Language")
                         .WithMany("Users")
                         .HasForeignKey("LanguageId")
-                        .HasConstraintName("User_Language_FK");
+                        .HasConstraintName("User_Language_FK")
+                        .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.Role", null)
                         .WithMany("Users")
@@ -929,7 +932,8 @@ namespace MVC_Project.Domain.Migrations
                     b.HasOne("MVC_Project.Domain.Entities.Theme", "Theme")
                         .WithMany("Users")
                         .HasForeignKey("ThemeId")
-                        .HasConstraintName("User_Theme_FK");
+                        .HasConstraintName("User_Theme_FK")
+                        .IsRequired();
 
                     b.Navigation("Language");
 

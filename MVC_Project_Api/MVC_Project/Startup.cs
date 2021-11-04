@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,8 @@ namespace MVC_Project
 
             services.AddIdentity<User, IdentityRole<int>>()
                 .AddEntityFrameworkStores<DataContext>();
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

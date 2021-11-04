@@ -1,4 +1,7 @@
-﻿using MVC_Project.Domain;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Requests;
@@ -37,9 +40,26 @@ namespace MVC_Project.Logic.Services
             throw new NotImplementedException();
         }
 
-        public Task<string> RegisterAsync(RegisterRequest request)
+        public async Task<string> RegisterAsync(RegisterRequest request)
         {
-            throw new NotImplementedException();
+            var existingUser = await _dataContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (existingUser != null)
+                throw new Exception($"Email {request.Email} is already used.");
+
+            request.Password = HashPassword(request.Password);
+
+            var user = new User
+            {
+                Name = request.Name,
+                Surname = request.Surname,
+                Email = request.Email,
+                PasswordHash = request.Password
+            };
+
+            await _dataContext.Users.AddAsync(user);
+            await _dataContext.SaveChangesAsync();
+
+            return "Success";
         }
 
         public Task<User> UpdateAsync(int id, UpdateUserRequest request)
@@ -55,6 +75,14 @@ namespace MVC_Project.Logic.Services
         public Task<User> UpdateRoleAsync(int id, string role)
         {
             throw new NotImplementedException();
+        }
+
+
+        private string HashPassword(string password)
+        {
+            var hasher = new PasswordHasher();
+            string hashedPassword = hasher.HashPassword(password);
+            return hashedPassword;
         }
     }
 }

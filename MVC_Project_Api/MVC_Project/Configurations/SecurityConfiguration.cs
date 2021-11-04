@@ -16,9 +16,12 @@ namespace MVC_Project.Api.Configurations
         public static void AddSecurity(this IServiceCollection services, IConfiguration configuration)
         {
             var swaggerSettings = GetSwaggerSettings(configuration);
+            services.AddSingleton(swaggerSettings);
 
             var jwtSettings = new JwtSettings();
             configuration.Bind(nameof(jwtSettings), jwtSettings);
+            services.AddSingleton(jwtSettings);
+
 
             var tokenValidationParameters = new TokenValidationParameters()
             {

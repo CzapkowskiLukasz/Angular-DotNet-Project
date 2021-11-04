@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Requests;
 using System.Threading.Tasks;
@@ -28,6 +29,14 @@ namespace MVC_Project.Controllers
         public async Task<string> RegisterAsync(RegisterRequest request)
         {
             var result = await _userService.RegisterAsync(request);
+            return result;
+        }
+
+        [Authorize]
+        [HttpPost("changePassword")]
+        public async Task<string> ChangePasswordAsync(ChangePasswordRequest request)
+        {
+            var result = await _userService.ChangePasswordAsync(request);
             return result;
         }
     }

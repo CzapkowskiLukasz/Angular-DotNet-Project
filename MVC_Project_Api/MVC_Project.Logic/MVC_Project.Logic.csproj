@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MVC_Project.Domain\MVC_Project.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -37,19 +37,8 @@ namespace MVC_Project.Domain
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductDiscount> ProductDiscounts { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=mvc-project-db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -490,10 +479,6 @@ namespace MVC_Project.Domain
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Voucher_User_FK");
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

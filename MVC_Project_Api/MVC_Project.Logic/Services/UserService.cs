@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
@@ -35,9 +34,23 @@ namespace MVC_Project.Logic.Services
             throw new NotImplementedException();
         }
 
-        public Task<string> LoginAsync(LoginRequest request)
+        public async Task<string> LoginAsync(LoginRequest request)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            bool error = user == null;
+
+            var hasher = new PasswordHasher();
+
+            if (!error)
+            {
+                var verificationResult = hasher.VerifyHashedPassword(user.PasswordHash, request.Password);
+                error = verificationResult != PasswordVerificationResult.Success;
+            }
+
+            if (error)
+                throw new Exception("Wrong email or password.");
+
+            return "Success";
         }
 
         public async Task<string> RegisterAsync(RegisterRequest request)

@@ -9,7 +9,7 @@ using MVC_Project.Domain.Entities;
 
 namespace MVC_Project.Domain
 {
-    public partial class DataContext : IdentityDbContext<User, IdentityRole<int>, int>
+    public class DataContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public DataContext()
         {
@@ -494,6 +494,6 @@ namespace MVC_Project.Domain
             OnModelCreatingPartial(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

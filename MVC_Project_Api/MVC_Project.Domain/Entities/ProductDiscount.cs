@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class ProductDiscount
+    public class ProductDiscount
     {
         public int ProductId { get; set; }
         public int DiscountId { get; set; }

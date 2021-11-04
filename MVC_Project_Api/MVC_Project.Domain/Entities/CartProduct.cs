@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class CartProduct
+    public class CartProduct
     {
         public int CartId { get; set; }
         public int ProductId { get; set; }

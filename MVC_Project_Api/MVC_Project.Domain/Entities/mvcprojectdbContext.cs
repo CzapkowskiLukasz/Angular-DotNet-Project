@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class mvcprojectdbContext : DbContext
+    public class mvcprojectdbContext : DbContext
     {
         public mvcprojectdbContext()
         {
@@ -511,6 +511,6 @@ namespace MVC_Project.Domain.Entities
             OnModelCreatingPartial(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

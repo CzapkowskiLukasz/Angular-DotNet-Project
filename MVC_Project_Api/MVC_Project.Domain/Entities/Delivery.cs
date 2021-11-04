@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class Delivery
+    public class Delivery
     {
         public Delivery()
         {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class Order
+    public class Order
     {
         public int OrderId { get; set; }
         public int UserId { get; set; }

@@ -1,27 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
 #nullable disable
 
 namespace MVC_Project.Domain.Entities
 {
-    public partial class User
+    public partial class User : IdentityUser<int>
     {
-        public User()
+        public User() : base()
         {
             Orders = new HashSet<Order>();
             Vouchers = new HashSet<Voucher>();
         }
 
-        public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int RoleId { get; set; }
         public bool? NewsletterOn { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
         public int LanguageId { get; set; }
         public int TemporaryCartId { get; set; }
         public int ThemeId { get; set; }
@@ -29,7 +23,6 @@ namespace MVC_Project.Domain.Entities
         public int Provider { get; set; }
 
         public virtual Language Language { get; set; }
-        public virtual Role Role { get; set; }
         public virtual Cart TemporaryCart { get; set; }
         public virtual Theme Theme { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

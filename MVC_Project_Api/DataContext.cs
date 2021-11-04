@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MVC_Project.Domain.Entities;
@@ -7,7 +9,7 @@ using MVC_Project.Domain.Entities;
 
 namespace MVC_Project.Domain
 {
-    public partial class DataContext : DbContext
+    public partial class DataContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public DataContext()
         {
@@ -51,6 +53,8 @@ namespace MVC_Project.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Address>(entity =>
@@ -436,25 +440,9 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("User");
 
-                entity.Property(e => e.UserId).ValueGeneratedNever();
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(30)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Surname)
@@ -467,12 +455,6 @@ namespace MVC_Project.Domain
                     .HasForeignKey(d => d.LanguageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("User_Language_FK");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("User_Role_FK");
 
                 entity.HasOne(d => d.TemporaryCart)
                     .WithMany(p => p.Users)

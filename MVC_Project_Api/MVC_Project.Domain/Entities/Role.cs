@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 
 #nullable disable
 
 namespace MVC_Project.Domain.Entities
 {
-    public class Role
+    public class Role : IdentityRole<int>
     {
-        public Role()
-        {
-            Users = new HashSet<User>();
-        }
-
-        public int RoleId { get; set; }
-        public string Name { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
     }
 }

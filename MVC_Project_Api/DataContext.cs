@@ -1,15 +1,12 @@
-﻿using System;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using MVC_Project.Domain.Entities;
 
 #nullable disable
 
 namespace MVC_Project.Domain
 {
-    public class DataContext : IdentityDbContext<User, IdentityRole<int>, int>
+    public class DataContext : IdentityDbContext<User, Role, int>
     {
         public DataContext()
         {
@@ -403,7 +400,7 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Role");
 
-                entity.Property(e => e.RoleId).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()

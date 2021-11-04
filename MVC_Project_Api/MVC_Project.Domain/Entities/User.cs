@@ -16,9 +16,9 @@ namespace MVC_Project.Domain.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public bool? NewsletterOn { get; set; }
-        public int LanguageId { get; set; }
-        public int TemporaryCartId { get; set; }
-        public int ThemeId { get; set; }
+        public int? LanguageId { get; set; }
+        public int? TemporaryCartId { get; set; }
+        public int? ThemeId { get; set; }
         public int ProductOnPageCount { get; set; }
         public int Provider { get; set; }
 

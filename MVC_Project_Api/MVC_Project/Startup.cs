@@ -37,6 +37,7 @@ namespace MVC_Project
             services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddControllers();
 

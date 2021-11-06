@@ -52,7 +52,6 @@ namespace MVC_Project.Controllers
         [HttpPost("changePassword")]
         public async Task<IActionResult> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            throw new Exception("elo");
             var result = await _userService.ChangePasswordAsync(request);
 
             if (result.ErrorResponse == null)

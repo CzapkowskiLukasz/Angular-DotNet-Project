@@ -9,6 +9,7 @@ using MVC_Project.Api.Configurations;
 using MVC_Project.Api.Middlewares;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Services;
 
@@ -33,7 +34,10 @@ namespace MVC_Project
             services.AddIdentity<User, IdentityRole<int>>()
                 .AddEntityFrameworkStores<DataContext>();
 
+            services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
+
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddControllers();
 

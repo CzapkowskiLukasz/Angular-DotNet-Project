@@ -9,7 +9,11 @@ namespace MVC_Project.Logic.MappingProfiles
     {
         public OrderProfile()
         {
-            CreateMap<Order, OrderListItem>();
+            CreateMap<Order, OrderListItem>()
+                .ForMember(dest => dest.Status, opt =>
+                    opt.MapFrom(src => src.OrderStatus.Name))
+                .ForMember(dest => dest.Date, opt =>
+                    opt.MapFrom(src => $"{src.Date.Day}.{src.Date.Month}.{src.Date.Year}"));
 
             CreateMap<List<Order>, GetOrderListResponse>()
                 .ForMember(dest => dest.Orders, opt =>

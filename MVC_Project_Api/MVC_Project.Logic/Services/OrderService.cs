@@ -22,7 +22,8 @@ namespace MVC_Project.Logic.Services
         {
             var result = new HandleResult<GetOrderListResponse>();
 
-            var orders = await _dataContext.Orders.ToListAsync();
+            var orders = await _dataContext.Orders
+                .Include(x => x.OrderStatus).ToListAsync();
 
             result.Response = _mapper.Map<GetOrderListResponse>(orders);
 

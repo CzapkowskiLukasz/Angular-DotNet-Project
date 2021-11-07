@@ -8,5 +8,8 @@ namespace MVC_Project.Logic.Interfaces
         public Task<HandleResult<GetProductListResponse>> GetProductListAsync();
 
         public Task<HandleResult<GetProductByIdResponse>> GetProductByIdAsync(int productId);
+
+        public Task<HandleResult<string>> DeleteProductAsync(int productId);
+
     }
 }

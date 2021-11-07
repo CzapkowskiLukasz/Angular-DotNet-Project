@@ -50,5 +50,29 @@ namespace MVC_Project.Logic.Services
 
             return result;
         }
+
+        public async Task<HandleResult<string>> DeleteProductAsync(int productId)
+        {
+            var result = new HandleResult<string>();
+            var product = await _dataContext.Products.SingleOrDefaultAsync(x => x.ProductId == productId);
+
+            if (product == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found", 404);
+                return result;
+            }
+
+            _dataContext.Products.Remove(product);
+            var deleted = await _dataContext.SaveChangesAsync();
+
+            if (deleted != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Delete eroor", 500);
+                return result;
+            }
+
+            result.Response = "Success";
+            return result;
+        }
     }
 }

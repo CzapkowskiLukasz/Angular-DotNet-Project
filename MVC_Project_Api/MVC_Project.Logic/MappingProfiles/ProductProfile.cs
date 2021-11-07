@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Requests;
 using MVC_Project.Logic.Responses;
 using System.Collections.Generic;
 
@@ -22,6 +23,10 @@ namespace MVC_Project.Logic.MappingProfiles
                     opt.MapFrom(src => src.Category.Name))
                 .ForMember(dest => dest.ProducerName, opt =>
                     opt.MapFrom(src => src.Producer.Name));
+
+            CreateMap<AddProductRequest, Product>()
+                .ForMember(dest => dest.WarehouseQuantity, opt =>
+                    opt.MapFrom(src => src.Count));
         }
     }
 }

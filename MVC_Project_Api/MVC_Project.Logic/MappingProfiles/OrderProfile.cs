@@ -13,7 +13,9 @@ namespace MVC_Project.Logic.MappingProfiles
                 .ForMember(dest => dest.Status, opt =>
                     opt.MapFrom(src => src.OrderStatus.Name))
                 .ForMember(dest => dest.Date, opt =>
-                    opt.MapFrom(src => $"{src.Date.Day}.{src.Date.Month}.{src.Date.Year}"));
+                    opt.MapFrom(src => $"{src.Date.Day}.{src.Date.Month}.{src.Date.Year}"))
+                .ForMember(dest => dest.UserName, opt =>
+                    opt.MapFrom(src => $"{src.User.Name} {src.User.Surname}"));
 
             CreateMap<List<Order>, GetOrderListResponse>()
                 .ForMember(dest => dest.Orders, opt =>

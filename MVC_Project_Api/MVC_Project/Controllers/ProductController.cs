@@ -16,17 +16,17 @@ namespace MVC_Project.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProductList()
+        public async Task<IActionResult> GetProductListAsync()
         {
-            var result = await _productService.GetProductList();
+            var result = await _productService.GetProductListAsync();
 
             return Ok(result.Response);
         }
 
         [HttpGet("by-id/{productId}")]
-        public async Task<IActionResult> GetProductList([FromRoute] int productId)
+        public async Task<IActionResult> GetProductListAsync([FromRoute] int productId)
         {
-            var result = await _productService.GetProductById(productId);
+            var result = await _productService.GetProductByIdAsync(productId);
 
             if (result.ErrorResponse == null)
             {

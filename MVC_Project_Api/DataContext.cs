@@ -109,13 +109,6 @@ namespace MVC_Project.Domain
                     );
             });
 
-            //modelBuilder.Entity<CartProduct>(entity =>
-            //{
-            //    entity.ToTable("CartProduct");
-
-            //    entity.Property(e => e.Price).HasColumnType("decimal(6, 2)");
-            //});
-
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("Category");
@@ -194,7 +187,7 @@ namespace MVC_Project.Domain
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(1)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
             });
 

@@ -18,19 +18,19 @@ namespace MVC_Project.Logic.Services
             _mapper = mapper;
         }
 
-
-        public async Task<HandleResult<GetProductListResponse>> GetProductList()
+        public async Task<HandleResult<GetProductListResponse>> GetProductListAsync()
         {
             var result = new HandleResult<GetProductListResponse>();
 
-            var products = await _dataContext.Products.ToListAsync();
+            var products = await _dataContext.Products
+                .Include(x => x.Producer).ToListAsync();
 
             result.Response = _mapper.Map<GetProductListResponse>(products);
 
             return result;
         }
 
-        public async Task<HandleResult<GetProductByIdResponse>> GetProductById(int productId)
+        public async Task<HandleResult<GetProductByIdResponse>> GetProductByIdAsync(int productId)
         {
             var result = new HandleResult<GetProductByIdResponse>();
 

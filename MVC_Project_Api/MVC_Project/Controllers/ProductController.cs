@@ -37,5 +37,20 @@ namespace MVC_Project.Controllers
                 return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
             }
         }
+
+        [HttpDelete("delete/{productId}")]
+        public async Task<IActionResult> DeleteProductAsync([FromRoute] int productId)
+        {
+            var result = await _productService.DeleteProductAsync(productId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
     }
 }

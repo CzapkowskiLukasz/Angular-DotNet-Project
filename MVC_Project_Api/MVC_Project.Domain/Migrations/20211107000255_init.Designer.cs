@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Project.Domain.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211106160001_ParentCategoryIdNullable")]
-    partial class ParentCategoryIdNullable
+    [Migration("20211107000255_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,7 +25,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Address", b =>
                 {
                     b.Property<int>("AddressId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ApartmentNumber")
                         .HasMaxLength(5)
@@ -72,7 +74,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Cart", b =>
                 {
                     b.Property<int>("CartId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal?>("Sum")
                         .HasColumnType("decimal(5,2)");
@@ -110,7 +114,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -131,7 +137,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Continent", b =>
                 {
                     b.Property<int>("ContinentId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -147,7 +155,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Country", b =>
                 {
                     b.Property<int>("CountryId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ContinentId")
                         .HasColumnType("int");
@@ -173,7 +183,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Delivery", b =>
                 {
                     b.Property<int>("DeliveryId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DeliveryTypeId")
                         .HasColumnType("int");
@@ -202,7 +214,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.DeliveryCompany", b =>
                 {
                     b.Property<int>("DeliveryCompanyId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BaseTrackingUrl")
                         .HasMaxLength(40)
@@ -223,7 +237,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.DeliveryType", b =>
                 {
                     b.Property<int>("DeliveryTypeId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DeliveryCompanyId")
                         .HasColumnType("int");
@@ -250,7 +266,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Discount", b =>
                 {
                     b.Property<int>("DiscountId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("DiscountPercent")
                         .HasColumnType("decimal(5,2)");
@@ -269,10 +287,28 @@ namespace MVC_Project.Domain.Migrations
                     b.ToTable("Discount");
                 });
 
+            modelBuilder.Entity("MVC_Project.Domain.Entities.DiscountProduct", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DiscountId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "DiscountId")
+                        .HasName("DiscountProduct_PK");
+
+                    b.HasIndex("DiscountId");
+
+                    b.ToTable("DiscountProduct");
+                });
+
             modelBuilder.Entity("MVC_Project.Domain.Entities.Language", b =>
                 {
                     b.Property<int>("LanguageId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -288,7 +324,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Order", b =>
                 {
                     b.Property<int>("OrderId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -344,7 +382,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("OrderStatusId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -360,7 +400,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.PaymentStatus", b =>
                 {
                     b.Property<int>("PaymentStatusId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -376,7 +418,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.PaymentType", b =>
                 {
                     b.Property<int>("PaymentTypeId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -389,15 +433,34 @@ namespace MVC_Project.Domain.Migrations
                     b.ToTable("PaymentType");
                 });
 
+            modelBuilder.Entity("MVC_Project.Domain.Entities.Producer", b =>
+                {
+                    b.Property<int>("ProducerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProducerId");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Producer");
+                });
+
             modelBuilder.Entity("MVC_Project.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
@@ -423,6 +486,9 @@ namespace MVC_Project.Domain.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(5,2)");
 
+                    b.Property<int>("ProducerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("WarehouseQuantity")
                         .HasColumnType("int");
 
@@ -430,41 +496,25 @@ namespace MVC_Project.Domain.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("ProducerId");
 
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.ProductDiscount", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DiscountId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "DiscountId")
-                        .HasName("ProductDiscount_PK");
-
-                    b.HasIndex("DiscountId");
-
-                    b.ToTable("ProductDiscount");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
@@ -483,8 +533,10 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Theme", b =>
                 {
                     b.Property<int>("ThemeId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ThemeID");
+                        .HasColumnName("ThemeID")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -603,7 +655,9 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Voucher", b =>
                 {
                     b.Property<int>("VoucherId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -753,7 +807,7 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Category", b =>
                 {
                     b.HasOne("MVC_Project.Domain.Entities.Category", "ParentCategory")
-                        .WithMany("InverseParentCategory")
+                        .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId")
                         .HasConstraintName("Category_Category_FK");
 
@@ -774,7 +828,7 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Delivery", b =>
                 {
                     b.HasOne("MVC_Project.Domain.Entities.DeliveryType", "DeliveryType")
-                        .WithMany("Deliveries")
+                        .WithMany()
                         .HasForeignKey("DeliveryTypeId")
                         .HasConstraintName("Delivery_DeliveryType_FK")
                         .IsRequired();
@@ -793,6 +847,25 @@ namespace MVC_Project.Domain.Migrations
                     b.Navigation("DeliveryCompany");
                 });
 
+            modelBuilder.Entity("MVC_Project.Domain.Entities.DiscountProduct", b =>
+                {
+                    b.HasOne("MVC_Project.Domain.Entities.Discount", "Discount")
+                        .WithMany("ProductDiscounts")
+                        .HasForeignKey("DiscountId")
+                        .HasConstraintName("DiscountProduct_Discount_FK")
+                        .IsRequired();
+
+                    b.HasOne("MVC_Project.Domain.Entities.Product", "Product")
+                        .WithMany("ProductDiscounts")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("DiscountProduct_Product_FK")
+                        .IsRequired();
+
+                    b.Navigation("Discount");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MVC_Project.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MVC_Project.Domain.Entities.Address", "Address")
@@ -802,33 +875,33 @@ namespace MVC_Project.Domain.Migrations
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.Cart", "Cart")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CartId")
-                        .HasConstraintName("Order_Cart_FK")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.Delivery", "Delivery")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("DeliveryId")
-                        .HasConstraintName("Order_Delivery_FK")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.OrderStatus", "OrderStatus")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("OrderStatusId")
-                        .HasConstraintName("Order_OrderStatus_FK")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.PaymentStatus", "PaymentStatus")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("PaymentStatusId")
-                        .HasConstraintName("Order_PaymentStatus_FK")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.PaymentType", "PaymentType")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("PaymentTypeId")
-                        .HasConstraintName("Order_PaymentType_FK")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.User", "User")
@@ -852,6 +925,15 @@ namespace MVC_Project.Domain.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MVC_Project.Domain.Entities.Producer", b =>
+                {
+                    b.HasOne("MVC_Project.Domain.Entities.Country", null)
+                        .WithMany("Producers")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MVC_Project.Domain.Entities.Product", b =>
                 {
                     b.HasOne("MVC_Project.Domain.Entities.Category", "Category")
@@ -860,34 +942,15 @@ namespace MVC_Project.Domain.Migrations
                         .HasConstraintName("Product_Category_FK")
                         .IsRequired();
 
-                    b.HasOne("MVC_Project.Domain.Entities.Country", "Country")
+                    b.HasOne("MVC_Project.Domain.Entities.Producer", "Producer")
                         .WithMany("Products")
-                        .HasForeignKey("CountryId")
-                        .HasConstraintName("Product_Country_FK")
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.ProductDiscount", b =>
-                {
-                    b.HasOne("MVC_Project.Domain.Entities.Discount", "Discount")
-                        .WithMany("ProductDiscounts")
-                        .HasForeignKey("DiscountId")
-                        .HasConstraintName("TABLE_30_Discount_FK")
-                        .IsRequired();
-
-                    b.HasOne("MVC_Project.Domain.Entities.Product", "Product")
-                        .WithMany("ProductDiscounts")
-                        .HasForeignKey("ProductId")
-                        .HasConstraintName("TABLE_30_Product_FK")
-                        .IsRequired();
-
-                    b.Navigation("Discount");
-
-                    b.Navigation("Product");
+                    b.Navigation("Producer");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.User", b =>
@@ -898,9 +961,8 @@ namespace MVC_Project.Domain.Migrations
                         .HasConstraintName("User_Language_FK");
 
                     b.HasOne("MVC_Project.Domain.Entities.Cart", "TemporaryCart")
-                        .WithMany("Users")
-                        .HasForeignKey("TemporaryCartId")
-                        .HasConstraintName("User_Cart_FK");
+                        .WithMany()
+                        .HasForeignKey("TemporaryCartId");
 
                     b.HasOne("MVC_Project.Domain.Entities.Theme", "Theme")
                         .WithMany("Users")
@@ -984,15 +1046,11 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Cart", b =>
                 {
                     b.Navigation("CartProducts");
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Category", b =>
                 {
-                    b.Navigation("InverseParentCategory");
+                    b.Navigation("ChildCategories");
 
                     b.Navigation("Products");
                 });
@@ -1004,22 +1062,12 @@ namespace MVC_Project.Domain.Migrations
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Country", b =>
                 {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.Delivery", b =>
-                {
-                    b.Navigation("Orders");
+                    b.Navigation("Producers");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.DeliveryCompany", b =>
                 {
                     b.Navigation("DeliveryTypes");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.DeliveryType", b =>
-                {
-                    b.Navigation("Deliveries");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Discount", b =>
@@ -1032,19 +1080,9 @@ namespace MVC_Project.Domain.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("MVC_Project.Domain.Entities.OrderStatus", b =>
+            modelBuilder.Entity("MVC_Project.Domain.Entities.Producer", b =>
                 {
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.PaymentStatus", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("MVC_Project.Domain.Entities.PaymentType", b =>
-                {
-                    b.Navigation("Orders");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Product", b =>

@@ -33,7 +33,7 @@ namespace MVC_Project.Domain
         public virtual DbSet<PaymentStatus> PaymentStatuses { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductDiscount> ProductDiscounts { get; set; }
+        public virtual DbSet<DiscountProduct> ProductDiscounts { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
 
@@ -46,8 +46,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<Address>(entity =>
             {
                 entity.ToTable("Address");
-
-                entity.Property(e => e.AddressId).ValueGeneratedNever();
 
                 entity.Property(e => e.ApartmentNumber)
                     .HasMaxLength(5)
@@ -82,40 +80,45 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Cart");
 
-                entity.Property(e => e.CartId).ValueGeneratedNever();
-
                 entity.Property(e => e.Sum).HasColumnType("decimal(5, 2)");
 
                 entity.Property(e => e.Weight).HasColumnType("decimal(5, 2)");
+
+                entity.HasMany(p => p.Products)
+                .WithMany(p => p.Carts)
+                .UsingEntity<CartProduct>(
+                    j => j
+                        .HasOne(d => d.Product)
+                        .WithMany(p => p.CartProducts)
+                        .HasForeignKey(d => d.ProductId)
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("CartProduct_Product_FK"),
+                    j => j
+                        .HasOne(d => d.Cart)
+                        .WithMany(p => p.CartProducts)
+                        .HasForeignKey(d => d.CartId)
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("CartProduct_Cart_FK"),
+                    j =>
+                    {
+                        j.HasKey(e => new { e.CartId, e.ProductId })
+                            .HasName("CartProduct_PK");
+                        j.ToTable("CartProduct");
+                        j.Property(e => e.Price).HasColumnType("decimal(6, 2)");
+                    }
+                    );
             });
 
-            modelBuilder.Entity<CartProduct>(entity =>
-            {
-                entity.HasKey(e => new { e.CartId, e.ProductId })
-                    .HasName("CartProduct_PK");
+            //modelBuilder.Entity<CartProduct>(entity =>
+            //{
+            //    entity.ToTable("CartProduct");
 
-                entity.ToTable("CartProduct");
-
-                entity.Property(e => e.Price).HasColumnType("decimal(6, 2)");
-
-                entity.HasOne(d => d.Cart)
-                    .WithMany(p => p.CartProducts)
-                    .HasForeignKey(d => d.CartId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("CartProduct_Cart_FK");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.CartProducts)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("CartProduct_Product_FK");
-            });
+            //    entity.Property(e => e.Price).HasColumnType("decimal(6, 2)");
+            //});
 
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("Category");
-
-                entity.Property(e => e.CategoryId).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -123,7 +126,7 @@ namespace MVC_Project.Domain
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.ParentCategory)
-                    .WithMany(p => p.InverseParentCategory)
+                    .WithMany(p => p.ChildCategories)
                     .HasForeignKey(d => d.ParentCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Category_Category_FK");
@@ -132,8 +135,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<Continent>(entity =>
             {
                 entity.ToTable("Continent");
-
-                entity.Property(e => e.ContinentId).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -144,8 +145,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<Country>(entity =>
             {
                 entity.ToTable("Country");
-
-                entity.Property(e => e.CountryId).ValueGeneratedNever();
 
                 entity.Property(e => e.FlagUri)
                     .HasMaxLength(50)
@@ -167,8 +166,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Delivery");
 
-                entity.Property(e => e.DeliveryId).ValueGeneratedNever();
-
                 entity.Property(e => e.SendDate).HasColumnType("date");
 
                 entity.Property(e => e.ShipmentIdFromDeliveryCompany)
@@ -181,7 +178,7 @@ namespace MVC_Project.Domain
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.DeliveryType)
-                    .WithMany(p => p.Deliveries)
+                    .WithMany()
                     .HasForeignKey(d => d.DeliveryTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Delivery_DeliveryType_FK");
@@ -190,8 +187,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<DeliveryCompany>(entity =>
             {
                 entity.ToTable("DeliveryCompany");
-
-                entity.Property(e => e.DeliveryCompanyId).ValueGeneratedNever();
 
                 entity.Property(e => e.BaseTrackingUrl)
                     .HasMaxLength(40)
@@ -206,8 +201,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<DeliveryType>(entity =>
             {
                 entity.ToTable("DeliveryType");
-
-                entity.Property(e => e.DeliveryTypeId).ValueGeneratedNever();
 
                 entity.Property(e => e.MaxWeight).HasColumnType("decimal(5, 2)");
 
@@ -229,8 +222,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Discount");
 
-                entity.Property(e => e.DiscountId).ValueGeneratedNever();
-
                 entity.Property(e => e.DiscountPercent).HasColumnType("decimal(5, 2)");
 
                 entity.Property(e => e.EndDate).HasColumnType("date");
@@ -245,8 +236,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Language");
 
-                entity.Property(e => e.LanguageId).ValueGeneratedNever();
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(15)
@@ -257,7 +246,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Order");
 
-                entity.Property(e => e.OrderId).ValueGeneratedNever();
 
                 entity.Property(e => e.Comment)
                     .HasMaxLength(200)
@@ -271,36 +259,6 @@ namespace MVC_Project.Domain
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Order_Address_FK");
 
-                entity.HasOne(d => d.Cart)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.CartId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Order_Cart_FK");
-
-                entity.HasOne(d => d.Delivery)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.DeliveryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Order_Delivery_FK");
-
-                entity.HasOne(d => d.OrderStatus)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.OrderStatusId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Order_OrderStatus_FK");
-
-                entity.HasOne(d => d.PaymentStatus)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.PaymentStatusId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Order_PaymentStatus_FK");
-
-                entity.HasOne(d => d.PaymentType)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.PaymentTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Order_PaymentType_FK");
-
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
@@ -312,8 +270,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("OrderStatus");
 
-                entity.Property(e => e.OrderStatusId).ValueGeneratedNever();
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -323,8 +279,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<PaymentStatus>(entity =>
             {
                 entity.ToTable("PaymentStatus");
-
-                entity.Property(e => e.PaymentStatusId).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -336,8 +290,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("PaymentType");
 
-                entity.Property(e => e.PaymentTypeId).ValueGeneratedNever();
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -347,8 +299,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
-
-                entity.Property(e => e.ProductId).ValueGeneratedNever();
 
                 entity.Property(e => e.CreateDate).HasColumnType("date");
 
@@ -369,43 +319,59 @@ namespace MVC_Project.Domain
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Product_Category_FK");
 
-                entity.HasOne(d => d.Country)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CountryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Product_Country_FK");
-            });
-
-            modelBuilder.Entity<ProductDiscount>(entity =>
-            {
-                entity.HasKey(e => new { e.ProductId, e.DiscountId })
-                    .HasName("ProductDiscount_PK");
-
-                entity.ToTable("ProductDiscount");
-
-                entity.HasOne(d => d.Discount)
+                entity.HasMany(p => p.Discounts)
+                .WithMany(p => p.Products)
+                .UsingEntity<DiscountProduct>(
+                    j => j
+                    .HasOne(d => d.Discount)
                     .WithMany(p => p.ProductDiscounts)
                     .HasForeignKey(d => d.DiscountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("TABLE_30_Discount_FK");
-
-                entity.HasOne(d => d.Product)
+                    .HasConstraintName("DiscountProduct_Discount_FK"),
+                    j => j
+                    .HasOne(d => d.Product)
                     .WithMany(p => p.ProductDiscounts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("TABLE_30_Product_FK");
+                    .HasConstraintName("DiscountProduct_Product_FK"),
+                    j =>
+                    {
+                        j.HasKey(e => new { e.ProductId, e.DiscountId })
+                            .HasName("DiscountProduct_PK");
+                        j.ToTable("DiscountProduct");
+                    }
+
+                    );
             });
+
+            //modelBuilder.Entity<DiscountProduct>(entity =>
+            //{
+            //    entity.HasKey(e => new { e.ProductId, e.DiscountId })
+            //        .HasName("DiscountProduct_PK");
+
+            //    entity.ToTable("DiscountProduct");
+
+            //    entity.HasOne(d => d.Discount)
+            //        .WithMany(p => p.ProductDiscounts)
+            //        .HasForeignKey(d => d.DiscountId)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("TABLE_30_Discount_FK");
+
+            //    entity.HasOne(d => d.Product)
+            //        .WithMany(p => p.ProductDiscounts)
+            //        .HasForeignKey(d => d.ProductId)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("TABLE_30_Product_FK");
+            //});
 
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.ToTable("Role");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                //entity.Property(e => e.Name)
+                //    .IsRequired()
+                //    .HasMaxLength(20)
+                //    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Theme>(entity =>
@@ -413,7 +379,6 @@ namespace MVC_Project.Domain
                 entity.ToTable("Theme");
 
                 entity.Property(e => e.ThemeId)
-                    .ValueGeneratedNever()
                     .HasColumnName("ThemeID");
 
                 entity.Property(e => e.Name)
@@ -442,11 +407,11 @@ namespace MVC_Project.Domain
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("User_Language_FK");
 
-                entity.HasOne(d => d.TemporaryCart)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.TemporaryCartId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("User_Cart_FK");
+                //entity.HasOne(d => d.TemporaryCart)
+                //    .WithOne()
+                //    .HasForeignKey(d=>d.TemporaryCartId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("User_Cart_FK");
 
                 entity.HasOne(d => d.Theme)
                     .WithMany(p => p.Users)
@@ -458,8 +423,6 @@ namespace MVC_Project.Domain
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.ToTable("Voucher");
-
-                entity.Property(e => e.VoucherId).ValueGeneratedNever();
 
                 entity.Property(e => e.Code)
                     .IsRequired()

@@ -7,12 +7,6 @@ namespace MVC_Project.Domain.Entities
 {
     public class User : IdentityUser<int>
     {
-        public User() : base()
-        {
-            Orders = new HashSet<Order>();
-            Vouchers = new HashSet<Voucher>();
-        }
-
         public string Name { get; set; }
         public string Surname { get; set; }
         public bool? NewsletterOn { get; set; }

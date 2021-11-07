@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace MVC_Project.Domain.Entities
 {
-    public class ProductDiscount
+    public class DiscountProduct
     {
         public int ProductId { get; set; }
         public int DiscountId { get; set; }

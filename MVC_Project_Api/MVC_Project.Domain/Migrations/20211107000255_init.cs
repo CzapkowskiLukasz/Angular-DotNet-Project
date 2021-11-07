@@ -11,7 +11,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "Address",
                 columns: table => new
                 {
-                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    AddressId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     City = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
                     Street = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
@@ -26,25 +27,11 @@ namespace MVC_Project.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cart",
                 columns: table => new
                 {
-                    CartId = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Sum = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
                     Weight = table.Column<decimal>(type: "decimal(5,2)", nullable: true)
                 },
@@ -57,8 +44,9 @@ namespace MVC_Project.Domain.Migrations
                 name: "Category",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    ParentCategoryId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ParentCategoryId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -76,7 +64,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "Continent",
                 columns: table => new
                 {
-                    ContinentId = table.Column<int>(type: "int", nullable: false),
+                    ContinentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false)
                 },
                 constraints: table =>
@@ -88,7 +77,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "DeliveryCompany",
                 columns: table => new
                 {
-                    DeliveryCompanyId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryCompanyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(1)", unicode: false, maxLength: 1, nullable: false),
                     BaseTrackingUrl = table.Column<string>(type: "varchar(40)", unicode: false, maxLength: 40, nullable: true)
                 },
@@ -101,7 +91,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "Discount",
                 columns: table => new
                 {
-                    DiscountId = table.Column<int>(type: "int", nullable: false),
+                    DiscountId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
                     DiscountPercent = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     EndDate = table.Column<DateTime>(type: "date", nullable: true)
@@ -115,7 +106,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "Language",
                 columns: table => new
                 {
-                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(15)", unicode: false, maxLength: 15, nullable: false)
                 },
                 constraints: table =>
@@ -127,7 +119,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "OrderStatus",
                 columns: table => new
                 {
-                    OrderStatusId = table.Column<int>(type: "int", nullable: false),
+                    OrderStatusId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false)
                 },
                 constraints: table =>
@@ -139,7 +132,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "PaymentStatus",
                 columns: table => new
                 {
-                    PaymentStatusId = table.Column<int>(type: "int", nullable: false),
+                    PaymentStatusId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: false)
                 },
                 constraints: table =>
@@ -151,7 +145,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "PaymentType",
                 columns: table => new
                 {
-                    PaymentTypeId = table.Column<int>(type: "int", nullable: false),
+                    PaymentTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false)
                 },
                 constraints: table =>
@@ -163,19 +158,23 @@ namespace MVC_Project.Domain.Migrations
                 name: "Role",
                 columns: table => new
                 {
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Role", x => x.RoleId);
+                    table.PrimaryKey("PK_Role", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Theme",
                 columns: table => new
                 {
-                    ThemeID = table.Column<int>(type: "int", nullable: false),
+                    ThemeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: false)
                 },
                 constraints: table =>
@@ -184,31 +183,11 @@ namespace MVC_Project.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Country",
                 columns: table => new
                 {
-                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    CountryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
                     ContinentId = table.Column<int>(type: "int", nullable: false),
                     FlagUri = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
@@ -228,7 +207,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "DeliveryType",
                 columns: table => new
                 {
-                    DeliveryTypeId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DeliveryCompanyId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "varchar(40)", unicode: false, maxLength: 40, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
@@ -246,6 +226,27 @@ namespace MVC_Project.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_Role_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Role",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
@@ -254,12 +255,11 @@ namespace MVC_Project.Domain.Migrations
                     Name = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
                     Surname = table.Column<string>(type: "varchar(40)", unicode: false, maxLength: 40, nullable: false),
                     NewsletterOn = table.Column<bool>(type: "bit", nullable: true),
-                    LanguageId = table.Column<int>(type: "int", nullable: false),
-                    TemporaryCartId = table.Column<int>(type: "int", nullable: false),
-                    ThemeId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: true),
+                    TemporaryCartId = table.Column<int>(type: "int", nullable: true),
+                    ThemeId = table.Column<int>(type: "int", nullable: true),
                     ProductOnPageCount = table.Column<int>(type: "int", nullable: false),
                     Provider = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -279,13 +279,7 @@ namespace MVC_Project.Domain.Migrations
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_Role_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "User_Cart_FK",
+                        name: "FK_User_Cart_TemporaryCartId",
                         column: x => x.TemporaryCartId,
                         principalTable: "Cart",
                         principalColumn: "CartId",
@@ -305,42 +299,31 @@ namespace MVC_Project.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Producer",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    WarehouseQuantity = table.Column<int>(type: "int", nullable: false),
-                    ExpertId = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    DiscountId = table.Column<int>(type: "int", nullable: true),
-                    CreateDate = table.Column<DateTime>(type: "date", nullable: false),
+                    ProducerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.ProductId);
+                    table.PrimaryKey("PK_Producer", x => x.ProducerId);
                     table.ForeignKey(
-                        name: "Product_Category_FK",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Product_Country_FK",
+                        name: "FK_Producer_Country_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Country",
                         principalColumn: "CountryId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Delivery",
                 columns: table => new
                 {
-                    DeliveryId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DeliveryTypeId = table.Column<int>(type: "int", nullable: false),
                     ShipmentIdFromDeliveryCompany = table.Column<string>(type: "varchar(40)", unicode: false, maxLength: 40, nullable: false),
                     TrackingUrl = table.Column<string>(type: "varchar(60)", unicode: false, maxLength: 60, nullable: true),
@@ -409,9 +392,9 @@ namespace MVC_Project.Domain.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        name: "FK_AspNetUserRoles_Role_RoleId",
                         column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
+                        principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -446,7 +429,8 @@ namespace MVC_Project.Domain.Migrations
                 name: "Voucher",
                 columns: table => new
                 {
-                    VoucherId = table.Column<int>(type: "int", nullable: false),
+                    VoucherId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Rebate = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     Code = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "date", nullable: false),
@@ -458,6 +442,103 @@ namespace MVC_Project.Domain.Migrations
                     table.PrimaryKey("PK_Voucher", x => x.VoucherId);
                     table.ForeignKey(
                         name: "Voucher_User_FK",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    WarehouseQuantity = table.Column<int>(type: "int", nullable: false),
+                    ExpertId = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    DiscountId = table.Column<int>(type: "int", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "date", nullable: false),
+                    ProducerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
+                    table.ForeignKey(
+                        name: "FK_Product_Producer_ProducerId",
+                        column: x => x.ProducerId,
+                        principalTable: "Producer",
+                        principalColumn: "ProducerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "Product_Category_FK",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true),
+                    OrderStatusId = table.Column<int>(type: "int", nullable: false),
+                    PaymentTypeId = table.Column<int>(type: "int", nullable: false),
+                    PaymentStatusId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryId = table.Column<int>(type: "int", nullable: false),
+                    VoucherId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.OrderId);
+                    table.ForeignKey(
+                        name: "FK_Order_Cart_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Cart",
+                        principalColumn: "CartId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Order_Delivery_DeliveryId",
+                        column: x => x.DeliveryId,
+                        principalTable: "Delivery",
+                        principalColumn: "DeliveryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Order_OrderStatus_OrderStatusId",
+                        column: x => x.OrderStatusId,
+                        principalTable: "OrderStatus",
+                        principalColumn: "OrderStatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Order_PaymentStatus_PaymentStatusId",
+                        column: x => x.PaymentStatusId,
+                        principalTable: "PaymentStatus",
+                        principalColumn: "PaymentStatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Order_PaymentType_PaymentTypeId",
+                        column: x => x.PaymentTypeId,
+                        principalTable: "PaymentType",
+                        principalColumn: "PaymentTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "Order_Address_FK",
+                        column: x => x.AddressId,
+                        principalTable: "Address",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "Order_User_FK",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
@@ -491,7 +572,7 @@ namespace MVC_Project.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductDiscount",
+                name: "DiscountProduct",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false),
@@ -499,81 +580,18 @@ namespace MVC_Project.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("ProductDiscount_PK", x => new { x.ProductId, x.DiscountId });
+                    table.PrimaryKey("DiscountProduct_PK", x => new { x.ProductId, x.DiscountId });
                     table.ForeignKey(
-                        name: "TABLE_30_Discount_FK",
+                        name: "DiscountProduct_Discount_FK",
                         column: x => x.DiscountId,
                         principalTable: "Discount",
                         principalColumn: "DiscountId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "TABLE_30_Product_FK",
+                        name: "DiscountProduct_Product_FK",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    OrderId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CartId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "date", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true),
-                    OrderStatusId = table.Column<int>(type: "int", nullable: false),
-                    PaymentTypeId = table.Column<int>(type: "int", nullable: false),
-                    PaymentStatusId = table.Column<int>(type: "int", nullable: false),
-                    DeliveryId = table.Column<int>(type: "int", nullable: false),
-                    VoucherId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.OrderId);
-                    table.ForeignKey(
-                        name: "Order_Address_FK",
-                        column: x => x.AddressId,
-                        principalTable: "Address",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_Cart_FK",
-                        column: x => x.CartId,
-                        principalTable: "Cart",
-                        principalColumn: "CartId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_Delivery_FK",
-                        column: x => x.DeliveryId,
-                        principalTable: "Delivery",
-                        principalColumn: "DeliveryId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_OrderStatus_FK",
-                        column: x => x.OrderStatusId,
-                        principalTable: "OrderStatus",
-                        principalColumn: "OrderStatusId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_PaymentStatus_FK",
-                        column: x => x.PaymentStatusId,
-                        principalTable: "PaymentStatus",
-                        principalColumn: "PaymentStatusId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_PaymentType_FK",
-                        column: x => x.PaymentTypeId,
-                        principalTable: "PaymentType",
-                        principalColumn: "PaymentTypeId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "Order_User_FK",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -581,13 +599,6 @@ namespace MVC_Project.Domain.Migrations
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -630,6 +641,11 @@ namespace MVC_Project.Domain.Migrations
                 column: "DeliveryCompanyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DiscountProduct_DiscountId",
+                table: "DiscountProduct",
+                column: "DiscountId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Order_AddressId",
                 table: "Order",
                 column: "AddressId");
@@ -665,19 +681,26 @@ namespace MVC_Project.Domain.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Producer_CountryId",
+                table: "Producer",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Product_CategoryId",
                 table: "Product",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_CountryId",
+                name: "IX_Product_ProducerId",
                 table: "Product",
-                column: "CountryId");
+                column: "ProducerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductDiscount_DiscountId",
-                table: "ProductDiscount",
-                column: "DiscountId");
+                name: "RoleNameIndex",
+                table: "Role",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -688,11 +711,6 @@ namespace MVC_Project.Domain.Migrations
                 name: "IX_User_LanguageId",
                 table: "User",
                 column: "LanguageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_RoleId",
-                table: "User",
-                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_TemporaryCartId",
@@ -738,19 +756,22 @@ namespace MVC_Project.Domain.Migrations
                 name: "CartProduct");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "DiscountProduct");
 
             migrationBuilder.DropTable(
-                name: "ProductDiscount");
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Voucher");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Role");
 
             migrationBuilder.DropTable(
-                name: "Address");
+                name: "Discount");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Delivery");
@@ -765,25 +786,19 @@ namespace MVC_Project.Domain.Migrations
                 name: "PaymentType");
 
             migrationBuilder.DropTable(
-                name: "Discount");
-
-            migrationBuilder.DropTable(
-                name: "Product");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "User");
 
             migrationBuilder.DropTable(
-                name: "DeliveryType");
+                name: "Producer");
 
             migrationBuilder.DropTable(
                 name: "Category");
 
             migrationBuilder.DropTable(
-                name: "Country");
-
-            migrationBuilder.DropTable(
-                name: "Role");
+                name: "DeliveryType");
 
             migrationBuilder.DropTable(
                 name: "Cart");
@@ -793,6 +808,9 @@ namespace MVC_Project.Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "Theme");
+
+            migrationBuilder.DropTable(
+                name: "Country");
 
             migrationBuilder.DropTable(
                 name: "DeliveryCompany");

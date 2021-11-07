@@ -22,5 +22,20 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpGet("by-id/{productId}")]
+        public async Task<IActionResult> GetProductList([FromRoute] int productId)
+        {
+            var result = await _productService.GetProductById(productId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
     }
 }

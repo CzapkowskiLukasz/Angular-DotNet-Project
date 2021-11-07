@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 #nullable disable
 
@@ -7,11 +6,6 @@ namespace MVC_Project.Domain.Entities
 {
     public class Address
     {
-        public Address()
-        {
-            Orders = new HashSet<Order>();
-        }
-
         public int AddressId { get; set; }
         public int UserId { get; set; }
         public string City { get; set; }

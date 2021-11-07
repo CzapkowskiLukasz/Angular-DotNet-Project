@@ -5,8 +5,8 @@ namespace MVC_Project.Logic.Interfaces
 {
     public interface IProductService
     {
-        public Task<HandleResult<GetProductListResponse>> GetProductList();
+        public Task<HandleResult<GetProductListResponse>> GetProductListAsync();
 
-        public Task<HandleResult<GetProductByIdResponse>> GetProductById(int productId);
+        public Task<HandleResult<GetProductByIdResponse>> GetProductByIdAsync(int productId);
     }
 }

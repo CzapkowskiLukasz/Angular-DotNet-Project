@@ -19,7 +19,7 @@ namespace MVC_Project.Logic.Services
         }
 
 
-        public async Task<HandleResult<GetProductListResponse>> GetProductList()
+        public async Task<HandleResult<GetProductListResponse>> GetProductListAsync()
         {
             var result = new HandleResult<GetProductListResponse>();
 
@@ -30,7 +30,7 @@ namespace MVC_Project.Logic.Services
             return result;
         }
 
-        public async Task<HandleResult<GetProductByIdResponse>> GetProductById(int productId)
+        public async Task<HandleResult<GetProductByIdResponse>> GetProductByIdAsync(int productId)
         {
             var result = new HandleResult<GetProductByIdResponse>();
 

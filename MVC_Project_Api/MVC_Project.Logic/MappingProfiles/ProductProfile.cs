@@ -9,7 +9,9 @@ namespace MVC_Project.Logic.MappingProfiles
     {
         public ProductProfile()
         {
-            CreateMap<Product, ProductListItem>();
+            CreateMap<Product, ProductListItem>()
+                .ForMember(dest => dest.Name, opt =>
+                    opt.MapFrom(src => $"{src.Producer.Name} {src.Name}"));
 
             CreateMap<List<Product>, GetProductListResponse>()
                 .ForMember(dest => dest.Products, opt =>

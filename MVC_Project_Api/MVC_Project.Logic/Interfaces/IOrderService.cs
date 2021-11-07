@@ -6,5 +6,7 @@ namespace MVC_Project.Logic.Interfaces
     public interface IOrderService
     {
         public Task<HandleResult<GetOrderListResponse>> GetOrderListAsync();
+        
+        public Task<HandleResult<GetOrderByIdResponse>> GetOrderByIdAsync(int orderId);
     }
 }

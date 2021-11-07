@@ -31,5 +31,27 @@ namespace MVC_Project.Logic.Services
 
             return result;
         }
+
+        public async Task<HandleResult<GetOrderByIdResponse>> GetOrderByIdAsync(int orderId)
+        {
+            var result = new HandleResult<GetOrderByIdResponse>();
+
+            var order = await _dataContext.Orders
+                .Include(x => x.Address)
+                .Include(x => x.OrderStatus)
+                .Include(x => x.User)
+                .SingleOrDefaultAsync(x => x.OrderId == orderId);
+
+            if (order == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found", 404);
+            }
+            else
+            {
+                result.Response = _mapper.Map<GetOrderByIdResponse>(order);
+            }
+
+            return result;
+        }
     }
 }

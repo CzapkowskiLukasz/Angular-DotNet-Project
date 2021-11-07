@@ -22,5 +22,20 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpGet("by-id/{orderId}")]
+        public async Task<IActionResult> GetOrderByIdAsync([FromRoute] int orderId)
+        {
+            var result = await _orderService.GetOrderByIdAsync(orderId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
     }
 }

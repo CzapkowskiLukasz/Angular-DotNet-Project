@@ -53,5 +53,29 @@ namespace MVC_Project.Logic.Services
 
             return result;
         }
+
+        public async Task<HandleResult<string>> DeleteOrderAsync(int orderId)
+        {
+            var result = new HandleResult<string>();
+            var order = await _dataContext.Orders.SingleOrDefaultAsync(x => x.OrderId== orderId);
+
+            if (order == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found", 404);
+                return result;
+            }
+
+            _dataContext.Orders.Remove(order);
+            var deleted = await _dataContext.SaveChangesAsync();
+
+            if (deleted != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Delete error", 500);
+                return result;
+            }
+
+            result.Response = "Success";
+            return result;
+        }
     }
 }

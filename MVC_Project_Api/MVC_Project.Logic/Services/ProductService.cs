@@ -87,7 +87,7 @@ namespace MVC_Project.Logic.Services
 
             if (added != 1)
             {
-                result.ErrorResponse = new ErrorResponse("Delete error", 500);
+                result.ErrorResponse = new ErrorResponse("Add error", 500);
                 return result;
             }
 

@@ -12,6 +12,6 @@ namespace MVC_Project.Logic.Interfaces
 
         public Task<HandleResult<string>> DeleteProductAsync(int productId);
 
-        public Task<HandleResult<string>> AddProduct(AddProductRequest request);
+        public Task<HandleResult<string>> AddProductAsync(AddProductRequest request);
     }
 }

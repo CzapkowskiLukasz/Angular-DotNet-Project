@@ -77,7 +77,7 @@ namespace MVC_Project.Logic.Services
             return result;
         }
 
-        public async Task<HandleResult<string>> AddProduct(AddProductRequest request)
+        public async Task<HandleResult<string>> AddProductAsync(AddProductRequest request)
         {
             var result = new HandleResult<string>();
             var product = _mapper.Map<Product>(request);

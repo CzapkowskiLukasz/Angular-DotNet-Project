@@ -8,5 +8,7 @@ namespace MVC_Project.Logic.Interfaces
         public Task<HandleResult<GetOrderListResponse>> GetOrderListAsync();
         
         public Task<HandleResult<GetOrderByIdResponse>> GetOrderByIdAsync(int orderId);
+
+        public Task<HandleResult<string>> DeleteOrderAsync(int orderId);
     }
 }

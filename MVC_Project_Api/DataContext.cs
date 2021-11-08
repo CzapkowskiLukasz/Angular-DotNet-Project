@@ -265,7 +265,7 @@ namespace MVC_Project.Domain
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(20)
+                    .HasMaxLength(40)
                     .IsUnicode(false);
             });
 

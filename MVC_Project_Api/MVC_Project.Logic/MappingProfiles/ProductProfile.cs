@@ -12,7 +12,7 @@ namespace MVC_Project.Logic.MappingProfiles
         {
             CreateMap<Product, ProductListItem>()
                 .ForMember(dest => dest.Name, opt =>
-                    opt.MapFrom(src => $"{src.Producer.Name} {src.Name}"));
+                    opt.MapFrom(src => GetProductFullName(src)));
 
             CreateMap<List<Product>, GetProductListResponse>()
                 .ForMember(dest => dest.Products, opt =>
@@ -27,6 +27,16 @@ namespace MVC_Project.Logic.MappingProfiles
             CreateMap<AddProductRequest, Product>()
                 .ForMember(dest => dest.WarehouseQuantity, opt =>
                     opt.MapFrom(src => src.Count));
+        }
+
+        private string GetProductFullName(Product product)
+        {
+            string result = product.Name;
+            if (product.Producer != null)
+            {
+                result = $"{product.Producer.Name} {result}";
+            }
+            return result;
         }
     }
 }

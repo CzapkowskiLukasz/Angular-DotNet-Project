@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Requests;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Controllers
@@ -42,6 +43,22 @@ namespace MVC_Project.Controllers
         public async Task<IActionResult> DeleteProductAsync([FromRoute] int productId)
         {
             var result = await _productService.DeleteProductAsync(productId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddProductFrom([FromBody] AddProductRequest request)
+        {
+            var result = await _productService.AddProductAsync(request);
 
             if (result.ErrorResponse == null)
             {

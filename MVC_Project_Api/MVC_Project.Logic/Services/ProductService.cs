@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
+using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Requests;
 using MVC_Project.Logic.Responses;
 using System.Threading.Tasks;
 
@@ -67,7 +69,25 @@ namespace MVC_Project.Logic.Services
 
             if (deleted != 1)
             {
-                result.ErrorResponse = new ErrorResponse("Delete eroor", 500);
+                result.ErrorResponse = new ErrorResponse("Delete error", 500);
+                return result;
+            }
+
+            result.Response = "Success";
+            return result;
+        }
+
+        public async Task<HandleResult<string>> AddProductAsync(AddProductRequest request)
+        {
+            var result = new HandleResult<string>();
+            var product = _mapper.Map<Product>(request);
+
+            await _dataContext.Products.AddAsync(product);
+            var added = await _dataContext.SaveChangesAsync();
+
+            if (added != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Delete error", 500);
                 return result;
             }
 

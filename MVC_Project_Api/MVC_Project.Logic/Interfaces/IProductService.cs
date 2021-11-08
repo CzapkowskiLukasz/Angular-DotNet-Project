@@ -1,4 +1,5 @@
-﻿using MVC_Project.Logic.Responses;
+﻿using MVC_Project.Logic.Requests;
+using MVC_Project.Logic.Responses;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Logic.Interfaces
@@ -11,5 +12,6 @@ namespace MVC_Project.Logic.Interfaces
 
         public Task<HandleResult<string>> DeleteProductAsync(int productId);
 
+        public Task<HandleResult<string>> AddProductAsync(AddProductRequest request);
     }
 }

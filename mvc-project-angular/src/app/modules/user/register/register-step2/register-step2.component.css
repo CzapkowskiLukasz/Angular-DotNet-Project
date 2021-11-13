@@ -1,0 +1,75 @@
+html {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    /*===== Colores =====*/
+    --main-color: #DF002D;
+    --accent-color: #FCB001;
+    --body-color: white;
+    --background-color: whitesmoke;
+    --text-color: grey;
+}
+
+.loginBackground {
+    border-radius: 25px;
+    width: auto;
+    height: auto;
+    background-color: var(--body-color);
+    padding: 15px;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    display: block;
+}
+
+.form__button {
+    padding: .75rem 2rem;
+    outline: none;
+    background-color: var(--accent-color);
+    color: var(--body-color);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .3s;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.form__div__button {
+    position: relative;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag {
+    margin-right: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 3px;
+    border-color: grey;
+}
+
+.flagContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    vertical-align: middle;
+}
+
+p {
+    color: gray;
+}

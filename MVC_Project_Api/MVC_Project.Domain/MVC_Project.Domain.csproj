@@ -16,6 +16,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="AutoMapper" />
+  </ItemGroup>
 </Project>

@@ -12,7 +12,6 @@ html {
     --text-color: grey;
 }
 
-
 .loginBackground {
     border-radius: 25px;
     width: auto;
@@ -22,12 +21,12 @@ html {
     top: 50%;
     position: absolute;
     left: 50%;
-    text-align: center;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
     border-style: solid;
+    text-align: center;
     border-width: 1px;
     border-color: var(--accent-color);
     display: block;
@@ -53,20 +52,11 @@ html {
     align-items: center;
 }
 
-.flag {
-    margin: 15px;
-    border-radius: 50%;
+.agreements {
     display: inline-block;
-    border-style: solid;
     border-width: 3px;
     border-color: grey;
-    cursor: pointer;
-}
-
-.flagContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 0;
 }
 
 img {
@@ -156,4 +146,9 @@ img {
 
 .progress li.active+li:after {
     color: var(--accent-color);
+}
+
+.checkbox {
+    color: gray;
+    padding-top: 10px;
 }

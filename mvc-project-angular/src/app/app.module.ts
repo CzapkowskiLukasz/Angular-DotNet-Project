@@ -11,6 +11,7 @@ import { RegisterStep4Component } from './modules/user/register/register-step4/r
 import { LoginComponent } from './modules/user/login/login/login.component';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
+import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminProductListComponent } from './modules/admin/product/admin-product
     RegisterStep4Component,
     LoginComponent,
     AdminDashboardComponent,
-    AdminProductListComponent
+    AdminProductListComponent,
+    AdminProductCreateComponent
   ],
   imports: [
     BrowserModule,

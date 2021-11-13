@@ -1,14 +1,33 @@
 <div class="loginBackground">
-    <div>
-        <p style="white-space: nowrap;">Choose your language, don't worry you can change it later!
-        </p>
-        <div class="flagContainer">
-            <img class="flag" src="https://img.icons8.com/color/96/000000/poland-circular.png" />
-            <img class="flag" style="border-color: var(--accent-color); border-width: 4px;" src="https://img.icons8.com/color/96/000000/great-britain-circular.png" />
+    <div class="progressContainer">
+        <ul class="progress">
+            <li class="active">Language</li>
+            <li>Login data</li>
+            <li>Address</li>
+            <li>Agreements</li>
+        </ul>
+    </div>
+    <p class="register-title">Please enter your e-mail and password
+    </p>
+    <form>
+        <div class="form__div">
+            <input type="text" class="form__input" placeholder=" ">
+            <label for="" class="form__label">E-mail</label>
         </div>
-        <div class="form__div__button">
-            <a class="form__button" href="register2.html">Next step!<img class="signUpWithLogo"
+
+        <div class="form__div">
+            <input type="password" class="form__input" placeholder=" ">
+            <label for="" class="form__label">Password</label>
+        </div>
+
+        <div class="form__div">
+            <input type="password" class="form__input" placeholder=" ">
+            <label for="" class="form__label">Repeat password</label>
+        </div>
+
+        <div class="form__div__button" style="float: center;">
+            <a class="form__button" [routerLink]="['../step3']">Next step!<img class="signUpWithLogo"
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAW0lEQVRIie2UsQ2AMAwEL0zGNqwTKpg2TwFFukQRHymSr/efZL0NQQAgKUlKI7NbTziQgWtU0hLskopeTpfkqCR3SH6VNFs0FeuKlg73Htr3h7KtlpXEEx6szwN1+MFA3YH5WQAAAABJRU5ErkJggg=="></a>
         </div>
-    </div>
+    </form>
 </div>

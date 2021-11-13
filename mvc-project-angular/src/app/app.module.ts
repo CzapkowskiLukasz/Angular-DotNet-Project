@@ -10,6 +10,7 @@ import { RegisterStep3Component } from './modules/user/register/register-step3/r
 import { RegisterStep4Component } from './modules/user/register/register-step4/register-step4.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
+import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-d
     RegisterStep3Component,
     RegisterStep4Component,
     LoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminProductListComponent
   ],
   imports: [
     BrowserModule,

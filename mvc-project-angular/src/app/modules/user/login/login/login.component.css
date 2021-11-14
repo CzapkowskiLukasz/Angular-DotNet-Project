@@ -41,6 +41,7 @@ html {
 
   .form__input {
     position: relative;
+    color: gray;
     top: 0;
     left: 0;
     border-style: solid;
@@ -89,7 +90,7 @@ html {
 
   .form__label {
     position: absolute;
-    left: 1rem;
+    left: 23px;
     top: 1rem;
     padding: 0 .25rem;
     background-color: var(--body-color);
@@ -109,24 +110,21 @@ html {
     transition: .3s;
   }
 
-  /*Input focus move up label*/
   .form__input:focus+.form__label {
     top: -.5rem;
-    left: 1.2rem;
+    left: 23px;
     color: var(--accent-color);
     font-weight: 500;
     z-index: 11;
   }
 
-  /*Input focus sticky top label*/
   .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
     top: -.5rem;
-    left: 1.2rem;
+    left: 23px;
     font-weight: 500;
     z-index: 11;
   }
 
-  /*Input focus*/
   .form__input:focus {
     border-style: solid;
     border-width: 1.5px;

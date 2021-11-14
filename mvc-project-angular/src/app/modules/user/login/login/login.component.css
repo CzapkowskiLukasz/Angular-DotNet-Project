@@ -177,6 +177,6 @@ html {
   }
 
   .signUpWithLogo {
-    padding-top: 4px;
-    border-style: solid;
+    fill: #000000;
+    vertical-align: bottom;
   }

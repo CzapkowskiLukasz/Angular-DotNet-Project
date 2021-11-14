@@ -11,13 +11,13 @@ html {
     --text-color: grey;
 }
 
-svg path {
+.svg {
     fill: white;
     stroke: #FCB001;
     stroke-width: 20;
 }
 
-svg path:hover {
+.svg:hover {
     fill: #FCB001;
     transition: 0.6s;
     cursor: pointer;
@@ -36,13 +36,13 @@ svg path:hover {
     cursor: pointer;
 }
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
     border-style: solid;
     border-color: black;
 }
 
-.icon{
-    position:relative;
+.icon {
+    position: relative;
     margin-top: 7px;
 }

@@ -8,6 +8,7 @@ import { RegisterStep1Component } from './modules/user/register/register-step1/r
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
 import { RegisterStep4Component } from './modules/user/register/register-step4/register-step4.component';
+import { LoginComponent } from './modules/user/login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RegisterStep4Component } from './modules/user/register/register-step4/r
     RegisterStep2Component,
     RegisterStep3Component,
     RegisterStep4Component,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

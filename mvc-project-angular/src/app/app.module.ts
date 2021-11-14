@@ -13,6 +13,7 @@ import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-d
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     AdminDashboardComponent,
     AdminProductListComponent,
-    AdminProductCreateComponent
+    AdminProductCreateComponent,
+    FilteredDropdownComponent
   ],
   imports: [
     BrowserModule,

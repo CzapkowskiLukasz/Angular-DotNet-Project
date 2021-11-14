@@ -8,9 +8,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class RegisterStep1Component implements OnInit {
 
-  constructor() { }
+  isEnglish: boolean;
+  isPolish: boolean;
+
+  constructor() {
+    this.isEnglish = false;
+    this.isPolish = false;
+   }
 
   ngOnInit(): void {
   }
+  
+  selectEnglish(){
+  this.isEnglish = true
+  this.isPolish = false
+  }
 
+  selectPolish(){
+    this.isPolish = true
+    this.isEnglish = false
+  }
 }

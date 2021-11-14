@@ -63,6 +63,16 @@ html {
     cursor: pointer;
 }
 
+.flagActive {
+    margin: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 4px;
+    border-color: var(--accent-color);
+    cursor: pointer;
+}
+
 .flagContainer {
     display: flex;
     justify-content: center;

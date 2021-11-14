@@ -1,1 +1,49 @@
-<p>admin-product-create works!</p>
+<div class="loginBackground">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="name" placeholder=" ">
+            <label for="name" class="form__label">Name</label>
+        </div>
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="price" placeholder=" ">
+            <label for="price" class="form__label">Price</label>
+        </div>
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="warehouseQuantity" placeholder=" ">
+            <label for="warehouseQuantity" class="form__label">WarehouseQuantity</label>
+        </div>
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="description" placeholder=" ">
+            <label for="description" class="form__label">Description</label>
+        </div>
+
+
+        <!-- categories -->
+        <div class="form__div">
+            <input #catInput type="text" (input)="searchCategoryFilterTextChange()" class="form__input" id="searchCategory" [formControl]="searchCategoryControl" placeholder=" " autocomplete="off">
+            <label for="searchCategory">Enter category name</label>
+        </div>
+        <div #dropdownList class="dropdown hide" id="categoriesDropdown">
+            <div *ngIf="searchCategoryFilteredList.length; else noCategoriesBlock">
+                <button *ngFor="let category of searchCategoryFilteredList" class="dropdown-item" type="button" (click)="dropdownSelectCategory(category)">{{category.name}}</button>
+            </div>
+            <ng-template #noCategoriesBlock>
+                <div class="p-1 mx-2">
+                    <div *ngIf="categoriesNotFetched; else notFound">
+                        There is no categories in the database.
+                    </div>
+                    <ng-template #notFound>
+                        Not found categories with search name.
+                    </ng-template>
+                </div>
+            </ng-template>
+        </div>
+
+        <!-- <select (input)="searchCategoryFilterTextChange()" class="form__input" id="searchCategory" [formControl]="searchCategoryControl" placeholder=" " autocomplete="off">
+            <option></option>
+            <option *ngFor="let category of searchCategoryFilteredList" class="dropdown-item" type="button" (click)="dropdownSelectCategory(category)">{{category.name}}</option>
+        </select> -->
+
+        <button class="form__button" type="submit">Add product</button>
+    </form>
+</div>

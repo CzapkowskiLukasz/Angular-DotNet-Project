@@ -12,6 +12,7 @@ import { LoginComponent } from './modules/user/login/login/login.component';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AdminProductCreateComponent } from './modules/admin/product/admin-produ
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

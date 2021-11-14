@@ -157,3 +157,7 @@ img {
 .progress li.active+li:after {
     color: var(--accent-color);
 }
+
+.icon{
+    margin-top: -3px;
+}

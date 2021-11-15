@@ -4,26 +4,28 @@
             <input type="text" class="form__input" formControlName="name" placeholder=" ">
             <label for="name" class="form__label">Name</label>
         </div>
-        <div class="form__div">
-            <input type="text" class="form__input" formControlName="price" placeholder=" ">
-            <label for="price" class="form__label">Price</label>
-        </div>
-        <div class="form__div">
-            <input type="text" class="form__input" formControlName="warehouseQuantity" placeholder=" ">
-            <label for="warehouseQuantity" class="form__label">WarehouseQuantity</label>
-        </div>
+
         <div class="form__div">
             <input type="text" class="form__input" formControlName="description" placeholder=" ">
             <label for="description" class="form__label">Description</label>
         </div>
 
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="price" placeholder=" ">
+            <label for="price" class="form__label">Price</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="warehouseQuantity" placeholder=" ">
+            <label for="warehouseQuantity" class="form__label">WarehouseQuantity</label>
+        </div>
 
         <!-- categories -->
         <div class="form__div">
-            <input #catInput type="text" class="form__input" id="searchCategory" [formControl]="searchCategoryControl" placeholder=" " autocomplete="off">
-            <label for="searchCategory">Enter category name</label>
+            <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
+            <label for="category" class="form__label">Category name</label>
         </div>
-        <app-filtered-dropdown [inputElement]="catInput" [list]="searchCategoryList"></app-filtered-dropdown>
+        <app-filtered-dropdown [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
 
         <button class="form__button" type="submit">Add product</button>
     </form>

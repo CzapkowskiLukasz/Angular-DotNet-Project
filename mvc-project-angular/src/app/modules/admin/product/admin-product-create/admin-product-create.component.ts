@@ -11,44 +11,38 @@ export class AdminProductCreateComponent implements OnInit {
 
   form: FormGroup;
 
-  searchCategoryControl: FormControl;
-  searchCategoryFilterText = '';
+  categoryId;
 
-  searchCategoryList: FilteredDropdownListItem[] = [];
-
-  categoriesNotFetched = false;
-
-  selectedCategoryId?: number;
-
-  dropdownShown = false;
-
-  catInputSub;
+  categoryList: FilteredDropdownListItem[] = [];
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
       warehouseQuantity: [''],
-      expertId: [''],
+      expert: [''],
       description: [''],
-      categoryId: [''],
-      producerId: ['']
+      category: [''],
+      producer: ['']
     });
-
-    this.searchCategoryControl = new FormControl('');
   }
 
   ngOnInit(): void {
-    this.getSearchList();
+    this.fetchCategories();
 
+  }
+
+  selectCategory(id: string) {
+    this.categoryId = id;
+    console.log(`category: ${this.categoryId}`);
   }
 
   submit(): void {
 
   }
 
-  private getSearchList() {
-    this.searchCategoryList = [
+  private fetchCategories() {
+    this.categoryList = [
       {
         value: '1',
         text: 'cat1'

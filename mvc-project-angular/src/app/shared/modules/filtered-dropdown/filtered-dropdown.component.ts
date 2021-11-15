@@ -65,7 +65,7 @@ export class FilteredDropdownComponent implements OnInit {
 
 
   searchFilterTextChange(input: HTMLInputElement) {
-    const filterText = input.value;
+    const filterText = input.value.toLowerCase();
 
     if (this.searchFilterText!.length > filterText.length) {
       this.filteredList = this.list;
@@ -86,10 +86,10 @@ export class FilteredDropdownComponent implements OnInit {
 
   private filter(item: FilteredDropdownListItem, filterText: string): boolean {
     const filterTextString = filterText + '';
-
     const filterTerms = filterTextString.split(' ');
+    const itemText = item.text.toLocaleLowerCase();
     for (const filterTerm of filterTerms) {
-      if (!item.text.includes(filterTerm)) {
+      if (!itemText.includes(filterTerm)) {
         return false;
       }
     }

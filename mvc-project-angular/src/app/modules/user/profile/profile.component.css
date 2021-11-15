@@ -25,7 +25,6 @@ html {
 
 .mainContainer {
   display: flex;
-  border-style: solid;
   justify-content: center;
 }
 

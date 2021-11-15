@@ -57,10 +57,23 @@ h2{
     margin-right: 30px;
     padding: 5px;
     border-style: solid;
-    border-radius: 25px;
+    border-radius: 45px;
     border-color: var(--accent-color);
     border-width: 1px;
     display: grid;
     background-color: white;
     grid-template-columns: 1fr 1fr 1fr; 
+}
+
+.searchBarDiv{
+    height: 40px;
+    width: 120px;
+    background-color: whitesmoke;
+    border: 1px solid;
+    border-radius: 23px;
+    border-color: var(--accent-color);
+}
+
+.searchBarInput{
+
 }

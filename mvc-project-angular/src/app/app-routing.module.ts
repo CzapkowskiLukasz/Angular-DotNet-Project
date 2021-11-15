@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
+import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterStep1Component },
   { path: 'register/step2', component: RegisterStep2Component },
   { path: 'register/step3', component: RegisterStep3Component },
-  { path: 'register/step4', component: RegisterStep4Component }
+  { path: 'register/step4', component: RegisterStep4Component },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

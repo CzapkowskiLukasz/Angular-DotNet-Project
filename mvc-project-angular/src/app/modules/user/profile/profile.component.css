@@ -1,0 +1,165 @@
+html {
+  background-color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  /*===== Colores =====*/
+  --main-color: #DF002D;
+  --accent-color: #FCB001;
+  --body-color: white;
+  --background-color: whitesmoke;
+  --text-color: grey;
+}
+
+.basicDiv {
+  border-radius: 25px;
+  background-color: var(--body-color);
+  padding: 15px;
+  border-style: solid;
+  text-align: center;
+  border-width: 1px;
+  border-color: var(--accent-color);
+  margin-right: 10px;
+}
+
+.mainContainer {
+  display: flex;
+  border-style: solid;
+  justify-content: center;
+}
+
+.mainButton {
+  background-color: white;
+  border-style: solid;
+  width: 40px;
+  height: 40px;
+  border-color: var(--accent-color);
+  border-width: 3px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  border-style: solid;
+  border-color: black;
+}
+
+.icon {
+  position: relative;
+  margin-top: 7px;
+}
+
+.yourProfileContainer{
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.lines {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--accent-color);
+  line-height: 0.1em;
+}
+
+.textInLines {
+  background: #fff;
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--accent-color);
+}
+
+p {
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.orderDescription{
+  color: gray;
+  margin-bottom: 0;
+  font-size: small;
+}
+
+.addressContainer {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.orderContainer{
+  border-radius: 25px;
+  background-color: var(--body-color);
+  padding: 15px;
+  border-style: solid;
+  text-align: center;
+  border-width: 1px;
+  border-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.addressNavigation {
+  margin-top: 31px;
+  display: block;
+}
+
+.flag {
+  margin: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  border-style: solid;
+  border-width: 3px;
+  border-color: grey;
+  cursor: pointer;
+}
+
+.flagActive {
+  margin: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderTitle{
+  color: var(--accent-color);
+  text-align: left;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 5px;
+}
+
+h5{
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.profileButton {
+  background-color: white;
+  border-style: solid;
+  width: 32px;
+  height: 32px;
+  border-color: var(--accent-color);
+  border-width: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+}
+
+.profileButtonSvg{
+  margin-left: 8px;
+  margin-top: 8px;
+}

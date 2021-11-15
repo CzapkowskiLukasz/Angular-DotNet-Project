@@ -67,7 +67,7 @@ h2{
 
 .searchBarDiv{
     height: 40px;
-    width: 120px;
+    width: 200px;
     background-color: whitesmoke;
     border: 1px solid;
     border-radius: 23px;
@@ -76,4 +76,21 @@ h2{
 
 .searchBarInput{
 
+}
+
+.searchButton{
+    background-color: white;
+    border-style: solid;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    margin-right: 3px;
+    width: 32px;
+    height: 32px;
+    border-color: var(--accent-color);
+    border-width: 1px;
+    border-radius: 50%;
+    cursor: pointer;
 }

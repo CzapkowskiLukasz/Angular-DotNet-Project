@@ -33,7 +33,7 @@ export class AdminProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
-    this.fetchProducers();
+    this.fetchProducers2();
   }
 
   selectCategory(id: string) {
@@ -72,7 +72,96 @@ export class AdminProductCreateComponent implements OnInit {
       }, {
         value: '3',
         text: 'Producer 3'
-      }
+      }];
+  }
+
+  private fetchProducers2() {
+    this.producerList = [
+      {
+        value: '1',
+        text: 'Producer 1'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      },
     ];
   }
 }

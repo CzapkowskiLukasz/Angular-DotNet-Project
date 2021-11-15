@@ -1,15 +1,13 @@
 <div #dropdownList class="dropdown hide" id="dropdown">
     <div *ngIf="filteredList.length; else noItemsBlock">
-        <option *ngFor="let item of filteredList" value="item.value" (click)="selectItem(item)">{{item.text}}</option>
+        <option class="dropdown-element" *ngFor="let item of filteredList" value="{{item.value}}" (click)="selectItem(item)">{{item.text}}</option>
     </div>
     <ng-template #noItemsBlock>
-        <div class="p-1 mx-2">
-            <div *ngIf="itemsNotFetched; else notFound">
-                Not found.
-            </div>
-            <ng-template #notFound>
-                Not found items with search name.
-            </ng-template>
+        <div *ngIf="itemsNotFetched; else notFound">
+            <option class="dropdown-error">Not found.</option>
         </div>
+        <ng-template #notFound>
+            <option class="dropdown-error">Not found items with search name.</option>
+        </ng-template>
     </ng-template>
 </div>

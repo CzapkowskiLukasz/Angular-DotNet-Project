@@ -38,9 +38,29 @@ html {
 
 .buttonContainer {
     display: flex;
+    margin-bottom: 0;
 }
 
 .icon {
     position: relative;
     margin-top: 7px;
+}
+
+h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: gray;
+}
+
+.header{
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: var(--accent-color);
+    border-width: 1px;
+    display: grid;
+    background-color: white;
+    grid-template-columns: 1fr 1fr 1fr; 
 }

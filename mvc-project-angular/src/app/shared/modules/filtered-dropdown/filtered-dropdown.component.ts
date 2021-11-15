@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FilteredDropdownListItem } from '../../models/filtered-dropdown-list-item';
 
 @Component({
@@ -13,6 +13,8 @@ export class FilteredDropdownComponent implements OnInit {
   @Input() list: FilteredDropdownListItem[];
 
   @ViewChild('dropdownList', { static: true }) ddl: ElementRef;
+
+  @Output() selectIdEvent = new EventEmitter<string>();
 
   searchFilterText = '';
 
@@ -78,8 +80,8 @@ export class FilteredDropdownComponent implements OnInit {
 
   selectItem(item: FilteredDropdownListItem) {
     this.inputElement.value = item.text;
-    console.log(item.value);
     this.hideDropdown();
+    this.selectIdEvent.emit(item.value);
   }
 
   private filter(item: FilteredDropdownListItem, filterText: string): boolean {

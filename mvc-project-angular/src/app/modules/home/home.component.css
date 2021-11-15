@@ -38,6 +38,8 @@ html {
 .buttonContainer {
     display: flex;
     margin-bottom: 0;
+    padding-left: 300px; 
+    padding-right: 2px;
 }
 
 .icon {
@@ -45,8 +47,9 @@ html {
     margin-top: 7px;
 }
 
-h2{
-    margin-top: 0;
+.shopName{
+    margin-top: 5px;
+    margin-left: 10px;
     margin-bottom: 0;
     color: gray;
 }
@@ -67,6 +70,7 @@ h2{
 .searchBarDiv{
     height: 40px;
     width: 300px;
+    margin-left: 65px;
     background-color: whitesmoke;
     border: 1px solid;
     border-radius: 23px;
@@ -103,3 +107,24 @@ h2{
     border-radius: 50%;
     cursor: pointer;
 }
+
+.descriptionContainer{
+    text-align: center;
+    color: gray;
+    white-space: nowrap;
+}
+
+.descriptionHeader{
+    font-size: 48px;
+}
+
+.descriptionText{
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+.mapContainer{
+    margin-top: 40px;
+}
+

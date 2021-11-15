@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
 
 @Component({
@@ -15,6 +15,10 @@ export class AdminProductCreateComponent implements OnInit {
 
   categoryList: FilteredDropdownListItem[] = [];
 
+  producerId;
+
+  producerList: FilteredDropdownListItem[] = [];
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: [''],
@@ -29,12 +33,16 @@ export class AdminProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
-
+    this.fetchProducers();
   }
 
   selectCategory(id: string) {
     this.categoryId = id;
     console.log(`category: ${this.categoryId}`);
+  }
+
+  selectProducer(id: string) {
+    this.producerId = id;
   }
 
   submit(): void {
@@ -49,6 +57,21 @@ export class AdminProductCreateComponent implements OnInit {
       }, {
         value: '2',
         text: 'cat2'
+      }
+    ];
+  }
+
+  private fetchProducers() {
+    this.producerList = [
+      {
+        value: '1',
+        text: 'Producer 1'
+      }, {
+        value: '2',
+        text: 'Producer 2'
+      }, {
+        value: '3',
+        text: 'Producer 3'
       }
     ];
   }

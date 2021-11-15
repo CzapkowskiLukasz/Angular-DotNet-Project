@@ -5,6 +5,13 @@
             <label for="name" class="form__label">Name</label>
         </div>
 
+        <!-- producer -->
+        <div class="form__div">
+            <input #producerInput type="text" class="form__input" formControlName="producer" placeholder=" ">
+            <label for="producer" class="form__label">Producer name</label>
+        </div>
+        <app-filtered-dropdown [inputElement]="producerInput" [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
+
         <div class="form__div">
             <input type="text" class="form__input" formControlName="description" placeholder=" ">
             <label for="description" class="form__label">Description</label>
@@ -20,7 +27,7 @@
             <label for="warehouseQuantity" class="form__label">WarehouseQuantity</label>
         </div>
 
-        <!-- categories -->
+        <!-- category -->
         <div class="form__div">
             <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
             <label for="category" class="form__label">Category name</label>

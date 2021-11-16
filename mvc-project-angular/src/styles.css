@@ -1,1 +1,30 @@
+html {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+ :root {
+    /*===== Colores =====*/
+    --main-color: #DF002D;
+    --accent-color: #FCB001;
+    --body-color: white;
+    --background-color: whitesmoke;
+    --text-color: grey;
+}
+
+.loginBackground {
+    border-radius: 25px;
+    background-color: var(--body-color);
+    padding: 15px;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    width: auto;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--accent-color);
+}

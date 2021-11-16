@@ -9,6 +9,11 @@ import { RegisterStep2Component } from './modules/user/register/register-step2/r
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
 import { RegisterStep4Component } from './modules/user/register/register-step4/register-step4.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
+import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
+import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
+import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +24,15 @@ import { LoginComponent } from './modules/user/login/login/login.component';
     RegisterStep3Component,
     RegisterStep4Component,
     LoginComponent,
+    AdminDashboardComponent,
+    AdminProductListComponent,
+    AdminProductCreateComponent,
+    FilteredDropdownComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

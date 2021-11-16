@@ -9,6 +9,7 @@ import { RegisterStep2Component } from './modules/user/register/register-step2/r
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
 import { RegisterStep4Component } from './modules/user/register/register-step4/register-step4.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
+import { ProfileComponent } from './modules/user/profile/profile.component';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
@@ -24,6 +25,7 @@ import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/fi
     RegisterStep3Component,
     RegisterStep4Component,
     LoginComponent,
+    ProfileComponent,
     AdminDashboardComponent,
     AdminProductListComponent,
     AdminProductCreateComponent,

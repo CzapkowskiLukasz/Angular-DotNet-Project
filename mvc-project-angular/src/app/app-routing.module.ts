@@ -5,6 +5,7 @@ import { AdminProductCreateComponent } from './modules/admin/product/admin-produ
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
+import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register/step2', component: RegisterStep2Component },
   { path: 'register/step3', component: RegisterStep3Component },
   { path: 'register/step4', component: RegisterStep4Component },
+  { path: 'profile', component: ProfileComponent },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductListComponent },
   { path: 'admin/products/new-product', component: AdminProductCreateComponent }

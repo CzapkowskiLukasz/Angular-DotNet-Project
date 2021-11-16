@@ -1,0 +1,18 @@
+<h1>Products</h1>
+
+<a [routerLink]="['/admin/products/new-product']">Add new product</a>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Warehouse quantity</th>
+        </tr>
+        <tr *ngFor='let product of products'>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.warehouseQuantity}}</td>
+        </tr>
+    </table>
+</div>

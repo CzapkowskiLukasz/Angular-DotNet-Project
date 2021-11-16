@@ -1,6 +1,7 @@
 html {
   background-color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 800px;
 }
 
 :root {
@@ -134,6 +135,7 @@ html {
   text-align: center;
   border-bottom: 1px solid var(--accent-color);
   line-height: 0.1em;
+  margin-bottom: 15px;
 }
 
 .textInLines {

@@ -1,5 +1,5 @@
 <div class="header">
-    <div>
+    <div style="cursor: pointer;" [routerLink]="['']">
         <h2 class="shopName">Nazwa sklepu</h2>
     </div>
 
@@ -74,6 +74,12 @@
         </div>
     </div>
 </div>
+
+<div style="margin-top: 60px;">
+    <h1 class="mainLines"><span class="textInMainLines">MY ACCOUNT</span></h1>
+</div>
+
+
 <div class="mainContainer">
     <aside class="basicDiv" style="width: 300px;">
         <h4 class="lines"><span class="textInLines">Your profile</span></h4>
@@ -188,7 +194,7 @@
             </div>
         </div>
         <h4 class="lines"><span class="textInLines">Settings & Others</span></h4>
-        <div class="profileButton" style="float: left;">
+        <div class="profileButton" style="float: left;" [routerLink]="['../admin/dashboard']">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
                 style=" fill:#000000;margin-left: 6px;margin-top: 6px;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"

@@ -13,5 +13,6 @@ namespace MVC_Project.Domain.Entities
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<CartProduct> CartProducts { get; set; }
+        public virtual User User { get; set; }
     }
 }

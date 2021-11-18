@@ -19,6 +19,7 @@ namespace MVC_Project.Domain.Entities
         public virtual Language Language { get; set; }
         public virtual Cart TemporaryCart { get; set; }
         public virtual Theme Theme { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Voucher> Vouchers { get; set; }
     }

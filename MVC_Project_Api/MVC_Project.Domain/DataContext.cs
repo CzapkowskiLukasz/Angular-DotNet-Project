@@ -391,9 +391,6 @@ namespace MVC_Project.Domain
             {
                 entity.ToTable("Theme");
 
-                entity.Property(e => e.ThemeId)
-                    .HasColumnName("ThemeID");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(10)

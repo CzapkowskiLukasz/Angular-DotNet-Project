@@ -4,14 +4,16 @@ using MVC_Project.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Project.Domain.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211118170306_addRoleNameConstraints")]
+    partial class addRoleNameConstraints
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,8 +68,6 @@ namespace MVC_Project.Domain.Migrations
 
                     b.HasKey("AddressId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Address");
                 });
 
@@ -79,7 +79,7 @@ namespace MVC_Project.Domain.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal?>("Sum")
-                        .HasColumnType("decimal(8,2)");
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<decimal?>("Weight")
                         .HasColumnType("decimal(5,2)");
@@ -169,9 +169,9 @@ namespace MVC_Project.Domain.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
+                        .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("CountryId");
 
@@ -252,9 +252,6 @@ namespace MVC_Project.Domain.Migrations
                         .HasMaxLength(40)
                         .IsUnicode(false)
                         .HasColumnType("varchar(40)");
-
-                    b.Property<int>("PredictedDeliveryDuration")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(5,2)");
@@ -379,8 +376,6 @@ namespace MVC_Project.Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("VoucherId");
-
                     b.ToTable("Order");
                 });
 
@@ -411,9 +406,9 @@ namespace MVC_Project.Domain.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(10)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("PaymentStatusId");
 
@@ -466,11 +461,10 @@ namespace MVC_Project.Domain.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CategoryId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
@@ -493,7 +487,6 @@ namespace MVC_Project.Domain.Migrations
                         .HasColumnType("decimal(5,2)");
 
                     b.Property<int?>("ProducerId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("WarehouseQuantity")
@@ -502,8 +495,6 @@ namespace MVC_Project.Domain.Migrations
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ExpertId");
 
                     b.HasIndex("ProducerId");
 
@@ -582,7 +573,6 @@ namespace MVC_Project.Domain.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("LanguageId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -636,7 +626,6 @@ namespace MVC_Project.Domain.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ThemeId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -658,9 +647,7 @@ namespace MVC_Project.Domain.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("TemporaryCartId")
-                        .IsUnique()
-                        .HasFilter("[TemporaryCartId] IS NOT NULL");
+                    b.HasIndex("TemporaryCartId");
 
                     b.HasIndex("ThemeId");
 
@@ -800,25 +787,12 @@ namespace MVC_Project.Domain.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MVC_Project.Domain.Entities.Address", b =>
-                {
-                    b.HasOne("MVC_Project.Domain.Entities.User", "User")
-                        .WithMany("Addresses")
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("Address_User_FK")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("MVC_Project.Domain.Entities.CartProduct", b =>
                 {
                     b.HasOne("MVC_Project.Domain.Entities.Cart", "Cart")
                         .WithMany("CartProducts")
                         .HasForeignKey("CartId")
                         .HasConstraintName("CartProduct_Cart_FK")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MVC_Project.Domain.Entities.Product", "Product")
@@ -938,11 +912,6 @@ namespace MVC_Project.Domain.Migrations
                         .HasConstraintName("Order_User_FK")
                         .IsRequired();
 
-                    b.HasOne("MVC_Project.Domain.Entities.Voucher", "Voucher")
-                        .WithMany()
-                        .HasForeignKey("VoucherId")
-                        .HasConstraintName("Order_Voucher_FK");
-
                     b.Navigation("Address");
 
                     b.Navigation("Cart");
@@ -956,8 +925,6 @@ namespace MVC_Project.Domain.Migrations
                     b.Navigation("PaymentType");
 
                     b.Navigation("User");
-
-                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Producer", b =>
@@ -974,23 +941,13 @@ namespace MVC_Project.Domain.Migrations
                     b.HasOne("MVC_Project.Domain.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .HasConstraintName("Product_Category_FK")
-                        .IsRequired();
-
-                    b.HasOne("MVC_Project.Domain.Entities.User", "Expert")
-                        .WithMany()
-                        .HasForeignKey("ExpertId")
-                        .HasConstraintName("Product_Expert_FK");
+                        .HasConstraintName("Product_Category_FK");
 
                     b.HasOne("MVC_Project.Domain.Entities.Producer", "Producer")
                         .WithMany("Products")
-                        .HasForeignKey("ProducerId")
-                        .HasConstraintName("Product_Producer_FK")
-                        .IsRequired();
+                        .HasForeignKey("ProducerId");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Expert");
 
                     b.Navigation("Producer");
                 });
@@ -1000,19 +957,16 @@ namespace MVC_Project.Domain.Migrations
                     b.HasOne("MVC_Project.Domain.Entities.Language", "Language")
                         .WithMany("Users")
                         .HasForeignKey("LanguageId")
-                        .HasConstraintName("User_Language_FK")
-                        .IsRequired();
+                        .HasConstraintName("User_Language_FK");
 
                     b.HasOne("MVC_Project.Domain.Entities.Cart", "TemporaryCart")
-                        .WithOne("User")
-                        .HasForeignKey("MVC_Project.Domain.Entities.User", "TemporaryCartId")
-                        .HasConstraintName("User_Cart_FK");
+                        .WithMany()
+                        .HasForeignKey("TemporaryCartId");
 
                     b.HasOne("MVC_Project.Domain.Entities.Theme", "Theme")
                         .WithMany("Users")
                         .HasForeignKey("ThemeId")
-                        .HasConstraintName("User_Theme_FK")
-                        .IsRequired();
+                        .HasConstraintName("User_Theme_FK");
 
                     b.Navigation("Language");
 
@@ -1091,8 +1045,6 @@ namespace MVC_Project.Domain.Migrations
             modelBuilder.Entity("MVC_Project.Domain.Entities.Cart", b =>
                 {
                     b.Navigation("CartProducts");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Category", b =>
@@ -1146,8 +1098,6 @@ namespace MVC_Project.Domain.Migrations
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Addresses");
-
                     b.Navigation("Orders");
 
                     b.Navigation("Vouchers");

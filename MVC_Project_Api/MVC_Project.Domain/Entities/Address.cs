@@ -16,5 +16,6 @@ namespace MVC_Project.Domain.Entities
         public string Country { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual User User { get; set; }
     }
 }

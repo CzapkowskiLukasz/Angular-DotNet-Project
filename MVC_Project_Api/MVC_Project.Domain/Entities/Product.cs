@@ -19,6 +19,7 @@ namespace MVC_Project.Domain.Entities
         public int? ProducerId { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual User Expert { get; set; }
         public virtual Producer Producer { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<CartProduct> CartProducts { get; set; }

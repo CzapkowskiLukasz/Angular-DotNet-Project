@@ -25,5 +25,6 @@ namespace MVC_Project.Domain.Entities
         public virtual PaymentStatus PaymentStatus { get; set; }
         public virtual PaymentType PaymentType { get; set; }
         public virtual User User { get; set; }
+        public virtual Voucher Voucher { get; set; }
     }
 }

@@ -19,6 +19,8 @@ html {
   padding: 15px;
   border-style: solid;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   border-width: 1px;
   border-color: var(--accent-color);
   margin-right: 10px;
@@ -177,6 +179,7 @@ p {
 .addressNavigation {
   margin-top: 31px;
   display: block;
+  cursor: pointer;
 }
 
 .flag {

@@ -8,9 +8,20 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  deleteComponent: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showDelete() {
+    this.deleteComponent
+ = true;
+  }
+
+  hideDelete(){
+    this.deleteComponent
+ = false;
+  }
 }

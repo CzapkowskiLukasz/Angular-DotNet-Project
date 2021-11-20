@@ -1,6 +1,6 @@
 <div class="header">
-    <div style="cursor: pointer;" [routerLink]="['']">
-        <h2 class="shopName">Nazwa sklepu</h2>
+    <div>
+        <h2 class="shopName" [routerLink]="['']">Nazwa sklepu</h2>
     </div>
 
     <div class="searchBarDiv" style="justify-content: center;">
@@ -22,7 +22,152 @@
     </div>
 
     <div class="buttonContainer">
-        <div class="mainButton">
+        <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
+            <div class="cartDiv" *ngIf="showCart">
+                <h3 class="cartLine"><span class="cartTitle">CART</span></h3>
+                <p *ngIf="count==0" class="emptyCart">
+                    Your cart is empty :(
+                </p>
+                <p *ngIf="count==0" class="emptyCart">
+                    Add products to fill him
+                </p>
+
+                <div *ngIf="count>0">
+                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
+                        <div class="cartProduct">
+                            <p class="cartProductName">Nazwa</p>
+                            <h3 class="cartProductLine"></h3>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Count:&nbsp;</p>
+                                    <p class="cartDescriptionVar">3</p>
+                                </div>
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
+                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
+                                    <p class="cartDescriptionText">zł</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cartPriceForItemsDiv">
+                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
+                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
+                        </div>
+                        <div class="cartDeleteItem">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
+                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
+                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+                                    text-anchor="none" style="mix-blend-mode: normal">
+                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                    <g fill="#df1717">
+                                        <path
+                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
+                        <div class="cartProduct">
+                            <p class="cartProductName">Nazwa</p>
+                            <h3 class="cartProductLine"></h3>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Count:&nbsp;</p>
+                                    <p class="cartDescriptionVar">3</p>
+                                </div>
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
+                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
+                                    <p class="cartDescriptionText">zł</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cartPriceForItemsDiv">
+                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
+                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
+                        </div>
+                        <div class="cartDeleteItem">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
+                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
+                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+                                    text-anchor="none" style="mix-blend-mode: normal">
+                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                    <g fill="#df1717">
+                                        <path
+                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
+                        <div class="cartProduct">
+                            <p class="cartProductName">Nazwa</p>
+                            <h3 class="cartProductLine"></h3>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Count:&nbsp;</p>
+                                    <p class="cartDescriptionVar">3</p>
+                                </div>
+                                <div class="descriptionDiv">
+                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
+                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
+                                    <p class="cartDescriptionText">zł</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cartPriceForItemsDiv">
+                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
+                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
+                        </div>
+                        <div class="cartDeleteItem">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
+                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
+                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+                                    text-anchor="none" style="mix-blend-mode: normal">
+                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                    <g fill="#df1717">
+                                        <path
+                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span
+                            class="cartTitle">SUMMARY</span></h3>
+
+                    <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 15px;">
+                        <p class="cartDescriptionText" style="font-size: 15px;">You will pay &nbsp;</p>
+                        <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">90.00 &nbsp;</p>
+                        <p class="cartDescriptionText" style="font-size: 15px;">zł for Your order.</p>
+                    </div>
+
+                    <div style="display: block;padding: 0 20px;">
+                        <div class="cartDetails">
+                            <p class="cartDetailsText">
+                                Cart details
+                            </p>
+                        </div>
+                        <div class="cartCheckout">
+                            <p class="cartCheckoutText">
+                                Cart checkout
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                 viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -37,6 +182,9 @@
                     </g>
                 </g>
             </svg>
+            <div *ngIf="count>0" class="cartIndicator">
+                {{count}}
+            </div>
         </div>
 
         <div class="mainButton" style="margin-left: 5px;margin-right: 5px;">

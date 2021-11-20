@@ -8,9 +8,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  count: number;
+  showCart: boolean;
+
+  constructor() {
+    this.count = 0;
+    this.showCart = false;
+  }
 
   ngOnInit(): void {
   }
 
+  increse() {
+    this.count += 1;
+  }
 }

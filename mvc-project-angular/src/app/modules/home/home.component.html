@@ -1,6 +1,6 @@
 <div class="header">
     <div>
-        <h2 class="shopName">Nazwa sklepu</h2>
+        <h2 class="shopName" [routerLink]="['']">Nazwa sklepu</h2>
     </div>
 
     <div class="searchBarDiv" style="justify-content: center;">
@@ -25,11 +25,14 @@
         <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
             <div class="cartDiv" *ngIf="showCart">
                 <h3 class="cartLine"><span class="cartTitle">CART</span></h3>
-                <!-- <p *ngIf="count==0">
-                    dupa
-                </p> -->
+                <p *ngIf="count==0" class="emptyCart">
+                    Your cart is empty :(
+                </p>
+                <p *ngIf="count==0" class="emptyCart">
+                    Add products to fill him
+                </p>
 
-                <div>
+                <div *ngIf="count>0">
                     <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
                         <div class="cartProduct">
                             <p class="cartProductName">Nazwa</p>
@@ -142,7 +145,16 @@
                         </div>
                     </div>
 
-                    <div style="display: block;padding: 0 20px;border-style: solid;">
+                    <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span
+                            class="cartTitle">SUMMARY</span></h3>
+
+                    <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 15px;">
+                        <p class="cartDescriptionText" style="font-size: 15px;">You will pay &nbsp;</p>
+                        <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">90.00 &nbsp;</p>
+                        <p class="cartDescriptionText" style="font-size: 15px;">zł for Your order.</p>
+                    </div>
+
+                    <div style="display: block;padding: 0 20px;">
                         <div class="cartDetails">
                             <p class="cartDetailsText">
                                 Cart details

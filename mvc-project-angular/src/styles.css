@@ -301,3 +301,10 @@ html {
   margin-right: auto;
   display: flex;
 }
+
+.emptyCart{
+  font-size: 18px;
+  color: gray;
+  margin-bottom: 0;
+  margin-top: 5px;
+}

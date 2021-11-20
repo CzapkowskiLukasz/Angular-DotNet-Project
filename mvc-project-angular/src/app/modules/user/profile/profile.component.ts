@@ -7,10 +7,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileComponent implements OnInit {
+  count: number;
+  showCart: boolean;
 
-  constructor() { }
+  constructor() {
+    this.count = 0;
+    this.showCart = false;
+  }
 
   ngOnInit(): void {
   }
 
+  increse() {
+    this.count += 1;
+  }
 }

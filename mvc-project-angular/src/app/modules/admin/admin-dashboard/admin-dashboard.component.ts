@@ -10,11 +10,20 @@ export class AdminDashboardComponent implements OnInit {
 
   deleteComponent: boolean = false;
 
-  constructor() { }
+  count: number;
+  showCart: boolean;
+
+  constructor() {
+    this.count = 0;
+    this.showCart = false;
+  }
 
   ngOnInit(): void {
   }
 
+  increse() {
+    this.count += 1;
+  }
   showDelete() {
     this.deleteComponent
  = true;

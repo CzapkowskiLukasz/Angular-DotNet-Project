@@ -216,7 +216,7 @@
 </div>
 
 <div style="margin-top: 60px;">
-    <h1 class="mainLines"><span class="textInMainLines">MY ACCOUNT</span></h1>
+    <h1 class="mainLines"><span class="textInMainLines">{{ 'profile.title' | translate }}</span></h1>
 </div>
 
 
@@ -269,8 +269,8 @@
 
         <h4 class="lines"><span class="textInLines">Language</span></h4>
         <div class="flagContainer">
-            <img class='flag' src="assets/poland-flag-small.png" />
-            <img class='flagActive' src="assets/uk-flag-small.png" />
+            <img [className]="translate.currentLang == 'pl' ? 'flagActive' : 'flag'" src="assets/poland-flag-small.png" (click)="translate.use('pl')" />
+            <img [className]="translate.currentLang == 'en' ? 'flagActive' : 'flag'" src="assets/uk-flag-small.png" (click)="translate.use('en')" />
         </div>
     </aside>
     <div class="basicDiv" style="width: 600px;">

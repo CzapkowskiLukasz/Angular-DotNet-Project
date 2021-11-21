@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ export class ProfileComponent implements OnInit {
   count: number;
   showCart: boolean;
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.count = 0;
     this.showCart = false;
   }
@@ -20,5 +21,10 @@ export class ProfileComponent implements OnInit {
 
   increse() {
     this.count += 1;
+  }
+
+  setLangPL() {
+    this.translate.use('pl');
+
   }
 }

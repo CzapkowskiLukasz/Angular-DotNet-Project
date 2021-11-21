@@ -6,5 +6,8 @@
             "engage": "Dodaj produkty aby go wypełnić"
         },
         "searchText": "Wprowadź nazwę produktu"
+    },
+    "profile": {
+        "title": "MOJE KONTO"
     }
 }

@@ -4,9 +4,8 @@
     </div>
 
     <div class="searchBarDiv" style="justify-content: center;">
-        <input type="text" class="searchBarInput" value="Enter product name...">
-        <div class="searchButton"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
-                viewBox="0 0 172 172" style=" fill:#000000;">
+        <input type="text" class="searchBarInput" value="{{ 'home.searchText' | translate }}...">
+        <div class="searchButton"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                     font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -24,12 +23,12 @@
     <div class="buttonContainer">
         <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
             <div class="cartDiv" *ngIf="showCart">
-                <h3 class="cartLine"><span class="cartTitle">CART</span></h3>
+                <h3 class="cartLine"><span class="cartTitle">{{ 'home.cart.name' | translate }}</span></h3>
                 <p *ngIf="count==0" class="emptyCart">
-                    Your cart is empty :(
+                    {{ 'home.cart.empty' | translate }} :(
                 </p>
                 <p *ngIf="count==0" class="emptyCart">
-                    Add products to fill him
+                    {{ 'home.cart.engage' | translate }}
                 </p>
 
                 <div *ngIf="count>0">
@@ -54,8 +53,7 @@
                             <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
                         </div>
                         <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
-                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
                                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
                                     stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
@@ -91,8 +89,7 @@
                             <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
                         </div>
                         <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
-                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
                                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
                                     stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
@@ -128,8 +125,7 @@
                             <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
                         </div>
                         <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16"
-                                viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
                                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
                                     stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
@@ -145,8 +141,7 @@
                         </div>
                     </div>
 
-                    <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span
-                            class="cartTitle">SUMMARY</span></h3>
+                    <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span class="cartTitle">SUMMARY</span></h3>
 
                     <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 15px;">
                         <p class="cartDescriptionText" style="font-size: 15px;">You will pay &nbsp;</p>
@@ -168,8 +163,7 @@
                     </div>
                 </div>
             </div>
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
-                viewBox="0 0 172 172" style=" fill:#000000;">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                     font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -188,8 +182,7 @@
         </div>
 
         <div class="mainButton" style="margin-left: 5px;margin-right: 5px;">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="icon" width="24" height="24"
-                viewBox="0 0 172 172" style=" fill:#000000;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="icon" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                     font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -205,8 +198,7 @@
         </div>
 
         <div class="mainButton" [routerLink]="['/login']">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" class="icon"
-                viewBox="0 0 172 172" style=" fill:#000000;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" class="icon" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                     font-family="none" font-weight="none" font-size="none" text-anchor="none"

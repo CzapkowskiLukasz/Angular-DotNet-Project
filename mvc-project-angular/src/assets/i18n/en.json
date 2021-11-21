@@ -1,0 +1,10 @@
+{
+    "home": {
+        "cart": {
+            "name": "CART",
+            "empty": "Your cart is empty",
+            "engage": "Add products to fill him"
+        },
+        "searchText": "Enter product name"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "home": {
+        "cart": {
+            "name": "KOSZYK",
+            "empty": "Twój koszyk jest pusty",
+            "engage": "Dodaj produkty aby go wypełnić"
+        },
+        "searchText": "Wprowadź nazwę produktu"
+    }
+}

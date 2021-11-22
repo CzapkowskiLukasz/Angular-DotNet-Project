@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { LocalTranslateService } from './core/internationalization/local-translate.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'mvc-project-angular';
 
-  constructor(translate: TranslateService){
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
-    translate.use('en');
+  constructor(localTranslate: LocalTranslateService){
+    localTranslate.init();
+    localTranslate.setStoredLanguage();
   }
 }

@@ -10,6 +10,8 @@ export class AdminProductListComponent implements OnInit {
 
   @Output() createProductEvent = new EventEmitter();
 
+  @Output() deleteProductEvent = new EventEmitter();
+
   products: ProductListItem[] = [];
 
   deleteComponent: boolean = false;
@@ -119,8 +121,12 @@ export class AdminProductListComponent implements OnInit {
     ]
   }
 
-  onProductAdd(){
+  addProduct() {
     this.createProductEvent.emit();
+  }
+
+  deleteProduct(id) {
+    this.deleteProductEvent.emit(id);
   }
 
   showDelete() {

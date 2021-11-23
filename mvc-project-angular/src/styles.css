@@ -154,7 +154,6 @@ html {
 }
 
 .buttonBase {
-    background-color: white;
     border-style: solid;
     width: 32px;
     height: 32px;
@@ -178,6 +177,12 @@ html {
     color: var(--accent-color);
     background-color: white;
     fill: var(--accent-color);
+}
+
+.buttonDelete {
+    color: white;
+    background-color: rgb(223, 23, 23);
+    border-color: rgb(223, 23, 23);
 }
 
 .profileButtonSvg {

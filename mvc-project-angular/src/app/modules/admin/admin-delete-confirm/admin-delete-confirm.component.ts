@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-admin-delete-confirm',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-delete-confirm.component.css']
 })
 export class AdminDeleteConfirmComponent implements OnInit {
+
+  @Output() deleteEvent = new EventEmitter();
+
+  @Output() cancelEvent = new EventEmitter();
 
   deleteComponent: boolean = false;
 
@@ -23,4 +27,11 @@ export class AdminDeleteConfirmComponent implements OnInit {
       = false;
   }
 
+  submit() {
+    this.deleteEvent.emit();
+  }
+
+  cancel() {
+    this.cancelEvent.emit();
+  }
 }

@@ -165,7 +165,8 @@ h5 {
     color: gray;
 }
 
-.deleteButton {
+
+/* .deleteButton {
     background-color: rgb(223, 23, 23);
     border-style: solid;
     width: 32px;
@@ -177,7 +178,7 @@ h5 {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-}
+} */
 
 .category {
     height: 10px;

@@ -5,9 +5,11 @@
 </div>
 
 <div class="mainContainer">
-    <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
-    <app-admin-delete-confirm *ngIf="card == 'delete'"></app-admin-delete-confirm>
-    <app-admin-product-create *ngIf="card == 'addProduct'"></app-admin-product-create>
+    <div class="basicDiv card">
+        <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
+        <app-admin-delete-confirm *ngIf="card == 'delete'"></app-admin-delete-confirm>
+        <app-admin-product-create *ngIf="card == 'addProduct'"></app-admin-product-create>
+    </div>
 
     <div class="basicDiv" style="width: 600px;">
         <h4 class="lines"><span class="textInLines">Bookmarks</span></h4>

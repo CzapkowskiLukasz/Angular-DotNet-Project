@@ -8,7 +8,7 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
 })
 export class AdminProductListComponent implements OnInit {
 
-  @Output() createProductEvent = new EventEmitter<string>();
+  @Output() createProductEvent = new EventEmitter();
 
   products: ProductListItem[] = [];
 

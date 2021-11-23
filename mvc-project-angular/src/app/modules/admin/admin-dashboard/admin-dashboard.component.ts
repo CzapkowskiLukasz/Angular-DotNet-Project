@@ -26,9 +26,15 @@ export class AdminDashboardComponent implements OnInit {
     this.count += 1;
   }
 
-  onProductAdd(){
-    this.card='addProduct';
+  onOpenProductCreateCard() {
+    this.card = 'addProduct';
   }
 
+  onProductCreate() {
+    this.onCancelCard();
+  }
 
+  onCancelCard() {
+    this.card = 'statistics';
+  }
 }

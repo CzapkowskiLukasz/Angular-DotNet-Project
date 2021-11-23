@@ -8,7 +8,7 @@
     <div class="basicDiv card">
         <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
         <app-admin-delete-confirm *ngIf="card == 'delete'"></app-admin-delete-confirm>
-        <app-admin-product-create *ngIf="card == 'addProduct'"></app-admin-product-create>
+        <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onProductCreate()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
     </div>
 
     <div class="basicDiv" style="width: 600px;">
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <app-admin-product-list (createProductEvent)="onProductAdd()"></app-admin-product-list>
+        <app-admin-product-list (createProductEvent)="onOpenProductCreateCard()"></app-admin-product-list>
 
 
         <div style="display: flex;float: right;">

@@ -16,6 +16,15 @@
             "statisticsHeader": "Statystyki",
             "languageHeader": "Język",
             "othersHeader": "Ustawienia i inne"
+        },
+        "product": {
+            "list": {
+                "title": "Produkty",
+                "addNewBtn": "Dodaj nowy produkt",
+                "productName": "Nazwa",
+                "productPrice": "Cena",
+                "productCount": "Ilość"
+            }
         }
     }
 }

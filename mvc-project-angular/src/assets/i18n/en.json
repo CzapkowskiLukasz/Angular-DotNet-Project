@@ -16,6 +16,15 @@
             "statisticsHeader": "Statistics",
             "languageHeader": "Language",
             "othersHeader": "Settings & Others"
+        },
+        "product": {
+            "list": {
+                "title": "Products",
+                "addNewBtn": "Add new product",
+                "productName": "Name",
+                "productPrice": "Price",
+                "productCount": "Count"
+            }
         }
     }
 }

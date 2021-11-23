@@ -24,13 +24,13 @@ export class AdminDashboardComponent implements OnInit {
   increse() {
     this.count += 1;
   }
+
   showDelete() {
-    this.deleteComponent
- = true;
+    this.deleteComponent = true;
   }
 
-  hideDelete(){
+  hideDelete() {
     this.deleteComponent
- = false;
+      = false;
   }
 }

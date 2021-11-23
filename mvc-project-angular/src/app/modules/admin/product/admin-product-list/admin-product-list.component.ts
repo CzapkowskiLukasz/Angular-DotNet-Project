@@ -10,6 +10,8 @@ export class AdminProductListComponent implements OnInit {
 
   products: ProductListItem[] = [];
 
+  deleteComponent: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,16 +19,105 @@ export class AdminProductListComponent implements OnInit {
       {
         productId: 1,
         name: 'test1',
+        category: 'testowa1',
         price: 23,
         warehouseQuantity: 4
       },
       {
         productId: 2,
         name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
         price: 365,
         warehouseQuantity: 100
       }
     ]
   }
 
+  showDelete() {
+    this.deleteComponent = true;
+  }
 }

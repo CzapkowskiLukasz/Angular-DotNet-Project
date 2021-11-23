@@ -1,13 +1,13 @@
-<h1>Products</h1>
+<h1>{{'admin.product.list.title' | translate}}</h1>
 
-<a [routerLink]="['/admin/products/new-product']">Add new product</a>
+<a [routerLink]="['/admin/products/new-product']">{{'admin.product.list.addNewBtn' | translate}}</a>
 
 <div>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Warehouse quantity</th>
+            <th>{{'admin.product.list.productName' | translate}}</th>
+            <th>{{'admin.product.list.productPrice' | translate}}</th>
+            <th>{{'admin.product.list.productCount' | translate}}</th>
         </tr>
         <tr *ngFor='let product of products'>
             <td>{{product.name}}</td>

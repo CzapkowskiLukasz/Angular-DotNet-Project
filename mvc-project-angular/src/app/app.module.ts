@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './modules/home/home.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
@@ -15,6 +18,12 @@ import { AdminProductListComponent } from './modules/admin/product/admin-product
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
+import { NavbarComponent } from './shared/modules/navbar/navbar.component';
+import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -29,12 +38,22 @@ import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/fi
     AdminDashboardComponent,
     AdminProductListComponent,
     AdminProductCreateComponent,
-    FilteredDropdownComponent
+    FilteredDropdownComponent,
+    NavbarComponent,
+    ChangeLanguageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

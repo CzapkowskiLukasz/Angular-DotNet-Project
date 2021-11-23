@@ -19,6 +19,7 @@ import { AdminProductCreateComponent } from './modules/admin/product/admin-produ
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
 import { NavbarComponent } from './shared/modules/navbar/navbar.component';
+import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminProductListComponent,
     AdminProductCreateComponent,
     FilteredDropdownComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChangeLanguageComponent
   ],
   imports: [
     BrowserModule,

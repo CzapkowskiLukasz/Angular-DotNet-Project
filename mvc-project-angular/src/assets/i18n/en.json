@@ -9,5 +9,13 @@
     },
     "profile": {
         "title": "MY ACCOUNT"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "ADMIN DASHBOARD",
+            "statisticsHeader": "Statistics",
+            "languageHeader": "Language",
+            "othersHeader": "Settings & Others"
+        }
     }
 }

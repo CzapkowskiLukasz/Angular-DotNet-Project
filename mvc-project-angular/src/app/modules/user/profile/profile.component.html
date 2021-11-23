@@ -53,10 +53,7 @@
         </div>
 
         <h4 class="lines"><span class="textInLines">Language</span></h4>
-        <div class="flagContainer">
-            <img [className]="translate.getCurrentLanguage() == 'pl' ? 'flagActive' : 'flag'" src="assets/poland-flag-small.png" (click)="translate.setLanguage('pl')" />
-            <img [className]="translate.getCurrentLanguage() == 'en' ? 'flagActive' : 'flag'" src="assets/uk-flag-small.png" (click)="translate.setLanguage('en')" />
-        </div>
+        <app-change-language></app-change-language>
     </aside>
     <div class="basicDiv" style="width: 600px;">
         <h4 class="lines"><span class="textInLines">Orders</span></h4>

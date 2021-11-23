@@ -9,5 +9,13 @@
     },
     "profile": {
         "title": "MOJE KONTO"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "PANEL ADMINISTRATORA",
+            "statisticsHeader": "Statystyki",
+            "languageHeader": "Język",
+            "othersHeader": "Ustawienia i inne"
+        }
     }
 }

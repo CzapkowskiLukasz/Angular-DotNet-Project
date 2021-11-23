@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
   count: number;
   showCart: boolean;
 
-  constructor(public translate: LocalTranslateService) {
+  constructor() {
     this.count = 0;
     this.showCart = false;
   }

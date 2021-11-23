@@ -24,6 +24,16 @@
                 "productName": "Name",
                 "productPrice": "Price",
                 "productCount": "Count"
+            },
+            "create": {
+                "title": "New product",
+                "name": "Name",
+                "producer": "Producer",
+                "description": "Description",
+                "price": "Price",
+                "count": "Count",
+                "category": "Category",
+                "submitBtn": "Create product"
             }
         }
     }

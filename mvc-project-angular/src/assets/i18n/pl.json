@@ -24,6 +24,16 @@
                 "productName": "Nazwa",
                 "productPrice": "Cena",
                 "productCount": "Ilość"
+            },
+            "create": {
+                "title": "Nowy produkt",
+                "name": "Nazwa",
+                "producer": "Producent",
+                "description": "Opis",
+                "price": "Cena",
+                "count": "Ilość",
+                "category": "Kategoria",
+                "submitBtn": "Utwórz produkt"
             }
         }
     }

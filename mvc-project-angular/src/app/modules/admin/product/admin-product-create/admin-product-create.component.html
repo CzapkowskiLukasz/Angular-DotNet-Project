@@ -1,43 +1,43 @@
 <div class="form__container">
-    <h1 class="form__title">New product</h1>
+    <h1 class="form__title">{{'admin.product.create.title' | translate}}</h1>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="form__div">
             <input type="text" class="form__input" formControlName="name" placeholder=" ">
-            <label for="name" class="form__label">Name</label>
+            <label for="name" class="form__label">{{'admin.product.create.name' | translate}}</label>
         </div>
 
         <!-- producer -->
         <div class="form__div">
             <input #producerInput type="text" class="form__input" formControlName="producer" placeholder=" ">
-            <label for="producer" class="form__label">Producer</label>
+            <label for="producer" class="form__label">{{'admin.product.create.producer' | translate}}</label>
             <app-filtered-dropdown [inputElement]="producerInput" [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="description" placeholder=" ">
-            <label for="description" class="form__label">Description</label>
+            <label for="description" class="form__label">{{'admin.product.create.description' | translate}}</label>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="price" placeholder=" ">
-            <label for="price" class="form__label">Price</label>
+            <label for="price" class="form__label">{{'admin.product.create.price' | translate}}</label>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="warehouseQuantity" placeholder=" ">
-            <label for="warehouseQuantity" class="form__label">Count</label>
+            <label for="warehouseQuantity" class="form__label">{{'admin.product.create.count' | translate}}</label>
         </div>
 
         <!-- category -->
         <div class="form__div">
             <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
-            <label for="category" class="form__label">Category</label>
+            <label for="category" class="form__label">{{'admin.product.create.category' | translate}}</label>
             <app-filtered-dropdown [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
         </div>
 
         <div class="form__div__button">
-            <button class="form__button" type="submit">Create product</button>
+            <button class="form__button" type="submit">{{'admin.product.create.submitBtn' | translate}}</button>
         </div>
     </form>
 </div>

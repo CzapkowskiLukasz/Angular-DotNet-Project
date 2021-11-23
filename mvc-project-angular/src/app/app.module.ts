@@ -21,6 +21,7 @@ import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/fi
 import { NavbarComponent } from './shared/modules/navbar/navbar.component';
 import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
 import { AdminStatisticsComponent } from './modules/admin/admin-statistics/admin-statistics.component';
+import { AdminDeleteConfirmComponent } from './modules/admin/admin-delete-confirm/admin-delete-confirm.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilteredDropdownComponent,
     NavbarComponent,
     ChangeLanguageComponent,
-    AdminStatisticsComponent
+    AdminStatisticsComponent,
+    AdminDeleteConfirmComponent
   ],
   imports: [
     BrowserModule,

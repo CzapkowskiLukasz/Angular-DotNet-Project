@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  deleteComponent: boolean = false;
+  card: string;
 
   count: number;
   showCart: boolean;
@@ -16,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor() {
     this.count = 0;
     this.showCart = false;
+    this.card = 'statistics';
   }
 
   ngOnInit(): void {
@@ -25,12 +26,9 @@ export class AdminDashboardComponent implements OnInit {
     this.count += 1;
   }
 
-  showDelete() {
-    this.deleteComponent = true;
+  onProductAdd(){
+    this.card='addProduct';
   }
 
-  hideDelete() {
-    this.deleteComponent
-      = false;
-  }
+
 }

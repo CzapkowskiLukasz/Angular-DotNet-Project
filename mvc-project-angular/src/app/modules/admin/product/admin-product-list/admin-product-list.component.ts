@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductListItem } from 'src/app/shared/models/product-list-item';
 
 @Component({
@@ -7,6 +7,8 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
   styleUrls: ['./admin-product-list.component.css']
 })
 export class AdminProductListComponent implements OnInit {
+
+  @Output() createProductEvent = new EventEmitter<string>();
 
   products: ProductListItem[] = [];
 
@@ -115,6 +117,10 @@ export class AdminProductListComponent implements OnInit {
         warehouseQuantity: 100
       }
     ]
+  }
+
+  onProductAdd(){
+    this.createProductEvent.emit();
   }
 
   showDelete() {

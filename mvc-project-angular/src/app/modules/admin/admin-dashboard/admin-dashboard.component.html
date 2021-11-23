@@ -5,20 +5,9 @@
 </div>
 
 <div class="mainContainer">
-    <div class="basicDiv" style="width: 330px;">
-        <h1>Delete product</h1>
-        <p class="text">Do you want to delete this product?</p>
-        <p class="text">This action can not be undone.</p>
-        <div style="display: flex; justify-content: center;margin-bottom: 0; margin-top: 15px;">
-            <div class="buttonCancelSmall">
-                <p class="cancelText" (click)="hideDelete()">Cancel</p>
-            </div>
-            <div class="buttonDeleteSmall">
-                <p class="deleteText">Delete</p>
-            </div>
-        </div>
-    </div>
-    <app-admin-statistics></app-admin-statistics>
+    <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
+    <app-admin-delete-confirm *ngIf="card == 'delete'"></app-admin-delete-confirm>
+    <app-admin-product-create *ngIf="card == 'addProduct'"></app-admin-product-create>
 
     <div class="basicDiv" style="width: 600px;">
         <h4 class="lines"><span class="textInLines">Bookmarks</span></h4>
@@ -78,7 +67,7 @@
             </div>
         </div>
 
-        <app-admin-product-list></app-admin-product-list>
+        <app-admin-product-list (createProductEvent)="onProductAdd()"></app-admin-product-list>
 
 
         <div style="display: flex;float: right;">

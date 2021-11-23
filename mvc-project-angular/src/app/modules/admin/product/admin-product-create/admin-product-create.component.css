@@ -219,18 +219,3 @@ html {
     align-items: center;
     padding-top: .75rem;
 }
-
-.lines {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid var(--accent-color);
-    line-height: 0.1em;
-    margin-bottom: 15px;
-}
-
-.textInLines {
-    background: #fff;
-    padding: 0 10px;
-    font-size: 13px;
-    color: var(--accent-color);
-}

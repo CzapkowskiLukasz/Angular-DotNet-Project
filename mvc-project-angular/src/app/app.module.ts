@@ -18,6 +18,9 @@ import { AdminProductListComponent } from './modules/admin/product/admin-product
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
+import { SwiperModule } from "swiper/angular";
+import { SwiperComponent } from './shared/modules/swiper/swiper.component';
+import { SlideComponent } from './shared/modules/slide/slide.component';
 import { NavbarComponent } from './shared/modules/navbar/navbar.component';
 import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
 import { AdminStatisticsComponent } from './modules/admin/admin-statistics/admin-statistics.component';
@@ -41,6 +44,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminProductListComponent,
     AdminProductCreateComponent,
     FilteredDropdownComponent,
+    SwiperComponent,
+    SlideComponent,
     NavbarComponent,
     ChangeLanguageComponent,
     AdminStatisticsComponent,
@@ -50,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    SwiperModule, 
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

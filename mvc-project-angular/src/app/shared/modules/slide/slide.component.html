@@ -1,0 +1,17 @@
+<div class="bestsellerContainer" (mouseenter)="showButton()" (mouseleave)="hideButton()" [ngClass]="cartButton ? 'bestsellerContainer containerOnHover' : 'bestsellerContainer'">
+    <img src="assets/420.jpg">
+    <div class="productDescription">
+        <p class="productText">
+            Dobre jaranie, ziółko ziółeczko
+        </p>
+        <p class="productText">
+            420.69zł/szt
+        </p>
+        
+        <div *ngIf="cartButton" class="cartCheckout">
+            <p class="cartCheckoutText">
+                Cart checkout
+            </p>
+        </div>
+    </div>
+</div>

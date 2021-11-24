@@ -6,8 +6,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
   count: number;
   showCart: boolean;
 

@@ -1,0 +1,40 @@
+{
+    "home": {
+        "cart": {
+            "name": "KOSZYK",
+            "empty": "Twój koszyk jest pusty",
+            "engage": "Dodaj produkty aby go wypełnić"
+        },
+        "searchText": "Wprowadź nazwę produktu"
+    },
+    "profile": {
+        "title": "MOJE KONTO"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "PANEL ADMINISTRATORA",
+            "statisticsHeader": "Statystyki",
+            "languageHeader": "Język",
+            "othersHeader": "Ustawienia i inne"
+        },
+        "product": {
+            "list": {
+                "title": "Produkty",
+                "addNewBtn": "Dodaj nowy produkt",
+                "productName": "Nazwa",
+                "productPrice": "Cena",
+                "productCount": "Ilość"
+            },
+            "create": {
+                "title": "Nowy produkt",
+                "name": "Nazwa",
+                "producer": "Producent",
+                "description": "Opis",
+                "price": "Cena",
+                "count": "Ilość",
+                "category": "Kategoria",
+                "submitBtn": "Utwórz produkt"
+            }
+        }
+    }
+}

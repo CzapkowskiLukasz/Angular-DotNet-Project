@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './modules/home/home.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
@@ -18,6 +21,14 @@ import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/fi
 import { SwiperModule } from "swiper/angular";
 import { SwiperComponent } from './shared/modules/swiper/swiper.component';
 import { SlideComponent } from './shared/modules/slide/slide.component';
+import { NavbarComponent } from './shared/modules/navbar/navbar.component';
+import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
+import { AdminStatisticsComponent } from './modules/admin/admin-statistics/admin-statistics.component';
+import { AdminDeleteConfirmComponent } from './modules/admin/admin-delete-confirm/admin-delete-confirm.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -34,13 +45,25 @@ import { SlideComponent } from './shared/modules/slide/slide.component';
     AdminProductCreateComponent,
     FilteredDropdownComponent,
     SwiperComponent,
-    SlideComponent
+    SlideComponent,
+    NavbarComponent,
+    ChangeLanguageComponent,
+    AdminStatisticsComponent,
+    AdminDeleteConfirmComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SwiperModule, 
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

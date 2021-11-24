@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductListItem } from 'src/app/shared/models/product-list-item';
 
 @Component({
@@ -8,7 +8,13 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
 })
 export class AdminProductListComponent implements OnInit {
 
+  @Output() createProductEvent = new EventEmitter();
+
+  @Output() deleteProductEvent = new EventEmitter();
+
   products: ProductListItem[] = [];
+
+  deleteComponent: boolean = false;
 
   constructor() { }
 
@@ -17,16 +23,113 @@ export class AdminProductListComponent implements OnInit {
       {
         productId: 1,
         name: 'test1',
+        category: 'testowa1',
         price: 23,
         warehouseQuantity: 4
       },
       {
         productId: 2,
         name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
+        price: 365,
+        warehouseQuantity: 100
+      },
+      {
+        productId: 2,
+        name: 'test2',
+        category: 'testowa1',
         price: 365,
         warehouseQuantity: 100
       }
     ]
   }
 
+  addProduct() {
+    this.createProductEvent.emit();
+  }
+
+  deleteProduct(id) {
+    this.deleteProductEvent.emit(id);
+  }
+
+  showDelete() {
+    this.deleteComponent = true;
+  }
 }

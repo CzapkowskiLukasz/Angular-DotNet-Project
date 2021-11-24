@@ -19,11 +19,6 @@ html {
     background-color: var(--body-color);
     padding: 15px;
     text-align: center;
-    top: 50%;
-    position: absolute;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
     border-style: solid;
@@ -41,6 +36,7 @@ html {
 
 .form__input {
     position: relative;
+    width: 200px;
     color: gray;
     top: 0;
     left: 0;
@@ -54,6 +50,21 @@ html {
     z-index: 1;
 }
 
+.form__inputSmall {
+    position: relative;
+    width: 80px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    border-radius: .5rem;
+    display: flex;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+    color: gray;
+}
+
 .form__div {
     position: relative;
     height: 48px;
@@ -63,6 +74,15 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form__divSmall {
+    position: relative;
+    height: 48px;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
 }
 
 .form__div_a {
@@ -97,6 +117,16 @@ html {
     background-color: var(--body-color);
     color: grey;
     transition: .3s;
+}
+
+.form__labelSmall {
+    position: absolute;
+    left: 7px;
+    top: 1rem;
+    padding: 0 .25rem;
+    background-color: var(--body-color);
+    transition: .3s;
+    color: gray;
 }
 
 .form__button {
@@ -178,4 +208,18 @@ html {
 .signUpWithLogo {
     fill: #000000;
     vertical-align: bottom;
+}
+
+.formButtonContainer {
+    position: relative;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: .75rem;
+}
+
+.formButton {
+    width: 3rem;
 }

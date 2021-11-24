@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
 
 @Component({
   selector: 'app-profile',

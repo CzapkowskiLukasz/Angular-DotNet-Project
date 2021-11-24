@@ -1,0 +1,113 @@
+@import "~swiper/css/bundle";
+.svg {
+    fill: white;
+    stroke: var(--accent-color);
+    stroke-width: 20;
+}
+
+.svg:hover {
+    fill: var(--accent-color);
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.descriptionContainer {
+    text-align: center;
+    color: gray;
+    white-space: nowrap;
+}
+
+.descriptionHeader {
+    font-size: 48px;
+}
+
+.descriptionText {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+.mapContainer {
+    margin-top: 40px;
+}
+
+.mainLines{
+    text-align: center;
+    border-bottom: 1px solid gray;
+    line-height: 0px;
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+  
+  .textInMainLines {
+    margin-top: 20px;
+    font-size: 36px;
+    background: whitesmoke;
+    padding: 0 10px;
+    color: gray;
+  }
+
+  .swiper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+.bestsellerContainer{
+  width: 300px;
+  border-radius: 25px;
+  background-color: white;
+  border: 1px solid var(--accent-color);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 25px;
+}
+
+.productDescription{
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  text-align: center;
+}
+
+.productText{
+  color: grey;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.swiper-button-prev {
+  color: var(--accent-color);
+  height: 450px;
+  width: 40px;
+  left: 0;
+  top: 0;
+  background-color: whitesmoke;
+}
+
+.swiper-button-next {
+  color: var(--accent-color);
+  height: 450px;
+  width: 40px;
+  background-color: whitesmoke;
+  right: 0;
+  top: 0;
+}
+
+.swiper-slide {
+  width: 320px;
+}
+
+.swiper-container .swiper-slide {
+  width: 320px;
+}

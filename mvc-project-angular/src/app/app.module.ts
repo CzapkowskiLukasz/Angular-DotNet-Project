@@ -15,6 +15,7 @@ import { AdminProductListComponent } from './modules/admin/product/admin-product
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/fi
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -219,3 +219,7 @@ html {
     align-items: center;
     padding-top: .75rem;
 }
+
+.formButton {
+    width: 3rem;
+}

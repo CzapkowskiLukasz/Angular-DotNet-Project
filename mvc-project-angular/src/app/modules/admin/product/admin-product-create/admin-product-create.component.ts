@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
 
@@ -8,6 +8,10 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   styleUrls: ['./admin-product-create.component.css']
 })
 export class AdminProductCreateComponent implements OnInit {
+
+  @Output() createProductEvent = new EventEmitter();
+
+  @Output() cancelEvent = new EventEmitter();
 
   form: FormGroup;
 
@@ -45,8 +49,12 @@ export class AdminProductCreateComponent implements OnInit {
     this.producerId = id;
   }
 
-  submit(): void {
+  submit() {
+    this.createProductEvent.emit();
+  }
 
+  cancel() {
+    this.cancelEvent.emit();
   }
 
   private fetchCategories() {

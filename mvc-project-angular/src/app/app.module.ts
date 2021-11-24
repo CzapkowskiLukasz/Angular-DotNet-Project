@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
 import { NavbarComponent } from './shared/modules/navbar/navbar.component';
 import { ChangeLanguageComponent } from './shared/modules/change-language/change-language.component';
+import { AdminStatisticsComponent } from './modules/admin/admin-statistics/admin-statistics.component';
+import { AdminDeleteConfirmComponent } from './modules/admin/admin-delete-confirm/admin-delete-confirm.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminProductCreateComponent,
     FilteredDropdownComponent,
     NavbarComponent,
-    ChangeLanguageComponent
+    ChangeLanguageComponent,
+    AdminStatisticsComponent,
+    AdminDeleteConfirmComponent
   ],
   imports: [
     BrowserModule,

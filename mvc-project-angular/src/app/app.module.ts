@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilteredDropdownComponent } from './shared/modules/filtered-dropdown/filtered-dropdown.component';
 import { SwiperModule } from "swiper/angular";
 import { SwiperComponent } from './shared/modules/swiper/swiper.component';
+import { SlideComponent } from './shared/modules/slide/slide.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SwiperComponent } from './shared/modules/swiper/swiper.component';
     AdminProductListComponent,
     AdminProductCreateComponent,
     FilteredDropdownComponent,
-    SwiperComponent
+    SwiperComponent,
+    SlideComponent
   ],
   imports: [
     BrowserModule,

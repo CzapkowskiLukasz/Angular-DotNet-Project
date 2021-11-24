@@ -46,10 +46,10 @@ export class SwiperComponent implements OnInit {
   config: SwiperOptions = {
     loop: true,
     slidesPerView: 'auto',
-    spaceBetween: 20,
+    spaceBetween: 10,
     centeredSlides: true,
-    autoplay: { delay: 60, disableOnInteraction: false, pauseOnMouseEnter: true },
-    speed: 5000,
+    autoplay: { delay: 1000, disableOnInteraction: false, pauseOnMouseEnter: true },
+    speed: 3000,
     effect: 'coverflow',
     coverflowEffect: {
       rotate: 20,

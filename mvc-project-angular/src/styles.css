@@ -352,6 +352,6 @@ html {
 .cardTextInLines {
     background: #fff;
     padding: 0 10px;
-    font-size: 13px;
+    font-size: 20px;
     color: var(--accent-color);
 }

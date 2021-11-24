@@ -10,6 +10,8 @@ export class AdminDashboardComponent implements OnInit {
 
   card: string;
 
+  itemForDeleteName: string;
+
   count: number;
   showCart: boolean;
 
@@ -35,8 +37,8 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onOpenDeleteProductConfirm(id) {
+    this.itemForDeleteName = `product with id = ${id}`;
     this.card = 'delete';
-    console.log(`product id = ${id}`);
   }
 
   onDelete() {

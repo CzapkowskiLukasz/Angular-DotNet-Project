@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-admin-delete-confirm',
@@ -6,6 +6,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./admin-delete-confirm.component.css']
 })
 export class AdminDeleteConfirmComponent implements OnInit {
+
+  @Input() itemName;
 
   @Output() deleteEvent = new EventEmitter();
 

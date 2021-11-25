@@ -69,5 +69,13 @@ namespace MVC_Project.Controllers
                 return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
             }
         }
+
+        [HttpGet("bestsellers/{count}")]
+        public async Task<IActionResult> GetBestsellersAsync([FromRoute] int count)
+        {
+            var result = await _productService.GetBestsellersAsync(count);
+
+            return Ok(result.Response);
+        }
     }
 }

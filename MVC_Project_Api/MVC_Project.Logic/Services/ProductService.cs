@@ -94,5 +94,7 @@ namespace MVC_Project.Logic.Services
             result.Response = "Success";
             return result;
         }
+
+        //public async Task<HandleResult<>>
     }
 }

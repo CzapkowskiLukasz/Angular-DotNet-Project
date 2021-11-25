@@ -10,8 +10,11 @@ using MVC_Project.Api.Middlewares;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic;
+using MVC_Project.Logic.Files.Images.Interfaces;
+using MVC_Project.Logic.Files.Images.Services;
 using MVC_Project.Logic.Interfaces;
 using MVC_Project.Logic.Services;
+using MVC_Project.Logic.Settings;
 
 namespace MVC_Project
 {
@@ -43,6 +46,17 @@ namespace MVC_Project
             services.AddControllers();
 
             services.AddSecurity(Configuration);
+
+
+            services.Configure<ProvidersSettings>(Configuration.GetSection("ProvidersSettings"));
+
+            //services.Configure<AzureBlobSettings>(Configuration.GetSection("AzureBlobSettings"));
+
+            services.AddTransient<IImageServiceFactory, ImageServiceFactory>();
+            //services.AddTransient<AzureBlobImageService>()
+            //    .AddTransient<IImageService, AzureBlobImageService>(s => s.GetService<AzureBlobImageService>());
+            services.AddTransient<LocalImageService>()
+                .AddTransient<IImageService, LocalImageService>(s => s.GetService<LocalImageService>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

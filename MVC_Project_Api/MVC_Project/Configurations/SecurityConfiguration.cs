@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MVC_Project.Api.Filters;
 using MVC_Project.Api.Middlewares;
 using MVC_Project.Logic.Settings;
 using System;
@@ -51,6 +52,8 @@ namespace MVC_Project.Api.Configurations
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(swaggerSettings.Version, new OpenApiInfo { Title = swaggerSettings.Title, Version = swaggerSettings.Version });
+
+                c.OperationFilter<SwaggerFileOperationFilter>();
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

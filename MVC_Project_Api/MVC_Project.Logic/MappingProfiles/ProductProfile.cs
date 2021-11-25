@@ -27,6 +27,14 @@ namespace MVC_Project.Logic.MappingProfiles
             CreateMap<AddProductRequest, Product>()
                 .ForMember(dest => dest.WarehouseQuantity, opt =>
                     opt.MapFrom(src => src.Count));
+
+            CreateMap<Product, BestsellerListItem>()
+                .ForMember(dest => dest.Name, opt =>
+                    opt.MapFrom(src => GetProductFullName(src)));
+
+            CreateMap<List<Product>, GetBestsellersResponse>()
+                .ForMember(dest => dest.Bestsellers, opt =>
+                    opt.MapFrom(src => src));
         }
 
         private string GetProductFullName(Product product)

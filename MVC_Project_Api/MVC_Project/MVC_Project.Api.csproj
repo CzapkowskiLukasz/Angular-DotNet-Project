@@ -23,4 +23,8 @@
   <ItemGroup>
     <None Remove="AutoMapper" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
 </Project>

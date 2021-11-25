@@ -14,8 +14,8 @@
     <div class="basicDiv" style="width: 600px;">
         <h4 class="cardLines"><span class="cardTextInLines">Bookmarks</span></h4>
         <div class="bookmarkContainer">
-            <div class="active">
-                <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;">
+            <div [ngClass]="productBookmark ? 'active' : ''">
+                <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducts()">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -32,8 +32,8 @@
                 </div>
             </div>
 
-            <div>
-                <div class="buttonBase buttonCircle buttonWhite" style="margin-left: 5px;margin-right: 5px;margin-top: 1px;">
+            <div [ngClass]="userBookmark ? 'active' : ''">
+                <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showUsers()">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -69,7 +69,8 @@
             </div>
         </div>
 
-        <app-admin-product-list (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
+        <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
+        <app-user-list *ngIf="userBookmark"></app-user-list>
 
 
         <div style="display: flex;float: right;">

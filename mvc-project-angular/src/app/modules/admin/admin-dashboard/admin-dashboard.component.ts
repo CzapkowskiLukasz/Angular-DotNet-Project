@@ -15,10 +15,15 @@ export class AdminDashboardComponent implements OnInit {
   count: number;
   showCart: boolean;
 
+  productBookmark : boolean;
+  userBookmark : boolean;
+
   constructor() {
     this.count = 0;
     this.showCart = false;
     this.card = 'statistics';
+    this.productBookmark = true;
+    this.userBookmark = false;
   }
 
   ngOnInit(): void {
@@ -47,5 +52,15 @@ export class AdminDashboardComponent implements OnInit {
 
   onCancelCard() {
     this.card = 'statistics';
+  }
+
+  showUsers(){
+    this.productBookmark = false;
+    this.userBookmark = true;
+  }
+
+  showProducts(){
+    this.productBookmark = true;
+    this.userBookmark = false;
   }
 }

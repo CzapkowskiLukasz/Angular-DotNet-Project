@@ -40,17 +40,17 @@
             <h6>Actions</h6>
         </div>
     </div>
-    <div class="productContainer" *ngFor='let product of products'>
-        <div style="display: flex; justify-content: center;">
-            <div style="display: flex; justify-content: center;margin-top: 10px;">
-                <h4 class="productHeadline">#{{product.productId}}</h4>
-                <h5 class="productParagraph">{{product.name}}</h5>
-                <h5 class="productParagraph">{{product.category}}</h5>
-                <h5 class="productParagraph">{{product.price}}</h5>
-                <h5 class="productParagraph">{{product.warehouseQuantity}}</h5>
+    <div class="dashboardContainer" *ngFor='let product of products'>
+        <div style="display: flex; justify-content: center;align-items: center;">
+            <div style="display: flex; justify-content: center;align-items: center;">
+                <h4 class="dashboardHeadline">#{{product.productId}}</h4>
+                <h5 class="dashboardParagraph">{{product.name}}</h5>
+                <h5 class="dashboardParagraph">{{product.category}}</h5>
+                <h5 class="dashboardParagraph">{{product.price}}</h5>
+                <h5 class="dashboardParagraph">{{product.warehouseQuantity}}</h5>
             </div>
             <div style="margin-left: auto;margin-top: 0;display: flex;">
-                <div class="profileButton" style="justify-content: center;margin-top: 10px;margin-right: 5px;">
+                <div class="profileButton" style="margin-right: 5px;">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 5px;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
@@ -65,7 +65,7 @@
                         </g>
                     </svg>
                 </div>
-                <div class="buttonBase buttonCircle buttonDelete" style="margin-top: 10px;" (click)="deleteProduct(product.productId)">
+                <div class="buttonBase buttonCircle buttonDelete"  (click)="deleteProduct(product.productId)">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
@@ -82,9 +82,7 @@
                 </div>
             </div>
         </div>
-        <h4 class="productLine"></h4>
     </div>
-    <h4 class="productLine"></h4>
 </div>
 
 <h4 class="cardLines"><span class="cardTextInLines">{{'admin.dashboard.othersHeader' | translate}}</span></h4>

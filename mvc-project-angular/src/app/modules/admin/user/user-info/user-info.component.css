@@ -1,0 +1,41 @@
+p {
+    white-space: nowrap;
+}
+
+.orderDescription{
+    color: gray;
+    margin-bottom: 0;
+    font-size: small;
+  }
+  
+  .addressContainer {
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+  
+  .orderContainer{
+    border-radius: 25px;
+    background-color: var(--body-color);
+    padding: 15px;
+    border-style: solid;
+    text-align: center;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .lines {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-color);
+    line-height: 0.1em;
+    margin-bottom: 15px;
+  }
+
+  .scrollableDiv{
+    height: 340px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }

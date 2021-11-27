@@ -20,7 +20,7 @@
             </svg></div>
     </div>
 
-    <div class="buttonContainer">
+    <div class="buttonContainer" [routerLink]="['../categories']">
         <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
             <div class="cartDiv" *ngIf="showCart">
                 <h3 class="cartLine"><span class="cartTitle">{{ 'home.cart.name' | translate }}</span></h3>

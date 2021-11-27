@@ -1,0 +1,23 @@
+.categoryDiv {
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+p{
+    color: grey;
+    margin-bottom: 0;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+}
+
+.column{
+    display: block;
+    border-style: solid;
+}

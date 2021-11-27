@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-d
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
 import { HomeComponent } from './modules/home/home.component';
+import { CategoriesComponent } from './modules/product/categories/categories.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductListComponent },
-  { path: 'admin/products/new-product', component: AdminProductCreateComponent }
+  { path: 'admin/products/new-product', component: AdminProductCreateComponent },
+  {path: 'categories', component: CategoriesComponent}
 ];
 
 @NgModule({

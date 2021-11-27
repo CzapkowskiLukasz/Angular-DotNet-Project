@@ -17,6 +17,7 @@ export class AdminDashboardComponent implements OnInit {
 
   productBookmark : boolean;
   userBookmark : boolean;
+  bargainBookmark : boolean;
 
   constructor() {
     this.count = 0;
@@ -24,6 +25,7 @@ export class AdminDashboardComponent implements OnInit {
     this.card = 'statistics';
     this.productBookmark = true;
     this.userBookmark = false;
+    this.bargainBookmark = false;
   }
 
   ngOnInit(): void {
@@ -57,10 +59,18 @@ export class AdminDashboardComponent implements OnInit {
   showUsers(){
     this.productBookmark = false;
     this.userBookmark = true;
+    this.bargainBookmark = false;
   }
 
   showProducts(){
     this.productBookmark = true;
     this.userBookmark = false;
+    this.bargainBookmark = false;
+  }
+
+  showBargains(){
+    this.productBookmark = false;
+    this.userBookmark = false;
+    this.bargainBookmark = true;
   }
 }

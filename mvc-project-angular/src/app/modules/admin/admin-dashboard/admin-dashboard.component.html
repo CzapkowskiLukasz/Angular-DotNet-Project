@@ -9,9 +9,10 @@
         <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
         <app-admin-delete-confirm *ngIf="card == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
         <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
+        <app-user-info *ngIf="card == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
     </div>
 
-    <div class="basicDiv" style="width: 600px;">
+    <div class="basicDiv" style="width: 600px;height: 434px;">
         <h4 class="cardLines"><span class="cardTextInLines">Bookmarks</span></h4>
         <div class="bookmarkContainer">
             <div [ngClass]="productBookmark ? 'active' : ''">
@@ -108,3 +109,4 @@
         </div>
     </div>
 </div>
+

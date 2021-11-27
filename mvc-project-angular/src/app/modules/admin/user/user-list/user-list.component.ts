@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-user-list',
@@ -8,9 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+  @Output() createUserInfoEvent = new EventEmitter();
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showUserInfo(){
+    this.createUserInfoEvent.emit()
+  }
 }

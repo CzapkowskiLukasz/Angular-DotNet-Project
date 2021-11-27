@@ -26,6 +26,7 @@ import { ChangeLanguageComponent } from './shared/modules/change-language/change
 import { AdminStatisticsComponent } from './modules/admin/admin-statistics/admin-statistics.component';
 import { AdminDeleteConfirmComponent } from './modules/admin/admin-delete-confirm/admin-delete-confirm.component';
 import { UserListComponent } from './modules/admin/user/user-list/user-list.component';
+import { UserInfoComponent } from './modules/admin/user/user-info/user-info.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChangeLanguageComponent,
     AdminStatisticsComponent,
     AdminDeleteConfirmComponent,
-    UserListComponent
+    UserListComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

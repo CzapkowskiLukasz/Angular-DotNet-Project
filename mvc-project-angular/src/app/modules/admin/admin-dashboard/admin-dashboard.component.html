@@ -7,9 +7,12 @@
 <div class="mainContainer">
     <div class="basicDiv card">
         <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
-        <app-admin-delete-confirm *ngIf="card == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
-        <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
+        <app-admin-delete-confirm *ngIf="card == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()"
+            (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
+        <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onCreateProduct()"
+            (cancelEvent)="onCancelCard()"></app-admin-product-create>
         <app-user-info *ngIf="card == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
+        <app-user-voucher *ngIf="card == 'addVoucher'"></app-user-voucher>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
@@ -17,7 +20,8 @@
         <div class="bookmarkContainer">
             <div [ngClass]="productBookmark ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducts()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                        style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -35,7 +39,8 @@
 
             <div [ngClass]="userBookmark ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showUsers()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                        style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -53,7 +58,8 @@
 
             <div [ngClass]="bargainBookmark ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showBargains()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                        style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -70,13 +76,15 @@
             </div>
         </div>
 
-        <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
+        <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()"
+            (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
         <app-user-list *ngIf="userBookmark"></app-user-list>
 
 
         <div style="display: flex;float: right;">
             <div class="buttonBase buttonCircle buttonWhite" style="margin-left: 6px;margin-right: 6px;">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                    style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -92,7 +100,8 @@
             </div>
 
             <div class="buttonBase buttonCircle buttonWhite">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172" style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172"
+                    style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -109,4 +118,3 @@
         </div>
     </div>
 </div>
-

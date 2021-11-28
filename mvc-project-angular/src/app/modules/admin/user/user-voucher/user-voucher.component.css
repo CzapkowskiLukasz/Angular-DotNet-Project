@@ -166,6 +166,11 @@
     color: var(--accent-color);
 }
 
+.signUpWithLogo {
+    fill: #000000;
+    vertical-align: bottom;
+}
+
 .formButtonContainer {
     position: relative;
     margin-right: 2.5rem;

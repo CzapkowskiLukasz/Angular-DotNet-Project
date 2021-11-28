@@ -36,21 +36,6 @@
     z-index: 1;
 }
 
-.form__inputSmall {
-    position: relative;
-    width: 80px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--accent-color);
-    border-radius: .5rem;
-    display: flex;
-    outline: none;
-    padding: 1rem;
-    background: none;
-    z-index: 1;
-    color: gray;
-}
-
 .form__div {
     position: relative;
     height: 48px;
@@ -60,15 +45,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.form__divSmall {
-    position: relative;
-    height: 48px;
-    margin-top: 1rem;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
 }
 
 .form__div_a {
@@ -97,22 +73,12 @@
 
 .form__label {
     position: absolute;
-    left: 7px;
+    left: 1rem;
     top: 1rem;
     padding: 0 .25rem;
     background-color: var(--body-color);
     color: grey;
     transition: .3s;
-}
-
-.form__labelSmall {
-    position: absolute;
-    left: 7px;
-    top: 1rem;
-    padding: 0 .25rem;
-    background-color: var(--body-color);
-    transition: .3s;
-    color: gray;
 }
 
 .form__button {
@@ -129,7 +95,7 @@
 
 .form__input:focus+.form__label {
     top: -.5rem;
-    left: 7px;
+    left: 1rem;
     color: var(--accent-color);
     font-weight: 500;
     z-index: 11;
@@ -137,7 +103,7 @@
 
 .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
     top: -.5rem;
-    left: 7px;
+    left: 1rem;
     font-weight: 500;
     z-index: 11;
 }
@@ -164,11 +130,6 @@
     padding: 0 10px;
     font-size: 14px;
     color: var(--accent-color);
-}
-
-.signUpWithLogo {
-    fill: #000000;
-    vertical-align: bottom;
 }
 
 .formButtonContainer {

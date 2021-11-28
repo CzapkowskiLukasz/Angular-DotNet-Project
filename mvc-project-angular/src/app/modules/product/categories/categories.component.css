@@ -1,23 +1,37 @@
 .categoryDiv {
     cursor: pointer;
+    padding: 0;
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 10px;
+    width: 120px;
+    height: 120px;
 }
 
-p{
+p {
     color: grey;
     margin-bottom: 0;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
-    border-style: solid;
+    margin-top: 20px;
 }
 
-.column{
+.column {
     display: block;
-    border-style: solid;
+}
+
+.descriptionContainer {
+    text-align: center;
+    color: gray;
+    white-space: nowrap;
+}
+
+.descriptionText2 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 20px;
 }

@@ -28,6 +28,7 @@ import { AdminDeleteConfirmComponent } from './modules/admin/admin-delete-confir
 import { UserListComponent } from './modules/admin/user/user-list/user-list.component';
 import { UserInfoComponent } from './modules/admin/user/user-info/user-info.component';
 import { CategoriesComponent } from './modules/product/categories/categories.component';
+import { UserVoucherComponent } from './modules/admin/user/user-voucher/user-voucher.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminDeleteConfirmComponent,
     UserListComponent,
     UserInfoComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    UserVoucherComponent
   ],
   imports: [
     BrowserModule,

@@ -33,23 +33,6 @@ html {
     font-weight: 200;
 }
 
-.form__input {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 255px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--accent-color);
-    border-radius: .5rem;
-    display: flex;
-    outline: none;
-    padding: 1rem;
-    background: none;
-    z-index: 1;
-    color: gray;
-}
-
 .form__div {
     position: relative;
     height: 48px;
@@ -59,21 +42,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.form__inputSmall {
-    position: relative;
-    width: 90px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--accent-color);
-    border-radius: .5rem;
-    display: flex;
-    outline: none;
-    padding: 1rem;
-    background: none;
-    z-index: 1;
-    color: gray;
 }
 
 .form__divSmall {
@@ -93,26 +61,6 @@ html {
     align-items: center;
 }
 
-.form__label {
-    position: absolute;
-    left: 87px;
-    color: grey;
-    top: 1rem;
-    padding: 0 .25rem;
-    background-color: var(--body-color);
-    transition: .3s;
-}
-
-.form__labelSmall {
-    position: absolute;
-    left: 7px;
-    top: 1rem;
-    padding: 0 .25rem;
-    background-color: var(--body-color);
-    transition: .3s;
-    color: gray;
-}
-
 .form__button {
     padding: .75rem 2rem;
     outline: none;
@@ -123,48 +71,6 @@ html {
     transition: .3s;
     text-decoration: none;
     vertical-align: middle;
-}
-
-.form__inputSmall:focus+.form__labelSmall {
-    top: -.5rem;
-    left: 7px;
-    color: var(--accent-color);
-    font-weight: 500;
-    z-index: 10;
-}
-
-.form__inputSmall:not(:placeholder-shown).form__inputSmall:not(:focus)+.form__labelSmall {
-    top: -.5rem;
-    left: 7px;
-    font-weight: 500;
-    z-index: 10;
-}
-
-.form__inputSmall:focus {
-    border-style: solid;
-    border-width: 1.5px;
-    border-color: var(--accent-color);
-}
-
-.form__input:focus+.form__label {
-    top: -.5rem;
-    left: 87px;
-    color: var(--accent-color);
-    font-weight: 500;
-    z-index: 10;
-}
-
-.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
-    top: -.5rem;
-    left: 87px;
-    font-weight: 500;
-    z-index: 10;
-}
-
-.form__input:focus {
-    border-style: solid;
-    border-width: 1.5px;
-    border-color: var(--accent-color);
 }
 
 .form__div_a {

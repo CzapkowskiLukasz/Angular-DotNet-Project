@@ -18,6 +18,7 @@ namespace MVC_Project.Domain.Entities
         public DateTime CreateDate { get; set; }
         public int? ProducerId { get; set; }
         public int SoldCount { get; set; }
+        public bool IsPricePerItem { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual User Expert { get; set; }

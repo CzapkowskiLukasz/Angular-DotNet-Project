@@ -30,6 +30,14 @@ namespace MVC_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+                options.AddDefaultPolicy( builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:4200"))
+            );
+
+
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -57,6 +65,7 @@ namespace MVC_Project
             //    .AddTransient<IImageService, AzureBlobImageService>(s => s.GetService<AzureBlobImageService>());
             services.AddTransient<LocalImageService>()
                 .AddTransient<IImageService, LocalImageService>(s => s.GetService<LocalImageService>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +76,7 @@ namespace MVC_Project
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
             app.UseSecurity(Configuration);
 
             app.UseHttpsRedirection();
@@ -82,6 +92,7 @@ namespace MVC_Project
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

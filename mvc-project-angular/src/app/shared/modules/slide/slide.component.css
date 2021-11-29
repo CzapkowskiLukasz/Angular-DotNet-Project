@@ -1,41 +1,58 @@
-
-.bestsellerContainer{
-  width: 240px;
-  border-radius: 25px;
-  background-color: white;
-  border: 1px solid var(--accent-color);
-  position: relative;
-  padding-bottom: 10px;
+.bestsellerContainer {
+    width: 240px;
+    height: 240px;
+    border-radius: 25px;
+    background-color: white;
+    border: 1px solid var(--accent-color);
+    position: relative;
+    padding-bottom: 10px;
 }
 
-.containerOnHover{
-  width: 300px;
-  border-radius: 25px;
-  background-color: white;
-  border: 3px solid var(--accent-color);
-  position: relative;
-  padding-bottom: 10px;
-  z-index: 99;
+.containerOnHover {
+    width: 300px;
+    height: 320px;
+    border-radius: 25px;
+    background-color: white;
+    border: 3px solid var(--accent-color);
+    position: relative;
+    padding-bottom: 10px;
+    z-index: 99;
 }
 
-img{
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 25px;
+img {
+    /* height: 180px; */
+    object-fit: fill;
+    border-radius: 25px;
 }
 
-.productDescription{
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
-  width: 100%;
-  height: 100%;
-  margin-left: 0;
-  text-align: center;
+.imageContainer {
+    position: relative;
+    text-align: center;
+    height: 80%;
 }
 
-.productText{
-  color: grey;
-  margin-top: 0;
-  margin-bottom: 5px;
+.imageContainerOnHover {
+    position: relative;
+    text-align: center;
+    height: 70%;
+}
+
+.productDescription {
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    width: 100%;
+    height: 20%;
+    margin-left: 0;
+    text-align: center;
+    position: relative;
+}
+
+.productDescriptionAlignBottom {
+    bottom: 0px;
+}
+
+.productText {
+    color: grey;
+    margin-top: 0;
+    margin-bottom: 5px;
 }

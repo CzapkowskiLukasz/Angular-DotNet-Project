@@ -4,14 +4,16 @@ using MVC_Project.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_Project.Domain.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211125095428_addSoldCountToProduct")]
+    partial class addSoldCountToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -482,9 +484,6 @@ namespace MVC_Project.Domain.Migrations
 
                     b.Property<int?>("ExpertId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsPricePerItem")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

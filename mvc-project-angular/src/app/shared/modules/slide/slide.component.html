@@ -1,6 +1,8 @@
 <div class="bestsellerContainer" (mouseenter)="showButton()" (mouseleave)="hideButton()" [ngClass]="cartButton ? 'bestsellerContainer containerOnHover' : 'bestsellerContainer'">
-    <img src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
-    <div class="productDescription">
+    <div [ngClass]="cartButton ? 'imageContainerOnHover' : 'imageContainer'">
+        <img src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
+    </div>
+    <div [ngClass]="cartButton ? 'productDescription productDescriptionAlignBottom' : 'productDescription'">
         <p class="productText">
             {{item.name}}
         </p>

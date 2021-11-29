@@ -29,6 +29,7 @@ import { UserListComponent } from './modules/admin/user/user-list/user-list.comp
 import { UserInfoComponent } from './modules/admin/user/user-info/user-info.component';
 import { CategoriesComponent } from './modules/product/categories/categories.component';
 import { UserVoucherComponent } from './modules/admin/user/user-voucher/user-voucher.component';
+import { DiscountCreateComponent } from './modules/admin/discount/discount-create/discount-create.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -57,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserListComponent,
     UserInfoComponent,
     CategoriesComponent,
-    UserVoucherComponent
+    UserVoucherComponent,
+    DiscountCreateComponent
   ],
   imports: [
     BrowserModule,

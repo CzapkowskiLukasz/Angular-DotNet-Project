@@ -13,6 +13,7 @@
             (cancelEvent)="onCancelCard()"></app-admin-product-create>
         <app-user-info *ngIf="card == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
         <app-user-voucher *ngIf="card == 'addVoucher'"></app-user-voucher>
+        <app-discount-create *ngIf="card == 'addDiscount'"></app-discount-create>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">

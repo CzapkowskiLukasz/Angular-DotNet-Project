@@ -4,14 +4,6 @@
   width: auto;
 }
 
-.lines {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid var(--accent-color);
-  line-height: 0.1em;
-  margin-bottom: 15px;
-}
-
 .textInLines {
   background: #fff;
   padding: 0 10px;
@@ -23,12 +15,6 @@ p {
   color: gray;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.orderDescription{
-  color: gray;
-  margin-bottom: 0;
-  font-size: small;
 }
 
 .addressContainer {
@@ -46,6 +32,28 @@ p {
   border-width: 1px;
   border-color: var(--accent-color);
   cursor: pointer;
+}
+
+.orderDescription{
+  color: gray;
+  margin-bottom: 0;
+  font-size: small;
+}
+
+.orderTitle{
+  color: var(--accent-color);
+  text-align: left;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 5px;
+}
+
+.lines {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--accent-color);
+  line-height: 0.1em;
+  margin-bottom: 15px;
 }
 
 .addressNavigation {
@@ -78,14 +86,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.orderTitle{
-  color: var(--accent-color);
-  text-align: left;
-  margin-top: 0;
-  padding-bottom: 0;
-  margin-bottom: 5px;
 }
 
 h5{

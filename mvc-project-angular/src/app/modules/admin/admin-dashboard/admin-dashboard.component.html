@@ -79,7 +79,7 @@
 
         <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()"
             (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
-        <app-user-list *ngIf="userBookmark"></app-user-list>
+        <app-user-list *ngIf="userBookmark" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-list>
 
 
         <div style="display: flex;float: right;">

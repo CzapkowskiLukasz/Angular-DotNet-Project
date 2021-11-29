@@ -43,11 +43,11 @@
         </div>
     </div> -->
 
-    <div class="orderContainer">
+    <div class="orderContainer" (click)="showUserInfo()">
         <div class="descriptionContainer">
             <h4 class="orderTitle">User #2137</h4>
             <div style="margin-left: auto;padding: 5px; display: flex;">
-                <div class="profileButton">
+                <div class="profileButton" style="z-index: 99;" (click)="showCreateVoucherEvent()">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
                         style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"

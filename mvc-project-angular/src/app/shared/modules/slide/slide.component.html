@@ -2,13 +2,15 @@
     <img src="assets/420.jpg">
     <div class="productDescription">
         <p class="productText">
-            Dobre jaranie, ziółko ziółeczko
+            {{item.name}}
         </p>
         <p class="productText">
-            420.69zł/szt
+            <label>{{item.price}} zł/</label>
+            <label *ngIf="item.isPricePerItem; else pricePerKilo">szt</label>
+            <ng-template #pricePerKilo>kg</ng-template>
         </p>
-        
-        <div *ngIf="cartButton" class="cartCheckout">
+
+        <div *ngIf="cartButton" class="cartCheckout" (click)="onCheckout()">
             <p class="cartCheckoutText">
                 Cart checkout
             </p>

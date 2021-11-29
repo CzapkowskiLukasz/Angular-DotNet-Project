@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { SlideItem } from '../../models/slide-item';
 
 @Component({
   selector: 'app-slide',
@@ -7,20 +8,29 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class SlideComponent implements OnInit {
+
+  @Input() item: SlideItem;
+
+  @Output() checkoutEvent = new EventEmitter<number>();
+
   cartButton: boolean
 
-  constructor() { 
+  constructor() {
     this.cartButton = false
   }
 
   ngOnInit(): void {
   }
 
-  showButton(){
+  showButton() {
     this.cartButton = true
   }
 
-  hideButton(){
+  hideButton() {
     this.cartButton = false
+  }
+
+  onCheckout() {
+    this.checkoutEvent.emit(this.item.productId);
   }
 }

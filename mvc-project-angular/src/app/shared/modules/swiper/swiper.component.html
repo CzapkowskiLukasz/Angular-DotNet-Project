@@ -1,8 +1,12 @@
 <swiper [config]="config">
-    <ng-template swiperSlide>
-        <app-slide></app-slide>
+
+    <!-- <app-slide *ngFor="let item of items" [item]="item" (checkoutEvent)="onCheckout($event)"></app-slide> -->
+
+    <ng-template swiperSlide *ngFor="let item of items">
+        <app-slide [item]="item" (checkoutEvent)="onCheckout($event)"></app-slide>
     </ng-template>
 
+    <!-- 
     <ng-template swiperSlide>
         <div class="bestsellerContainer">
             <img src="assets/piwo.jpg">
@@ -130,5 +134,5 @@
                 </div>
             </div>
         </div>
-    </ng-template>
+    </ng-template> -->
 </swiper>

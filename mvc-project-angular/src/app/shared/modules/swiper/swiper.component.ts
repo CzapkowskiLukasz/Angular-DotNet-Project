@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 import SwiperCore, {
   Navigation,
@@ -13,6 +13,7 @@ import SwiperCore, {
   EffectCoverflow,
   SwiperOptions
 } from "swiper";
+import { SlideItem } from '../../models/slide-item';
 
 // install Swiper components
 SwiperCore.use([
@@ -38,6 +39,15 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 })
 export class SwiperComponent implements OnInit {
 
+  @Input() items: SlideItem[] = [];
+
+  // testItem: SlideItem = {
+  //   productId: 2,
+  //   name: 'ziółko',
+  //   isPricePerItem: true,
+  //   price: 420
+  // }
+
   constructor() { }
 
   ngOnInit(): void {
@@ -57,4 +67,7 @@ export class SwiperComponent implements OnInit {
     },
   }
 
+  onCheckout(id) {
+    console.log(`id produktu = ${id}`);
+  }
 }

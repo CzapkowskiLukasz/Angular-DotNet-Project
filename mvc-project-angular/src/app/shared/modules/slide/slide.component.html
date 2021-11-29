@@ -1,5 +1,5 @@
 <div class="bestsellerContainer" (mouseenter)="showButton()" (mouseleave)="hideButton()" [ngClass]="cartButton ? 'bestsellerContainer containerOnHover' : 'bestsellerContainer'">
-    <img src="assets/420.jpg">
+    <img src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
     <div class="productDescription">
         <p class="productText">
             {{item.name}}

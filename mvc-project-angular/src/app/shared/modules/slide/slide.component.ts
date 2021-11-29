@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { SlideItem } from '../../models/slide-item';
 
 @Component({
@@ -14,6 +15,8 @@ export class SlideComponent implements OnInit {
   @Output() checkoutEvent = new EventEmitter<number>();
 
   cartButton: boolean
+
+  apiUrl = environment.api_url;
 
   constructor() {
     this.cartButton = false

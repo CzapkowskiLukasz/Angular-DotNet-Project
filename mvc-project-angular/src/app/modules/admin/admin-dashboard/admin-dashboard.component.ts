@@ -43,6 +43,10 @@ export class AdminDashboardComponent implements OnInit {
     this.card = 'userInfo';
   }
 
+  onOpenCreateVoucher(){
+    this.card = 'addVoucher';
+  }
+
   onCreateProduct() {
     this.onCancelCard();
   }

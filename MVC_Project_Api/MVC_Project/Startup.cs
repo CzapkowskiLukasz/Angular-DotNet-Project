@@ -53,6 +53,8 @@ namespace MVC_Project
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
 
+            services.AddScoped<IAdminProductService, AdminProductService>();
+
             services.AddControllers();
 
             services.AddSecurity(Configuration);

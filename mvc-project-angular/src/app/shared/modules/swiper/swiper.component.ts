@@ -41,13 +41,6 @@ export class SwiperComponent implements OnInit {
 
   @Input() items: SlideItem[] = [];
 
-  // testItem: SlideItem = {
-  //   productId: 2,
-  //   name: 'ziółko',
-  //   isPricePerItem: true,
-  //   price: 420
-  // }
-
   constructor() { }
 
   ngOnInit(): void {

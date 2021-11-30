@@ -11,8 +11,6 @@ export class UserListComponent implements OnInit {
   @Output() createUserInfoEvent = new EventEmitter();
 
   @Output() createVoucherEvent = new EventEmitter();
-
-  @Output() cancelVoucherEvent = new EventEmitter();
   
   constructor() { }
 

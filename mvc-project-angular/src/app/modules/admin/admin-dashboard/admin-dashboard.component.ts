@@ -18,6 +18,9 @@ export class AdminDashboardComponent implements OnInit {
   productBookmark : boolean;
   userBookmark : boolean;
   bargainBookmark : boolean;
+  producerBookmark : boolean;
+  countryBookmark: boolean;
+  deliveryBookmark: boolean;
 
   constructor() {
     this.count = 0;
@@ -26,6 +29,9 @@ export class AdminDashboardComponent implements OnInit {
     this.productBookmark = true;
     this.userBookmark = false;
     this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = false;
   }
 
   ngOnInit(): void {
@@ -68,17 +74,53 @@ export class AdminDashboardComponent implements OnInit {
     this.productBookmark = false;
     this.userBookmark = true;
     this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = false;
   }
 
   showProducts(){
     this.productBookmark = true;
     this.userBookmark = false;
     this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = false;
   }
 
   showBargains(){
     this.productBookmark = false;
     this.userBookmark = false;
     this.bargainBookmark = true;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = false;
+  }
+
+  showProducers(){
+    this.productBookmark = false;
+    this.userBookmark = false;
+    this.bargainBookmark = false;
+    this.producerBookmark = true;
+    this.countryBookmark = false;
+    this.deliveryBookmark = false;
+  }
+
+  showCountries(){
+    this.productBookmark = false;
+    this.userBookmark = false;
+    this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = true;
+    this.deliveryBookmark = false;
+  }
+
+  showDelivery(){
+    this.productBookmark = false;
+    this.userBookmark = false;
+    this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = true;
   }
 }

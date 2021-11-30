@@ -4,7 +4,7 @@ using MVC_Project.Logic.Warehouse.Responses;
 using System;
 using System.Collections.Generic;
 
-namespace MVC_Project.Logic.Global.MappingProfiles
+namespace MVC_Project.Logic.Warehouse.MappingProfiles
 {
     public class OrderProfile : Profile
     {

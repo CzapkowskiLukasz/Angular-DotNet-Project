@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
-using MVC_Project.Logic.Admin.Responses;
+using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Customer.Responses;
 using MVC_Project.Logic.Warehouse.Requests;
 using MVC_Project.Logic.Warehouse.Responses;
 using System.Collections.Generic;
 
-namespace MVC_Project.Logic.Global.MappingProfiles
+namespace MVC_Project.Logic.Warehouse.MappingProfiles
 {
     public class ProductProfile : Profile
     {
@@ -14,7 +14,7 @@ namespace MVC_Project.Logic.Global.MappingProfiles
         {
             CreateMap<Product, ProductListItem>()
                 .ForMember(dest => dest.Name, opt =>
-                    opt.MapFrom(src => GetProductFullName(src)));
+                    opt.MapFrom(src => MappingNameHelper.GetProductFullName(src)));
 
             CreateMap<List<Product>, GetProductListResponse>()
                 .ForMember(dest => dest.Products, opt =>
@@ -32,31 +32,13 @@ namespace MVC_Project.Logic.Global.MappingProfiles
 
             CreateMap<Product, BestsellerListItem>()
                 .ForMember(dest => dest.Name, opt =>
-                    opt.MapFrom(src => GetProductFullName(src)));
+                    opt.MapFrom(src => MappingNameHelper.GetProductFullName(src)));
 
             CreateMap<List<Product>, GetBestsellersResponse>()
                 .ForMember(dest => dest.Bestsellers, opt =>
                     opt.MapFrom(src => src));
-
-            CreateMap<Product, AdminProductListItem>()
-                .ForMember(dest => dest.Name, opt =>
-                    opt.MapFrom(src => GetProductFullName(src)))
-                .ForMember(dest => dest.Count, opt =>
-                    opt.MapFrom(src => src.WarehouseQuantity));
-
-            CreateMap<List<Product>, AdminGetProductListResponse>()
-                .ForMember(dest => dest.Products, opt =>
-                    opt.MapFrom(src => src));
         }
 
-        private string GetProductFullName(Product product)
-        {
-            string result = product.Name;
-            if (product.Producer != null)
-            {
-                result = $"{product.Producer.Name} {result}";
-            }
-            return result;
-        }
+
     }
 }

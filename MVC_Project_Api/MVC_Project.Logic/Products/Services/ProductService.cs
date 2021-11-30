@@ -2,12 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
-using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Products.Interfaces;
 using MVC_Project.Logic.Requests;
 using MVC_Project.Logic.Responses;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVC_Project.Logic.Services
+namespace MVC_Project.Logic.Products.Services
 {
     public class ProductService : IProductService
     {
@@ -95,6 +96,18 @@ namespace MVC_Project.Logic.Services
             return result;
         }
 
-        //public async Task<HandleResult<>>
+        public async Task<HandleResult<GetBestsellersResponse>> GetBestsellersAsync(int count)
+        {
+            var result = new HandleResult<GetBestsellersResponse>();
+
+            var products = await _dataContext.Products
+                .Include(x => x.Producer).ToListAsync();
+
+            var bestsellers = products.OrderByDescending(x => x.SoldCount).Take(count).ToList();
+
+            result.Response = _mapper.Map<GetBestsellersResponse>(bestsellers);
+
+            return result;
+        }
     }
 }

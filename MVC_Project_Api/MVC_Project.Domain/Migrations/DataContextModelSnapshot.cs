@@ -483,6 +483,9 @@ namespace MVC_Project.Domain.Migrations
                     b.Property<int?>("ExpertId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsPricePerItem")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -494,6 +497,9 @@ namespace MVC_Project.Domain.Migrations
 
                     b.Property<int?>("ProducerId")
                         .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoldCount")
                         .HasColumnType("int");
 
                     b.Property<int>("WarehouseQuantity")

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ProductService } from 'src/app/core/product/product.service';
+import { SlideItem } from 'src/app/shared/models/slide-item';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +13,17 @@ export class HomeComponent implements OnInit {
   count: number;
   showCart: boolean;
 
-  constructor() {
+  bestsellers: SlideItem[] = [];
+
+  constructor(private productService: ProductService) {
     this.count = 0;
     this.showCart = false;
   }
 
   ngOnInit(): void {
+    this.productService.getBestsellers(10).subscribe(result => {
+      this.bestsellers = result.bestsellers
+    });
   }
 
   increse() {

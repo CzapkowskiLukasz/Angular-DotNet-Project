@@ -9,6 +9,10 @@ import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@ang
 export class UserListComponent implements OnInit {
 
   @Output() createUserInfoEvent = new EventEmitter();
+
+  @Output() createVoucherEvent = new EventEmitter();
+
+  @Output() cancelVoucherEvent = new EventEmitter();
   
   constructor() { }
 
@@ -17,5 +21,9 @@ export class UserListComponent implements OnInit {
 
   showUserInfo(){
     this.createUserInfoEvent.emit()
+  }
+
+  showCreateVoucherEvent(){
+    this.createVoucherEvent.emit();
   }
 }

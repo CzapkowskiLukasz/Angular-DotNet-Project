@@ -12,7 +12,8 @@
         <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onCreateProduct()"
             (cancelEvent)="onCancelCard()"></app-admin-product-create>
         <app-user-info *ngIf="card == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
-        <app-user-voucher *ngIf="card == 'addVoucher'"></app-user-voucher>
+        <app-user-voucher *ngIf="card == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
+        <app-discount-create *ngIf="card == 'addDiscount'"></app-discount-create>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
@@ -154,7 +155,7 @@
 
         <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()"
             (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
-        <app-user-list *ngIf="userBookmark"></app-user-list>
+        <app-user-list *ngIf="userBookmark" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
 
 
         <div style="display: flex;float: right;">

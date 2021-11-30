@@ -23,31 +23,6 @@ p {
   width: auto;
 }
 
-.orderContainer{
-  border-radius: 25px;
-  background-color: var(--body-color);
-  padding: 15px;
-  border-style: solid;
-  text-align: center;
-  border-width: 1px;
-  border-color: var(--accent-color);
-  cursor: pointer;
-}
-
-.orderDescription{
-  color: gray;
-  margin-bottom: 0;
-  font-size: small;
-}
-
-.orderTitle{
-  color: var(--accent-color);
-  text-align: left;
-  margin-top: 0;
-  padding-bottom: 0;
-  margin-bottom: 5px;
-}
-
 .lines {
   width: 100%;
   text-align: center;

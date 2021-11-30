@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Products.Interfaces;
 using MVC_Project.Logic.Requests;
 using System.Threading.Tasks;
 

@@ -2,7 +2,7 @@
 using MVC_Project.Logic.Responses;
 using System.Threading.Tasks;
 
-namespace MVC_Project.Logic.Interfaces
+namespace MVC_Project.Logic.Products.Interfaces
 {
     public interface IProductService
     {

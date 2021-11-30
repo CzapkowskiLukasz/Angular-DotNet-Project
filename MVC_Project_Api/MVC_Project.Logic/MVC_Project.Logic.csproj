@@ -16,4 +16,8 @@
     <ProjectReference Include="..\MVC_Project.Domain\MVC_Project.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Products\Requests\" />
+  </ItemGroup>
+
 </Project>

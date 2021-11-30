@@ -13,6 +13,8 @@ using MVC_Project.Logic;
 using MVC_Project.Logic.Files.Images.Interfaces;
 using MVC_Project.Logic.Files.Images.Services;
 using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Products.Interfaces;
+using MVC_Project.Logic.Products.Services;
 using MVC_Project.Logic.Services;
 using MVC_Project.Logic.Settings;
 
@@ -50,6 +52,8 @@ namespace MVC_Project
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
+
+            services.AddScoped<IAdminProductService, AdminProductService>();
 
             services.AddControllers();
 

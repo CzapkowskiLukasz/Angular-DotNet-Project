@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Products.Responses;
 using MVC_Project.Logic.Requests;
 using MVC_Project.Logic.Responses;
 using System.Collections.Generic;
@@ -34,6 +35,16 @@ namespace MVC_Project.Logic.MappingProfiles
 
             CreateMap<List<Product>, GetBestsellersResponse>()
                 .ForMember(dest => dest.Bestsellers, opt =>
+                    opt.MapFrom(src => src));
+
+            CreateMap<Product, AdminProductListItem>()
+                .ForMember(dest => dest.Name, opt =>
+                    opt.MapFrom(src => GetProductFullName(src)))
+                .ForMember(dest => dest.Count, opt =>
+                    opt.MapFrom(src => src.WarehouseQuantity));
+
+            CreateMap<List<Product>, AdminGetProductListResponse>()
+                .ForMember(dest => dest.Products, opt =>
                     opt.MapFrom(src => src));
         }
 

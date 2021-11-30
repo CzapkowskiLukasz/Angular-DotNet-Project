@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
-using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Products.Interfaces;
 using MVC_Project.Logic.Requests;
 using MVC_Project.Logic.Responses;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVC_Project.Logic.Services
+namespace MVC_Project.Logic.Products.Services
 {
     public class ProductService : IProductService
     {

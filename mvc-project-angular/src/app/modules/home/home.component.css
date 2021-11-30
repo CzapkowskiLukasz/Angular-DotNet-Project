@@ -10,17 +10,18 @@
     cursor: pointer;
 }
 
-.descriptionContainer {
+.homeDescriptionContainer {
     text-align: center;
     color: gray;
     white-space: nowrap;
+    margin-left: 30px;
 }
 
 .descriptionHeader {
     font-size: 48px;
 }
 
-.descriptionText {
+.homeDescriptionText {
     margin-top: 5px;
     margin-bottom: 0;
     font-size: 28px;

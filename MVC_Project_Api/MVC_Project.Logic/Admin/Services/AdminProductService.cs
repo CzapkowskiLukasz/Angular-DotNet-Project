@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
+using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Admin.Interfaces;
+using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using MVC_Project.Logic.Commons;
 using System.Threading.Tasks;
@@ -17,6 +19,28 @@ namespace MVC_Project.Logic.Admin.Services
         {
             _dataContext = dataContext;
             _mapper = mapper;
+        }
+
+        public async Task<HandleResult<AdminAddProductResponse>> AddProductAsync(AdminAddProductRequest request)
+        {
+            var result = new HandleResult<AdminAddProductResponse>();
+            var product = _mapper.Map<Product>(request);
+
+            await _dataContext.Products.AddAsync(product);
+            var added = await _dataContext.SaveChangesAsync();
+
+            if (added != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Add error", 500);
+                return result;
+            }
+
+            result.Response = new AdminAddProductResponse
+            {
+                ProductId = product.ProductId
+            };
+
+            return result;
         }
 
         public async Task<HandleResult<AdminGetProductListResponse>> GetProductListAsync()

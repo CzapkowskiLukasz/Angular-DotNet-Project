@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MVC_Project.Logic.Interfaces;
-using MVC_Project.Logic.Requests;
-using System;
+using MVC_Project.Logic.Global.Interfaces;
+using MVC_Project.Logic.Global.Requests;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Controllers

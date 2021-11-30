@@ -1,7 +1,7 @@
-﻿using System.IO;
+﻿using Microsoft.AspNetCore.Http;
+using MVC_Project.Logic.Commons;
+using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using MVC_Project.Logic.Responses;
 
 namespace MVC_Project.Logic.Files.Images.Interfaces
 {

@@ -32,6 +32,7 @@ import { UserVoucherComponent } from './modules/admin/user/user-voucher/user-vou
 import { DiscountCreateComponent } from './modules/admin/discount/discount-create/discount-create.component';
 import { ProducersListComponent } from './modules/admin/producers/producers-list/producers-list.component';
 import { CountryListComponent } from './modules/admin/countries/country-list/country-list.component';
+import { DeliveryListComponent } from './modules/admin/delivery/delivery-list/delivery-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -63,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserVoucherComponent,
     DiscountCreateComponent,
     ProducersListComponent,
-    CountryListComponent
+    CountryListComponent,
+    DeliveryListComponent
   ],
   imports: [
     BrowserModule,

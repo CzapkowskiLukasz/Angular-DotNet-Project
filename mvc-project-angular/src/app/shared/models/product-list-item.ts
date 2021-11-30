@@ -3,5 +3,5 @@ export interface ProductListItem {
     name: string,
     category: string,
     price: number,
-    warehouseQuantity: number
+    count: number
 }

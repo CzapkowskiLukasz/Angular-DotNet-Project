@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Products.Interfaces;
 using MVC_Project.Logic.Requests;
 using System.Threading.Tasks;
 
@@ -68,6 +68,14 @@ namespace MVC_Project.Controllers
             {
                 return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
             }
+        }
+
+        [HttpGet("bestsellers/{count}")]
+        public async Task<IActionResult> GetBestsellersAsync([FromRoute] int count)
+        {
+            var result = await _productService.GetBestsellersAsync(count);
+
+            return Ok(result.Response);
         }
     }
 }

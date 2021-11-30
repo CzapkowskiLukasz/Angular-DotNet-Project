@@ -544,3 +544,21 @@ html {
     overflow-y: scroll;
     padding-top: 0;
 }
+
+.last{
+    margin-right: 0; 
+    margin-left: auto;
+    text-align: right;
+}
+
+.middle{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.first{
+    margin-left: 0;
+    text-align: left;
+    margin-right: auto;
+}

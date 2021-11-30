@@ -1,0 +1,33 @@
+<h4 class="cardLines"><span class="cardTextInLines">New Producer</span></h4>
+
+<form>
+    <div class="form__div">
+        <input type="text" class="form__input" formControlName="name" placeholder=" ">
+        <label for="name" class="form__label">Name</label>
+    </div>
+
+    <div class="form__div">
+        <input type="text" class="form__input" formControlName="description" placeholder=" ">
+        <label for="description" class="form__label">Phone number</label>
+    </div>
+
+    <div class="form__div">
+        <input type="text" class="form__input" formControlName="description" placeholder=" ">
+        <label for="description" class="form__label">E-mail</label>
+    </div>
+
+    <div class="form__div">
+        <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
+        <label for="category" class="form__label">Producer</label>
+        <app-filtered-dropdown></app-filtered-dropdown>
+    </div>
+
+    <div class="formButtonContainer">
+        <div class="buttonBase buttonText buttonColor formButton">
+            Create
+        </div>
+        <div class="buttonBase buttonText buttonWhite formButton">
+            Cancel
+        </div>
+    </div>
+</form>

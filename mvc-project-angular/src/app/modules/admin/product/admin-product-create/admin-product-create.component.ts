@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductService } from 'src/app/core/product/product.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
 
 @Component({
@@ -23,11 +24,13 @@ export class AdminProductCreateComponent implements OnInit {
 
   producerList: FilteredDropdownListItem[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private productService: ProductService
+  ) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
-      warehouseQuantity: [''],
+      count: [''],
       expert: [''],
       description: [''],
       category: [''],
@@ -37,7 +40,7 @@ export class AdminProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
-    this.fetchProducers2();
+    this.fetchProducers();
   }
 
   selectCategory(id: string) {
@@ -50,7 +53,17 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   submit() {
-    this.createProductEvent.emit();
+    let newProduct = {
+      name: this.form.get('name').value,
+      producerId: this.producerId,
+      description: this.form.get('description').value,
+      price: this.form.get('price').value,
+      count: this.form.get('count').value,
+      categoryId: this.categoryId
+    };
+
+    this.productService.add(newProduct).subscribe(() => this.createProductEvent.emit(),
+      err => console.log(err));
   }
 
   cancel() {
@@ -61,10 +74,13 @@ export class AdminProductCreateComponent implements OnInit {
     this.categoryList = [
       {
         value: '1',
-        text: 'cat1'
+        text: 'Slodycze'
       }, {
         value: '2',
-        text: 'cat2'
+        text: 'Czekolada'
+      }, {
+        value: '3',
+        text: 'Żelki'
       }
     ];
   }
@@ -73,103 +89,10 @@ export class AdminProductCreateComponent implements OnInit {
     this.producerList = [
       {
         value: '1',
-        text: 'Producer 1'
+        text: 'Wedel'
       }, {
         value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
+        text: 'testowy'
       }];
-  }
-
-  private fetchProducers2() {
-    this.producerList = [
-      {
-        value: '1',
-        text: 'Producer 1'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      }, {
-        value: '3',
-        text: 'Producer 3'
-      }, {
-        value: '2',
-        text: 'Producer 2'
-      },
-    ];
   }
 }

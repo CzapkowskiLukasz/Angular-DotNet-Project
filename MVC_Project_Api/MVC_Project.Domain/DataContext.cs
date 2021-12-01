@@ -32,6 +32,7 @@ namespace MVC_Project.Domain
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
         public virtual DbSet<PaymentStatus> PaymentStatuses { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<Producer> Producers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<DiscountProduct> ProductDiscounts { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
@@ -316,6 +317,23 @@ namespace MVC_Project.Domain
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Producer>(entity =>
+            {
+                entity.ToTable("Producer");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.HasOne(e => e.Country)
+                    .WithMany(p => p.Producers)
+                    .HasForeignKey(d => d.CountryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Producer_Country_FK")
+                    .IsRequired();
             });
 
             modelBuilder.Entity<Product>(entity =>

@@ -6,23 +6,20 @@
 
 <div class="mainContainer">
     <div class="basicDiv card">
-        <app-admin-statistics *ngIf="card == 'statistics'"></app-admin-statistics>
-        <app-admin-delete-confirm *ngIf="card == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()"
-            (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
-        <app-admin-product-create *ngIf="card == 'addProduct'" (createProductEvent)="onCreateProduct()"
-            (cancelEvent)="onCancelCard()"></app-admin-product-create>
-        <app-user-info *ngIf="card == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
-        <app-user-voucher *ngIf="card == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
-        <app-discount-create *ngIf="card == 'addDiscount'"></app-discount-create>
+        <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
+        <app-admin-delete-confirm *ngIf="secondComponent == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
+        <app-admin-product-create *ngIf="secondComponent == 'addProduct'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
+        <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
+        <app-user-voucher *ngIf="secondComponent == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
+        <app-discount-create *ngIf="secondComponent == 'addDiscount'"></app-discount-create>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
         <h4 class="cardLines"><span class="cardTextInLines">Bookmarks</span></h4>
         <div class="bookmarkContainer">
-            <div [ngClass]="productBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'products' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducts()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -38,10 +35,9 @@
                 </div>
             </div>
 
-            <div [ngClass]="userBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'users' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showUsers()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -57,10 +53,9 @@
                 </div>
             </div>
 
-            <div [ngClass]="bargainBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'bargains' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showBargains()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -76,10 +71,9 @@
                 </div>
             </div>
 
-            <div [ngClass]="producerBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'producers' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducers()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -95,10 +89,9 @@
                 </div>
             </div>
 
-            <div [ngClass]="countryBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'countries' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showCountries()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -114,10 +107,9 @@
                 </div>
             </div>
 
-            <div [ngClass]="deliveryBookmark ? 'active' : ''">
+            <div [ngClass]="mainComponent == 'deliveries' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showDelivery()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -134,20 +126,17 @@
             </div>
         </div>
 
-        <app-admin-product-list *ngIf="productBookmark" (createProductEvent)="onOpenCreateProductCard()"
-            (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
-        <app-user-list *ngIf="userBookmark" (createUserInfoEvent)="onOpenUserInfoCard()"
-            (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
-            <app-discount-list *ngIf="bargainBookmark"></app-discount-list>
-            <app-producers-list *ngIf="producerBookmark"></app-producers-list>
-            <app-country-list *ngIf="countryBookmark"></app-country-list>
-            <app-delivery-list *ngIf="deliveryBookmark"></app-delivery-list>
+        <app-admin-product-list *ngIf="mainComponent == 'products'" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
+        <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
+        <app-discount-list *ngIf="mainComponent == 'discounts'"></app-discount-list>
+        <app-producers-list *ngIf="mainComponent == 'producers'"></app-producers-list>
+        <app-country-list *ngIf="mainComponent == 'countries'"></app-country-list>
+        <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
 
 
         <div style="display: flex;float: right;">
             <div class="buttonBase buttonCircle buttonWhite" style="margin-left: 6px;margin-right: 6px;">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -163,8 +152,7 @@
             </div>
 
             <div class="buttonBase buttonCircle buttonWhite">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"

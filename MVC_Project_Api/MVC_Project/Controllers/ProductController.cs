@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Project.Logic.Products.Interfaces;
-using MVC_Project.Logic.Requests;
+using MVC_Project.Logic.Warehouse.Interfaces;
+using MVC_Project.Logic.Warehouse.Requests;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Controllers

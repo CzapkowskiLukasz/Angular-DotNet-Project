@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Products\Requests\" />
+    <Folder Include="Customer\Interfaces\" />
+    <Folder Include="Customer\Services\" />
+    <Folder Include="Global\MappingProfiles\" />
   </ItemGroup>
 
 </Project>

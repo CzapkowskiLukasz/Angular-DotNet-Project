@@ -24,6 +24,27 @@ namespace MVC_Project.Logic.Admin.Services
         public async Task<HandleResult<AdminAddProductResponse>> AddProductAsync(AdminAddProductRequest request)
         {
             var result = new HandleResult<AdminAddProductResponse>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Wrong data", 400);
+                return result;
+            }
+
+            var producer = await _dataContext.Producers.SingleOrDefaultAsync(x => x.ProducerId == request.ProducerId);
+            var category = await _dataContext.Categories.SingleOrDefaultAsync(x => x.CategoryId == request.CategoryId);
+
+            if (producer == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer not found", 404);
+                return result;
+            }
+            else if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+                return result;
+            }
+
             var product = _mapper.Map<Product>(request);
 
             await _dataContext.Products.AddAsync(product);

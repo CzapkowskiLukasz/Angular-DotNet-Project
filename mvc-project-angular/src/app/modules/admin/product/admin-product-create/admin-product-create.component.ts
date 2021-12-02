@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductService } from 'src/app/core/product/product.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
@@ -6,7 +6,8 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
 @Component({
   selector: 'app-admin-product-create',
   templateUrl: './admin-product-create.component.html',
-  styleUrls: ['./admin-product-create.component.css']
+  styleUrls: ['./admin-product-create.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AdminProductCreateComponent implements OnInit {
 

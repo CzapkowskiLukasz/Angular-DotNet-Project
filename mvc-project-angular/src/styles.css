@@ -1,4 +1,3 @@
-
 html {
     background-color: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
@@ -6,7 +5,7 @@ html {
     outline: none;
 }
 
- :root {
+:root {
     --main-color: #DF002D;
     --accent-color: #FCB001;
     --body-color: white;
@@ -493,7 +492,7 @@ html {
     color: gray;
 }
 
-.orderContainer{
+.orderContainer {
     border-radius: 25px;
     background-color: var(--body-color);
     padding: 15px;
@@ -503,35 +502,35 @@ html {
     border-color: var(--accent-color);
     cursor: pointer;
     margin: 5px;
-  }
-  
-  .orderDescription{
+}
+
+.orderDescription {
     color: gray;
     margin-bottom: 0;
     font-size: small;
-  }
+}
 
-  .descriptionContainer{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .orderTitle{
+.descriptionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderTitle {
     color: var(--accent-color);
     text-align: left;
     margin-bottom: 0;
-  }
-  
-  .orderLines {
+}
+
+.orderLines {
     width: 100%;
     text-align: center;
     border-bottom: 1px solid var(--accent-color);
     line-height: 0.1em;
     margin-bottom: 15px;
-  }
+}
 
-  .container {
+.container {
     border-radius: 25px;
     padding-top: 10px;
     border-style: solid;
@@ -545,19 +544,19 @@ html {
     padding-top: 0;
 }
 
-.last{
-    margin-right: 0; 
+.last {
+    margin-right: 0;
     margin-left: auto;
     text-align: right;
 }
 
-.middle{
+.middle {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-.first{
+.first {
     margin-left: 0;
     text-align: left;
     margin-right: auto;

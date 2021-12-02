@@ -32,7 +32,7 @@
     <div class="form__div">
         <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
         <label for="category" class="form__label">{{'admin.product.create.category' | translate}}</label>
-        <app-filtered-dropdown [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
+        <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
     </div>
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">

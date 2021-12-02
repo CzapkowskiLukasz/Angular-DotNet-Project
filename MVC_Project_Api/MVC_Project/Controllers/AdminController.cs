@@ -11,11 +11,13 @@ namespace MVC_Project.Controllers
     {
         private readonly IAdminProductService _productService;
         private readonly IAdminProducerService _producerService;
+        private readonly IAdminCategoryService _categoryService;
 
-        public AdminController(IAdminProductService productService, IAdminProducerService producerService)
+        public AdminController(IAdminProductService productService, IAdminProducerService producerService, IAdminCategoryService categoryService)
         {
             _productService = productService;
             _producerService = producerService;
+            _categoryService = categoryService;
         }
 
         [HttpGet("products")]
@@ -45,6 +47,14 @@ namespace MVC_Project.Controllers
         public async Task<IActionResult> GetProducersListAsync()
         {
             var result = await _producerService.GetProducersListAsync();
+
+            return Ok(result.Response);
+        }
+
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetCategoryListAsync()
+        {
+            var result = await _categoryService.GetListAsync();
 
             return Ok(result.Response);
         }

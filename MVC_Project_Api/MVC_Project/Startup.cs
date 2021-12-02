@@ -51,14 +51,10 @@ namespace MVC_Project
 
             services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
 
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddGlobalArea();
+            services.AddAdminArea();
+            services.AddWarehouseArea();
 
-            services.AddScoped<IAdminProductService, AdminProductService>();
-            services.AddScoped<IAdminProducerService, AdminProducerService>();
-            services.AddScoped<IAdminCategoryService, AdminCategoryService>();
-            services.AddScoped<IAdminUserService, AdminUserService>();
 
             services.AddControllers();
 

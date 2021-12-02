@@ -9,7 +9,9 @@ namespace MVC_Project.Logic.Global.MappingProfiles
     {
         public DiscountProfile()
         {
-            CreateMap<Discount, AdminDiscountListItem>();
+            CreateMap<Discount, AdminDiscountListItem>()
+                .ForMember(dest => dest.Percent, opt =>
+                   opt.MapFrom(src => src.DiscountPercent));
 
             CreateMap<List<Discount>, AdminGetDiscountListResponse>()
                 .ForMember(dest => dest.Discounts, opt =>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CategoryService } from 'src/app/core/category/category.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
 
@@ -24,8 +25,11 @@ export class AdminProductCreateComponent implements OnInit {
 
   producerList: FilteredDropdownListItem[] = [];
 
+  isCategoriesLoaded: boolean;
+
   constructor(private fb: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private categoryService: CategoryService
   ) {
     this.form = this.fb.group({
       name: [''],
@@ -36,6 +40,8 @@ export class AdminProductCreateComponent implements OnInit {
       category: [''],
       producer: ['']
     });
+
+    this.isCategoriesLoaded = false;
   }
 
   ngOnInit(): void {
@@ -71,18 +77,11 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   private fetchCategories() {
-    this.categoryList = [
-      {
-        value: '1',
-        text: 'Slodycze'
-      }, {
-        value: '2',
-        text: 'Czekolada'
-      }, {
-        value: '3',
-        text: 'Żelki'
-      }
-    ];
+    this.categoryService.getAdminList().subscribe(result =>
+      this.categoryList = result.categories.map(category =>
+        ({ text: category.name, value: category.categoryId })),
+      err => console.log(err),
+      () => this.isCategoriesLoaded = true);
   }
 
   private fetchProducers() {

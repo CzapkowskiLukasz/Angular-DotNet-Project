@@ -1,24 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVC_Project.Api.Configurations;
 using MVC_Project.Api.Middlewares;
-using MVC_Project.Domain;
-using MVC_Project.Domain.Entities;
-using MVC_Project.Logic;
-using MVC_Project.Logic.Admin.Interfaces;
-using MVC_Project.Logic.Admin.Services;
-using MVC_Project.Logic.Files.Images.Interfaces;
-using MVC_Project.Logic.Files.Images.Services;
-using MVC_Project.Logic.Global.Interfaces;
-using MVC_Project.Logic.Global.Services;
-using MVC_Project.Logic.Settings;
-using MVC_Project.Logic.Warehouse.Interfaces;
-using MVC_Project.Logic.Warehouse.Services;
 
 namespace MVC_Project
 {
@@ -31,49 +17,23 @@ namespace MVC_Project
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-                options.AddDefaultPolicy(builder => builder
-                   .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .WithOrigins("http://localhost:4200"))
-            );
-
-
-            services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<User, IdentityRole<int>>()
-                .AddEntityFrameworkStores<DataContext>();
-
-            services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
-
+            services.AddDataContext(Configuration);
             services.AddGlobalArea();
             services.AddAdminArea();
             services.AddWarehouseArea();
-
+            services.AddFiles(Configuration);
 
             services.AddControllers();
 
             services.AddSecurity(Configuration);
 
+            services.AddSwagger(Configuration);
 
-            services.Configure<ProvidersSettings>(Configuration.GetSection("ProvidersSettings"));
-
-            //services.Configure<AzureBlobSettings>(Configuration.GetSection("AzureBlobSettings"));
-
-            services.AddTransient<IImageServiceFactory, ImageServiceFactory>();
-            //services.AddTransient<AzureBlobImageService>()
-            //    .AddTransient<IImageService, AzureBlobImageService>(s => s.GetService<AzureBlobImageService>());
-            services.AddTransient<LocalImageService>()
-                .AddTransient<IImageService, LocalImageService>(s => s.GetService<LocalImageService>());
-
+            services.AddCustomCors();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -82,7 +42,8 @@ namespace MVC_Project
             }
 
             app.UseCors();
-            app.UseSecurity(Configuration);
+
+            app.UseSwagger(Configuration);
 
             app.UseHttpsRedirection();
 

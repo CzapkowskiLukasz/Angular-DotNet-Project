@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MVC_Project.Logic;
 using MVC_Project.Logic.Admin.Interfaces;
 using MVC_Project.Logic.Admin.Services;
 using MVC_Project.Logic.Global.Interfaces;
@@ -12,6 +13,8 @@ namespace MVC_Project.Api.Configurations
     {
         public static void AddGlobalArea(this IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
+
             services.AddScoped<IUserService, UserService>();
         }
 

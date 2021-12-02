@@ -12,6 +12,8 @@
         <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
         <app-user-voucher *ngIf="secondComponent == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
         <app-discount-create *ngIf="secondComponent == 'addDiscount'"></app-discount-create>
+        <app-product-create-discount></app-product-create-discount>
+        <app-producers-add></app-producers-add>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
@@ -128,7 +130,7 @@
 
         <app-admin-product-list *ngIf="mainComponent == 'products'" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)"></app-admin-product-list>
         <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
-        <app-discount-list *ngIf="mainComponent == 'discounts'"></app-discount-list>
+        <app-discount-list *ngIf="mainComponent == 'bargains'"></app-discount-list>
         <app-producers-list *ngIf="mainComponent == 'producers'"></app-producers-list>
         <app-country-list *ngIf="mainComponent == 'countries'"></app-country-list>
         <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
@@ -170,4 +172,4 @@
     </div>
 </div>
 
-<div class="basicDiv card"><app-producers-add></app-producers-add></div>
+<div class="basicDiv card"></div>

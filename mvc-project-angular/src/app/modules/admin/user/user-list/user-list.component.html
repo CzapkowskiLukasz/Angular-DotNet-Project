@@ -43,13 +43,12 @@
         </div>
     </div> -->
 
-    <div class="orderContainer" (click)="showUserInfo()"  style="padding-top: 0;padding-bottom: 5px;">
+    <div class="orderContainer" *ngFor="let user of users" (click)="showUserInfo()" style="padding-top: 0;padding-bottom: 5px;">
         <div class="descriptionContainer">
-            <h4 class="orderTitle" style="margin-bottom: 0;">User #2137</h4>
+            <h4 class="orderTitle" style="margin-bottom: 0;">User #{{user.userId}}</h4>
             <div style="margin-left: auto;padding: 5px; display: flex;">
                 <div class="profileButton" style="z-index: 99;" (click)="showCreateVoucherEvent()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -69,15 +68,15 @@
         <div class="descriptionContainer">
             <div style="margin-left: 0;margin-right: auto;">
                 <h5>E-mail</h5>
-                <p class="orderDescription">testowy@testowy.pl</p>
+                <p class="orderDescription">{{user.email}}</p>
             </div>
             <div style="margin-left: auto;margin-right: auto;">
                 <h5>Name</h5>
-                <p class="orderDescription">Janusz</p>
+                <p class="orderDescription">{{user.name}}</p>
             </div>
             <div style="margin-right: 0; margin-left: auto;">
                 <h5>Surname</h5>
-                <p class="orderDescription">Testowy</p>
+                <p class="orderDescription">{{user.surname}}</p>
             </div>
         </div>
     </div>

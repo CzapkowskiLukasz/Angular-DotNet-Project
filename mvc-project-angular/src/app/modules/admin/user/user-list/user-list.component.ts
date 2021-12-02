@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { UserService } from 'src/app/core/user/user.service';
+import { UserListItem } from 'src/app/shared/models/user-list-item';
 
 @Component({
   selector: 'app-user-list',
@@ -11,17 +13,25 @@ export class UserListComponent implements OnInit {
   @Output() createUserInfoEvent = new EventEmitter();
 
   @Output() createVoucherEvent = new EventEmitter();
-  
-  constructor() { }
+
+  users: UserListItem[] = [];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.fetchUsers();
   }
 
-  showUserInfo(){
+  showUserInfo() {
     this.createUserInfoEvent.emit()
   }
 
-  showCreateVoucherEvent(){
+  showCreateVoucherEvent() {
     this.createVoucherEvent.emit();
+  }
+
+  fetchUsers() {
+    this.userService.getAdminList().subscribe(result =>
+      this.users = result.users);
   }
 }

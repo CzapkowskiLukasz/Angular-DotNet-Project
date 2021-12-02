@@ -20,9 +20,10 @@ namespace MVC_Project.Api.Configurations
 
         public static void AddAdminArea(this IServiceCollection services)
         {
-            services.AddScoped<IAdminProductService, AdminProductService>();
-            services.AddScoped<IAdminProducerService, AdminProducerService>();
             services.AddScoped<IAdminCategoryService, AdminCategoryService>();
+            services.AddScoped<IAdminDiscountService, AdminDiscountService>();
+            services.AddScoped<IAdminProducerService, AdminProducerService>();
+            services.AddScoped<IAdminProductService, AdminProductService>();
             services.AddScoped<IAdminUserService, AdminUserService>();
         }
 

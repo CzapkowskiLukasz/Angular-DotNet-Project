@@ -9,16 +9,18 @@ namespace MVC_Project.Controllers
     [Route("[controller]")]
     public class AdminController : ControllerBase
     {
-        private readonly IAdminProductService _productService;
-        private readonly IAdminProducerService _producerService;
         private readonly IAdminCategoryService _categoryService;
+        private readonly IAdminDiscountService _discountService;
+        private readonly IAdminProducerService _producerService;
+        private readonly IAdminProductService _productService;
         private readonly IAdminUserService _userService;
 
-        public AdminController(IAdminProductService productService, IAdminProducerService producerService, IAdminCategoryService categoryService, IAdminUserService userService)
+        public AdminController(IAdminCategoryService categoryService, IAdminDiscountService discountService, IAdminProducerService producerService, IAdminProductService productService, IAdminUserService userService)
         {
-            _productService = productService;
-            _producerService = producerService;
             _categoryService = categoryService;
+            _discountService = discountService;
+            _producerService = producerService;
+            _productService = productService;
             _userService = userService;
         }
 
@@ -73,6 +75,14 @@ namespace MVC_Project.Controllers
         public async Task<IActionResult> GetUserListAsync()
         {
             var result = await _userService.GetListAsync();
+
+            return Ok(result.Response);
+        }
+
+        [HttpGet("discounts")]
+        public async Task<IActionResult> GetDiscountListAsync()
+        {
+            var result = await _discountService.GetListAsync();
 
             return Ok(result.Response);
         }

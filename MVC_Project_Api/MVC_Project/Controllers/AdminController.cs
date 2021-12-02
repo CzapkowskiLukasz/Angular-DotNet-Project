@@ -51,6 +51,14 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("producers-dropdown")]
+        public async Task<IActionResult> GetProducersDropdownListAsync()
+        {
+            var result = await _producerService.GetProducersListAsync();
+
+            return Ok(result.Response);
+        }
+
         [HttpGet("categories")]
         public async Task<IActionResult> GetCategoryListAsync()
         {

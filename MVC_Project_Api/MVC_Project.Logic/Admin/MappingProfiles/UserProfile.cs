@@ -9,7 +9,9 @@ namespace MVC_Project.Logic.Global.MappingProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, AdminUserListItem>();
+            CreateMap<User, AdminUserListItem>()
+                .ForMember(dest => dest.UserId, opt =>
+                   opt.MapFrom(src => src.Id));
 
             CreateMap<List<User>, AdminGetUserListResponse>()
                 .ForMember(dest => dest.Users, opt =>

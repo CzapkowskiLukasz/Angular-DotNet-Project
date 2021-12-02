@@ -11,5 +11,6 @@ namespace MVC_Project.Domain.Entities
         public int CountryId { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+        public virtual Country Country { get; set; }
     }
 }

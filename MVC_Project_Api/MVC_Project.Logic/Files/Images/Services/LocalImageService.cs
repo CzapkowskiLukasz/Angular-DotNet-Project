@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Files.Images.Interfaces;
-using MVC_Project.Logic.Responses;
+using MVC_Project.Logic.Global.Responses;
 using System.IO;
 using System.Threading.Tasks;
 

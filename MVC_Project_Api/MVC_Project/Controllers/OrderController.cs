@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Project.Logic.Interfaces;
+using MVC_Project.Logic.Warehouse.Interfaces;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Controllers

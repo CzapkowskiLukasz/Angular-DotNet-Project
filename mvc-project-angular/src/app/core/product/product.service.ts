@@ -21,4 +21,8 @@ export class ProductService {
   getAdminList(): Observable<any> {
     return this.http.get<ProductListItem[]>(environment.api_url + '/admin/products');
   }
+
+  add(newProduct):Observable<any>{
+    return this.http.post<any>(environment.api_url + '/admin/add-product', newProduct);
+  }
 }

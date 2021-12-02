@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AdminProductCreateComponent } from '../product/admin-product-create/admin-product-create.component';
+import { AdminProductListComponent } from '../product/admin-product-list/admin-product-list.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -8,24 +10,28 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  card: string;
+  @ViewChild(AdminProductListComponent) productListComponent: AdminProductListComponent;
+
+  mainComponent: string;
+  secondComponent: string;
 
   itemForDeleteName: string;
 
   count: number;
   showCart: boolean;
 
-  productBookmark : boolean;
-  userBookmark : boolean;
-  bargainBookmark : boolean;
-  producerBookmark : boolean;
+  productBookmark: boolean;
+  userBookmark: boolean;
+  bargainBookmark: boolean;
+  producerBookmark: boolean;
   countryBookmark: boolean;
   deliveryBookmark: boolean;
 
   constructor() {
     this.count = 0;
     this.showCart = false;
-    this.card = 'statistics';
+    this.mainComponent = 'products';
+    this.secondComponent = 'statistics';
     this.productBookmark = true;
     this.userBookmark = false;
     this.bargainBookmark = false;
@@ -42,24 +48,25 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onOpenCreateProductCard() {
-    this.card = 'addProduct';
+    this.secondComponent = 'addProduct';
   }
 
   onOpenUserInfoCard() {
-    this.card = 'userInfo';
+    this.secondComponent = 'userInfo';
   }
 
-  onOpenCreateVoucher(){
-    this.card = 'addVoucher';
+  onOpenCreateVoucher() {
+    this.secondComponent = 'addVoucher';
   }
 
   onCreateProduct() {
+    this.productListComponent.fetchProducts();
     this.onCancelCard();
   }
 
   onOpenDeleteProductConfirm(id) {
     this.itemForDeleteName = `product with id = ${id}`;
-    this.card = 'delete';
+    this.secondComponent = 'delete';
   }
 
   onDelete() {
@@ -67,10 +74,11 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onCancelCard() {
-    this.card = 'statistics';
+    this.secondComponent = 'statistics';
   }
 
-  showUsers(){
+  showUsers() {
+    this.mainComponent = 'users';
     this.productBookmark = false;
     this.userBookmark = true;
     this.bargainBookmark = false;
@@ -79,7 +87,8 @@ export class AdminDashboardComponent implements OnInit {
     this.deliveryBookmark = false;
   }
 
-  showProducts(){
+  showProducts() {
+    this.mainComponent = 'products';
     this.productBookmark = true;
     this.userBookmark = false;
     this.bargainBookmark = false;
@@ -88,7 +97,8 @@ export class AdminDashboardComponent implements OnInit {
     this.deliveryBookmark = false;
   }
 
-  showBargains(){
+  showBargains() {
+    this.mainComponent = 'bargains';
     this.productBookmark = false;
     this.userBookmark = false;
     this.bargainBookmark = true;
@@ -97,7 +107,8 @@ export class AdminDashboardComponent implements OnInit {
     this.deliveryBookmark = false;
   }
 
-  showProducers(){
+  showProducers() {
+    this.mainComponent = 'producers';
     this.productBookmark = false;
     this.userBookmark = false;
     this.bargainBookmark = false;
@@ -106,7 +117,8 @@ export class AdminDashboardComponent implements OnInit {
     this.deliveryBookmark = false;
   }
 
-  showCountries(){
+  showCountries() {
+    this.mainComponent = 'countries';
     this.productBookmark = false;
     this.userBookmark = false;
     this.bargainBookmark = false;
@@ -115,7 +127,8 @@ export class AdminDashboardComponent implements OnInit {
     this.deliveryBookmark = false;
   }
 
-  showDelivery(){
+  showDelivery() {
+    this.mainComponent = 'deliveries';
     this.productBookmark = false;
     this.userBookmark = false;
     this.bargainBookmark = false;

@@ -10,13 +10,15 @@ using MVC_Project.Api.Middlewares;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic;
+using MVC_Project.Logic.Admin.Interfaces;
+using MVC_Project.Logic.Admin.Services;
 using MVC_Project.Logic.Files.Images.Interfaces;
 using MVC_Project.Logic.Files.Images.Services;
-using MVC_Project.Logic.Interfaces;
-using MVC_Project.Logic.Products.Interfaces;
-using MVC_Project.Logic.Products.Services;
-using MVC_Project.Logic.Services;
+using MVC_Project.Logic.Global.Interfaces;
+using MVC_Project.Logic.Global.Services;
 using MVC_Project.Logic.Settings;
+using MVC_Project.Logic.Warehouse.Interfaces;
+using MVC_Project.Logic.Warehouse.Services;
 
 namespace MVC_Project
 {
@@ -33,10 +35,10 @@ namespace MVC_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
-                options.AddDefaultPolicy( builder => builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .WithOrigins("http://localhost:4200"))
+                options.AddDefaultPolicy(builder => builder
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .WithOrigins("http://localhost:4200"))
             );
 
 
@@ -54,6 +56,7 @@ namespace MVC_Project
             services.AddScoped<IOrderService, OrderService>();
 
             services.AddScoped<IAdminProductService, AdminProductService>();
+            services.AddScoped<IAdminProducerService, AdminProducerService>();
 
             services.AddControllers();
 

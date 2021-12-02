@@ -449,7 +449,10 @@ namespace MVC_Project.Domain.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("ProducerId");
 
@@ -967,11 +970,13 @@ namespace MVC_Project.Domain.Migrations
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Producer", b =>
                 {
-                    b.HasOne("MVC_Project.Domain.Entities.Country", null)
+                    b.HasOne("MVC_Project.Domain.Entities.Country", "Country")
                         .WithMany("Producers")
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("Producer_Country_FK")
                         .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("MVC_Project.Domain.Entities.Product", b =>

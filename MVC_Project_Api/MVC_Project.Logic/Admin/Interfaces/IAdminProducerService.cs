@@ -7,5 +7,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
     public interface IAdminProducerService
     {
         public Task<HandleResult<AdminGetProducerListResponse>> GetProducersListAsync();
+
+        public Task<HandleResult<AdminGetProducerDropdownListResponse>> GetDropdownListAsync();
     }
 }

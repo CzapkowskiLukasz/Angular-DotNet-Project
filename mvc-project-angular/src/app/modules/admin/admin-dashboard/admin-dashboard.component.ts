@@ -136,4 +136,14 @@ export class AdminDashboardComponent implements OnInit {
     this.countryBookmark = false;
     this.deliveryBookmark = true;
   }
+
+  showCategories() {
+    this.mainComponent = 'categories';
+    this.productBookmark = false;
+    this.userBookmark = false;
+    this.bargainBookmark = false;
+    this.producerBookmark = false;
+    this.countryBookmark = false;
+    this.deliveryBookmark = true;
+  }
 }

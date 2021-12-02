@@ -37,6 +37,7 @@ import { DiscountListComponent } from './modules/admin/discount/discount-list/di
 import { ProducersAddComponent } from './modules/admin/producers/producers-add/producers-add.component';
 import { ProductCreateDiscountComponent } from './modules/admin/product-create-discount/product-create-discount.component';
 import { CategoryListComponent } from './modules/admin/category/category-list/category-list.component';
+import { CountryCreateComponent } from './modules/admin/countries/country-create/country-create.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -73,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountListComponent,
     ProducersAddComponent,
     ProductCreateDiscountComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CountryCreateComponent
   ],
   imports: [
     BrowserModule,

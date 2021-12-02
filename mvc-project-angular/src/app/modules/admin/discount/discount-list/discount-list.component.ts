@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DiscountService } from 'src/app/core/discount/discount.service';
+import { DiscountListItem } from 'src/app/shared/models/discount-list-item';
 
 @Component({
   selector: 'app-discount-list',
@@ -8,9 +10,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DiscountListComponent implements OnInit {
 
-  constructor() { }
+  discounts: DiscountListItem[] = [];
+
+  constructor(private discountService: DiscountService) { }
 
   ngOnInit(): void {
+    this.fetchDiscounts();
   }
 
+  fetchDiscounts() {
+    this.discountService.getAdminList().subscribe(result =>
+      this.discounts = result.discounts);
+  }
 }

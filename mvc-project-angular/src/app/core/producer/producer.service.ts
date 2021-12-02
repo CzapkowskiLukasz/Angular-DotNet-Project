@@ -14,4 +14,8 @@ export class ProducerService {
   getAdminList(): Observable<any> {
     return this.http.get<ProducerListItem[]>(environment.api_url + '/admin/producers');
   }
+
+  getDropdownList():Observable<any>{
+    return this.http.get<any[]>(environment.api_url + '/admin/producers-dropdown');
+  }
 }

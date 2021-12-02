@@ -16,6 +16,12 @@ namespace MVC_Project.Logic.Global.MappingProfiles
             CreateMap<List<Producer>, AdminGetProducerListResponse>()
                 .ForMember(dest => dest.Producers, opt =>
                    opt.MapFrom(src => src));
+
+            CreateMap<Producer, AdminProducerDropdownListItem>();
+
+            CreateMap<List<Producer>, AdminGetProducerDropdownListResponse>()
+                .ForMember(dest => dest.Producers, opt =>
+                   opt.MapFrom(src => src));
         }
     }
 }

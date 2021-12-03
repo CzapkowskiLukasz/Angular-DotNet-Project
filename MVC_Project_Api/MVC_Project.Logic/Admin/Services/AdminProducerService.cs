@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
+using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Admin.Interfaces;
+using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using MVC_Project.Logic.Commons;
 using System.Threading.Tasks;
@@ -17,6 +19,35 @@ namespace MVC_Project.Logic.Admin.Services
         {
             _dataContext = dataContext;
             _mapper = mapper;
+        }
+
+        public async Task<HandleResult<AddProducerResponse>> AddAsync(AddProducerRequest request)
+        {
+            var result = new HandleResult<AddProducerResponse>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
+
+            var country = await _dataContext.Countries.SingleOrDefaultAsync(x => x.CountryId == request.CountryId);
+
+            if (country == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Country not found", 404);
+            }
+            else
+            {
+                var producer = _mapper.Map<Producer>(request);
+
+                await _dataContext.Producers.AddAsync(producer);
+                await _dataContext.SaveChangesAsync();
+
+                result.Response = _mapper.Map<AddProducerResponse>(producer);
+            }
+
+            return result;
         }
 
         public async Task<HandleResult<AdminGetProducerDropdownListResponse>> GetDropdownListAsync()

@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryService {
 
+  baseAdminUrl = `${environment.api_url}/admin/category`;
+
   constructor(private http: HttpClient) { }
 
   getAdminList(): Observable<any> {
-    return this.http.get<Category[]>(environment.api_url + '/admin/categories');
+    return this.http.get<Category[]>(this.baseAdminUrl);
   }
 }

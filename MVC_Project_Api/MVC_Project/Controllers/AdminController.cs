@@ -24,7 +24,7 @@ namespace MVC_Project.Controllers
             _userService = userService;
         }
 
-        [HttpGet("products")]
+        [HttpGet("product")]
         public async Task<IActionResult> GetProductsAsync()
         {
             var result = await _productService.GetProductListAsync();
@@ -32,7 +32,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpPost("add-product")]
+        [HttpPost("product")]
         public async Task<IActionResult> AddProductAsync([FromBody] AdminAddProductRequest request)
         {
             var result = await _productService.AddProductAsync(request);
@@ -47,7 +47,7 @@ namespace MVC_Project.Controllers
             }
         }
 
-        [HttpGet("producers")]
+        [HttpGet("producer")]
         public async Task<IActionResult> GetProducersListAsync()
         {
             var result = await _producerService.GetProducersListAsync();
@@ -55,7 +55,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("producers-dropdown")]
+        [HttpGet("producer/dropdown")]
         public async Task<IActionResult> GetProducersDropdownListAsync()
         {
             var result = await _producerService.GetProducersListAsync();
@@ -63,7 +63,20 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("categories")]
+        [HttpPost("producer")]
+        public async Task<IActionResult> AddProducer([FromBody] AddProducerRequest request)
+        {
+            var result = await _producerService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
+        [HttpGet("category")]
         public async Task<IActionResult> GetCategoryListAsync()
         {
             var result = await _categoryService.GetListAsync();
@@ -71,7 +84,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("users")]
+        [HttpGet("user")]
         public async Task<IActionResult> GetUserListAsync()
         {
             var result = await _userService.GetListAsync();
@@ -79,7 +92,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("discounts")]
+        [HttpGet("discount")]
         public async Task<IActionResult> GetDiscountListAsync()
         {
             var result = await _discountService.GetListAsync();

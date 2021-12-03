@@ -84,7 +84,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("users")]
+        [HttpGet("user")]
         public async Task<IActionResult> GetUserListAsync()
         {
             var result = await _userService.GetListAsync();

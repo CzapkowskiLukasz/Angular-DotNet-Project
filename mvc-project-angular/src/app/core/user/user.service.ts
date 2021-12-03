@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  baseAdminUrl = `${environment.api_url}/admin/user`;
+
+  constructor(private http: HttpClient) { }
 
   getAdminList(): Observable<any> {
-    return this.http.get<UserListItem[]>(environment.api_url + '/admin/users');
+    return this.http.get<UserListItem[]>(this.baseAdminUrl);
   }
 }

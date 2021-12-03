@@ -39,6 +39,7 @@ import { CountryCreateComponent } from './modules/admin/countries/country-create
 import { CategoryCreateComponent } from './modules/admin/category/category-create/category-create.component';
 import { CreateDiscountComponent } from './modules/admin/discount/create-discount/create-discount.component';
 import { AddresComponent } from './shared/modules/address/addres/addres.component';
+import { AddresCreateComponent } from './shared/modules/address/addres-create/addres-create.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -77,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CountryCreateComponent,
     CategoryCreateComponent,
     CreateDiscountComponent,
-    AddresComponent
+    AddresComponent,
+    AddresCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,22 @@ export class ProfileComponent implements OnInit {
   count: number;
   showCart: boolean;
 
+  addAddress: boolean;
   constructor() {
+    this.addAddress = false;
     this.count = 0;
     this.showCart = false;
   }
 
   ngOnInit(): void {
+  }
+
+  showAddAddress() {
+    this.addAddress = true
+  }
+
+  hideAddAddress() {
+    this.addAddress = false;
   }
 
   increse() {

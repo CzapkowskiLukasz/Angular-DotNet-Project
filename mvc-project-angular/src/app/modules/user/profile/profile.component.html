@@ -1,9 +1,10 @@
+<app-addres-create *ngIf="addAddress" (cancelEvent)="hideAddAddress()"></app-addres-create>
+
 <app-navbar></app-navbar>
 
 <div style="margin-top: 60px;">
     <h1 class="mainLines"><span class="textInMainLines">{{ 'profile.title' | translate }}</span></h1>
 </div>
-
 
 <div class="mainContainer">
     <aside class="basicDiv" style="width: 300px;">
@@ -128,7 +129,7 @@
                 </g>
             </svg>
         </div>
-        <div class="profileButton" style="float: left;">
+        <div class="profileButton" style="float: left;" (click)="showAddAddress()">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
                 style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -144,7 +145,7 @@
                 </g>
             </svg>
         </div>
-        <div style="display: flex;float: right;">
+        <div style="display: flex;float: right;" >
             <div class="profileButton">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
                     style=" fill:#000000;margin-left: 6px;margin-top: 5px;">

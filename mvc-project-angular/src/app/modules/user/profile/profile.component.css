@@ -84,3 +84,11 @@ h5{
   padding: 0 10px;
   color: gray;
 }
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-producers-add',
@@ -8,9 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProducersAddComponent implements OnInit {
 
+  @Output() cancelEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  cancel() {
+    this.cancelEvent.emit();
+  }
 }

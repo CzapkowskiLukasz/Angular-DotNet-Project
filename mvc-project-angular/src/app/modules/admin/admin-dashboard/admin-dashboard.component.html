@@ -17,8 +17,8 @@
         </app-user-voucher>
         <app-discount-create *ngIf="secondComponent == 'addDiscount'"></app-discount-create>
         <app-product-create-discount></app-product-create-discount>
-        <app-producers-add></app-producers-add>
-        <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onOpenAddCountry"></app-country-create>
+        <app-producers-add *ngIf="secondComponent == 'addProducer'" (createProducerEvent)="onOpenCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
+        <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onOpenAddCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
         <app-category-create></app-category-create>
     </div>
 
@@ -164,7 +164,7 @@
         <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()"
             (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
         <app-discount-list *ngIf="mainComponent == 'bargains'"></app-discount-list>
-        <app-producers-list *ngIf="mainComponent == 'producers'"></app-producers-list>
+        <app-producers-list *ngIf="mainComponent == 'producers'" (createProducerEvent)="onOpenCreateProducer()"></app-producers-list>
         <app-country-list *ngIf="mainComponent == 'countries'" (createCountryEvent)="onOpenAddCountry()"></app-country-list>
         <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
         <app-category-list *ngIf="mainComponent == 'categories'"></app-category-list>

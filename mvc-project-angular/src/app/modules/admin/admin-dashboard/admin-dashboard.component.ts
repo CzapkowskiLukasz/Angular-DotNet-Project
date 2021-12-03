@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ProducersListComponent } from '../producers/producers-list/producers-list.component';
 import { AdminProductCreateComponent } from '../product/admin-product-create/admin-product-create.component';
 import { AdminProductListComponent } from '../product/admin-product-list/admin-product-list.component';
 
@@ -11,6 +12,8 @@ import { AdminProductListComponent } from '../product/admin-product-list/admin-p
 export class AdminDashboardComponent implements OnInit {
 
   @ViewChild(AdminProductListComponent) productListComponent: AdminProductListComponent;
+
+  @ViewChild(ProducersListComponent) producerListComponent: ProducersListComponent;
 
   mainComponent: string;
   secondComponent: string;
@@ -64,6 +67,11 @@ export class AdminDashboardComponent implements OnInit {
     this.onCancelCard();
   }
 
+  onCreateProducer() {
+    this.producerListComponent.fetchProducers();
+    this.onCancelCard();
+  }
+
   onOpenDeleteProductConfirm(id) {
     this.itemForDeleteName = `product with id = ${id}`;
     this.secondComponent = 'delete';
@@ -77,11 +85,11 @@ export class AdminDashboardComponent implements OnInit {
     this.secondComponent = 'addCategory';
   }
 
-  onOpenCreateProducer(){
+  onOpenCreateProducer() {
     this.secondComponent = 'addProducer'
   }
 
-  onOpenCreateDiscount(){
+  onOpenCreateDiscount() {
     this.secondComponent = 'addDiscount'
   }
 

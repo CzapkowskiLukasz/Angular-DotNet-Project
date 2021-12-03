@@ -7,20 +7,15 @@
 <div class="mainContainer">
     <div class="basicDiv card">
         <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
-        <app-admin-delete-confirm *ngIf="secondComponent == 'delete'" [itemName]="itemForDeleteName"
-            (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
-        <app-admin-product-create *ngIf="secondComponent == 'addProduct'" (createProductEvent)="onCreateProduct()"
-            (cancelEvent)="onCancelCard()"></app-admin-product-create>
+        <app-admin-delete-confirm *ngIf="secondComponent == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
+        <app-admin-product-create *ngIf="secondComponent == 'addProduct'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
         <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()">
         </app-user-info>
         <app-user-voucher *ngIf="secondComponent == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()">
         </app-user-voucher>
-        <app-producers-add *ngIf="secondComponent == 'addProducer'" (createProducerEvent)="onOpenCreateProducer()"
-            (cancelEvent)="onCancelCard()"></app-producers-add>
-        <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onOpenAddCountry()"
-            (cancelEvent)="onCancelCard()"></app-country-create>
-        <app-category-create *ngIf="secondComponent =='addCategory'" (createCategoryEvent)="onOpenAddCategory()"
-            (cancelEvent)="onCancelCard()"></app-category-create>
+        <app-producers-add *ngIf="secondComponent == 'addProducer'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
+        <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onOpenAddCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
+        <app-category-create *ngIf="secondComponent =='addCategory'" (createCategoryEvent)="onOpenAddCategory()" (cancelEvent)="onCancelCard()"></app-category-create>
         <app-create-discount *ngIf="secondComponent =='addDiscount'" (cancelEvent)="onCancelCard()">
         </app-create-discount>
     </div>
@@ -30,8 +25,7 @@
         <div class="bookmarkContainer">
             <div [ngClass]="mainComponent == 'products' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducts()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -49,8 +43,7 @@
 
             <div [ngClass]="mainComponent == 'users' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showUsers()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -68,8 +61,7 @@
 
             <div [ngClass]="mainComponent == 'bargains' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showBargains()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -87,8 +79,7 @@
 
             <div [ngClass]="mainComponent == 'producers' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showProducers()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -106,8 +97,7 @@
 
             <div [ngClass]="mainComponent == 'countries' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showCountries()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -125,8 +115,7 @@
 
             <div [ngClass]="mainComponent == 'deliveries' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showDelivery()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -144,8 +133,7 @@
 
             <div [ngClass]="mainComponent == 'categories' ? 'active' : ''">
                 <div class="buttonBase buttonCircle buttonWhite" style="margin-top: 1px;" (click)="showCategories()">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -162,11 +150,9 @@
             </div>
         </div>
 
-        <app-admin-product-list *ngIf="mainComponent == 'products'" (createProductEvent)="onOpenCreateProductCard()"
-            (deleteProductEvent)="onOpenDeleteProductConfirm($event)" (createDiscountEvent)="onOpenCreateDiscount()">
+        <app-admin-product-list *ngIf="mainComponent == 'products'" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)" (createDiscountEvent)="onOpenCreateDiscount()">
         </app-admin-product-list>
-        <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()"
-            (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
+        <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
         <app-discount-list *ngIf="mainComponent == 'bargains'"></app-discount-list>
         <app-producers-list *ngIf="mainComponent == 'producers'" (createProducerEvent)="onOpenCreateProducer()">
         </app-producers-list>
@@ -179,8 +165,7 @@
 
         <div style="display: flex;float: right;">
             <div class="buttonBase buttonCircle buttonWhite" style="margin-left: 6px;margin-right: 6px;">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -196,8 +181,7 @@
             </div>
 
             <div class="buttonBase buttonCircle buttonWhite">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"

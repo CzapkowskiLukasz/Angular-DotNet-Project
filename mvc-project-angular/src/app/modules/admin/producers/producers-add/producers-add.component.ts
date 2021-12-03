@@ -33,13 +33,35 @@ export class ProducersAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchCountries();
+  }
+
+  submit() {
+    let newProducer = {
+      name: this.form.get('name').value,
+      countryId: this.countryId
+    };
+
+    this.producerService.add(newProducer).subscribe(() =>
+      this.createProducerEvent.emit(),
+      err => console.log(err));
   }
 
   cancel() {
     this.cancelEvent.emit();
   }
 
-  private fetchCountries(){
-    this.countryService.get
+  selectCountry(id) {
+    this.countryId = id;
+  }
+
+  private fetchCountries() {
+    this.countryService.getDropdownList().subscribe(result =>
+      this.countryList = result.countries.map(c => ({
+        text: c.name,
+        value: c.countryId
+      })),
+      err => console.log(err),
+      () => this.isCountriesLoaded = true);
   }
 }

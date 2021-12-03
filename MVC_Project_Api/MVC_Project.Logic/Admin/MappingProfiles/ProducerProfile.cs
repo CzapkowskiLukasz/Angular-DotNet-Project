@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using System.Collections.Generic;
 
@@ -22,6 +23,10 @@ namespace MVC_Project.Logic.Global.MappingProfiles
             CreateMap<List<Producer>, AdminGetProducerDropdownListResponse>()
                 .ForMember(dest => dest.Producers, opt =>
                    opt.MapFrom(src => src));
+
+            CreateMap<AddProducerRequest, Producer>();
+
+            CreateMap<Producer, AddProducerResponse>();
         }
     }
 }

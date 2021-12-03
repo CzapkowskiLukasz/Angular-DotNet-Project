@@ -76,7 +76,7 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
-        [HttpGet("categories")]
+        [HttpGet("category")]
         public async Task<IActionResult> GetCategoryListAsync()
         {
             var result = await _categoryService.GetListAsync();

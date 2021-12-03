@@ -109,5 +109,13 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpGet("country/dropdown")]
+        public async Task<IActionResult> GetCountryDropdownListAsync()
+        {
+            var result = await _countryService.GetDropdownListAsync();
+
+            return Ok(result.Response);
+        }
     }
 }

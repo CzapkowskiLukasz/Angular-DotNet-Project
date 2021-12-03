@@ -20,6 +20,7 @@ p {
 .addressContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: auto;
 }
 
@@ -32,7 +33,6 @@ p {
 }
 
 .addressNavigation {
-  margin-top: 31px;
   display: block;
   cursor: pointer;
 }

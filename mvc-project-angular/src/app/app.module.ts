@@ -29,7 +29,6 @@ import { UserListComponent } from './modules/admin/user/user-list/user-list.comp
 import { UserInfoComponent } from './modules/admin/user/user-info/user-info.component';
 import { CategoriesComponent } from './modules/product/categories/categories.component';
 import { UserVoucherComponent } from './modules/admin/user/user-voucher/user-voucher.component';
-import { DiscountCreateComponent } from './modules/admin/user/discount-create/discount-create.component';
 import { ProducersListComponent } from './modules/admin/producers/producers-list/producers-list.component';
 import { CountryListComponent } from './modules/admin/countries/country-list/country-list.component';
 import { DeliveryListComponent } from './modules/admin/delivery/delivery-list/delivery-list.component';
@@ -38,6 +37,7 @@ import { ProducersAddComponent } from './modules/admin/producers/producers-add/p
 import { CategoryListComponent } from './modules/admin/category/category-list/category-list.component';
 import { CountryCreateComponent } from './modules/admin/countries/country-create/country-create.component';
 import { CategoryCreateComponent } from './modules/admin/category/category-create/category-create.component';
+import { CreateDiscountComponent } from './modules/admin/discount/create-discount/create-discount.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,7 +67,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserInfoComponent,
     CategoriesComponent,
     UserVoucherComponent,
-    DiscountCreateComponent,
     ProducersListComponent,
     CountryListComponent,
     DeliveryListComponent,
@@ -75,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProducersAddComponent,
     CategoryListComponent,
     CountryCreateComponent,
-    CategoryCreateComponent
+    CategoryCreateComponent,
+    CreateDiscountComponent
   ],
   imports: [
     BrowserModule,

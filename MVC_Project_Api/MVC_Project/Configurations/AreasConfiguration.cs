@@ -21,6 +21,7 @@ namespace MVC_Project.Api.Configurations
         public static void AddAdminArea(this IServiceCollection services)
         {
             services.AddScoped<IAdminCategoryService, AdminCategoryService>();
+            services.AddScoped<IAdminCountryService, AdminCountryService>();
             services.AddScoped<IAdminDiscountService, AdminDiscountService>();
             services.AddScoped<IAdminProducerService, AdminProducerService>();
             services.AddScoped<IAdminProductService, AdminProductService>();

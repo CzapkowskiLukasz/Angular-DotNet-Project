@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class DiscountService {
 
+  baseAdminUrl = `${environment.api_url}/admin/discount`;
+
   constructor(private http: HttpClient) { }
 
   getAdminList(): Observable<any> {
-    return this.http.get<DiscountListItem[]>(environment.api_url + '/admin/discounts');
+    return this.http.get<DiscountListItem[]>(this.baseAdminUrl);
   }
 }

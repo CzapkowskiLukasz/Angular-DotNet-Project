@@ -92,7 +92,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("discounts")]
+        [HttpGet("discount")]
         public async Task<IActionResult> GetDiscountListAsync()
         {
             var result = await _discountService.GetListAsync();

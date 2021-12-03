@@ -47,7 +47,7 @@ namespace MVC_Project.Controllers
             }
         }
 
-        [HttpGet("producers")]
+        [HttpGet("producer")]
         public async Task<IActionResult> GetProducersListAsync()
         {
             var result = await _producerService.GetProducersListAsync();
@@ -55,12 +55,25 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpGet("producers-dropdown")]
+        [HttpGet("producer/dropdown")]
         public async Task<IActionResult> GetProducersDropdownListAsync()
         {
             var result = await _producerService.GetProducersListAsync();
 
             return Ok(result.Response);
+        }
+
+        [HttpPost("producer/add")]
+        public async Task<IActionResult> AddProducer([FromBody] AddProducerRequest request)
+        {
+            var result = await _producerService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
         [HttpGet("categories")]
@@ -85,19 +98,6 @@ namespace MVC_Project.Controllers
             var result = await _discountService.GetListAsync();
 
             return Ok(result.Response);
-        }
-
-        [HttpPost("producer-add")]
-        public async Task<IActionResult> AddProducer([FromBody] AddProducerRequest request)
-        {
-            var result = await _producerService.AddAsync(request);
-
-            if (result.ErrorResponse == null)
-            {
-                return Ok(result.Response);
-            }
-
-            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
     }
 }

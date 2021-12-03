@@ -9,13 +9,15 @@ import { environment } from 'src/environments/environment';
 })
 export class ProducerService {
 
+  baseAdminUrl = `${environment.api_url}/admin/producer`;
+
   constructor(private http: HttpClient) { }
 
   getAdminList(): Observable<any> {
-    return this.http.get<ProducerListItem[]>(environment.api_url + '/admin/producers');
+    return this.http.get<ProducerListItem[]>(this.baseAdminUrl);
   }
 
-  getDropdownList():Observable<any>{
-    return this.http.get<any[]>(environment.api_url + '/admin/producers-dropdown');
+  getDropdownList(): Observable<any> {
+    return this.http.get<any[]>(this.baseAdminUrl + '/dropdown');
   }
 }

@@ -20,4 +20,8 @@ export class ProducerService {
   getDropdownList(): Observable<any> {
     return this.http.get<any[]>(this.baseAdminUrl + '/dropdown');
   }
+
+  add(newProducer): Observable<any> {
+    return this.http.post<any>(this.baseAdminUrl, newProducer);
+  }
 }

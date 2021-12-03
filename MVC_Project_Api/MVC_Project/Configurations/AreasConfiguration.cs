@@ -16,6 +16,7 @@ namespace MVC_Project.Api.Configurations
             services.AddAutoMapper(typeof(LogicEntryPoint).Assembly);
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IContinentService, ContinentService>();
         }
 
         public static void AddAdminArea(this IServiceCollection services)

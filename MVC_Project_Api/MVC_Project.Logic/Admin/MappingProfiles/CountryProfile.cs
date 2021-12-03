@@ -9,9 +9,20 @@ namespace MVC_Project.Logic.Global.MappingProfiles
     {
         public CountryProfile()
         {
+            // Get list
+
             CreateMap<Country, AdminCountryListItem>()
                 .ForMember(dest => dest.ContinentName, opt =>
                    opt.MapFrom(src => src.Continent.Name));
+
+            CreateMap<List<Country>, AdminGetCountryListResponse>()
+                .ForMember(dest => dest.Countries, opt =>
+                   opt.MapFrom(src => src));
+
+
+            // Get dropdown list
+
+            CreateMap<Country, AdminCountryDropdownListItem>();
 
             CreateMap<List<Country>, AdminGetCountryListResponse>()
                 .ForMember(dest => dest.Countries, opt =>

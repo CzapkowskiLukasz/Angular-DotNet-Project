@@ -69,6 +69,10 @@ export class AdminDashboardComponent implements OnInit {
     this.secondComponent = 'delete';
   }
 
+  onOpenAddCountry() {
+    this.secondComponent = 'addCountry';
+  }
+
   onDelete() {
     this.onCancelCard();
   }

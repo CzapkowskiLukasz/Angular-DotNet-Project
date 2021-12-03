@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-country-list',
@@ -8,9 +8,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CountryListComponent implements OnInit {
 
+  @Output() createCountryEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addCountry(){
+    this.createCountryEvent.emit()
   }
 
 }

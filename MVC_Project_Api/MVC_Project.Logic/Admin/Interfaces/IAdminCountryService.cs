@@ -7,5 +7,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
     public interface IAdminCountryService
     {
         public Task<HandleResult<AdminGetCountryListResponse>> GetListAsync();
+
+        public Task<HandleResult<AdminGetCountryDropdownListResponse>> GetDropdownListAsync();
     }
 }

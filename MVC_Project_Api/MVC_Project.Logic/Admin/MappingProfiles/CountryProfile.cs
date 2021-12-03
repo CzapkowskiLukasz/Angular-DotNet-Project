@@ -24,7 +24,7 @@ namespace MVC_Project.Logic.Global.MappingProfiles
 
             CreateMap<Country, AdminCountryDropdownListItem>();
 
-            CreateMap<List<Country>, AdminGetCountryListResponse>()
+            CreateMap<List<Country>, AdminGetCountryDropdownListResponse>()
                 .ForMember(dest => dest.Countries, opt =>
                    opt.MapFrom(src => src));
         }

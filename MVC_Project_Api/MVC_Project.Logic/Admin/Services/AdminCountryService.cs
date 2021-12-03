@@ -19,6 +19,17 @@ namespace MVC_Project.Logic.Admin.Services
             _mapper = mapper;
         }
 
+        public async Task<HandleResult<AdminGetCountryDropdownListResponse>> GetDropdownListAsync()
+        {
+            var result = new HandleResult<AdminGetCountryDropdownListResponse>();
+
+            var countries = await _dataContext.Countries.ToListAsync();
+
+            result.Response = _mapper.Map<AdminGetCountryDropdownListResponse>(countries);
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetCountryListResponse>> GetListAsync()
         {
             var result = new HandleResult<AdminGetCountryListResponse>();

@@ -16,4 +16,8 @@ export class CountryService {
   getAdminList(): Observable<any> {
     return this.http.get<CountryListItem[]>(this.baseAdminUrl);
   }
+
+  getDropdownList(): Observable<any> {
+    return this.http.get<CountryListItem[]>(this.baseAdminUrl + '/dropdown');
+  }
 }

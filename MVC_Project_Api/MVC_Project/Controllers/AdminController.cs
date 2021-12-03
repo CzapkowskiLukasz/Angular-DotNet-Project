@@ -63,7 +63,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpPost("producer/add")]
+        [HttpPost("producer")]
         public async Task<IActionResult> AddProducer([FromBody] AddProducerRequest request)
         {
             var result = await _producerService.AddAsync(request);

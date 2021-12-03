@@ -24,7 +24,7 @@ namespace MVC_Project.Controllers
             _userService = userService;
         }
 
-        [HttpGet("products")]
+        [HttpGet("product")]
         public async Task<IActionResult> GetProductsAsync()
         {
             var result = await _productService.GetProductListAsync();

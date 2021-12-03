@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class ProductService {
 
   baseUrl = `${environment.api_url}/product`;
-  baseAdminUrl=`${environment.api_url}/admin/product`;
+  baseAdminUrl = `${environment.api_url}/admin/product`;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class ProductService {
     return this.http.get<ProductListItem[]>(this.baseAdminUrl);
   }
 
-  add(newProduct):Observable<any>{
-    return this.http.post<any>(environment.api_url + '/admin/add-product', newProduct);
+  add(newProduct): Observable<any> {
+    return this.http.post<any>(this.baseAdminUrl, newProduct);
   }
 }

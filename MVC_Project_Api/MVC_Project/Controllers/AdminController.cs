@@ -32,7 +32,7 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
-        [HttpPost("add-product")]
+        [HttpPost("product")]
         public async Task<IActionResult> AddProductAsync([FromBody] AdminAddProductRequest request)
         {
             var result = await _productService.AddProductAsync(request);

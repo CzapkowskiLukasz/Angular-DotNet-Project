@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-category-list',
@@ -8,9 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
 
+  @Output() createCategoryEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  addCategory(){
+    this.createCategoryEvent.emit()
+  }
 }

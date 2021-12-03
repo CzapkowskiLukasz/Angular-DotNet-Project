@@ -73,8 +73,16 @@ export class AdminDashboardComponent implements OnInit {
     this.secondComponent = 'addCountry';
   }
 
+  onOpenAddCategory() {
+    this.secondComponent = 'addCategory';
+  }
+
   onOpenCreateProducer(){
     this.secondComponent = 'addProducer'
+  }
+
+  onOpenCreateDiscount(){
+    this.secondComponent = 'addDiscount'
   }
 
   onDelete() {

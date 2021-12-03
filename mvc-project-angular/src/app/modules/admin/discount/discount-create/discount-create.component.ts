@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-category-create',
-  templateUrl: './category-create.component.html',
-  styleUrls: ['./category-create.component.css'],
+  selector: 'app-discount-create',
+  templateUrl: './discount-create.component.html',
+  styleUrls: ['./discount-create.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CategoryCreateComponent implements OnInit {
+export class DiscountCreateComponent implements OnInit {
 
   @Output() cancelEvent = new EventEmitter();
 

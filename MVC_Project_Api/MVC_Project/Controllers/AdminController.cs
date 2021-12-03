@@ -86,5 +86,18 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpPost("producer-add")]
+        public async Task<IActionResult> AddProducer([FromBody] AddProducerRequest request)
+        {
+            var result = await _producerService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
     }
 }

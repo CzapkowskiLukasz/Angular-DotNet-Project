@@ -1,19 +1,19 @@
 <h4 class="cardLines"><span class="cardTextInLines">New Country</span></h4>
 
-<form>
+<form [formGroup]="form">
     <div class="form__div">
         <input type="text" class="form__input" formControlName="name" placeholder=" ">
         <label for="name" class="form__label">Name</label>
     </div>
 
     <div class="form__div">
-        <input type="text" class="form__input" formControlName="description" placeholder=" ">
+        <input #continentInput type="text" class="form__input" formControlName="description" placeholder=" ">
         <label for="description" class="form__label">Continent</label>
-        <app-filtered-dropdown></app-filtered-dropdown>
+        <app-filtered-dropdown *ngIf="isContinentsLoaded" [inputElement]="continentInput" [list]="continentList" (selectIdEvent)="selectContinent($event)"></app-filtered-dropdown>
     </div>
 
     <div class="formButtonContainer">
-        <div class="buttonBase buttonText buttonColor formButton">
+        <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
             Create
         </div>
         <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">

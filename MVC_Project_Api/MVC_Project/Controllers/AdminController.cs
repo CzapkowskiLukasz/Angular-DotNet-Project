@@ -110,6 +110,19 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpPost("country")]
+        public async Task<IActionResult> AddCountry([FromBody] AddCountryRequest request)
+        {
+            var result = await _countryService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("country/dropdown")]
         public async Task<IActionResult> GetCountryDropdownListAsync()
         {

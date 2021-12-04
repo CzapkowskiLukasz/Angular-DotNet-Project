@@ -43,6 +43,7 @@ import { AddresCreateComponent } from './shared/modules/address/addres-create/ad
 import { CartCheckoutComponent } from './modules/cart/cart-checkout/cart-checkout.component';
 import { CartElementComponent } from './shared/modules/cart-element/cart-element.component';
 import { CartCheckoutElementComponent } from './shared/modules/cart-checkout-element/cart-checkout-element.component';
+import { DeliveryOptionsComponent } from './shared/modules/delivery-options/delivery-options.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,7 +86,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddresCreateComponent,
     CartCheckoutComponent,
     CartElementComponent,
-    CartCheckoutElementComponent
+    CartCheckoutElementComponent,
+    DeliveryOptionsComponent
   ],
   imports: [
     BrowserModule,

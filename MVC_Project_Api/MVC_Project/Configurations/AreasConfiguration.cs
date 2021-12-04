@@ -2,6 +2,8 @@
 using MVC_Project.Logic;
 using MVC_Project.Logic.Admin.Interfaces;
 using MVC_Project.Logic.Admin.Services;
+using MVC_Project.Logic.Customer.Interfaces;
+using MVC_Project.Logic.Customer.Services;
 using MVC_Project.Logic.Global.Interfaces;
 using MVC_Project.Logic.Global.Services;
 using MVC_Project.Logic.Warehouse.Interfaces;
@@ -33,6 +35,19 @@ namespace MVC_Project.Api.Configurations
         {
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
+        }
+
+        public static void AddCustomerArea(this IServiceCollection services)
+        {
+            services.AddScoped<ICustomerProductService, CustomerProductService>();
+        }
+
+        public static void AddAreas(this IServiceCollection services)
+        {
+            services.AddGlobalArea();
+            services.AddAdminArea();
+            services.AddWarehouseArea();
+            services.AddCustomerArea();
         }
     }
 }

@@ -20,9 +20,7 @@ namespace MVC_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDataContext(Configuration);
-            services.AddGlobalArea();
-            services.AddAdminArea();
-            services.AddWarehouseArea();
+            services.AddAreas();
             services.AddFiles(Configuration);
 
             services.AddControllers();

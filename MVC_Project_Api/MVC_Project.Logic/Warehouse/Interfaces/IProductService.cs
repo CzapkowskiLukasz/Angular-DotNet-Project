@@ -1,5 +1,4 @@
 ﻿using MVC_Project.Logic.Commons;
-using MVC_Project.Logic.Customer.Responses;
 using MVC_Project.Logic.Warehouse.Requests;
 using MVC_Project.Logic.Warehouse.Responses;
 using System.Threading.Tasks;
@@ -16,6 +15,6 @@ namespace MVC_Project.Logic.Warehouse.Interfaces
 
         public Task<HandleResult<string>> AddProductAsync(AddProductRequest request);
 
-        public Task<HandleResult<GetBestsellersResponse>> GetBestsellersAsync(int count);
+        public Task<HandleResult<GetProductListByOrderResponse>> GetListByOrder(int orderId);
     }
 }

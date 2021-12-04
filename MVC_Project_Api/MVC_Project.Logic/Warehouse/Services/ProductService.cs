@@ -3,12 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Commons;
-using MVC_Project.Logic.Customer.Responses;
-using MVC_Project.Logic.Global.Responses;
 using MVC_Project.Logic.Warehouse.Interfaces;
 using MVC_Project.Logic.Warehouse.Requests;
 using MVC_Project.Logic.Warehouse.Responses;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Logic.Warehouse.Services
@@ -99,17 +96,31 @@ namespace MVC_Project.Logic.Warehouse.Services
             return result;
         }
 
-        public async Task<HandleResult<GetBestsellersResponse>> GetBestsellersAsync(int count)
+        public async Task<HandleResult<GetProductListByOrderResponse>> GetListByOrder(int orderId)
         {
-            var result = new HandleResult<GetBestsellersResponse>();
+            var result = new HandleResult<GetProductListByOrderResponse>();
 
-            var products = await _dataContext.Products
-                .Include(x => x.Producer).ToListAsync();
+            var order = await _dataContext.Orders.SingleOrDefaultAsync(x => x.OrderId == orderId);
 
-            var bestsellers = products.OrderByDescending(x => x.SoldCount).Take(count).ToList();
+            if (order == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Order not found", 404);
+                return result;
+            }
 
-            result.Response = _mapper.Map<GetBestsellersResponse>(bestsellers);
+            var cart = await _dataContext.Carts.Include(x => x.CartProducts)
+                .ThenInclude(x => x.Product)
+                .SingleOrDefaultAsync(x => x.CartId == order.CartId);
 
+            if (cart == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Cart not found", 404);
+                return result;
+            }
+
+            var products = _mapper.Map<GetProductListByOrderResponse>(cart);
+
+            result.Response = products;
             return result;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
+using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using System.Collections.Generic;
 
@@ -27,6 +28,12 @@ namespace MVC_Project.Logic.Global.MappingProfiles
             CreateMap<List<Country>, AdminGetCountryDropdownListResponse>()
                 .ForMember(dest => dest.Countries, opt =>
                    opt.MapFrom(src => src));
+
+            // Add
+
+            CreateMap<AddCountryRequest, Country>();
+
+            CreateMap<Country, AddCountryResponse>();
         }
     }
 }

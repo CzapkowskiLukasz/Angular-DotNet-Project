@@ -24,122 +24,17 @@
         <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
             <div class="cartDiv" *ngIf="showCart">
                 <h3 class="cartLine"><span class="cartTitle">{{ 'home.cart.name' | translate }}</span></h3>
-                <p *ngIf="count==0" class="emptyCart">
+                <!-- <p *ngIf="count==0" class="emptyCart">
                     {{ 'home.cart.empty' | translate }} :(
                 </p>
                 <p *ngIf="count==0" class="emptyCart">
                     {{ 'home.cart.engage' | translate }}
-                </p>
+                </p> -->
 
-                <div *ngIf="count>0">
-                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
-                        <div class="cartProduct">
-                            <p class="cartProductName">Nazwa</p>
-                            <h3 class="cartProductLine"></h3>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Count:&nbsp;</p>
-                                    <p class="cartDescriptionVar">3</p>
-                                </div>
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
-                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
-                                    <p class="cartDescriptionText">zł</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cartPriceForItemsDiv">
-                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
-                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
-                        </div>
-                        <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
-                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
-                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
-                                    text-anchor="none" style="mix-blend-mode: normal">
-                                    <path d="M0,172v-172h172v172z" fill="none"></path>
-                                    <g fill="#df1717">
-                                        <path
-                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
-                                        </path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
-                        <div class="cartProduct">
-                            <p class="cartProductName">Nazwa</p>
-                            <h3 class="cartProductLine"></h3>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Count:&nbsp;</p>
-                                    <p class="cartDescriptionVar">3</p>
-                                </div>
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
-                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
-                                    <p class="cartDescriptionText">zł</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cartPriceForItemsDiv">
-                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
-                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
-                        </div>
-                        <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
-                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
-                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
-                                    text-anchor="none" style="mix-blend-mode: normal">
-                                    <path d="M0,172v-172h172v172z" fill="none"></path>
-                                    <g fill="#df1717">
-                                        <path
-                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
-                                        </path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
-                        <div class="cartProduct">
-                            <p class="cartProductName">Nazwa</p>
-                            <h3 class="cartProductLine"></h3>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Count:&nbsp;</p>
-                                    <p class="cartDescriptionVar">3</p>
-                                </div>
-                                <div class="descriptionDiv">
-                                    <p class="cartDescriptionText">Price per item:&nbsp;</p>
-                                    <p class="cartDescriptionVar">10.00 &nbsp;</p>
-                                    <p class="cartDescriptionText">zł</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cartPriceForItemsDiv">
-                            <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
-                            <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
-                        </div>
-                        <div class="cartDeleteItem">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 2px;">
-                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
-                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
-                                    text-anchor="none" style="mix-blend-mode: normal">
-                                    <path d="M0,172v-172h172v172z" fill="none"></path>
-                                    <g fill="#df1717">
-                                        <path
-                                            d="M26.5525,21.6075l-4.945,4.945l59.4475,59.4475l-59.4475,59.4475l4.945,4.945l59.4475,-59.4475l59.4475,59.4475l4.945,-4.945l-59.4475,-59.4475l59.4475,-59.4475l-4.945,-4.945l-59.4475,59.4475z">
-                                        </path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
+                <div >
+                    <app-cart-element></app-cart-element>
+                    <app-cart-element></app-cart-element>
+                    <app-cart-element></app-cart-element>
 
                     <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span class="cartTitle">SUMMARY</span></h3>
 
@@ -155,7 +50,7 @@
                                 Cart details
                             </p>
                         </div>
-                        <div class="cartCheckout">
+                        <div class="cartCheckout" [routerLink]="['../cart/checkout']">
                             <p class="cartCheckoutText">
                                 Cart checkout
                             </p>

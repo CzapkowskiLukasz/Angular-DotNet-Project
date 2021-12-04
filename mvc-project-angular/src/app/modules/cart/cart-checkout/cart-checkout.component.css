@@ -1,0 +1,52 @@
+.card {
+    width: 330px;
+    height: fit-content;
+}
+
+.mainCard{
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+.addressContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.lines {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-color);
+    line-height: 0.1em;
+    margin-bottom: 15px;
+}
+
+.addressNavigation {
+    display: block;
+    cursor: pointer;
+}
+
+.textInLines {
+    background: #fff;
+    padding: 0 10px;
+    font-size: 13px;
+    color: var(--accent-color);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.column {
+    display: block;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

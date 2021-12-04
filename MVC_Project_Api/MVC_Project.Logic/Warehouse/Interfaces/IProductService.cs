@@ -17,5 +17,7 @@ namespace MVC_Project.Logic.Warehouse.Interfaces
         public Task<HandleResult<string>> AddProductAsync(AddProductRequest request);
 
         public Task<HandleResult<GetBestsellersResponse>> GetBestsellersAsync(int count);
+
+        public Task<HandleResult<GetProductListByOrderResponse>> GetListByOrder(int orderId);
     }
 }

@@ -70,6 +70,14 @@ namespace MVC_Project.Controllers
             }
         }
 
+        [HttpGet("product/by-order/{orderId}")]
+        public async Task<IActionResult> GetProductListByOrderAsync([FromRoute] int orderId)
+        {
+            var result = await _productService.GetListByOrder(orderId);
+
+            return Ok(result.Response);
+        }
+
         [HttpGet("bestsellers/{count}")]
         public async Task<IActionResult> GetBestsellersAsync([FromRoute] int count)
         {

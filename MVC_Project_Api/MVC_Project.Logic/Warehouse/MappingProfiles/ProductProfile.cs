@@ -37,8 +37,37 @@ namespace MVC_Project.Logic.Warehouse.MappingProfiles
             CreateMap<List<Product>, GetBestsellersResponse>()
                 .ForMember(dest => dest.Bestsellers, opt =>
                     opt.MapFrom(src => src));
+
+            CreateMap<CartProduct, ProductFromOrderListItem>()
+                .ForMember(dest => dest.Name, opt =>
+                    opt.MapFrom(src => MappingNameHelper.GetProductFullName(src.Product)))
+                .ForMember(dest => dest.PricePerItem, opt =>
+                    opt.MapFrom(src => src.Product.Price))
+                .ForMember(dest => dest.Count, opt =>
+                    opt.MapFrom(src => src.Quantity))
+                .ForMember(dest => dest.Sum, opt =>
+                    opt.MapFrom(src => src.Quantity * src.Product.Price));
+
+            CreateMap<Cart, GetProductListByOrderResponse>()
+                .ConvertUsing((src, dest, ctx) =>
+                {
+                    if (src == null)
+                    {
+                        return null;
+                    }
+
+                    var cartProducts = src.CartProducts;
+                    var products = ctx.Mapper.Map<List<ProductFromOrderListItem>>(cartProducts);
+
+                    dest = new GetProductListByOrderResponse
+                    {
+                        Products = products,
+                        Sum = src.Sum.Value,
+                        Weight = src.Weight.Value
+                    };
+
+                    return dest;
+                });
         }
-
-
     }
 }

@@ -40,6 +40,10 @@ import { CategoryCreateComponent } from './modules/admin/category/category-creat
 import { CreateDiscountComponent } from './modules/admin/discount/create-discount/create-discount.component';
 import { AddresComponent } from './shared/modules/address/addres/addres.component';
 import { AddresCreateComponent } from './shared/modules/address/addres-create/addres-create.component';
+import { CartCheckoutComponent } from './modules/cart/cart-checkout/cart-checkout.component';
+import { CartElementComponent } from './shared/modules/cart-element/cart-element.component';
+import { CartCheckoutElementComponent } from './shared/modules/cart-checkout-element/cart-checkout-element.component';
+import { DeliveryOptionsComponent } from './shared/modules/delivery-options/delivery-options.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -79,7 +83,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     CategoryCreateComponent,
     CreateDiscountComponent,
     AddresComponent,
-    AddresCreateComponent
+    AddresCreateComponent,
+    CartCheckoutComponent,
+    CartElementComponent,
+    CartCheckoutElementComponent,
+    DeliveryOptionsComponent
   ],
   imports: [
     BrowserModule,

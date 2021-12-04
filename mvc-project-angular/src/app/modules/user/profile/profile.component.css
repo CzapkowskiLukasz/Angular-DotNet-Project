@@ -68,19 +68,3 @@ h5{
   margin-top: 0;
   margin-bottom: 0;
 }
-
-.mainLines{
-  text-align: center;
-  border-bottom: 1px solid gray;
-  line-height: 0px;
-  margin-left: 80px;
-  margin-right: 80px;
-}
-
-.textInMainLines {
-  margin-top: 20px;
-  font-size: 36px;
-  background: whitesmoke;
-  padding: 0 10px;
-  color: gray;
-}

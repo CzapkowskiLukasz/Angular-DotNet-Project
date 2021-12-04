@@ -20,4 +20,8 @@ export class CountryService {
   getDropdownList(): Observable<any> {
     return this.http.get<CountryListItem[]>(this.baseAdminUrl + '/dropdown');
   }
+
+  add(newCountry): Observable<any> {
+    return this.http.post<any>(this.baseAdminUrl, newCountry);
+  }
 }

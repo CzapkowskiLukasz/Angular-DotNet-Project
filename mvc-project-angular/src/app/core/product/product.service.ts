@@ -12,11 +12,12 @@ export class ProductService {
 
   baseUrl = `${environment.api_url}/product`;
   baseAdminUrl = `${environment.api_url}/admin/product`;
+  baseCustomerUrl = `${environment.api_url}/customer/product`;
 
   constructor(private http: HttpClient) { }
 
   getBestsellers(count): Observable<any> {
-    return this.http.get<SlideItem[]>(this.baseUrl + '/bestsellers/' + count);
+    return this.http.get<SlideItem[]>(this.baseCustomerUrl + '/bestsellers/' + count);
   }
 
   getAdminList(): Observable<any> {

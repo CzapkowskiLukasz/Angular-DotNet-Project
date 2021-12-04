@@ -4,6 +4,7 @@
 }
 
 .mainCard {
+
     margin-bottom: 10px;
 }
 
@@ -74,4 +75,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.paymentInfo{
+    font-size: x-small;
 }

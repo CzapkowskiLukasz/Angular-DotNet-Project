@@ -3,11 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Commons;
-using MVC_Project.Logic.Customer.Responses;
 using MVC_Project.Logic.Warehouse.Interfaces;
 using MVC_Project.Logic.Warehouse.Requests;
 using MVC_Project.Logic.Warehouse.Responses;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Logic.Warehouse.Services
@@ -95,20 +93,6 @@ namespace MVC_Project.Logic.Warehouse.Services
             }
 
             result.Response = "Success";
-            return result;
-        }
-
-        public async Task<HandleResult<GetBestsellersResponse>> GetBestsellersAsync(int count)
-        {
-            var result = new HandleResult<GetBestsellersResponse>();
-
-            var products = await _dataContext.Products
-                .Include(x => x.Producer).ToListAsync();
-
-            var bestsellers = products.OrderByDescending(x => x.SoldCount).Take(count).ToList();
-
-            result.Response = _mapper.Map<GetBestsellersResponse>(bestsellers);
-
             return result;
         }
 

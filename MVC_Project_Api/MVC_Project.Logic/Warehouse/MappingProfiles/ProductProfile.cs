@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Commons;
-using MVC_Project.Logic.Customer.Responses;
 using MVC_Project.Logic.Warehouse.Requests;
 using MVC_Project.Logic.Warehouse.Responses;
 using System.Collections.Generic;
@@ -29,14 +28,6 @@ namespace MVC_Project.Logic.Warehouse.MappingProfiles
             CreateMap<AddProductRequest, Product>()
                 .ForMember(dest => dest.WarehouseQuantity, opt =>
                     opt.MapFrom(src => src.Count));
-
-            CreateMap<Product, BestsellerListItem>()
-                .ForMember(dest => dest.Name, opt =>
-                    opt.MapFrom(src => MappingNameHelper.GetProductFullName(src)));
-
-            CreateMap<List<Product>, GetBestsellersResponse>()
-                .ForMember(dest => dest.Bestsellers, opt =>
-                    opt.MapFrom(src => src));
 
             CreateMap<CartProduct, ProductFromOrderListItem>()
                 .ForMember(dest => dest.Name, opt =>

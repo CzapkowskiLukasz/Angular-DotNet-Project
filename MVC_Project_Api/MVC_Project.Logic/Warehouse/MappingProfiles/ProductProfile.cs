@@ -74,6 +74,16 @@ namespace MVC_Project.Logic.Warehouse.MappingProfiles
 
                     return dest;
                 });
+
+            CreateMap<UpdateProductRequest, Product>()
+                .ConvertUsing((src, dest) =>
+                {
+                    dest.Name = src.Name;
+                    dest.Price = src.Price;
+                    dest.WarehouseQuantity = src.Count;
+
+                    return dest;
+                });
         }
     }
 }

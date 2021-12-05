@@ -16,5 +16,7 @@ namespace MVC_Project.Logic.Warehouse.Interfaces
         public Task<HandleResult<string>> AddProductAsync(AddProductRequest request);
 
         public Task<HandleResult<GetProductListByOrderResponse>> GetListByOrder(int orderId);
+
+        public Task<HandleResult<string>> UpdateProductAsync(UpdateProductRequest request);
     }
 }

@@ -77,5 +77,20 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProductAsync([FromBody] UpdateProductRequest request)
+        {
+            var result = await _productService.UpdateProductAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
     }
 }

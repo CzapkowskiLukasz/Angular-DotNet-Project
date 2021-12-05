@@ -81,6 +81,9 @@ namespace MVC_Project.Logic.Warehouse.Services
         public async Task<HandleResult<string>> AddProductAsync(AddProductRequest request)
         {
             var result = new HandleResult<string>();
+            
+            var producer = await _dataContext.Producers.SingleOrDefaultAsync(x => x.Name == "AddedFromWarehouse");
+
             var product = _mapper.Map<Product>(request);
 
             await _dataContext.Products.AddAsync(product);

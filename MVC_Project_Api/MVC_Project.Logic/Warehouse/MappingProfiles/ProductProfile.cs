@@ -26,8 +26,23 @@ namespace MVC_Project.Logic.Warehouse.MappingProfiles
                     opt.MapFrom(src => src.Producer.Name));
 
             CreateMap<AddProductRequest, Product>()
-                .ForMember(dest => dest.WarehouseQuantity, opt =>
-                    opt.MapFrom(src => src.Count));
+                .ConvertUsing((src, dest, ctx) =>
+                {
+                    if (src == null || ctx == null)
+                    {
+                        return null;
+                    }
+
+                    dest = new();
+                    dest.Name = src.Name;
+                    dest.ProducerId = int.Parse(ctx.Items["producerId"].ToString());
+                    dest.CategoryId = int.Parse(ctx.Items["categoryId"].ToString());
+                    dest.Price = src.Price;
+                    dest.WarehouseQuantity = src.Count;
+
+                    return dest;
+                });
+
 
             CreateMap<CartProduct, ProductFromOrderListItem>()
                 .ForMember(dest => dest.Name, opt =>

@@ -147,5 +147,39 @@ namespace MVC_Project.Logic.Warehouse.Services
             result.Response = products;
             return result;
         }
+
+        public async Task<HandleResult<string>> UpdateProductAsync(UpdateProductRequest request)
+        {
+            var result = new HandleResult<string>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
+
+            var product = await _dataContext.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+
+            if (product == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Product not found", 404);
+                return result;
+            }
+
+            product = _mapper.Map<UpdateProductRequest, Product>(request, product);
+
+            var updated = await _dataContext.SaveChangesAsync();
+
+            if (updated != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Update error", 500);
+            }
+            else
+            {
+                result.Response = "Success";
+            }
+
+            return result;
+        }
     }
 }

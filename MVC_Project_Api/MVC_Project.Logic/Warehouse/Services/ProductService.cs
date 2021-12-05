@@ -81,10 +81,31 @@ namespace MVC_Project.Logic.Warehouse.Services
         public async Task<HandleResult<string>> AddProductAsync(AddProductRequest request)
         {
             var result = new HandleResult<string>();
-            
-            var producer = await _dataContext.Producers.SingleOrDefaultAsync(x => x.Name == "AddedFromWarehouse");
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
 
-            var product = _mapper.Map<Product>(request);
+            var producer = await _dataContext.Producers.SingleOrDefaultAsync(x => x.Name == "AddedFromWarehouse");
+            if (producer == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer not found", 404);
+                return result;
+            }
+
+            var category = await _dataContext.Categories.SingleOrDefaultAsync(x => x.Name == "AddedFromWarehouse");
+            if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+                return result;
+            }
+
+            var product = _mapper.Map<Product>(request, opt =>
+            {
+                opt.Items["producerId"] = producer.ProducerId;
+                opt.Items["categoryId"] = category.CategoryId;
+            });
 
             await _dataContext.Products.AddAsync(product);
             var added = await _dataContext.SaveChangesAsync();

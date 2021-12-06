@@ -29,5 +29,17 @@ namespace MVC_Project.Logic.Admin.Services
 
             return result;
         }
+
+        public async Task<HandleResult<AdminGetCategoryListResponse>> GetListAsync()
+        {
+            var result = new HandleResult<AdminGetCategoryListResponse>();
+
+            var categories = await _dataContext.Categories
+                .Include(x => x.ParentCategory).ToListAsync();
+
+            result.Response = _mapper.Map<AdminGetCategoryListResponse>(categories);
+
+            return result;
+        }
     }
 }

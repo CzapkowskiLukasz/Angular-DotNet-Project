@@ -6,6 +6,6 @@ namespace MVC_Project.Logic.Admin.Interfaces
 {
     public interface IAdminCategoryService
     {
-        public Task<HandleResult<AdminGetCategoryListResponse>> GetListAsync();
+        public Task<HandleResult<AdminGetCategoryDropdownListResponse>> GetDropdownListAsync();
     }
 }

@@ -78,10 +78,10 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
-        [HttpGet("category")]
-        public async Task<IActionResult> GetCategoryListAsync()
+        [HttpGet("category/dropdown")]
+        public async Task<IActionResult> GetCategoryDropdownListAsync()
         {
-            var result = await _categoryService.GetListAsync();
+            var result = await _categoryService.GetDropdownListAsync();
 
             return Ok(result.Response);
         }

@@ -9,9 +9,9 @@ namespace MVC_Project.Logic.Global.MappingProfiles
     {
         public CategoryProfile()
         {
-            CreateMap<Category, AdminCategoryListItem>();
+            CreateMap<Category, AdminCategoryDropdownListItem>();
 
-            CreateMap<List<Category>, AdminGetCategoryListResponse>()
+            CreateMap<List<Category>, AdminGetCategoryDropdownListResponse>()
                 .ForMember(dest => dest.Categories, opt =>
                    opt.MapFrom(src => src));
         }

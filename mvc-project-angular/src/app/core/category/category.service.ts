@@ -13,7 +13,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAdminList(): Observable<any> {
-    return this.http.get<Category[]>(this.baseAdminUrl);
+  getAdminDropdownList(): Observable<any> {
+    return this.http.get<Category[]>(this.baseAdminUrl + '/dropdown');
   }
 }

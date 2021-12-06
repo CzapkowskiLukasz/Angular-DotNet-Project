@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { CategoryService } from 'src/app/core/category/category.service';
+import { CategoryListItem } from 'src/app/shared/models/category-list-item';
 
 @Component({
   selector: 'app-category-list',
@@ -10,12 +12,20 @@ export class CategoryListComponent implements OnInit {
 
   @Output() createCategoryEvent = new EventEmitter();
 
-  constructor() { }
+  categories: CategoryListItem[] = [];
+
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.fetchCategories();
   }
 
-  addCategory(){
+  addCategory() {
     this.createCategoryEvent.emit()
+  }
+
+  fetchCategories() {
+    this.categoryService.getAdminList().subscribe(result =>
+      this.categories = result.categories);
   }
 }

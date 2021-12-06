@@ -82,7 +82,7 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   private fetchCategories() {
-    this.categoryService.getAdminList().subscribe(result =>
+    this.categoryService.getAdminDropdownList().subscribe(result =>
       this.categoryList = result.categories.map(category =>
         ({ text: category.name, value: category.categoryId })),
       err => console.log(err),

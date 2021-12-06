@@ -20,4 +20,8 @@ export class CategoryService {
   getAdminList(): Observable<any> {
     return this.http.get<Category[]>(this.baseAdminUrl);
   }
+
+  add(newCategory): Observable<any> {
+    return this.http.post<any>(this.baseAdminUrl, newCategory);
+  }
 }

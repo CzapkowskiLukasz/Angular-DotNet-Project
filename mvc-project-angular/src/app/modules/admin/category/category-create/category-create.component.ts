@@ -20,6 +20,8 @@ export class CategoryCreateComponent implements OnInit {
   parentId;
   categoryList: FilteredDropdownListItem[] = [];
 
+  isCategoriesLoaded: boolean = false;
+
   constructor(private fb: FormBuilder,
     private categoryService: CategoryService) {
     this.form = fb.group({
@@ -47,8 +49,17 @@ export class CategoryCreateComponent implements OnInit {
     this.cancelEvent.emit();
   }
 
+  selectParent(id) {
+    this.parentId = id;
+  }
+
   private fetchCategories() {
     this.categoryService.getAdminDropdownList().subscribe(result =>
-      this.categoryList = result.categories);
+      this.categoryList = result.categories.map(c => ({
+        text: c.name,
+        value: c.categoryId
+      })),
+      err => console.log(err),
+      () => this.isCategoriesLoaded = true);
   }
 }

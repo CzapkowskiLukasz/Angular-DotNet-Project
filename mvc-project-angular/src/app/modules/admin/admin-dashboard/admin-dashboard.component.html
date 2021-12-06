@@ -15,7 +15,7 @@
         </app-user-voucher>
         <app-producers-add *ngIf="secondComponent == 'addProducer'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
         <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onCreateCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
-        <app-category-create *ngIf="secondComponent =='addCategory'" (createCategoryEvent)="onOpenAddCategory()" (cancelEvent)="onCancelCard()"></app-category-create>
+        <app-category-create *ngIf="secondComponent =='addCategory'" (createCategoryEvent)="onCreateCategory()" (cancelEvent)="onCancelCard()"></app-category-create>
         <app-create-discount *ngIf="secondComponent =='addDiscount'" (cancelEvent)="onCancelCard()">
         </app-create-discount>
     </div>

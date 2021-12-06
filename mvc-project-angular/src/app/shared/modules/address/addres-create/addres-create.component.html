@@ -1,0 +1,52 @@
+<div class="background">
+</div>
+
+<div class="entireScreen">
+    <div class="basicDiv pop-up">
+        <h4 class="cardLines"><span class="cardTextInLines">Add address</span></h4>
+        <form>
+            <div class="form__div">
+                <input type="text" class="form__input" placeholder=" ">
+                <label for="" class="form__label">Name</label>
+            </div>
+
+            <div class="form__div">
+                <input type="text" class="form__input" placeholder=" ">
+                <label for="" class="form__label">Surname</label>
+            </div>
+
+            <div style="padding-left: 2.5rem;padding-right: 2.5rem;">
+                <div class="form__divSmall" style="margin-right: 2px;">
+                    <input type="text" class="form__inputSmall" style="width: 160px;" placeholder=" ">
+                    <label for="" class="form__labelSmall">Street</label>
+                </div>
+
+                <div class="form__divSmall">
+                    <input type="text" class="form__inputSmall" style="width: 60px;" placeholder=" ">
+                    <label for="" class="form__labelSmall">House No</label>
+                </div>
+            </div>
+
+            <div>
+                <div class="form__divSmall">
+                    <input type="text" class="form__inputSmall" style="width: 60px; margin-right: 2px;" placeholder=" ">
+                    <label for="" class="form__labelSmall">Code</label>
+                </div>
+
+                <div class="form__divSmall">
+                    <input type="text" class="form__inputSmall" style="width: 160px;" placeholder=" ">
+                    <label for="" class="form__labelSmall">City</label>
+                </div>
+            </div>
+        </form>
+
+        <div class="formButtonContainer">
+            <div class="buttonBase buttonText buttonColor formButton">
+                Add
+            </div>
+            <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
+                Cancel
+            </div>
+        </div>
+    </div>
+</div>

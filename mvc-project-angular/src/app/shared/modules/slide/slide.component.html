@@ -1,0 +1,21 @@
+<div class="bestsellerContainer" (mouseenter)="showButton()" (mouseleave)="hideButton()" [ngClass]="cartButton ? 'bestsellerContainer containerOnHover' : 'bestsellerContainer'">
+    <div [ngClass]="cartButton ? 'imageContainerOnHover' : 'imageContainer'">
+        <img src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
+    </div>
+    <div [ngClass]="cartButton ? 'productDescription productDescriptionAlignBottom' : 'productDescription'">
+        <p class="productText">
+            {{item.name}}
+        </p>
+        <p class="productText">
+            <label>{{item.price}} zł/</label>
+            <label *ngIf="item.isPricePerItem; else pricePerKilo">szt</label>
+            <ng-template #pricePerKilo>kg</ng-template>
+        </p>
+
+        <div *ngIf="cartButton" class="cartCheckout" (click)="onCheckout()">
+            <p class="cartCheckoutText">
+                Cart checkout
+            </p>
+        </div>
+    </div>
+</div>

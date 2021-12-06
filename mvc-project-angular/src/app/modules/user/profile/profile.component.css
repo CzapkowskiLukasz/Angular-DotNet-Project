@@ -1,0 +1,70 @@
+.yourProfileContainer{
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.textInLines {
+  background: #fff;
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--accent-color);
+}
+
+p {
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.addressContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.lines {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--accent-color);
+  line-height: 0.1em;
+  margin-bottom: 15px;
+}
+
+.addressNavigation {
+  display: block;
+  cursor: pointer;
+}
+
+.flag {
+  margin: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  border-style: solid;
+  border-width: 3px;
+  border-color: grey;
+  cursor: pointer;
+}
+
+.flagActive {
+  margin: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h5{
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 0;
+}

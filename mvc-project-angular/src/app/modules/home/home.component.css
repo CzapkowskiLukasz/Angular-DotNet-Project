@@ -1,0 +1,53 @@
+.svg {
+    fill: white;
+    stroke: var(--accent-color);
+    stroke-width: 20;
+}
+
+.svg:hover {
+    fill: var(--accent-color);
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.homeDescriptionContainer {
+    text-align: center;
+    color: gray;
+    white-space: nowrap;
+    margin-left: 30px;
+}
+
+.descriptionHeader {
+    font-size: 48px;
+}
+
+.homeDescriptionText {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+.mapContainer {
+    margin-top: 40px;
+}
+
+.mainLines {
+    text-align: center;
+    border-bottom: 1px solid white;
+    line-height: 0px;
+    width: 90%;
+}
+
+.textInMainLines {
+    margin-top: 20px;
+    font-size: 36px;
+    background: var(--accent-color);
+    padding: 0 10px;
+    color: white;
+}
+
+.descriptionText2 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 20px;
+}

@@ -1,0 +1,9 @@
+p {
+  white-space: nowrap;
+}
+
+.scrollableDiv {
+  height: 340px;
+  overflow: hidden;
+  overflow-y: scroll;
+}

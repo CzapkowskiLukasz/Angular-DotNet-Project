@@ -16,4 +16,8 @@ export class CategoryService {
   getAdminDropdownList(): Observable<any> {
     return this.http.get<Category[]>(this.baseAdminUrl + '/dropdown');
   }
+
+  getAdminList(): Observable<any> {
+    return this.http.get<Category[]>(this.baseAdminUrl);
+  }
 }

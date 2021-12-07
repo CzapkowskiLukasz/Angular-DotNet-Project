@@ -133,6 +133,19 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
+        [HttpDelete("category/{categoryId}")]
+        public async Task<IActionResult> DeleteCategoryAsync([FromRoute] int categoryId)
+        {
+            var result = await _categoryService.DeleteAsync(categoryId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("user")]
         public async Task<IActionResult> GetUserListAsync()
         {

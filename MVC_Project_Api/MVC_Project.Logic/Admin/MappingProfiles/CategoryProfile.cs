@@ -39,6 +39,13 @@ namespace MVC_Project.Logic.Global.MappingProfiles
                    opt.MapFrom(src => ConvertParentId(src.ParentId)));
 
             CreateMap<Category, AddCategoryResponse>();
+
+
+            // Get by id
+
+            CreateMap<Category, AdminGetCategoryByIdResponse>()
+                .ForMember(dest => dest.ParentId, opt =>
+                   opt.MapFrom(src => src.ParentCategoryId));
         }
 
         private int? ConvertParentId(int parentId) =>

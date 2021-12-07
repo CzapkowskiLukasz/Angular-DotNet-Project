@@ -46,6 +46,25 @@ namespace MVC_Project.Logic.Global.MappingProfiles
             CreateMap<Category, AdminGetCategoryByIdResponse>()
                 .ForMember(dest => dest.ParentId, opt =>
                    opt.MapFrom(src => src.ParentCategoryId));
+
+
+            // Update category
+
+            CreateMap<UpdateCategoryRequest, Category>()
+                .ConvertUsing((src, dest) =>
+                {
+                    if (src == null)
+                    {
+                        return null;
+                    }
+
+                    dest.Name = src.Name;
+                    dest.ParentCategoryId = src.ParentId;
+
+                    return dest;
+                });
+
+            CreateMap<Category, UpdateCategoryResponse>();
         }
 
         private int? ConvertParentId(int parentId) =>

@@ -98,5 +98,49 @@ namespace MVC_Project.Logic.Admin.Services
 
             return result;
         }
+
+        public async Task<HandleResult<UpdateCategoryResponse>> UpdateAsync(UpdateCategoryRequest request)
+        {
+            var result = new HandleResult<UpdateCategoryResponse>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
+
+            var category = await _dataContext.Categories.SingleOrDefaultAsync(x => x.CategoryId == request.CategoryId);
+
+            if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+                return result;
+            }
+
+            if (request.ParentId != 0)
+            {
+                var parent = await _dataContext.Categories
+                  .SingleOrDefaultAsync(x => x.CategoryId == request.ParentId);
+
+                if (parent == null)
+                {
+                    result.ErrorResponse = new ErrorResponse("Parent category not found", 404);
+                    return result;
+                }
+            }
+
+            category = _mapper.Map<UpdateCategoryRequest, Category>(request, category);
+
+            var updated = await _dataContext.SaveChangesAsync();
+
+            if (updated != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Update error", 500);
+                return result;
+            }
+
+            result.Response = _mapper.Map<UpdateCategoryResponse>(category);
+            return result;
+        }
     }
 }

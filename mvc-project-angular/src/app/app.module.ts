@@ -44,6 +44,7 @@ import { CartCheckoutComponent } from './modules/cart/cart-checkout/cart-checkou
 import { CartElementComponent } from './shared/modules/cart-element/cart-element.component';
 import { CartCheckoutElementComponent } from './shared/modules/cart-checkout-element/cart-checkout-element.component';
 import { DeliveryOptionsComponent } from './shared/modules/delivery-options/delivery-options.component';
+import { ProductDetailsComponent } from './modules/product/product-details/product-details.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -87,7 +88,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartCheckoutComponent,
     CartElementComponent,
     CartCheckoutElementComponent,
-    DeliveryOptionsComponent
+    DeliveryOptionsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

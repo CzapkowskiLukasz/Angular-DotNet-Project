@@ -24,4 +24,12 @@ export class CategoryService {
   add(newCategory): Observable<any> {
     return this.http.post<any>(this.baseAdminUrl, newCategory);
   }
+
+  getById(id): Observable<any> {
+    return this.http.get<any>(this.baseAdminUrl + '/by-id/' + id);
+  }
+
+  update(category): Observable<any> {
+    return this.http.put<any>(this.baseAdminUrl, category);
+  }
 }

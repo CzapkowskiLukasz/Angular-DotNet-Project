@@ -16,5 +16,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminGetCategoryByIdResponse>> GetByIdAsync(int categoryId);
 
         public Task<HandleResult<UpdateCategoryResponse>> UpdateAsync(UpdateCategoryRequest request);
+
+        public Task<HandleResult<bool>> DeleteAsync(int categoryId);
     }
 }

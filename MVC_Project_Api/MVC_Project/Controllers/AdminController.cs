@@ -94,6 +94,19 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("category/by-id/{categoryId}")]
+        public async Task<IActionResult> GetCategoryByIdAsync([FromRoute]int categoryId)
+        {
+            var result = await _categoryService.GetByIdAsync(categoryId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpPost("category")]
         public async Task<IActionResult> AddCategoryAsync([FromBody] AddCategoryRequest request)
         {

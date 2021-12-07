@@ -1,4 +1,9 @@
-<h4 class="cardLines"><span class="cardTextInLines">New category</span></h4>
+<h4 class="cardLines">
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit category</span>
+    <ng-template #creating>
+        <span class="cardTextInLines">New category</span>
+    </ng-template>
+</h4>
 
 <form [formGroup]="form">
     <div class="form__div">

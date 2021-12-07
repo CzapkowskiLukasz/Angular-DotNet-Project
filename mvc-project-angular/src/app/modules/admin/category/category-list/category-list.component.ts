@@ -20,8 +20,8 @@ export class CategoryListComponent implements OnInit {
     this.fetchCategories();
   }
 
-  addCategory() {
-    this.createCategoryEvent.emit()
+  addCategory(editedCategoryId) {
+    this.createCategoryEvent.emit(editedCategoryId)
   }
 
   fetchCategories() {

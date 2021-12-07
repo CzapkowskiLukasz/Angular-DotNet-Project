@@ -94,10 +94,36 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("category/by-id/{categoryId}")]
+        public async Task<IActionResult> GetCategoryByIdAsync([FromRoute] int categoryId)
+        {
+            var result = await _categoryService.GetByIdAsync(categoryId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpPost("category")]
         public async Task<IActionResult> AddCategoryAsync([FromBody] AddCategoryRequest request)
         {
             var result = await _categoryService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
+        [HttpPut("category")]
+        public async Task<IActionResult> UpdateCategoryAsync([FromBody] UpdateCategoryRequest request)
+        {
+            var result = await _categoryService.UpdateAsync(request);
 
             if (result.ErrorResponse == null)
             {

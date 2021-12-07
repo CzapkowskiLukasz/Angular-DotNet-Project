@@ -3,7 +3,7 @@
         <div class="descriptionContainer">
             <h4 class="orderTitle" style="margin-bottom: 0;">Category #{{category.categoryId}}</h4>
             <div style="margin-left: auto;padding: 5px; display: flex;">
-                <div class="profileButton" style="margin-right: 5px;">
+                <div class="profileButton" style="margin-right: 5px;" (click)="addCategory(category.categoryId)">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;margin-top: 5px;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -50,7 +50,7 @@
 </div>
 
 <h4 class="cardLines"><span class="cardTextInLines">{{'admin.dashboard.othersHeader' | translate}}</span></h4>
-<div class="buttonBase buttonCircle buttonWhite" style="float: left;" (click)="addCategory()">
+<div class="buttonBase buttonCircle buttonWhite" style="float: left;" (click)="addCategory(undefined)">
     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
             stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CategoryService } from 'src/app/core/category/category.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
@@ -10,6 +10,8 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   encapsulation: ViewEncapsulation.None
 })
 export class CategoryCreateComponent implements OnInit {
+
+  @Input() editedCategoryId;
 
   @Output() createCategoryEvent = new EventEmitter();
 
@@ -32,17 +34,33 @@ export class CategoryCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
+
+    if (this.isItEditing) {
+      this.fetchCategory();
+    }
   }
 
   submit() {
-    let newCategory = {
-      name: this.form.get('name').value,
-      parentId: this.parentId
-    };
+    if (this.isItEditing) {
+      let category = {
+        categoryId: this.editedCategoryId,
+        name: this.form.get('name').value,
+        parentId: this.parentId
+      };
 
-    this.categoryService.add(newCategory).subscribe(() =>
-      this.createCategoryEvent.emit(),
-      err => console.log(err));
+      this.categoryService.update(category).subscribe(() =>
+        this.createCategoryEvent.emit(),
+        err => console.log(err));
+    } else {
+      let newCategory = {
+        name: this.form.get('name').value,
+        parentId: this.parentId
+      };
+
+      this.categoryService.add(newCategory).subscribe(() =>
+        this.createCategoryEvent.emit(),
+        err => console.log(err));
+    }
   }
 
   cancel() {
@@ -53,6 +71,10 @@ export class CategoryCreateComponent implements OnInit {
     this.parentId = id;
   }
 
+  get isItEditing(): boolean {
+    return this.editedCategoryId != undefined;
+  }
+
   private fetchCategories() {
     this.categoryService.getAdminDropdownList().subscribe(result =>
       this.categoryList = result.categories.map(c => ({
@@ -61,5 +83,17 @@ export class CategoryCreateComponent implements OnInit {
       })),
       err => console.log(err),
       () => this.isCategoriesLoaded = true);
+  }
+
+  private fetchCategory() {
+    this.categoryService.getById(this.editedCategoryId).subscribe(result => {
+      this.form.get('name').setValue(result.name);
+
+      let parent = this.categoryList.find(x =>
+        x.value == result.parentId);
+
+      this.form.get('parent').setValue(parent.text);
+      this.parentId = parent.value;
+    });
   }
 }

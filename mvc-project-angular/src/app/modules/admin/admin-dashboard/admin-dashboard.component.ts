@@ -19,12 +19,14 @@ export class AdminDashboardComponent implements OnInit {
 
   @ViewChild(ProducersListComponent) producerListComponent: ProducersListComponent;
 
-  @ViewChild(CategoryListComponent) categoryListComponent:CategoryListComponent;
+  @ViewChild(CategoryListComponent) categoryListComponent: CategoryListComponent;
 
   mainComponent: string;
   secondComponent: string;
 
   itemForDeleteName: string;
+
+  editedCategoryId;
 
   count: number;
   showCart: boolean;
@@ -97,7 +99,8 @@ export class AdminDashboardComponent implements OnInit {
     this.secondComponent = 'addCountry';
   }
 
-  onOpenAddCategory() {
+  onOpenAddCategory(id) {
+    this.editedCategoryId = id;
     this.secondComponent = 'addCategory';
   }
 

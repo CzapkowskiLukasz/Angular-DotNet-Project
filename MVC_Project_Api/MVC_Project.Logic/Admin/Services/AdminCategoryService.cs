@@ -58,6 +58,24 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<AdminGetCategoryByIdResponse>> GetByIdAsync(int categoryId)
+        {
+            var result = new HandleResult<AdminGetCategoryByIdResponse>();
+
+            var category = await _dataContext.Categories.SingleOrDefaultAsync(x => x.CategoryId == categoryId);
+
+            if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+            }
+            else
+            {
+                result.Response = _mapper.Map<AdminGetCategoryByIdResponse>(category);
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetCategoryDropdownListResponse>> GetDropdownListAsync()
         {
             var result = new HandleResult<AdminGetCategoryDropdownListResponse>();

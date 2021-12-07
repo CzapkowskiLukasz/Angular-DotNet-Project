@@ -12,5 +12,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminGetCategoryListResponse>> GetListAsync();
 
         public Task<HandleResult<AddCategoryResponse>> AddAsync(AddCategoryRequest request);
+
+        public Task<HandleResult<AdminGetCategoryByIdResponse>> GetByIdAsync(int categoryId);
     }
 }

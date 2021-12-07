@@ -86,6 +86,27 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("category/dropdown")]
+        public async Task<IActionResult> GetCategoryDropdownListAsync()
+        {
+            var result = await _categoryService.GetDropdownListAsync();
+
+            return Ok(result.Response);
+        }
+
+        [HttpPost("category")]
+        public async Task<IActionResult> AddCategoryAsync([FromBody] AddCategoryRequest request)
+        {
+            var result = await _categoryService.AddAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("user")]
         public async Task<IActionResult> GetUserListAsync()
         {

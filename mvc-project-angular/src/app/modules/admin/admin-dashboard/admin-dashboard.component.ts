@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { CategoryListComponent } from '../category/category-list/category-list.component';
 import { CountryListComponent } from '../countries/country-list/country-list.component';
 import { ProducersListComponent } from '../producers/producers-list/producers-list.component';
 import { AdminProductCreateComponent } from '../product/admin-product-create/admin-product-create.component';
@@ -17,6 +18,8 @@ export class AdminDashboardComponent implements OnInit {
   @ViewChild(AdminProductListComponent) productListComponent: AdminProductListComponent;
 
   @ViewChild(ProducersListComponent) producerListComponent: ProducersListComponent;
+
+  @ViewChild(CategoryListComponent) categoryListComponent:CategoryListComponent;
 
   mainComponent: string;
   secondComponent: string;
@@ -77,6 +80,11 @@ export class AdminDashboardComponent implements OnInit {
 
   onCreateCountry() {
     this.countryListComponent.fetchCountries();
+    this.onCancelCard();
+  }
+
+  onCreateCategory() {
+    this.categoryListComponent.fetchCategories();
     this.onCancelCard();
   }
 

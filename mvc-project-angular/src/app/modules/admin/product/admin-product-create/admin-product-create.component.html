@@ -1,73 +1,89 @@
 <h4 class="cardLines"><span class="cardTextInLines">{{'admin.product.create.title' | translate}}</span></h4>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form__div">
-        <input type="text" class="form__input" formControlName="name" placeholder=" ">
-        <label for="name" class="form__label">{{'admin.product.create.name' | translate}}</label>
-    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex;justify-content: center;">
+            <div>
+                <div class="form__div" style="margin-top: 0;">
+                    <input type="text" class="form__input" formControlName="name" placeholder=" ">
+                    <label for="name" class="form__label">{{'admin.product.create.name' | translate}}</label>
+                </div>
 
-    <!-- producer -->
-    <div class="form__div">
-        <input #producerInput type="text" class="form__input" formControlName="producer" placeholder=" ">
-        <label for="producer" class="form__label">{{'admin.product.create.producer' | translate}}</label>
-        <app-filtered-dropdown *ngIf="isProducersLoaded" [inputElement]="producerInput" [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
-    </div>
+                <!-- producer -->
+                <div class="form__div">
+                    <input #producerInput type="text" class="form__input" formControlName="producer" placeholder=" ">
+                    <label for="producer" class="form__label">{{'admin.product.create.producer' | translate}}</label>
+                    <app-filtered-dropdown *ngIf="isProducersLoaded" [inputElement]="producerInput"
+                        [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
+                </div>
 
-    <div class="form__div">
-        <input type="text" class="form__input" formControlName="description" placeholder=" ">
-        <label for="description" class="form__label">{{'admin.product.create.description' | translate}}</label>
-    </div>
+                <div class="form__div">
+                    <input type="text" class="form__input" formControlName="description" placeholder=" ">
+                    <label for="description" class="form__label">{{'admin.product.create.description' |
+                        translate}}</label>
+                </div>
 
-    <div class="form__divSmall" style="margin-right: 5px;">
-        <input type="text" class="form__inputSmall" formControlName="price" placeholder=" ">
-        <label for="price" class="form__labelSmall">{{'admin.product.create.price' | translate}}</label>
-    </div>
+                <div class="form__divSmall" style="margin-right: 5px;">
+                    <input type="text" class="form__inputSmall" formControlName="price" placeholder=" ">
+                    <label for="price" class="form__labelSmall">{{'admin.product.create.price' | translate}}</label>
+                </div>
 
-    <div class="form__divSmall">
-        <input type="text" class="form__inputSmall" formControlName="count" placeholder=" ">
-        <label for="count" class="form__labelSmall">{{'admin.product.create.count' | translate}}</label>
-    </div>
+                <div class="form__divSmall">
+                    <input type="text" class="form__inputSmall" formControlName="count" placeholder=" ">
+                    <label for="count" class="form__labelSmall">{{'admin.product.create.count' | translate}}</label>
+                </div>
 
-    <!-- category -->
-    <div class="form__div">
-        <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
-        <label for="category" class="form__label">{{'admin.product.create.category' | translate}}</label>
-        <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
-    </div>
-    <div class="formButtonContainer">
-        <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-            Add
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <path d="M0,172v-172h172v172z" fill="none"></path>
-                <g fill="#ffffff">
-                    <path d="M147.49,29.67c-0.1075,0.02688 -0.215,0.06719 -0.3225,0.1075c-0.90031,0.22844 -1.67969,0.80625
-                  -2.15,1.6125l-70.305,109.005l-48.375,-43.645c-0.84656,-1.075 -2.2575,-1.54531 -3.58781,-1.19594c-1.33031,0.34937 
-                  -2.31125,1.46469 -2.51281,2.82187c-0.20156,1.35719 0.41656,2.70094 1.58562,3.42656l51.2775,46.44c0.7525,0.65844 
-                  1.76031,0.95406 2.75469,0.80625c0.99438,-0.14781 1.86781,-0.71219 2.40531,-1.55875l72.5625,-112.445c0.79281,-1.12875 
-                  0.83313,-2.62031 0.1075,-3.78937c-0.72562,-1.16906 -2.08281,-1.78719 -3.44,-1.58563z">
-                    </path>
-                </g>
-            </g>
-            </svg> -->
+                <!-- category -->
+                <div class="form__div">
+                    <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
+                    <label for="category" class="form__label">{{'admin.product.create.category' | translate}}</label>
+                    <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput"
+                        [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
+                </div>
+            </div>
+            <app-expand-form *ngIf="expand"></app-expand-form>
         </div>
-        <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
-            Cancel
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <path d="M0,172v-172h172v172z" fill="none"></path>
-                <g fill="var(--accent-color)">
-                    <path d="M18.87987,153.12013c2.23887,2.23819 5.86807,2.23819 8.10693,0l59.0132,-59.0132l59.0132,59.0132c2.24964,2.17277
-                            5.82555,2.1417 8.03709,-0.06984c2.21154,-2.21154 2.24261,-5.78745 0.06984,-8.03709l-59.0132,-59.0132l59.0132,-59.0132c1.49042,-1.43949
-                            2.08815,-3.57117 1.56346,-5.57571c-0.52469,-2.00454 -2.09015,-3.57 -4.09469,-4.09469c-2.00454,-0.52469 -4.13622,0.07305 
-                            -5.57571,1.56346l-59.0132,59.0132l-59.0132,-59.0132c-2.24964,-2.17277 -5.82555,-2.1417 -8.03709,0.06984c-2.21154,2.21154 
-                            -2.24261,5.78745 -0.06984,8.03709l59.0132,59.0132l-59.0132,59.0132c-2.23819,2.23887 -2.23819,5.86807 0,8.10693z">
-                    </path>
-                </g>
-            </g>
-            </svg> -->
+        <div class="formButtonContainer2">
+            <div style="margin-left: auto;display: flex;">
+                <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
+                    Add
+                </div>
+                <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
+                    Cancel
+                </div>
+            </div>
+
+            <div class="buttonBase buttonCircle buttonWhite" style="margin-right: 0;margin-left: auto;"
+                (click)="expandForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                    style=" fill:#000000;" *ngIf="!expand">
+                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                        <g fill="#fcb001">
+                            <path
+                                d="M97.7175,17.2c-1.89469,0.17469 -3.29219,1.86781 -3.1175,3.7625c0.17469,1.89469 1.86781,3.29219 3.7625,3.1175h44.72l-119.0025,119.0025v-44.72c0.02688,-1.06156 -0.44344,-2.06937 -1.26312,-2.74125c-0.80625,-0.67187 -1.89469,-0.92719 -2.92938,-0.69875c-1.59906,0.36281 -2.72781,1.80063 -2.6875,3.44v56.4375h56.4375c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-44.72l119.0025,-119.0025v44.72c-0.01344,1.23625 0.63156,2.39188 1.70656,3.02344c1.075,0.61813 2.39187,0.61813 3.46687,0c1.075,-0.63156 1.72,-1.78719 1.70656,-3.02344v-56.4375h-56.4375c-0.1075,0 -0.215,0 -0.3225,0c-0.1075,0 -0.215,0 -0.3225,0z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                    style=" fill:#000000;" *ngIf="expand">
+                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                        <g fill="#fcb001">
+                            <path
+                                d="M159.24781,7.88781l-56.04781,56.04781v-32.97563h-6.88v44.72h44.72v-6.88h-32.97562l56.04781,-56.04781zM30.96,96.32v6.88h32.97563l-56.04781,56.04781l4.86437,4.86437l56.04781,-56.04781v32.97562h6.88v-44.72z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
         </div>
     </div>
 </form>

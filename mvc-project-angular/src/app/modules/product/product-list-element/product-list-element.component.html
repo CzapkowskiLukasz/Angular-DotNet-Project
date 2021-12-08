@@ -1,4 +1,4 @@
-<tr (mouseover)="showProduct = true" (mouseleave)="showProduct = false">
+<div (mouseover)="showProduct = true" (mouseleave)="showProduct = false">
     <div class="relative">
         <div class="productSpotlight" *ngIf="showProduct">
             <img class="spotlightImg" src="assets/toffifee.png">
@@ -22,4 +22,4 @@
         <h2 class="price">{{itemName.price}}</h2>
         <h2 class="producer" style="margin-right: 10px;">Producent</h2>
     </div>
-</tr>
+</div>

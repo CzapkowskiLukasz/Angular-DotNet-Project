@@ -47,6 +47,7 @@ import { DeliveryOptionsComponent } from './shared/modules/delivery-options/deli
 import { ProductDetailsComponent } from './modules/product/product-details/product-details.component';
 import { ProductListComponent } from './modules/product/product-list/product-list.component';
 import { ProductListElementComponent } from './modules/product/product-list-element/product-list-element.component';
+import { ExpandFormComponent } from './modules/admin/shared/expand-form/expand-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -93,7 +94,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DeliveryOptionsComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    ProductListElementComponent
+    ProductListElementComponent,
+    ExpandFormComponent
   ],
   imports: [
     BrowserModule,

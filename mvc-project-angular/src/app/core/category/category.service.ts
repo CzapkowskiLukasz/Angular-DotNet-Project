@@ -32,4 +32,8 @@ export class CategoryService {
   update(category): Observable<any> {
     return this.http.put<any>(this.baseAdminUrl, category);
   }
+
+  delete(id): Observable<any> {
+    return this.http.delete<any>(this.baseAdminUrl + '/' + id);
+  }
 }

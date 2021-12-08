@@ -12,10 +12,6 @@ import { CategoryListItem } from 'src/app/shared/models/category-list-item';
 })
 export class CategoryListComponent implements OnInit {
 
-  @Input() secondaryComponentResult;
-
-  @Output() openFormEvent = new EventEmitter();
-
   @Output() deleteEvent = new EventEmitter();
 
   commandSubscribtion: Subscription;

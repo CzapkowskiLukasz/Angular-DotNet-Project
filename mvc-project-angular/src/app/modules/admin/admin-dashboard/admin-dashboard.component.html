@@ -6,18 +6,17 @@
 
 <div class="mainContainer">
     <div class="basicDiv card">
-        <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
+        <div *ngIf="secondComponent == 'form'">
+            <app-category-create *ngIf="mainComponent == 'categories'"></app-category-create>
+            <app-country-create *ngIf="mainComponent == 'countries'" (createCountryEvent)="onCreateCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
+            <app-create-discount *ngIf="mainComponent == 'bargains'" (cancelEvent)="onCancelCard()"></app-create-discount>
+            <app-producers-add *ngIf="mainComponent == 'producers'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
+            <app-admin-product-create *ngIf="mainComponent == 'products'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
+            <app-user-voucher *ngIf="mainComponent == 'users'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
+        </div>
         <app-admin-delete-confirm *ngIf="secondComponent == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
-        <app-admin-product-create *ngIf="secondComponent == 'addProduct'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
-        <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()">
-        </app-user-info>
-        <app-user-voucher *ngIf="secondComponent == 'addVoucher'" (createVoucherEvent)="onOpenCreateVoucher()">
-        </app-user-voucher>
-        <app-producers-add *ngIf="secondComponent == 'addProducer'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
-        <app-country-create *ngIf="secondComponent == 'addCountry'" (createCountryEvent)="onCreateCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
-        <app-category-create *ngIf="secondComponent =='addCategory'" [editedCategoryId]="editedCategoryId" (createCategoryEvent)="onCreateCategory()" (cancelEvent)="onCancelCard()"></app-category-create>
-        <app-create-discount *ngIf="secondComponent =='addDiscount'" (cancelEvent)="onCancelCard()">
-        </app-create-discount>
+        <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
+        <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
@@ -159,7 +158,7 @@
         <app-country-list *ngIf="mainComponent == 'countries'" (createCountryEvent)="onOpenAddCountry()">
         </app-country-list>
         <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
-        <app-category-list *ngIf="mainComponent == 'categories'" (createCategoryEvent)="onOpenAddCategory($event)">
+        <app-category-list *ngIf="mainComponent == 'categories'">
         </app-category-list>
 
 

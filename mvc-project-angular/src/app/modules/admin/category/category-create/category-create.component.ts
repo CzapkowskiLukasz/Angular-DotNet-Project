@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
 
 @Component({
@@ -11,33 +13,41 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
 })
 export class CategoryCreateComponent implements OnInit {
 
-  @Input() editedCategoryId;
-
-  @Output() createCategoryEvent = new EventEmitter();
-
-  @Output() cancelEvent = new EventEmitter();
-
   form: FormGroup;
 
   parentId;
+
   categoryList: FilteredDropdownListItem[] = [];
 
   isCategoriesLoaded: boolean = false;
 
+  editedCategoryId;
+
+  commandSubscribtion: Subscription;
+  valueSubscribtion: Subscription;
+
   constructor(private fb: FormBuilder,
-    private categoryService: CategoryService) {
-    this.form = fb.group({
+    private categoryService: CategoryService,
+    private componentConnection: ComponentConnectionService) { }
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
       name: [''],
       parent: ['']
     });
-  }
 
-  ngOnInit(): void {
     this.fetchCategories();
 
-    if (this.isItEditing) {
-      this.fetchCategory();
-    }
+    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
+      if (obj.key == 'categoryId') {
+        this.editedCategoryId = obj.value
+        this.prepareForm();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.valueSubscribtion.unsubscribe();
   }
 
   submit() {
@@ -49,7 +59,7 @@ export class CategoryCreateComponent implements OnInit {
       };
 
       this.categoryService.update(category).subscribe(() =>
-        this.createCategoryEvent.emit(),
+        this.finish(),
         err => console.log(err));
     } else {
       let newCategory = {
@@ -58,13 +68,18 @@ export class CategoryCreateComponent implements OnInit {
       };
 
       this.categoryService.add(newCategory).subscribe(() =>
-        this.createCategoryEvent.emit(),
+        this.finish(),
         err => console.log(err));
     }
   }
 
   cancel() {
-    this.cancelEvent.emit();
+    this.componentConnection.sendCommand('closeForm');
+  }
+
+  finish() {
+    this.componentConnection.sendCommand('fetch');
+    this.cancel();
   }
 
   selectParent(id) {
@@ -72,7 +87,7 @@ export class CategoryCreateComponent implements OnInit {
   }
 
   get isItEditing(): boolean {
-    return this.editedCategoryId != undefined;
+    return this.editedCategoryId != -1;
   }
 
   private fetchCategories() {
@@ -89,11 +104,21 @@ export class CategoryCreateComponent implements OnInit {
     this.categoryService.getById(this.editedCategoryId).subscribe(result => {
       this.form.get('name').setValue(result.name);
 
-      let parent = this.categoryList.find(x =>
-        x.value == result.parentId);
+      if (result.parentId > 0) {
+        let parent = this.categoryList.find(x =>
+          x.value == result.parentId);
 
-      this.form.get('parent').setValue(parent.text);
-      this.parentId = parent.value;
+        this.form.get('parent').setValue(parent.text);
+        this.parentId = parent.value;
+      }
     });
+  }
+
+  private prepareForm() {
+    this.form.reset('');
+    this.parentId = 0;
+    if (this.isItEditing) {
+      this.fetchCategory();
+    }
   }
 }

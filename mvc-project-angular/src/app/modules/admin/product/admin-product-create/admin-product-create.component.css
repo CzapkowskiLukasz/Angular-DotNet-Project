@@ -54,8 +54,6 @@
 .form__div {
     position: relative;
     height: 48px;
-    margin-right: 2.5rem;
-    margin-left: 2.5rem;
     margin-top: 1rem;
     display: flex;
     justify-content: center;
@@ -97,7 +95,7 @@
 
 .form__label {
     position: absolute;
-    left: 1rem;
+    left: .5rem;
     top: 1rem;
     padding: 0 .25rem;
     background-color: var(--body-color);
@@ -129,7 +127,7 @@
 
 .form__input:focus+.form__label {
     top: -.5rem;
-    left: 1rem;
+    left: .5rem;
     color: var(--accent-color);
     font-weight: 500;
     z-index: 11;
@@ -137,7 +135,7 @@
 
 .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
     top: -.5rem;
-    left: 1rem;
+    left: .5rem;
     font-weight: 500;
     z-index: 11;
 }
@@ -187,7 +185,7 @@
     color: var(--accent-color);
 }
 
-.formButtonContainer {
+.formButtonContainer2 {
     position: relative;
     margin-right: 2.5rem;
     margin-left: 2.5rem;
@@ -195,6 +193,7 @@
     justify-content: center;
     align-items: center;
     padding-top: .75rem;
+    width: 100%;
 }
 
 .formButton {

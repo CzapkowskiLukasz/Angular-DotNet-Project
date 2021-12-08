@@ -121,6 +121,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showUsers() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'users';
     this.productBookmark = false;
     this.userBookmark = true;
@@ -131,6 +132,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showProducts() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'products';
     this.productBookmark = true;
     this.userBookmark = false;
@@ -141,6 +143,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showBargains() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'bargains';
     this.productBookmark = false;
     this.userBookmark = false;
@@ -151,6 +154,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showProducers() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'producers';
     this.productBookmark = false;
     this.userBookmark = false;
@@ -161,6 +165,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showCountries() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'countries';
     this.productBookmark = false;
     this.userBookmark = false;
@@ -171,6 +176,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showDelivery() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'deliveries';
     this.productBookmark = false;
     this.userBookmark = false;
@@ -181,6 +187,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showCategories() {
+    this.secondComponent = 'statistics'
     this.mainComponent = 'categories';
     this.productBookmark = false;
     this.userBookmark = false;

@@ -30,6 +30,8 @@ export class AdminProductCreateComponent implements OnInit {
   isCategoriesLoaded: boolean;
   isProducersLoaded: boolean;
 
+  expand:boolean;
+
   constructor(private fb: FormBuilder,
     private categoryService: CategoryService,
     private producerService: ProducerService,
@@ -45,6 +47,7 @@ export class AdminProductCreateComponent implements OnInit {
       producer: ['']
     });
 
+    this.expand = false
     this.isCategoriesLoaded = false;
     this.isProducersLoaded = false;
   }
@@ -52,6 +55,10 @@ export class AdminProductCreateComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCategories();
     this.fetchProducers();
+  }
+
+  expandForm(){
+    this.expand = !this.expand
   }
 
   selectCategory(id: string) {

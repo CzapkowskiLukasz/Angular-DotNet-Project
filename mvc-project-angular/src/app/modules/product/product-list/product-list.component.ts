@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ProductService } from 'src/app/core/product/product.service';
+import { ProductListItem } from 'src/app/shared/models/product-list-item';
 
 @Component({
   selector: 'app-product-list',
@@ -8,12 +10,20 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
+  products: ProductListItem[] = [];
 
-  constructor() {
+  constructor(private productService: ProductService) {
 
   }
 
   ngOnInit(): void {
+    this.fetchProducts()
+  }
+
+  fetchProducts() {
+    this.productService.getAdminList().subscribe(result => {
+      this.products = result.products;
+    });
   }
 
 }

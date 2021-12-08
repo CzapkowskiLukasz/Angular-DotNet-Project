@@ -21,8 +21,6 @@
     </div>
 
     <div style="width: 60%;">
-        <app-product-list-element ></app-product-list-element>
-        <app-product-list-element></app-product-list-element>
-        <app-product-list-element></app-product-list-element>
+        <app-product-list-element *ngFor='let product of products' [itemName]=product></app-product-list-element>
     </div>
 </div>

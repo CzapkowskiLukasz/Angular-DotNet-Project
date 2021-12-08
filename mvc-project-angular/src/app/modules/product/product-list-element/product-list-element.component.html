@@ -1,0 +1,25 @@
+<div (mouseover)="showProduct = true" (mouseleave)="showProduct = false">
+    <div class="relative">
+        <div class="productSpotlight" *ngIf="showProduct">
+            <img class="spotlightImg" src="assets/toffifee.png">
+            <div class="spotlightDescription">
+                <h2 style="margin-left: auto;margin-right: auto;">Name</h2>
+                <h2 class="price" style="margin-left: auto;margin-right: auto;">Cena</h2>
+                <h2 class="producer" style="margin-left: auto;margin-right: auto;">Producent</h2>
+                <div class="productButton">
+                    <p class="productButtonText">
+                        Add to cart
+                    </p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+        </div>
+    </div>
+    <div class="listElement">
+        <img src="assets/toffifee.png">
+        <h2 >Name</h2>
+        <h2 class="price">Cena</h2>
+        <h2 class="producer" style="margin-right: 10px;">Producent</h2>
+    </div>
+</div>

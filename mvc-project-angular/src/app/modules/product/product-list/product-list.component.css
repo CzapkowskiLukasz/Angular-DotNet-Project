@@ -1,0 +1,32 @@
+.container2 {
+    display: flex;
+    justify-content: center;
+}
+
+.mainLines {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    line-height: 0px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.textInMainLines {
+    margin-top: 20px;
+    font-size: 36px;
+    background: whitesmoke;
+    padding: 0 10px;
+    color: gray;
+}
+
+.homeDescriptionText {
+    color: gray;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.productSpolight{
+    z-index: 99;
+    position: absolute;
+}

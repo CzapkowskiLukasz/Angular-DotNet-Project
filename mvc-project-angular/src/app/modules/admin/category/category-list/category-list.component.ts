@@ -12,6 +12,8 @@ export class CategoryListComponent implements OnInit {
 
   @Output() createCategoryEvent = new EventEmitter();
 
+  @Output() deleteEvent = new EventEmitter();
+
   categories: CategoryListItem[] = [];
 
   constructor(private categoryService: CategoryService) { }
@@ -22,6 +24,10 @@ export class CategoryListComponent implements OnInit {
 
   addCategory(editedCategoryId) {
     this.createCategoryEvent.emit(editedCategoryId)
+  }
+
+  deleteCategory(categoryId){
+    this.deleteEvent.emit(categoryId);
   }
 
   fetchCategories() {

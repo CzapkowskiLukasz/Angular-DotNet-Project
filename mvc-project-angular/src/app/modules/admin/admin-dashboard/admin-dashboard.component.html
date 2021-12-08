@@ -159,7 +159,7 @@
         <app-country-list *ngIf="mainComponent == 'countries'" (createCountryEvent)="onOpenAddCountry()">
         </app-country-list>
         <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
-        <app-category-list *ngIf="mainComponent == 'categories'" (createCategoryEvent)="onOpenAddCategory($event)">
+        <app-category-list *ngIf="mainComponent == 'categories'" (createCategoryEvent)="onOpenAddCategory($event)" (deleteEvent)="OnOpenDeleteCategory($event)">
         </app-category-list>
 
 

@@ -7,6 +7,7 @@ import { CartCheckoutComponent } from './modules/cart/cart-checkout/cart-checkou
 import { HomeComponent } from './modules/home/home.component';
 import { CategoriesComponent } from './modules/product/categories/categories.component';
 import { ProductDetailsComponent } from './modules/product/product-details/product-details.component';
+import { ProductListComponent } from './modules/product/product-list/product-list.component';
 import { LoginComponent } from './modules/user/login/login/login.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RegisterStep1Component } from './modules/user/register/register-step1/register-step1.component';
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'admin/products/new-product', component: AdminProductCreateComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'cart/checkout', component: CartCheckoutComponent },
-  { path: 'product', component: ProductDetailsComponent }
+  { path: 'product', component: ProductDetailsComponent },
+  { path: 'product-list', component: ProductListComponent }
 ];
 
 @NgModule({

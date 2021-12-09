@@ -22,6 +22,8 @@ export class CountryCreateComponent implements OnInit, OnDestroy {
 
   isContinentsLoaded: boolean = false;
 
+  editedCountryId;
+
   valueSubscribtion: Subscription;
 
   constructor(private fb: FormBuilder,
@@ -36,6 +38,13 @@ export class CountryCreateComponent implements OnInit, OnDestroy {
     });
 
     this.fetchContinents();
+
+    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
+      if (obj.key == 'countryId') {
+        this.editedCountryId = obj.value
+        this.prepareForm();
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -43,27 +52,44 @@ export class CountryCreateComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    let newCountry = {
-      name: this.form.get('name').value,
-      continentId: this.continentId
-    };
+    if (this.isItEditing) {
+      const country = {
+        countryId: this.editedCountryId,
+        name: this.form.get('name').value,
+        continentId: this.continentId
+      };
 
-    this.countryService.add(newCountry).subscribe(() =>
-      this.finish(),
-      err => console.log(err));
+      this.countryService.update(country).subscribe(() =>
+        this.finish(),
+        err => console.log(err));
+    }
+    else {
+      let newCountry = {
+        name: this.form.get('name').value,
+        continentId: this.continentId
+      };
+
+      this.countryService.add(newCountry).subscribe(() =>
+        this.finish(),
+        err => console.log(err));
+    }
   }
 
   close() {
     this.componentConnection.sendCommand('closeForm');
   }
 
-  finish() {
-    this.componentConnection.sendCommand('fetch');
-    this.close();
-  }
-
   selectContinent(id) {
     this.continentId = id;
+  }
+
+  get isItEditing(): boolean {
+    return this.editedCountryId != -1;
+  }
+
+  private finish() {
+    this.componentConnection.sendCommand('fetch');
+    this.close();
   }
 
   private fetchContinents() {
@@ -74,5 +100,27 @@ export class CountryCreateComponent implements OnInit, OnDestroy {
       })),
       err => console.log(err),
       () => this.isContinentsLoaded = true);
+  }
+
+  private fetchCountry() {
+    this.countryService.getById(this.editedCountryId).subscribe(result => {
+      this.form.get('name').setValue(result.name);
+
+      if (result.continentId > 0) {
+        let continent = this.continentList.find(x =>
+          x.value == result.continentId);
+
+        this.form.get('continent').setValue(continent.text);
+        this.continentId = continent.value;
+      }
+    })
+  }
+
+  private prepareForm() {
+    this.form.reset('');
+    this.continentId = 0;
+    if (this.isItEditing) {
+      this.fetchCountry();
+    }
   }
 }

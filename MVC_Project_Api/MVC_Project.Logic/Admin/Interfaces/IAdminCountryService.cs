@@ -12,5 +12,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminGetCountryDropdownListResponse>> GetDropdownListAsync();
 
         public Task<HandleResult<AddCountryResponse>> AddAsync(AddCountryRequest request);
+
+        public Task<HandleResult<UpdateCountryResponse>> UpdateAsync(UpdateCountryRequest request);
     }
 }

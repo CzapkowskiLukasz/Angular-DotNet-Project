@@ -12,10 +12,6 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
 })
 export class CountryCreateComponent implements OnInit {
 
-  @Output() createCountryEvent = new EventEmitter();
-
-  @Output() cancelEvent = new EventEmitter();
-
   form: FormGroup;
 
   continentId;
@@ -30,7 +26,7 @@ export class CountryCreateComponent implements OnInit {
 
     this.form = fb.group({
       name: [''],
-      country: ['']
+      continent: ['']
     });
   }
 
@@ -48,7 +44,12 @@ export class CountryCreateComponent implements OnInit {
   }
 
   cancel() {
-    this.cancelEvent.emit();
+    this.componentConnection.sendCommand('closeForm');
+  }
+
+  finish() {
+    this.componentConnection.sendCommand('fetch');
+    this.cancel();
   }
 
   selectContinent(id) {

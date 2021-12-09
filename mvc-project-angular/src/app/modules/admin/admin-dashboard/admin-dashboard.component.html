@@ -8,7 +8,7 @@
     <div class="basicDiv card">
         <div *ngIf="secondComponent == 'form'">
             <app-category-create *ngIf="mainComponent == 'categories'"></app-category-create>
-            <app-country-create *ngIf="mainComponent == 'countries'" (createCountryEvent)="onCreateCountry()" (cancelEvent)="onCancelCard()"></app-country-create>
+            <app-country-create *ngIf="mainComponent == 'countries'"></app-country-create>
             <app-create-discount *ngIf="mainComponent == 'bargains'" (cancelEvent)="onCancelCard()"></app-create-discount>
             <app-producers-add *ngIf="mainComponent == 'producers'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
             <app-admin-product-create *ngIf="mainComponent == 'products'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
@@ -155,7 +155,7 @@
         <app-discount-list *ngIf="mainComponent == 'bargains'"></app-discount-list>
         <app-producers-list *ngIf="mainComponent == 'producers'" (createProducerEvent)="onOpenCreateProducer()">
         </app-producers-list>
-        <app-country-list *ngIf="mainComponent == 'countries'" (createCountryEvent)="onOpenAddCountry()">
+        <app-country-list *ngIf="mainComponent == 'countries'">
         </app-country-list>
         <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
         <app-category-list *ngIf="mainComponent == 'categories'">

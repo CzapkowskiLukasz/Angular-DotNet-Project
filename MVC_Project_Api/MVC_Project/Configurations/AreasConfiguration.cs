@@ -19,6 +19,7 @@ namespace MVC_Project.Api.Configurations
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IContinentService, ContinentService>();
+            services.AddScoped<ICountryService, CountryService>();
         }
 
         public static void AddAdminArea(this IServiceCollection services)

@@ -34,6 +34,22 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
             CreateMap<AddCountryRequest, Country>();
 
             CreateMap<Country, AddCountryResponse>();
+
+            // Update
+
+            CreateMap<UpdateCountryRequest, Country>()
+                .ConvertUsing((src, dest) =>
+                {
+                    if (src == null)
+                        return null;
+
+                    dest.Name = src.Name;
+                    dest.ContinentId = src.ContinentId;
+
+                    return dest;
+                });
+
+            CreateMap<Country, UpdateCountryResponse>();
         }
     }
 }

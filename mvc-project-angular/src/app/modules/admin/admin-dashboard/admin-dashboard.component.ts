@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { CategoryListComponent } from '../category/category-list/category-list.component';
 import { CountryListComponent } from '../countries/country-list/country-list.component';
 import { ProducersListComponent } from '../producers/producers-list/producers-list.component';
-import { AdminProductCreateComponent } from '../product/admin-product-create/admin-product-create.component';
 import { AdminProductListComponent } from '../product/admin-product-list/admin-product-list.component';
 
 @Component({
@@ -26,36 +27,47 @@ export class AdminDashboardComponent implements OnInit {
 
   itemForDeleteName: string;
 
-  editedCategoryId;
-
   count: number;
   showCart: boolean;
 
-  productBookmark: boolean;
-  userBookmark: boolean;
-  bargainBookmark: boolean;
-  producerBookmark: boolean;
-  countryBookmark: boolean;
-  deliveryBookmark: boolean;
+  commandSubscribtion: Subscription;
 
-  constructor() {
-    this.count = 0;
-    this.showCart = false;
-    this.mainComponent = 'products';
-    this.secondComponent = 'statistics';
-    this.productBookmark = true;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = false;
+  constructor(private componentConnection: ComponentConnectionService) {
   }
 
   ngOnInit(): void {
+    this.count = 0;
+    this.showCart = false;
+    this.mainComponent = 'products';
+    this.openDefaultSecondComponent();
+
+    this.commandSubscribtion = this.componentConnection.currentCommand.subscribe(command => {
+      if (command == 'closeForm') {
+        this.openDefaultSecondComponent();
+      }
+      else if (command == 'openForm') {
+        this.openForm();
+      }
+      else if (command == 'openDelete') {
+        this.secondComponent = 'delete';
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.commandSubscribtion.unsubscribe();
   }
 
   increse() {
     this.count += 1;
+  }
+
+  openForm() {
+    this.secondComponent = 'form';
+  }
+
+  openDefaultSecondComponent() {
+    this.secondComponent = 'statistics';
   }
 
   onOpenCreateProductCard() {
@@ -85,11 +97,6 @@ export class AdminDashboardComponent implements OnInit {
     this.onCancelCard();
   }
 
-  onCreateCategory() {
-    this.categoryListComponent.fetchCategories();
-    this.onCancelCard();
-  }
-
   onOpenDeleteProductConfirm(id) {
     this.itemForDeleteName = `product with id = ${id}`;
     this.secondComponent = 'delete';
@@ -99,9 +106,8 @@ export class AdminDashboardComponent implements OnInit {
     this.secondComponent = 'addCountry';
   }
 
-  onOpenAddCategory(id) {
-    this.editedCategoryId = id;
-    this.secondComponent = 'addCategory';
+  onOpenAddCategory() {
+    this.secondComponent = 'create';
   }
 
   onOpenCreateProducer() {
@@ -123,77 +129,35 @@ export class AdminDashboardComponent implements OnInit {
   showUsers() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'users';
-    this.productBookmark = false;
-    this.userBookmark = true;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = false;
   }
 
   showProducts() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'products';
-    this.productBookmark = true;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = false;
   }
 
   showBargains() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'bargains';
-    this.productBookmark = false;
-    this.userBookmark = false;
-    this.bargainBookmark = true;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = false;
   }
 
   showProducers() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'producers';
-    this.productBookmark = false;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = true;
-    this.countryBookmark = false;
-    this.deliveryBookmark = false;
   }
 
   showCountries() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'countries';
-    this.productBookmark = false;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = true;
-    this.deliveryBookmark = false;
   }
 
   showDelivery() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'deliveries';
-    this.productBookmark = false;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = true;
   }
 
   showCategories() {
     this.secondComponent = 'statistics'
     this.mainComponent = 'categories';
-    this.productBookmark = false;
-    this.userBookmark = false;
-    this.bargainBookmark = false;
-    this.producerBookmark = false;
-    this.countryBookmark = false;
-    this.deliveryBookmark = true;
   }
 }

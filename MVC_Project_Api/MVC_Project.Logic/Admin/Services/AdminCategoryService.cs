@@ -58,6 +58,31 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<bool>> DeleteAsync(int categoryId)
+        {
+            var result = new HandleResult<bool>();
+
+            var category = await _dataContext.Categories.Include(x => x.ChildCategories)
+                .SingleOrDefaultAsync(x => x.CategoryId == categoryId);
+
+            if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+            }
+            else if (category.ChildCategories.Count > 0)
+            {
+                result.ErrorResponse = new ErrorResponse("Category has children", 400);
+            }
+            else
+            {
+                _dataContext.Categories.Remove(category);
+                await _dataContext.SaveChangesAsync();
+                result.Response = true;
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetCategoryByIdResponse>> GetByIdAsync(int categoryId)
         {
             var result = new HandleResult<AdminGetCategoryByIdResponse>();

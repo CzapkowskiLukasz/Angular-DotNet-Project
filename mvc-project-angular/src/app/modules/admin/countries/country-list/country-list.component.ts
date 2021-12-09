@@ -25,7 +25,8 @@ export class CountryListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.commandSubscribtion.unsubscribe();
+    if (this.commandSubscribtion)
+      this.commandSubscribtion.unsubscribe();
   }
 
   openForm(id) {

@@ -33,7 +33,7 @@ export class CategoryService {
     return this.http.put<any>(this.baseAdminUrl, category);
   }
 
-  delete(id): Observable<any> {
-    return this.http.delete<any>(this.baseAdminUrl + '/' + id);
+  delete(id): Observable<boolean> {
+    return this.http.delete<boolean>(this.baseAdminUrl + '/' + id);
   }
 }

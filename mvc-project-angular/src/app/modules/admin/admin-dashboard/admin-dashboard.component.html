@@ -149,18 +149,15 @@
             </div>
         </div>
 
-        <app-admin-product-list *ngIf="mainComponent == 'products'" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)" (createDiscountEvent)="onOpenCreateDiscount()">
-        </app-admin-product-list>
-        <app-user-list *ngIf="mainComponent == 'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
-        <app-discount-list *ngIf="mainComponent == 'bargains'"></app-discount-list>
-        <app-producers-list *ngIf="mainComponent == 'producers'" (createProducerEvent)="onOpenCreateProducer()">
-        </app-producers-list>
-        <app-country-list *ngIf="mainComponent == 'countries'">
-        </app-country-list>
-        <app-delivery-list *ngIf="mainComponent == 'deliveries'"></app-delivery-list>
-        <app-category-list *ngIf="mainComponent == 'categories'">
-        </app-category-list>
-
+        <container-element [ngSwitch]="mainComponent">
+            <app-admin-product-list *ngSwitchCase="'products'" (createProductEvent)="onOpenCreateProductCard()" (deleteProductEvent)="onOpenDeleteProductConfirm($event)" (createDiscountEvent)="onOpenCreateDiscount()"></app-admin-product-list>
+            <app-user-list *ngSwitchCase="'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
+            <app-discount-list *ngSwitchCase="'bargains'"></app-discount-list>
+            <app-producers-list *ngSwitchCase="'producers'" (createProducerEvent)="onOpenCreateProducer()"></app-producers-list>
+            <app-country-list *ngSwitchCase="'countries'"></app-country-list>
+            <app-delivery-list *ngSwitchCase="'deliveries'"></app-delivery-list>
+            <app-category-list *ngSwitchCase="'categories'"></app-category-list>
+        </container-element>
 
         <div style="display: flex;float: right;">
             <div class="buttonBase buttonCircle buttonWhite" style="margin-left: 6px;margin-right: 6px;">

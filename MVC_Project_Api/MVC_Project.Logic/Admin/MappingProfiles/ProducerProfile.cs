@@ -4,7 +4,7 @@ using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using System.Collections.Generic;
 
-namespace MVC_Project.Logic.Global.MappingProfiles
+namespace MVC_Project.Logic.Admin.MappingProfiles
 {
     public class ProducerProfile : Profile
     {

@@ -23,7 +23,6 @@ export class CategoryCreateComponent implements OnInit {
 
   editedCategoryId;
 
-  commandSubscribtion: Subscription;
   valueSubscribtion: Subscription;
 
   constructor(private fb: FormBuilder,

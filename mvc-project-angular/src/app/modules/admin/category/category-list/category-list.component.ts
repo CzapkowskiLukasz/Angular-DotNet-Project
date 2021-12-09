@@ -14,6 +14,8 @@ export class CategoryListComponent implements OnInit {
 
   commandSubscribtion: Subscription;
 
+  itemForDeleteId;
+
   categories: CategoryListItem[] = [];
 
   constructor(private categoryService: CategoryService,
@@ -27,7 +29,8 @@ export class CategoryListComponent implements OnInit {
     this.commandSubscribtion.unsubscribe();
   }
 
-  deleteCategory(categoryId) {
+  delete(categoryId) {
+    this.itemForDeleteId = categoryId;
     const category = this.categories.find(x => x.categoryId == categoryId)
     const nameForDelete = 'category ' + category.name;
     const preparedValue = {
@@ -51,17 +54,29 @@ export class CategoryListComponent implements OnInit {
     this.setSubscribtion();
   }
 
-  setSubscribtion() {
+  private setSubscribtion() {
     if (!this.commandSubscribtion) {
       this.commandSubscribtion = this.componentConnection.currentCommand.subscribe(command => {
-        if (command == 'fetch')
+        if (command == 'fetch') {
           this.fetchCategories();
+        } else if (command == 'deleteConfirm') {
+          this.finishDelete();
+        }
       });
     }
   }
 
-  fetchCategories() {
+  private fetchCategories() {
     this.categoryService.getAdminList().subscribe(result =>
       this.categories = result.categories);
+  }
+
+  private finishDelete() {
+    this.categoryService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchCategories();
+      }
+    });
   }
 }

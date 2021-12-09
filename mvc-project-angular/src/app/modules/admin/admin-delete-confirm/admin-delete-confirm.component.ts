@@ -28,7 +28,7 @@ export class AdminDeleteConfirmComponent implements OnInit {
   }
 
   submit() {
-    this.componentConnection.sendCommand('fetch');
+    this.componentConnection.sendCommand('deleteConfirm');
     this.cancel();
   }
 

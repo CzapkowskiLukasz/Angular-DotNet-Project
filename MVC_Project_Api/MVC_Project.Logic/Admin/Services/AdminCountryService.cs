@@ -31,6 +31,15 @@ namespace MVC_Project.Logic.Admin.Services
                 return result;
             }
 
+            var continent = await _dataContext.Continents
+                .SingleOrDefaultAsync(x => x.ContinentId == request.ContinentId);
+
+            if (continent == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Continent not found", 404);
+                return result;
+            }
+
             var country = _mapper.Map<Country>(request);
 
             await _dataContext.AddAsync(country);
@@ -76,9 +85,18 @@ namespace MVC_Project.Logic.Admin.Services
             var country = await _dataContext.Countries
                 .SingleOrDefaultAsync(x => x.CountryId == request.CountryId);
 
-            if(country==null)
+            if (country == null)
             {
                 result.ErrorResponse = new ErrorResponse("Country not found", 404);
+                return result;
+            }
+
+            var continent = await _dataContext.Continents
+                .SingleOrDefaultAsync(x => x.ContinentId == request.ContinentId);
+
+            if (continent == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Continent not found", 404);
                 return result;
             }
 

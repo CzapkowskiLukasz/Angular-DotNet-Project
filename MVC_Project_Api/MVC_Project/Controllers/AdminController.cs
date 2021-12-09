@@ -183,6 +183,19 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
+        [HttpPut("country")]
+        public async Task<IActionResult> UpdateCountryAsync([FromBody] UpdateCountryRequest request)
+        {
+            var result = await _countryService.UpdateAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("country/dropdown")]
         public async Task<IActionResult> GetCountryDropdownListAsync()
         {

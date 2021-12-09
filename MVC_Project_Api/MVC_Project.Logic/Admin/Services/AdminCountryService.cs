@@ -31,6 +31,15 @@ namespace MVC_Project.Logic.Admin.Services
                 return result;
             }
 
+            var continent = await _dataContext.Continents
+                .SingleOrDefaultAsync(x => x.ContinentId == request.ContinentId);
+
+            if (continent == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Continent not found", 404);
+                return result;
+            }
+
             var country = _mapper.Map<Country>(request);
 
             await _dataContext.AddAsync(country);
@@ -60,6 +69,42 @@ namespace MVC_Project.Logic.Admin.Services
 
             result.Response = _mapper.Map<AdminGetCountryListResponse>(countries);
 
+            return result;
+        }
+
+        public async Task<HandleResult<UpdateCountryResponse>> UpdateAsync(UpdateCountryRequest request)
+        {
+            var result = new HandleResult<UpdateCountryResponse>();
+
+            if (request == null || string.IsNullOrEmpty(request.Name))
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
+
+            var country = await _dataContext.Countries
+                .SingleOrDefaultAsync(x => x.CountryId == request.CountryId);
+
+            if (country == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Country not found", 404);
+                return result;
+            }
+
+            var continent = await _dataContext.Continents
+                .SingleOrDefaultAsync(x => x.ContinentId == request.ContinentId);
+
+            if (continent == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Continent not found", 404);
+                return result;
+            }
+
+            country = _mapper.Map<UpdateCountryRequest, Country>(request, country);
+
+            await _dataContext.SaveChangesAsync();
+
+            result.Response = _mapper.Map<UpdateCountryResponse>(country);
             return result;
         }
     }

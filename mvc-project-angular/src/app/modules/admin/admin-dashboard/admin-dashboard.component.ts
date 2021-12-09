@@ -14,13 +14,10 @@ import { AdminProductListComponent } from '../product/admin-product-list/admin-p
 })
 export class AdminDashboardComponent implements OnInit {
 
-  @ViewChild(CountryListComponent) countryListComponent: CountryListComponent;
 
   @ViewChild(AdminProductListComponent) productListComponent: AdminProductListComponent;
 
   @ViewChild(ProducersListComponent) producerListComponent: ProducersListComponent;
-
-  @ViewChild(CategoryListComponent) categoryListComponent: CategoryListComponent;
 
   mainComponent: string;
   secondComponent: string;
@@ -89,11 +86,6 @@ export class AdminDashboardComponent implements OnInit {
 
   onCreateProducer() {
     this.producerListComponent.fetchProducers();
-    this.onCancelCard();
-  }
-
-  onCreateCountry() {
-    this.countryListComponent.fetchCountries();
     this.onCancelCard();
   }
 

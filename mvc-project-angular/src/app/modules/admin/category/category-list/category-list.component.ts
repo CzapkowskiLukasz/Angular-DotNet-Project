@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
@@ -10,7 +10,7 @@ import { CategoryListItem } from 'src/app/shared/models/category-list-item';
   styleUrls: ['./category-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CategoryListComponent implements OnInit {
+export class CategoryListComponent implements OnInit, OnDestroy {
 
   commandSubscribtion: Subscription;
 
@@ -26,7 +26,8 @@ export class CategoryListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.commandSubscribtion.unsubscribe();
+    if (this.commandSubscribtion)
+      this.commandSubscribtion.unsubscribe();
   }
 
   delete(categoryId) {

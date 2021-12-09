@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ContinentService {
 
-  baseUrl = `${environment.api_url}/continent`;
+  baseUrl = `${environment.api_url}/global/continent`;
 
   constructor(private http: HttpClient) { }
 

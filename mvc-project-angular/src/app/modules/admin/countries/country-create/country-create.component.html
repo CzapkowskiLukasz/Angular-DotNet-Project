@@ -7,8 +7,8 @@
     </div>
 
     <div class="form__div">
-        <input #continentInput type="text" class="form__input" formControlName="description" placeholder=" ">
-        <label for="description" class="form__label">Continent</label>
+        <input #continentInput type="text" class="form__input" formControlName="continent" placeholder=" ">
+        <label for="continent" class="form__label">Continent</label>
         <app-filtered-dropdown *ngIf="isContinentsLoaded" [inputElement]="continentInput" [list]="continentList" (selectIdEvent)="selectContinent($event)"></app-filtered-dropdown>
     </div>
 
@@ -16,7 +16,7 @@
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
             Create
         </div>
-        <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
+        <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
             Cancel
         </div>
     </div>

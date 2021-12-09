@@ -2,7 +2,7 @@
 {
     public class UpdateCountryResponse
     {
-        public int CategoryId { get; set; }
+        public int CountryId { get; set; }
 
         public string Name { get; set; }
     }

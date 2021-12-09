@@ -14,7 +14,7 @@
             <app-admin-product-create *ngIf="mainComponent == 'products'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
             <app-user-voucher *ngIf="mainComponent == 'users'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
         </div>
-        <app-admin-delete-confirm *ngIf="secondComponent == 'delete'" [itemName]="itemForDeleteName" (deleteEvent)="onDelete()" (cancelEvent)="onCancelCard()"></app-admin-delete-confirm>
+        <app-admin-delete-confirm *ngIf="secondComponent == 'delete'"></app-admin-delete-confirm>
         <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
         <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
     </div>

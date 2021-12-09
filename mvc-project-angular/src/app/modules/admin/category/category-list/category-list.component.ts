@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
@@ -11,8 +11,6 @@ import { CategoryListItem } from 'src/app/shared/models/category-list-item';
   encapsulation: ViewEncapsulation.None
 })
 export class CategoryListComponent implements OnInit {
-
-  @Output() deleteEvent = new EventEmitter();
 
   commandSubscribtion: Subscription;
 
@@ -30,7 +28,16 @@ export class CategoryListComponent implements OnInit {
   }
 
   deleteCategory(categoryId) {
-    this.deleteEvent.emit(categoryId);
+    const category = this.categories.find(x => x.categoryId == categoryId)
+    const nameForDelete = 'category ' + category.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
   }
 
   openForm(id) {

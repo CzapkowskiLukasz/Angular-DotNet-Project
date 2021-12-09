@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 
 @Component({
   selector: 'app-admin-delete-confirm',
@@ -7,33 +9,30 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class AdminDeleteConfirmComponent implements OnInit {
 
-  @Input() itemName;
+  itemName;
 
-  @Output() deleteEvent = new EventEmitter();
+  valueSubscribtion: Subscription;
 
-  @Output() cancelEvent = new EventEmitter();
-
-  deleteComponent: boolean = false;
-
-  constructor() { }
+  constructor(private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
+    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
+      if (obj.key == "itemForDeleteName") {
+        this.itemName = obj.value;
+      }
+    });
   }
 
-  showDelete() {
-    this.deleteComponent = true;
-  }
-
-  hideDelete() {
-    this.deleteComponent
-      = false;
+  ngOnDestroy(){
+    this.valueSubscribtion.unsubscribe();
   }
 
   submit() {
-    this.deleteEvent.emit();
+    this.componentConnection.sendCommand('fetch');
+    this.cancel();
   }
 
   cancel() {
-    this.cancelEvent.emit();
+    this.componentConnection.sendCommand('closeForm');
   }
 }

@@ -48,6 +48,9 @@ export class AdminDashboardComponent implements OnInit {
       else if (command == 'openForm') {
         this.openForm();
       }
+      else if (command == 'openDelete') {
+        this.secondComponent = 'delete';
+      }
     });
   }
 

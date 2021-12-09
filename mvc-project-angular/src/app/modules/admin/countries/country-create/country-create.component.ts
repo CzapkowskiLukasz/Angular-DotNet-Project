@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { ContinentService } from 'src/app/core/continent/continent.service';
 import { CountryService } from 'src/app/core/country/country.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
@@ -10,7 +12,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   styleUrls: ['./country-create.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CountryCreateComponent implements OnInit {
+export class CountryCreateComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 
@@ -20,36 +22,44 @@ export class CountryCreateComponent implements OnInit {
 
   isContinentsLoaded: boolean = false;
 
+  valueSubscribtion: Subscription;
+
   constructor(private fb: FormBuilder,
     private continentService: ContinentService,
-    private countryService: CountryService) {
+    private countryService: CountryService,
+    private componentConnection: ComponentConnectionService) { }
 
-    this.form = fb.group({
+  ngOnInit(): void {
+    this.form = this.fb.group({
       name: [''],
       continent: ['']
     });
+
+    this.fetchContinents();
   }
 
-  ngOnInit(): void {
-    this.fetchContinents();
+  ngOnDestroy() {
+    this.valueSubscribtion.unsubscribe();
   }
 
   submit() {
     let newCountry = {
-      name: this.form.get('name'),
+      name: this.form.get('name').value,
       continentId: this.continentId
     };
 
-    this.countryService.add(newCountry);
+    this.countryService.add(newCountry).subscribe(() =>
+      this.finish(),
+      err => console.log(err));
   }
 
-  cancel() {
+  close() {
     this.componentConnection.sendCommand('closeForm');
   }
 
   finish() {
     this.componentConnection.sendCommand('fetch');
-    this.cancel();
+    this.close();
   }
 
   selectContinent(id) {

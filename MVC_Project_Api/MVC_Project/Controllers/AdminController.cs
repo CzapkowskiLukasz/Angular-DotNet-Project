@@ -203,5 +203,18 @@ namespace MVC_Project.Controllers
 
             return Ok(result.Response);
         }
+
+        [HttpDelete("country/{countryId}")]
+        public async Task<IActionResult> DeleteCountryAsync([FromRoute] int countryId)
+        {
+            var result = await _countryService.DeleteAsync(countryId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
     }
 }

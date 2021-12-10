@@ -49,6 +49,32 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<bool>> DeleteAsync(int countryId)
+        {
+            var result = new HandleResult<bool>();
+
+            var country = await _dataContext.Countries.Include(x => x.Producers)
+                .SingleOrDefaultAsync(x => x.CountryId == countryId);
+
+            if (country == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Country not found", 404);
+                return result;
+            }
+
+            if (country.Producers.Count > 0)
+            {
+                result.ErrorResponse = new ErrorResponse("Country has producers", 400);
+                return result;
+            }
+
+            _dataContext.Countries.Remove(country);
+            var deleted = await _dataContext.SaveChangesAsync();
+
+            result.Response = deleted == 1;
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetCountryDropdownListResponse>> GetDropdownListAsync()
         {
             var result = new HandleResult<AdminGetCountryDropdownListResponse>();

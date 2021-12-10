@@ -34,4 +34,8 @@ export class CountryService {
   update(country): Observable<any> {
     return this.http.put<any>(this.baseAdminUrl, country);
   }
+
+  delete(countryId): Observable<boolean> {
+    return this.http.delete<boolean>(this.baseAdminUrl + '/' + countryId);
+  }
 }

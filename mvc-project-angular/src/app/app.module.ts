@@ -48,6 +48,8 @@ import { ProductDetailsComponent } from './modules/product/product-details/produ
 import { ProductListComponent } from './modules/product/product-list/product-list.component';
 import { ProductListElementComponent } from './modules/product/product-list-element/product-list-element.component';
 import { ExpandFormComponent } from './modules/admin/shared/expand-form/expand-form.component';
+import { OrderListComponent } from './modules/admin/user/order-list/order-list.component';
+import { UserListElementComponent } from './modules/admin/user/user-list-element/user-list-element.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -95,7 +97,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductDetailsComponent,
     ProductListComponent,
     ProductListElementComponent,
-    ExpandFormComponent
+    ExpandFormComponent,
+    OrderListComponent,
+    UserListElementComponent
   ],
   imports: [
     BrowserModule,

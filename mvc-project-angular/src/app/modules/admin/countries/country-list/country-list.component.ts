@@ -14,6 +14,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
   commandSubscribtion: Subscription;
 
+  itemForDeleteId;
 
   countries: CountryListItem[] = [];
 
@@ -27,6 +28,20 @@ export class CountryListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.commandSubscribtion)
       this.commandSubscribtion.unsubscribe();
+  }
+
+  delete(countryId) {
+    this.itemForDeleteId = countryId;
+    const country = this.countries.find(x => x.countryId == countryId)
+    const nameForDelete = 'country ' + country.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
   }
 
   openForm(id) {
@@ -58,6 +73,11 @@ export class CountryListComponent implements OnInit, OnDestroy {
   }
 
   private finishDelete() {
-
+    this.countryService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchCountries();
+      }
+    });
   }
 }

@@ -78,6 +78,19 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
+        [HttpPut("producer")]
+        public async Task<IActionResult> UpdateProducerAsync([FromBody] UpdateProducerRequest request)
+        {
+            var result = await _producerService.UpdateAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("category")]
         public async Task<IActionResult> GetCategoryListAsync()
         {

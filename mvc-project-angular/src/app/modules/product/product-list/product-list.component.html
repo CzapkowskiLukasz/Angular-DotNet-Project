@@ -21,6 +21,6 @@
     </div>
 
     <div style="width: 60%;">
-        <app-product-list-element *ngFor='let product of products' [itemName]="product"></app-product-list-element>
+        <app-product-list-element style="outline: none;" *ngFor='let product of products' [itemName]="product" [routerLink]="['/product', product.productId]"></app-product-list-element>
     </div>
 </div>

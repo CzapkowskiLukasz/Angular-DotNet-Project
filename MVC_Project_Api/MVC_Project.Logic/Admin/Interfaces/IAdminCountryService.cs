@@ -14,5 +14,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AddCountryResponse>> AddAsync(AddCountryRequest request);
 
         public Task<HandleResult<UpdateCountryResponse>> UpdateAsync(UpdateCountryRequest request);
+
+        public Task<HandleResult<bool>> DeleteAsync(int countryId);
     }
 }

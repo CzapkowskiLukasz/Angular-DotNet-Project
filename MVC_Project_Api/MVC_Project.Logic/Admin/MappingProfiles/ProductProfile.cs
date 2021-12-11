@@ -6,7 +6,7 @@ using MVC_Project.Logic.Commons;
 using System;
 using System.Collections.Generic;
 
-namespace MVC_Project.Logic.Global.MappingProfiles
+namespace MVC_Project.Logic.Admin.MappingProfiles
 {
     public class ProductProfile : Profile
     {

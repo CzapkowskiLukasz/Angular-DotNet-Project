@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { getPlatform, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CountryListItem } from 'src/app/shared/models/country-list-item';
 import { environment } from 'src/environments/environment';
@@ -11,6 +11,8 @@ export class CountryService {
 
   baseAdminUrl = `${environment.api_url}/admin/country`;
 
+  baseGlobalUrl = `${environment.api_url}/global/country`;
+
   constructor(private http: HttpClient) { }
 
   getAdminList(): Observable<any> {
@@ -21,7 +23,19 @@ export class CountryService {
     return this.http.get<CountryListItem[]>(this.baseAdminUrl + '/dropdown');
   }
 
-  add(newCountry): Observable<any> {
-    return this.http.post<any>(this.baseAdminUrl, newCountry);
+  add(newCountry): Observable<boolean> {
+    return this.http.post<boolean>(this.baseAdminUrl, newCountry);
+  }
+
+  getById(countryId): Observable<any> {
+    return this.http.get<any>(this.baseGlobalUrl + '/' + countryId);
+  }
+
+  update(country): Observable<any> {
+    return this.http.put<any>(this.baseAdminUrl, country);
+  }
+
+  delete(countryId): Observable<boolean> {
+    return this.http.delete<boolean>(this.baseAdminUrl + '/' + countryId);
   }
 }

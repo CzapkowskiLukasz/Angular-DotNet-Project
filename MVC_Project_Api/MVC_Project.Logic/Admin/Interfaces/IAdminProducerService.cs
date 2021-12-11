@@ -12,5 +12,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminGetProducerDropdownListResponse>> GetDropdownListAsync();
 
         public Task<HandleResult<AddProducerResponse>> AddAsync(AddProducerRequest request);
+
+        public Task<HandleResult<UpdateProducerResponse>> UpdateAsync(UpdateProducerRequest request);
     }
 }

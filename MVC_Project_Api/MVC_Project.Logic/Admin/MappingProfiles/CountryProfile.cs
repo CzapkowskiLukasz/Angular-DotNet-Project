@@ -4,7 +4,7 @@ using MVC_Project.Logic.Admin.Requests;
 using MVC_Project.Logic.Admin.Responses;
 using System.Collections.Generic;
 
-namespace MVC_Project.Logic.Global.MappingProfiles
+namespace MVC_Project.Logic.Admin.MappingProfiles
 {
     public class CountryProfile : Profile
     {
@@ -34,6 +34,22 @@ namespace MVC_Project.Logic.Global.MappingProfiles
             CreateMap<AddCountryRequest, Country>();
 
             CreateMap<Country, AddCountryResponse>();
+
+            // Update
+
+            CreateMap<UpdateCountryRequest, Country>()
+                .ConvertUsing((src, dest) =>
+                {
+                    if (src == null)
+                        return null;
+
+                    dest.Name = src.Name;
+                    dest.ContinentId = src.ContinentId;
+
+                    return dest;
+                });
+
+            CreateMap<Country, UpdateCountryResponse>();
         }
     }
 }

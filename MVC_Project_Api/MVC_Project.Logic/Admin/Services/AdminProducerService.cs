@@ -72,5 +72,48 @@ namespace MVC_Project.Logic.Admin.Services
 
             return result;
         }
+
+        public async Task<HandleResult<UpdateProducerResponse>> UpdateAsync(UpdateProducerRequest request)
+        {
+            var result = new HandleResult<UpdateProducerResponse>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Bad request", 400);
+                return result;
+            }
+
+            var producer = await _dataContext.Producers
+                .SingleOrDefaultAsync(x => x.ProducerId == request.ProducerId);
+
+            if (producer == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer not found", 404);
+                return result;
+            }
+
+            var country = await _dataContext.Countries.SingleOrDefaultAsync(x => x.CountryId == request.CountryId);
+
+            if (country == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Country not found", 404);
+                return result;
+            }
+
+            producer = _mapper.Map<UpdateProducerRequest, Producer>(request, producer);
+
+            var updated = await _dataContext.SaveChangesAsync();
+
+            if (updated == 1)
+            {
+                result.Response = _mapper.Map<UpdateProducerResponse>(producer);
+            }
+            else
+            {
+                result.ErrorResponse = new ErrorResponse("Update error", 500);
+            }
+
+            return result;
+        }
     }
 }

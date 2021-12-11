@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { CountryService } from 'src/app/core/country/country.service';
 import { CountryListItem } from 'src/app/shared/models/country-list-item';
 
@@ -8,24 +10,74 @@ import { CountryListItem } from 'src/app/shared/models/country-list-item';
   styleUrls: ['./country-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CountryListComponent implements OnInit {
+export class CountryListComponent implements OnInit, OnDestroy {
 
-  @Output() createCountryEvent = new EventEmitter();
+  commandSubscribtion: Subscription;
+
+  itemForDeleteId;
 
   countries: CountryListItem[] = [];
 
-  constructor(private countryService: CountryService) { }
+  constructor(private countryService: CountryService,
+    private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
     this.fetchCountries();
   }
 
-  addCountry() {
-    this.createCountryEvent.emit()
+  ngOnDestroy() {
+    if (this.commandSubscribtion)
+      this.commandSubscribtion.unsubscribe();
   }
 
-  fetchCountries() {
+  delete(countryId) {
+    this.itemForDeleteId = countryId;
+    const country = this.countries.find(x => x.countryId == countryId)
+    const nameForDelete = 'country ' + country.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
+  }
+
+  openForm(id) {
+    const preparedValue = {
+      key: 'countryId',
+      value: id
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openForm');
+    this.setSubscribtion();
+  }
+
+  private setSubscribtion() {
+    if (!this.commandSubscribtion) {
+      this.commandSubscribtion = this.componentConnection.currentCommand.subscribe(command => {
+        if (command == 'fetch') {
+          this.fetchCountries();
+        } else if (command == 'deleteConfirm') {
+          this.finishDelete();
+        }
+      });
+    }
+  }
+
+  private fetchCountries() {
     this.countryService.getAdminList().subscribe(result =>
       this.countries = result.countries);
+  }
+
+  private finishDelete() {
+    this.countryService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchCountries();
+      }
+    });
   }
 }

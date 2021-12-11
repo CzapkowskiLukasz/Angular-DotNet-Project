@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
@@ -11,7 +11,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   styleUrls: ['./category-create.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CategoryCreateComponent implements OnInit {
+export class CategoryCreateComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 
@@ -72,13 +72,13 @@ export class CategoryCreateComponent implements OnInit {
     }
   }
 
-  cancel() {
+  close() {
     this.componentConnection.sendCommand('closeForm');
   }
 
   finish() {
     this.componentConnection.sendCommand('fetch');
-    this.cancel();
+    this.close();
   }
 
   selectParent(id) {

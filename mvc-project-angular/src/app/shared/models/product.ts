@@ -2,7 +2,7 @@ export interface ProductDetails {
     productId: number,
     name: string,
     price: number,
-    count: Date,
+    count: number,
     categoryName: string,
     producerName: string
 }

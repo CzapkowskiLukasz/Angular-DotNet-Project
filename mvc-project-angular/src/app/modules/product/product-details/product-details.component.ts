@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/product/product.service';
 import { ProductDetails } from 'src/app/shared/models/product';
 
@@ -17,21 +15,29 @@ export class ProductDetailsComponent implements OnInit {
 
   dupa
 
-  product: ProductDetails
+
+  product?: ProductDetails
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    this.getProduct(5)
+    this.getProduct()
   }
 
-  getProduct(id) {
-    this.productService.getDetails(+id).subscribe(result => {
-      this.product.name = result.name
-      this.product.price = result.price
-      this.product.count = result.count
-      this.product.producerName = result.producerName
-    });
+  getProduct(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.productService.getDetails(id)
+      .subscribe(product => this.product = product);
   }
+
+  // getProduct(id) {
+  //   this.productService.getDetails(+id).subscribe(result => {
+  //     this.product.name = result.name
+  //     this.product.price = result.price
+  //     this.product.count = result.count
+  //     this.product.producerName = result.producerName
+  //   });
+  // }
 }

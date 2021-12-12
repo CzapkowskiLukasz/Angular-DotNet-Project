@@ -4,9 +4,8 @@
             <div class="descriptionContainer">
                 <h4 class="orderTitle" style="margin-bottom: 0;">Producer #{{producer.producerId}}</h4>
                 <div style="margin-left: auto;padding: 5px; display: flex;">
-                    <div class="profileButton" style="margin-right: 5px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
-                            viewBox="0 0 172 172" style=" fill:#000000;">
+                    <div class="profileButton" style="margin-right: 5px;" (click)="openEditForm(producer)">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                                 font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -21,8 +20,7 @@
                         </svg>
                     </div>
                     <div class="buttonBase buttonCircle buttonDelete">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
-                            viewBox="0 0 172 172" style=" fill:#000000;">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                                 font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -54,9 +52,8 @@
 </div>
 
 <h4 class="cardLines"><span class="cardTextInLines">{{'admin.dashboard.othersHeader' | translate}}</span></h4>
-<div class="buttonBase buttonCircle buttonWhite" style="float: left;" (click)="addProducer()">
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-        style=" fill:#000000;">
+<div class="buttonBase buttonCircle buttonWhite" style="float: left;" (click)="openForm(-1)">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
             stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
             font-size="none" text-anchor="none" style="mix-blend-mode: normal">

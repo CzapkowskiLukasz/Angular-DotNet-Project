@@ -49,6 +49,21 @@ namespace MVC_Project.Controllers
             }
         }
 
+        [HttpPut("product")]
+        public async Task<IActionResult> UpdateProductAsync([FromBody] AdminUpdateProductRequest request)
+        {
+            var result = await _productService.UpdateAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
+
         [HttpGet("producer")]
         public async Task<IActionResult> GetProducersListAsync()
         {

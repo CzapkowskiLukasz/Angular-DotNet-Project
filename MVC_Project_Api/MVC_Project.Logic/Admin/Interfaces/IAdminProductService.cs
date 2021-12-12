@@ -10,5 +10,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminGetProductListResponse>> GetProductListAsync();
 
         public Task<HandleResult<AdminAddProductResponse>> AddProductAsync(AdminAddProductRequest request);
+
+        public Task<HandleResult<UpdateProductResponse>> UpdateAsync(UpdateProductRequest request);
     }
 }

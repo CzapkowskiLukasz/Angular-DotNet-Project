@@ -75,5 +75,52 @@ namespace MVC_Project.Logic.Admin.Services
 
             return result;
         }
+
+        public async Task<HandleResult<UpdateProductResponse>> UpdateAsync(UpdateProductRequest request)
+        {
+            var result = new HandleResult<UpdateProductResponse>();
+
+            if (request == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Wrong data", 400);
+                return result;
+            }
+
+            var product = await _dataContext.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+
+            if (product == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Product not found", 404);
+                return result;
+            }
+
+            var producer = await _dataContext.Producers.SingleOrDefaultAsync(x => x.ProducerId == request.ProducerId);
+            var category = await _dataContext.Categories.SingleOrDefaultAsync(x => x.CategoryId == request.CategoryId);
+
+            if (producer == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer not found", 404);
+                return result;
+            }
+            else if (category == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Category not found", 404);
+                return result;
+            }
+
+            product = _mapper.Map<UpdateProductRequest, Product>(request, product);
+
+            var updated = await _dataContext.SaveChangesAsync();
+
+            if (updated != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Update error", 500);
+                return result;
+            }
+
+            result.Response = _mapper.Map<UpdateProductResponse>(product);
+
+            return result;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MVC_Project.Logic.Admin.Requests
 {
-    public class UpdateProductRequest
+    public class AdminUpdateProductRequest
     {
         public int ProductId { get; set; }
 

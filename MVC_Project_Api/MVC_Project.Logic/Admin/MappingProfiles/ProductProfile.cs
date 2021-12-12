@@ -31,7 +31,7 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
 
             // Update
 
-            CreateMap<UpdateProductRequest, Product>()
+            CreateMap<AdminUpdateProductRequest, Product>()
                 .ConvertUsing((src, dest) =>
                 {
                     if (src == null)
@@ -47,7 +47,7 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
                     return dest;
                 });
 
-            CreateMap<Product, UpdateProductResponse>();
+            CreateMap<Product, AdminUpdateProductResponse>();
         }
     }
 }

@@ -76,9 +76,9 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
-        public async Task<HandleResult<UpdateProductResponse>> UpdateAsync(UpdateProductRequest request)
+        public async Task<HandleResult<AdminUpdateProductResponse>> UpdateAsync(AdminUpdateProductRequest request)
         {
-            var result = new HandleResult<UpdateProductResponse>();
+            var result = new HandleResult<AdminUpdateProductResponse>();
 
             if (request == null)
             {
@@ -108,7 +108,7 @@ namespace MVC_Project.Logic.Admin.Services
                 return result;
             }
 
-            product = _mapper.Map<UpdateProductRequest, Product>(request, product);
+            product = _mapper.Map<AdminUpdateProductRequest, Product>(request, product);
 
             var updated = await _dataContext.SaveChangesAsync();
 
@@ -118,7 +118,7 @@ namespace MVC_Project.Logic.Admin.Services
                 return result;
             }
 
-            result.Response = _mapper.Map<UpdateProductResponse>(product);
+            result.Response = _mapper.Map<AdminUpdateProductResponse>(product);
 
             return result;
         }

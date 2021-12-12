@@ -48,6 +48,13 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
                 });
 
             CreateMap<Product, AdminUpdateProductResponse>();
+
+
+            // Get by id
+
+            CreateMap<Product, AdminGetProductByIdResponse>()
+                .ForMember(dest => dest.Count, opt =>
+                   opt.MapFrom(src => src.WarehouseQuantity));
         }
     }
 }

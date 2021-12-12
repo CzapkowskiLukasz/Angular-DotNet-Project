@@ -14,6 +14,8 @@ export class ProducersListComponent implements OnInit, OnDestroy {
 
   commandSubscribtion: Subscription;
 
+  itemForDeleteId;
+
   producers: ProducerListItem[] = [];
 
   constructor(private producerService: ProducerService,
@@ -28,6 +30,20 @@ export class ProducersListComponent implements OnInit, OnDestroy {
       this.commandSubscribtion.unsubscribe();
   }
 
+  delete(producerId) {
+    this.itemForDeleteId = producerId;
+    const producer = this.producers.find(x => x.producerId == producerId);
+    const nameForDelete = 'producer ' + producer.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
+  }
+
   openForm(id) {
     const preparedValue = {
       key: 'producerId',
@@ -39,7 +55,7 @@ export class ProducersListComponent implements OnInit, OnDestroy {
     this.setSubscribtion();
   }
 
-  openEditForm(producer){
+  openEditForm(producer) {
     const preparedValue = {
       key: 'producerForEdit',
       value: producer
@@ -69,6 +85,11 @@ export class ProducersListComponent implements OnInit, OnDestroy {
   }
 
   private finishDelete() {
-
+    this.producerService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchProducers();
+      }
+    });
   }
 }

@@ -84,11 +84,6 @@ export class AdminDashboardComponent implements OnInit {
     this.onCancelCard();
   }
 
-  onCreateProducer() {
-    this.producerListComponent.fetchProducers();
-    this.onCancelCard();
-  }
-
   onOpenDeleteProductConfirm(id) {
     this.itemForDeleteName = `product with id = ${id}`;
     this.secondComponent = 'delete';

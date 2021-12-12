@@ -10,7 +10,7 @@
             <app-category-create *ngIf="mainComponent == 'categories'"></app-category-create>
             <app-country-create *ngIf="mainComponent == 'countries'"></app-country-create>
             <app-create-discount *ngIf="mainComponent == 'bargains'" (cancelEvent)="onCancelCard()"></app-create-discount>
-            <app-producers-add *ngIf="mainComponent == 'producers'" (createProducerEvent)="onCreateProducer()" (cancelEvent)="onCancelCard()"></app-producers-add>
+            <app-producers-add *ngIf="mainComponent == 'producers'"></app-producers-add>
             <app-admin-product-create *ngIf="mainComponent == 'products'" (createProductEvent)="onCreateProduct()" (cancelEvent)="onCancelCard()"></app-admin-product-create>
             <app-user-voucher *ngIf="mainComponent == 'users'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
         </div>

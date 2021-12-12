@@ -1,4 +1,9 @@
-<h4 class="cardLines"><span class="cardTextInLines">New producer</span></h4>
+<h4 class="cardLines">
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit producer</span>
+    <ng-template #creating>
+        <span class="cardTextInLines">New producer</span>
+    </ng-template>
+</h4>
 
 <form [formGroup]="form">
     <div class="form__div">
@@ -7,16 +12,16 @@
     </div>
 
     <div class="form__div">
-        <input #countryInput type="text" class="form__input" formControlName="category" placeholder=" ">
-        <label for="category" class="form__label">Country</label>
+        <input #countryInput type="text" class="form__input" formControlName="country" placeholder=" ">
+        <label for="country" class="form__label">Country</label>
         <app-filtered-dropdown *ngIf="isCountriesLoaded" [inputElement]="countryInput" [list]="countryList" (selectIdEvent)="selectCountry($event)"></app-filtered-dropdown>
     </div>
 
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-            Create
+            Submit
         </div>
-        <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
+        <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
             Cancel
         </div>
     </div>

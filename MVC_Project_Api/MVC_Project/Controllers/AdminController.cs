@@ -91,6 +91,19 @@ namespace MVC_Project.Controllers
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
 
+        [HttpDelete("producer/{producerId}")]
+        public async Task<IActionResult> DeleteProducerAsync([FromRoute] int producerId)
+        {
+            var result = await _producerService.DeleteAsync(producerId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("category")]
         public async Task<IActionResult> GetCategoryListAsync()
         {

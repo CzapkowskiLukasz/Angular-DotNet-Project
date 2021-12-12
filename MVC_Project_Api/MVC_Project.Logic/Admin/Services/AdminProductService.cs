@@ -64,6 +64,27 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<AdminGetProductByIdResponse>> GetByIdAsync(int productId)
+        {
+            var result = new HandleResult<AdminGetProductByIdResponse>();
+
+            var product = await _dataContext.Products
+                .Include(x => x.Producer)
+                .Include(x => x.Category)
+                .SingleOrDefaultAsync(x => x.ProductId == productId);
+
+            if (product == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Product not found", 404);
+            }
+            else
+            {
+                result.Response = _mapper.Map<AdminGetProductByIdResponse>(product);
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetProductListResponse>> GetProductListAsync()
         {
             var result = new HandleResult<AdminGetProductListResponse>();

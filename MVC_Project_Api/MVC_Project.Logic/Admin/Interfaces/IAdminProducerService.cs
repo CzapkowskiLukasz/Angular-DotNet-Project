@@ -14,5 +14,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AddProducerResponse>> AddAsync(AddProducerRequest request);
 
         public Task<HandleResult<UpdateProducerResponse>> UpdateAsync(UpdateProducerRequest request);
+
+        public Task<HandleResult<bool>> DeleteAsync(int producerId);
     }
 }

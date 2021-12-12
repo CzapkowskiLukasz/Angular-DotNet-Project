@@ -25,7 +25,11 @@ export class ProducerService {
     return this.http.post<any>(this.baseAdminUrl, newProducer);
   }
 
-  update(producer):Observable<any>{
+  update(producer): Observable<any> {
     return this.http.put<any>(this.baseAdminUrl, producer);
+  }
+
+  delete(producerId): Observable<boolean> {
+    return this.http.delete<boolean>(this.baseAdminUrl + "/" + producerId);
   }
 }

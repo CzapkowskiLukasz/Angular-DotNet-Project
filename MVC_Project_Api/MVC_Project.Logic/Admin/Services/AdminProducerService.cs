@@ -50,6 +50,40 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<bool>> DeleteAsync(int producerId)
+        {
+            var result = new HandleResult<bool>();
+
+            var producer = await _dataContext.Producers.Include(x => x.Products)
+                .SingleOrDefaultAsync(x => x.ProducerId == producerId);
+
+            if (producer == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer not found", 404);
+                return result;
+            }
+
+            if (producer.Products.Count > 0)
+            {
+                result.ErrorResponse = new ErrorResponse("Producer has products", 400);
+                return result;
+            }
+
+            _dataContext.Producers.Remove(producer);
+            var deleted = await _dataContext.SaveChangesAsync();
+
+            if (deleted != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Delete error", 500);
+            }
+            else
+            {
+                result.Response = true;
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetProducerDropdownListResponse>> GetDropdownListAsync()
         {
             var result = new HandleResult<AdminGetProducerDropdownListResponse>();

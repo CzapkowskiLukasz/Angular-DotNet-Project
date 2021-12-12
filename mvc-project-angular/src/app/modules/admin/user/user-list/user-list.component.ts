@@ -22,8 +22,8 @@ export class UserListComponent implements OnInit {
     this.fetchUsers();
   }
 
-  showUserInfo() {
-    this.createUserInfoEvent.emit()
+  showUserInfo(user) {
+    this.createUserInfoEvent.emit(user)
   }
 
   showCreateVoucherEvent() {

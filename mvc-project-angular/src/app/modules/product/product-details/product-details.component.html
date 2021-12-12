@@ -58,19 +58,19 @@
                             <div class="infoBottom">
                                 <p class="shortInfoDescription bottomInfo">Availability: </p>
                             </div>
-                            <div class="infoBottom" *ngIf="product.count == 0">
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity == 0">
                                 <p class="shortInfo bottomInfo">No available</p>
                                 <div class="grayDot"></div>
                             </div>
-                            <div class="infoBottom" *ngIf="product.count < 10 && product.count > 0">
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
                                 <p class="shortInfo bottomInfo">Low availability</p>
                                 <div class="redDot"></div>
                             </div>
-                            <div class="infoBottom" *ngIf="product.count > 20">
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
                                 <p class="shortInfo bottomInfo">Medium availability</p>
                                 <div class="orangeDot"></div>
                             </div>
-                            <div class="infoBottom" *ngIf="product.count > 40">
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 40">
                                 <p class="shortInfo bottomInfo">Hight availability</p>
                                 <div class="greenDot"></div>
                             </div>

@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'admin/products/new-product', component: AdminProductCreateComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'cart/checkout', component: CartCheckoutComponent },
-  { path: 'product', component: ProductDetailsComponent },
+  { path: 'product/:id', component: ProductDetailsComponent },
   { path: 'product-list', component: ProductListComponent }
 ];
 

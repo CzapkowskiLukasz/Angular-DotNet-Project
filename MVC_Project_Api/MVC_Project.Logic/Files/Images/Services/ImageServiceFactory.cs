@@ -28,7 +28,7 @@ namespace MVC_Project.Logic.Files.Images.Services
                     return (IImageService)_serviceProvider.GetService(typeof(LocalImageService));
 
                 default:
-                    throw new Exception("Wrong storage service type.");
+                  throw new Exception("Wrong storage service type.");
             }
         }
     }

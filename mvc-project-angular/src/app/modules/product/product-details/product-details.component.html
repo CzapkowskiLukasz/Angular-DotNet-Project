@@ -8,11 +8,11 @@
                 </div>
             </div>
             <div class="basicDiv" style="width: 394px;margin-right: 0;">
-                <h4 class="cardLines"><span class="cardTextInLines">Product name</span></h4>
+                <h4 class="cardLines"><span class="cardTextInLines">{{product.name}}</span></h4>
                 <div style="display: flex;flex-direction: column; align-items: center; justify-content: space-between;">
                     <p class="shortInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat
                         hendrerit. </p>
-                    <h2>0,99 zł</h2>
+                    <h2>{{product.price.toFixed(2)}} zł</h2>
                     <div class="buttonsContainer">
                         <div class="counter" style="margin-bottom:10px;">
                             <div class="buttonCounter">
@@ -58,15 +58,27 @@
                             <div class="infoBottom">
                                 <p class="shortInfoDescription bottomInfo">Availability: </p>
                             </div>
-                            <div class="infoBottom">
-                                <p class="shortInfo bottomInfo">Product availability</p>
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity == 0">
+                                <p class="shortInfo bottomInfo">No available</p>
+                                <div class="grayDot"></div>
+                            </div>
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
+                                <p class="shortInfo bottomInfo">Low availability</p>
+                                <div class="redDot"></div>
+                            </div>
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
+                                <p class="shortInfo bottomInfo">Medium availability</p>
+                                <div class="orangeDot"></div>
+                            </div>
+                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 40">
+                                <p class="shortInfo bottomInfo">Hight availability</p>
                                 <div class="greenDot"></div>
                             </div>
                         </div>
 
                         <div class="infoBottom" style="justify-content: center;">
-                            <p class="shortInfoDescription bottomInfo">Origin:</p>
-                            <p class="shortInfo bottomInfo" style="margin-left: 5px;">Denmark</p>
+                            <p class="shortInfoDescription bottomInfo">Producer:</p>
+                            <p class="shortInfo bottomInfo" style="margin-left: 5px;">{{product.producerName}}</p>
                         </div>
 
                         <div class="infoBottom" style="justify-content: center;">

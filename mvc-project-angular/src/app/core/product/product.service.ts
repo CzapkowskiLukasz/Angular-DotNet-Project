@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProductDetails } from 'src/app/shared/models/product';
 import { ProductListItem } from 'src/app/shared/models/product-list-item';
 import { SlideItem } from 'src/app/shared/models/slide-item';
 import { environment } from 'src/environments/environment';
@@ -26,5 +27,9 @@ export class ProductService {
 
   add(newProduct): Observable<any> {
     return this.http.post<any>(this.baseAdminUrl, newProduct);
+  }
+
+  getDetails(id): Observable<ProductDetails>{
+     return this.http.get<ProductDetails>(this.baseUrl+ '/by-id/' + id)
   }
 }

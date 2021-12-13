@@ -25,6 +25,10 @@ export class ProductService {
     return this.http.get<ProductListItem[]>(this.baseAdminUrl);
   }
 
+  adminGetById(productId): Observable<any> {
+    return this.http.get<any>(this.baseAdminUrl + '/by-id/' + productId);
+  }
+
   add(newProduct): Observable<any> {
     return this.http.post<any>(this.baseAdminUrl, newProduct);
   }

@@ -1,4 +1,9 @@
-<h4 class="cardLines"><span class="cardTextInLines">{{'admin.product.create.title' | translate}}</span></h4>
+<h4 class="cardLines">
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit producer</span>
+    <ng-template #creating>
+        <span class="cardTextInLines">{{'admin.product.create.title' | translate}}</span>
+    </ng-template>
+</h4>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
     <div style="display: flex; flex-direction: column; align-items: center;">
@@ -13,8 +18,7 @@
                 <div class="form__div">
                     <input #producerInput type="text" class="form__input" formControlName="producer" placeholder=" ">
                     <label for="producer" class="form__label">{{'admin.product.create.producer' | translate}}</label>
-                    <app-filtered-dropdown *ngIf="isProducersLoaded" [inputElement]="producerInput"
-                        [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
+                    <app-filtered-dropdown *ngIf="isProducersLoaded" [inputElement]="producerInput" [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
                 </div>
 
                 <div class="form__div">
@@ -37,8 +41,7 @@
                 <div class="form__div">
                     <input #categoryInput type="text" class="form__input" formControlName="category" placeholder=" ">
                     <label for="category" class="form__label">{{'admin.product.create.category' | translate}}</label>
-                    <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput"
-                        [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
+                    <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
                 </div>
             </div>
             <app-expand-form *ngIf="expand"></app-expand-form>
@@ -48,15 +51,13 @@
                 <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
                     Add
                 </div>
-                <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
+                <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
                     Cancel
                 </div>
             </div>
 
-            <div class="buttonBase buttonCircle buttonWhite" style="margin-right: 0;margin-left: auto;"
-                (click)="expandForm()">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                    style=" fill:#000000;" *ngIf="!expand">
+            <div class="buttonBase buttonCircle buttonWhite" style="margin-right: 0;margin-left: auto;" (click)="expandForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;" *ngIf="!expand">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -69,8 +70,7 @@
                         </g>
                     </g>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                    style=" fill:#000000;" *ngIf="expand">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;" *ngIf="expand">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"

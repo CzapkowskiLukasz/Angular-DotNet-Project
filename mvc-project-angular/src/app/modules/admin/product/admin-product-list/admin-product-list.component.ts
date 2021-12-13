@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { ProductListItem } from 'src/app/shared/models/product-list-item';
 
@@ -9,17 +11,16 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
 })
 export class AdminProductListComponent implements OnInit {
 
-  @Output() createProductEvent = new EventEmitter();
+  commandSubscribtion: Subscription;
 
-  @Output() deleteProductEvent = new EventEmitter();
-
-  @Output() createDiscountEvent = new EventEmitter();
+  itemForDeleteId;
 
   products: ProductListItem[] = [];
 
   deleteComponent: boolean = false;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+    private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
     this.fetchProducts();
@@ -31,19 +32,41 @@ export class AdminProductListComponent implements OnInit {
     });
   }
 
-  addProduct() {
-    this.createProductEvent.emit();
+  openForm(id) {
+    const preparedValue = {
+      key: 'productId',
+      value: id
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openForm');
+    this.setSubscribtion();
   }
 
   addDiscount() {
-    this.createDiscountEvent.emit();
   }
   
   deleteProduct(id) {
-    this.deleteProductEvent.emit(id);
   }
 
-  showDelete() {
-    this.deleteComponent = true;
+  private setSubscribtion() {
+    if (!this.commandSubscribtion) {
+      this.commandSubscribtion = this.componentConnection.currentCommand.subscribe(command => {
+        if (command == 'fetch') {
+          this.fetchProducts();
+        } else if (command == 'deleteConfirm') {
+          this.finishDelete();
+        }
+      });
+    }
+  }
+
+  private finishDelete() {
+    // this.productService.delete(this.itemForDeleteId).subscribe(result => {
+    //   if (result) {
+    //     console.log('Successful delete');
+    //     this.fetchCategories();
+    //   }
+    // });
   }
 }

@@ -31,27 +31,28 @@ export class AdminProductListComponent implements OnInit, OnDestroy {
       this.commandSubscribtion.unsubscribe();
   }
 
-  fetchProducts() {
-    this.productService.getAdminList().subscribe(result => {
-      this.products = result.products;
-    });
-  }
-
+  
   openForm(id) {
     const preparedValue = {
       key: 'productId',
       value: id
     };
-
+    
     this.componentConnection.sendValue(preparedValue);
     this.componentConnection.sendCommand('openForm');
     this.setSubscribtion();
   }
-
+  
   addDiscount() {
   }
-
+  
   deleteProduct(id) {
+  }
+  
+  private fetchProducts() {
+    this.productService.getAdminList().subscribe(result => {
+      this.products = result.products;
+    });
   }
 
   private setSubscribtion() {

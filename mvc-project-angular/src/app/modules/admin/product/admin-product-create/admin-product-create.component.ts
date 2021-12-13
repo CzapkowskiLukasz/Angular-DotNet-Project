@@ -1,6 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { ProducerService } from 'src/app/core/producer/producer.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
@@ -11,11 +13,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   styleUrls: ['./admin-product-create.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminProductCreateComponent implements OnInit {
-
-  @Output() createProductEvent = new EventEmitter();
-
-  @Output() cancelEvent = new EventEmitter();
+export class AdminProductCreateComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 
@@ -30,13 +28,21 @@ export class AdminProductCreateComponent implements OnInit {
   isCategoriesLoaded: boolean;
   isProducersLoaded: boolean;
 
-  expand:boolean;
+  editedProductId;
+
+  valueSubscribtion: Subscription;
+
+  expand: boolean;
 
   constructor(private fb: FormBuilder,
     private categoryService: CategoryService,
     private producerService: ProducerService,
     private productService: ProductService,
+    private componentConnection: ComponentConnectionService
   ) {
+  }
+
+  ngOnInit(): void {
     this.form = this.fb.group({
       name: [''],
       price: [''],
@@ -50,14 +56,23 @@ export class AdminProductCreateComponent implements OnInit {
     this.expand = false
     this.isCategoriesLoaded = false;
     this.isProducersLoaded = false;
-  }
 
-  ngOnInit(): void {
     this.fetchCategories();
     this.fetchProducers();
+
+    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
+      if (obj.key == 'productId') {
+        this.editedProductId = obj.value
+        this.prepareForm();
+      }
+    });
   }
 
-  expandForm(){
+  ngOnDestroy() {
+    this.valueSubscribtion.unsubscribe();
+  }
+
+  expandForm() {
     this.expand = !this.expand
   }
 
@@ -71,21 +86,48 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   submit() {
-    let newProduct = {
-      name: this.form.get('name').value,
-      producerId: this.producerId,
-      description: this.form.get('description').value,
-      price: this.form.get('price').value,
-      count: this.form.get('count').value,
-      categoryId: this.categoryId
-    };
+    if (this.isItEditing) {
+      const product = {
+        productId: this.editedProductId,
+        name: this.form.get('name').value,
+        producerId: this.producerId,
+        description: this.form.get('description').value,
+        price: this.form.get('price').value,
+        count: this.form.get('count').value,
+        categoryId: this.categoryId
+      };
 
-    this.productService.add(newProduct).subscribe(() => this.createProductEvent.emit(),
-      err => console.log(err));
+      this.productService.update(product).subscribe(() =>
+        this.finish(),
+        err => console.log(err));
+    }
+    else {
+      const newProduct = {
+        name: this.form.get('name').value,
+        producerId: this.producerId,
+        description: this.form.get('description').value,
+        price: this.form.get('price').value,
+        count: this.form.get('count').value,
+        categoryId: this.categoryId
+      };
+
+      this.productService.add(newProduct).subscribe(() =>
+        this.finish(),
+        err => console.log(err));
+    }
   }
 
-  cancel() {
-    this.cancelEvent.emit();
+  close() {
+    this.componentConnection.sendCommand('closeForm');
+  }
+
+  get isItEditing(): boolean {
+    return this.editedProductId != -1;
+  }
+
+  private finish() {
+    this.componentConnection.sendCommand('fetch');
+    this.close();
   }
 
   private fetchCategories() {
@@ -103,5 +145,30 @@ export class AdminProductCreateComponent implements OnInit {
         ({ text: producer.name, value: producer.producerId })),
       err => console.log(err),
       () => this.isProducersLoaded = true);
+  }
+
+  private fetchProduct() {
+    this.productService.adminGetById(this.editedProductId).subscribe(result => {
+      const product = result;
+
+      this.form.patchValue(product);
+
+      const producer = this.producerList.find(x => x.value == product.producerId);
+      this.producerId = product.producerId
+      this.form.get('producer').setValue(producer.text);
+
+      const category = this.categoryList.find(x => x.value == product.categoryId);
+      this.categoryId = product.categoryId
+      this.form.get('category').setValue(category.text);
+    })
+  }
+
+  private prepareForm() {
+    this.form.reset('');
+    this.categoryId = 0;
+    this.producerId = 0;
+    if (this.isItEditing) {
+      this.fetchProduct();
+    }
   }
 }

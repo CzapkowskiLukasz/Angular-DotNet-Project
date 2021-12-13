@@ -34,10 +34,38 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("product/by-id/{productId}")]
+        public async Task<IActionResult> GetProductByIdAsync([FromRoute] int productId)
+        {
+            var result = await _productService.GetByIdAsync(productId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpPost("product")]
         public async Task<IActionResult> AddProductAsync([FromBody] AdminAddProductRequest request)
         {
             var result = await _productService.AddProductAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
+
+        [HttpPut("product")]
+        public async Task<IActionResult> UpdateProductAsync([FromBody] AdminUpdateProductRequest request)
+        {
+            var result = await _productService.UpdateAsync(request);
 
             if (result.ErrorResponse == null)
             {

@@ -27,6 +27,34 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
                     opt.MapFrom(src => src.Count))
                 .ForMember(dest => dest.CreateDate, opt =>
                     opt.MapFrom(src => DateTime.UtcNow));
+
+
+            // Update
+
+            CreateMap<AdminUpdateProductRequest, Product>()
+                .ConvertUsing((src, dest) =>
+                {
+                    if (src == null)
+                        return null;
+
+                    dest.Name = src.Name;
+                    dest.ProducerId = src.ProducerId;
+                    dest.Description = src.Description;
+                    dest.Price = src.Price;
+                    dest.WarehouseQuantity = src.Count;
+                    dest.CategoryId = src.CategoryId;
+
+                    return dest;
+                });
+
+            CreateMap<Product, AdminUpdateProductResponse>();
+
+
+            // Get by id
+
+            CreateMap<Product, AdminGetProductByIdResponse>()
+                .ForMember(dest => dest.Count, opt =>
+                   opt.MapFrom(src => src.WarehouseQuantity));
         }
     }
 }

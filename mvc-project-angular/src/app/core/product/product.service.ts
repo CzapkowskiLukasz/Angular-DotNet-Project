@@ -33,6 +33,10 @@ export class ProductService {
     return this.http.post<any>(this.baseAdminUrl, newProduct);
   }
 
+  update(product): Observable<any> {
+    return this.http.put<any>(this.baseAdminUrl, product);
+  }
+
   getDetails(id): Observable<ProductDetails>{
      return this.http.get<ProductDetails>(this.baseUrl+ '/by-id/' + id)
   }

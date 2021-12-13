@@ -77,6 +77,21 @@ namespace MVC_Project.Controllers
             }
         }
 
+        [HttpDelete("product/{productId}")]
+        public async Task<IActionResult> DeleteProductAsync([FromRoute] int productId)
+        {
+            var result = await _productService.DeleteAsync(productId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+            else
+            {
+                return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+            }
+        }
+
         [HttpGet("producer")]
         public async Task<IActionResult> GetProducersListAsync()
         {

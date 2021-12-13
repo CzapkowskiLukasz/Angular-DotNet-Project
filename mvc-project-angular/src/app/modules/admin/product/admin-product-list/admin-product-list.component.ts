@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { ProductService } from 'src/app/core/product/product.service';
@@ -9,7 +9,7 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
   templateUrl: './admin-product-list.component.html',
   styleUrls: ['./admin-product-list.component.css']
 })
-export class AdminProductListComponent implements OnInit {
+export class AdminProductListComponent implements OnInit, OnDestroy {
 
   commandSubscribtion: Subscription;
 
@@ -24,6 +24,11 @@ export class AdminProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProducts();
+  }
+
+  ngOnDestroy() {
+    if (this.commandSubscribtion)
+      this.commandSubscribtion.unsubscribe();
   }
 
   fetchProducts() {
@@ -45,7 +50,7 @@ export class AdminProductListComponent implements OnInit {
 
   addDiscount() {
   }
-  
+
   deleteProduct(id) {
   }
 

@@ -32,4 +32,8 @@ export class ProductService {
   getDetails(id): Observable<ProductDetails>{
      return this.http.get<ProductDetails>(this.baseUrl+ '/by-id/' + id)
   }
+
+  getCustomerList(): Observable<any> {
+    return this.http.get<ProductListItem[]>(this.baseUrl);
+  }
 }

@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.productService.getAdminList().subscribe(result => {
+    this.productService.getCustomerList().subscribe(result => {
       this.products = result.products;
     });
   }

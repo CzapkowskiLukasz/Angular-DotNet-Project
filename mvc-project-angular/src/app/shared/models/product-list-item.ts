@@ -3,5 +3,6 @@ export interface ProductListItem {
     name: string,
     category: string,
     price: number,
-    count: number
+    count: number,
+    producerName: string
 }

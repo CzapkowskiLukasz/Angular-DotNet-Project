@@ -14,5 +14,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
         public Task<HandleResult<AdminUpdateProductResponse>> UpdateAsync(AdminUpdateProductRequest request);
 
         public Task<HandleResult<AdminGetProductByIdResponse>> GetByIdAsync(int productId);
+
+        public Task<HandleResult<bool>> DeleteAsync(int productId);
     }
 }

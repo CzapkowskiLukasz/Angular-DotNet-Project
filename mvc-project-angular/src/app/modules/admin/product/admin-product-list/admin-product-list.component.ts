@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { ProductService } from 'src/app/core/product/product.service';
@@ -9,7 +9,7 @@ import { ProductListItem } from 'src/app/shared/models/product-list-item';
   templateUrl: './admin-product-list.component.html',
   styleUrls: ['./admin-product-list.component.css']
 })
-export class AdminProductListComponent implements OnInit {
+export class AdminProductListComponent implements OnInit, OnDestroy {
 
   commandSubscribtion: Subscription;
 
@@ -26,10 +26,23 @@ export class AdminProductListComponent implements OnInit {
     this.fetchProducts();
   }
 
-  fetchProducts() {
-    this.productService.getAdminList().subscribe(result => {
-      this.products = result.products;
-    });
+  ngOnDestroy() {
+    if (this.commandSubscribtion)
+      this.commandSubscribtion.unsubscribe();
+  }
+
+  delete(productId) {
+    this.itemForDeleteId = productId;
+    const product = this.products.find(x => x.productId == productId)
+    const nameForDelete = 'product ' + product.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
   }
 
   openForm(id) {
@@ -45,8 +58,11 @@ export class AdminProductListComponent implements OnInit {
 
   addDiscount() {
   }
-  
-  deleteProduct(id) {
+
+  private fetchProducts() {
+    this.productService.getAdminList().subscribe(result => {
+      this.products = result.products;
+    });
   }
 
   private setSubscribtion() {
@@ -62,11 +78,11 @@ export class AdminProductListComponent implements OnInit {
   }
 
   private finishDelete() {
-    // this.productService.delete(this.itemForDeleteId).subscribe(result => {
-    //   if (result) {
-    //     console.log('Successful delete');
-    //     this.fetchCategories();
-    //   }
-    // });
+    this.productService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchProducts();
+      }
+    });
   }
 }

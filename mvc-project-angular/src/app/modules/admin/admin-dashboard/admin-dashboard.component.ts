@@ -14,11 +14,6 @@ import { AdminProductListComponent } from '../product/admin-product-list/admin-p
 })
 export class AdminDashboardComponent implements OnInit {
 
-
-  @ViewChild(AdminProductListComponent) productListComponent: AdminProductListComponent;
-
-  @ViewChild(ProducersListComponent) producerListComponent: ProducersListComponent;
-
   mainComponent: string;
   secondComponent: string;
 
@@ -77,11 +72,6 @@ export class AdminDashboardComponent implements OnInit {
 
   onOpenCreateVoucher() {
     this.secondComponent = 'addVoucher';
-  }
-
-  onCreateProduct() {
-    this.productListComponent.fetchProducts();
-    this.onCancelCard();
   }
 
   onOpenDeleteProductConfirm(id) {

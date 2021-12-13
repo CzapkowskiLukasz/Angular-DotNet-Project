@@ -37,8 +37,12 @@ export class ProductService {
     return this.http.put<any>(this.baseAdminUrl, product);
   }
 
-  getDetails(id): Observable<ProductDetails>{
-     return this.http.get<ProductDetails>(this.baseUrl+ '/by-id/' + id)
+  delete(productId): Observable<any> {
+    return this.http.delete<any>(this.baseAdminUrl + '/' + productId);
+  }
+
+  getDetails(id): Observable<ProductDetails> {
+    return this.http.get<ProductDetails>(this.baseUrl + '/by-id/' + id)
   }
 
   getCustomerList(): Observable<any> {

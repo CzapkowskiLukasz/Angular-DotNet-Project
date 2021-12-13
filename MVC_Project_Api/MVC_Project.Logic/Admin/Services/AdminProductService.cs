@@ -64,6 +64,39 @@ namespace MVC_Project.Logic.Admin.Services
             return result;
         }
 
+        public async Task<HandleResult<bool>> DeleteAsync(int productId)
+        {
+            var result = new HandleResult<bool>();
+
+            var product = await _dataContext.Products.Include(x => x.Carts)
+                .SingleOrDefaultAsync(x => x.ProductId == productId);
+
+            if (product == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Product not found", 404);
+            }
+            else if (product.Carts.Count > 0)
+            {
+                result.ErrorResponse = new ErrorResponse("This product is in the orders", 400);
+            }
+            else
+            {
+                _dataContext.Products.Remove(product);
+                var deleted = await _dataContext.SaveChangesAsync();
+
+                if (deleted != 1)
+                {
+                    result.ErrorResponse = new ErrorResponse("Delete error", 500);
+                }
+                else
+                {
+                    result.Response = true;
+                }
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<AdminGetProductByIdResponse>> GetByIdAsync(int productId)
         {
             var result = new HandleResult<AdminGetProductByIdResponse>();

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
@@ -87,18 +87,22 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
 
   submit() {
     if (this.isItEditing) {
-      // const country = {
-      //   countryId: this.editedCountryId,
-      //   name: this.form.get('name').value,
-      //   continentId: this.continentId
-      // };
+      const product = {
+        productId: this.editedProductId,
+        name: this.form.get('name').value,
+        producerId: this.producerId,
+        description: this.form.get('description').value,
+        price: this.form.get('price').value,
+        count: this.form.get('count').value,
+        categoryId: this.categoryId
+      };
 
-      // this.countryService.update(country).subscribe(() =>
-      //   this.finish(),
-      //   err => console.log(err));
+      this.productService.update(product).subscribe(() =>
+        this.finish(),
+        err => console.log(err));
     }
     else {
-      let newProduct = {
+      const newProduct = {
         name: this.form.get('name').value,
         producerId: this.producerId,
         description: this.form.get('description').value,
@@ -143,12 +147,28 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
       () => this.isProducersLoaded = true);
   }
 
+  private fetchProduct() {
+    this.productService.adminGetById(this.editedProductId).subscribe(result => {
+      const product = result;
+
+      this.form.patchValue(product);
+
+      const producer = this.producerList.find(x => x.value == product.producerId);
+      this.producerId = product.producerId
+      this.form.get('producer').setValue(producer.text);
+
+      const category = this.categoryList.find(x => x.value == product.categoryId);
+      this.categoryId = product.categoryId
+      this.form.get('category').setValue(category.text);
+    })
+  }
+
   private prepareForm() {
     this.form.reset('');
     this.categoryId = 0;
     this.producerId = 0;
     if (this.isItEditing) {
-      // this.fetchCountry();
+      this.fetchProduct();
     }
   }
 }

@@ -7,10 +7,6 @@ namespace MVC_Project.Logic.Commons
        public static string GetProductFullName(Product product)
         {
             string result = product.Name;
-            if (product.Producer != null)
-            {
-                result = $"{product.Producer.Name} {result}";
-            }
             return result;
         }
     }

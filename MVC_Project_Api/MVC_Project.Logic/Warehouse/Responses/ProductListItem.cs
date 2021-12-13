@@ -9,5 +9,7 @@
         public decimal Price { get; set; }
 
         public int WarehouseQuantity { get; set; }
+
+        public string ProducerName { get; set; }
     }
 }

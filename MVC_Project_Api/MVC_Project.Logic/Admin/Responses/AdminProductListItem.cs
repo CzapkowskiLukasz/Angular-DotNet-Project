@@ -9,5 +9,7 @@
         public decimal Price { get; set; }
 
         public int Count { get; set; }
+
+        public string ProducerName { get; set; }
     }
 }

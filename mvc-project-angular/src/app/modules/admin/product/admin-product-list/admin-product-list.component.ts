@@ -31,24 +31,34 @@ export class AdminProductListComponent implements OnInit, OnDestroy {
       this.commandSubscribtion.unsubscribe();
   }
 
-  
+  delete(productId) {
+    this.itemForDeleteId = productId;
+    const product = this.products.find(x => x.productId == productId)
+    const nameForDelete = 'product ' + product.name;
+    const preparedValue = {
+      key: 'itemForDeleteName',
+      value: nameForDelete
+    };
+
+    this.componentConnection.sendValue(preparedValue);
+    this.componentConnection.sendCommand('openDelete');
+    this.setSubscribtion();
+  }
+
   openForm(id) {
     const preparedValue = {
       key: 'productId',
       value: id
     };
-    
+
     this.componentConnection.sendValue(preparedValue);
     this.componentConnection.sendCommand('openForm');
     this.setSubscribtion();
   }
-  
+
   addDiscount() {
   }
-  
-  deleteProduct(id) {
-  }
-  
+
   private fetchProducts() {
     this.productService.getAdminList().subscribe(result => {
       this.products = result.products;
@@ -68,11 +78,11 @@ export class AdminProductListComponent implements OnInit, OnDestroy {
   }
 
   private finishDelete() {
-    // this.productService.delete(this.itemForDeleteId).subscribe(result => {
-    //   if (result) {
-    //     console.log('Successful delete');
-    //     this.fetchCategories();
-    //   }
-    // });
+    this.productService.delete(this.itemForDeleteId).subscribe(result => {
+      if (result) {
+        console.log('Successful delete');
+        this.fetchProducts();
+      }
+    });
   }
 }

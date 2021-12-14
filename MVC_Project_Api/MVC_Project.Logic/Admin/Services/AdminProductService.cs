@@ -166,7 +166,7 @@ namespace MVC_Project.Logic.Admin.Services
 
             var updated = await _dataContext.SaveChangesAsync();
 
-            if (updated != 1)
+            if (updated > 1)
             {
                 result.ErrorResponse = new ErrorResponse("Update error", 500);
                 return result;

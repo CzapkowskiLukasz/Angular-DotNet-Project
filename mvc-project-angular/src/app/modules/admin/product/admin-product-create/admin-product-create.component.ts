@@ -1,11 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/core/category/category.service';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
+import { FileService } from 'src/app/core/file/file.service';
 import { ProducerService } from 'src/app/core/producer/producer.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdown-list-item';
+import { ExpandFormComponent } from '../../shared/expand-form/expand-form.component';
 
 @Component({
   selector: 'app-admin-product-create',
@@ -34,10 +36,13 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
 
   expand: boolean;
 
+  file: File;
+
   constructor(private fb: FormBuilder,
     private categoryService: CategoryService,
     private producerService: ProducerService,
     private productService: ProductService,
+    private fileService: FileService,
     private componentConnection: ComponentConnectionService
   ) {
   }
@@ -50,7 +55,8 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
       expert: [''],
       description: [''],
       category: [''],
-      producer: ['']
+      producer: [''],
+      file: ['']
     });
 
     this.expand = false
@@ -97,8 +103,8 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
         categoryId: this.categoryId
       };
 
-      this.productService.update(product).subscribe(() =>
-        this.finish(),
+      this.productService.update(product).subscribe(result =>
+        this.checkAndUploadFile(result),
         err => console.log(err));
     }
     else {
@@ -111,8 +117,8 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
         categoryId: this.categoryId
       };
 
-      this.productService.add(newProduct).subscribe(() =>
-        this.finish(),
+      this.productService.add(newProduct).subscribe(result =>
+        this.checkAndUploadFile(result),
         err => console.log(err));
     }
   }
@@ -121,8 +127,32 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
     this.componentConnection.sendCommand('closeForm');
   }
 
+  onFileSelected(event) {
+    this.file = event.target.files[0];
+  }
+
   get isItEditing(): boolean {
     return this.editedProductId != -1;
+  }
+
+  get descriptionControl(): any {
+    return this.form.get('description');
+  }
+
+  get fileControl(): any {
+    return this.form.get('file');
+  }
+
+  private checkAndUploadFile(result) {
+    const productId = result.productId;
+    if (productId && this.file) {
+      this.fileService.uploadThumbnail(productId, this.file).subscribe(() => { },
+        err => console.log(err)),
+        () => this.finish();
+    }
+    else {
+      this.finish();
+    }
   }
 
   private finish() {

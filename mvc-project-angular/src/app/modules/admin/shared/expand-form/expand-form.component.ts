@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-expand-form',
@@ -8,9 +9,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ExpandFormComponent implements OnInit {
 
+  @Input() descriptionFormControl: FormControl;
+
+  @Input() fileFormControl: FormControl;
+
+  @Output() fileSelected: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onFileSelected(event) {
+    return this.fileSelected.emit(event);
+  }
 }

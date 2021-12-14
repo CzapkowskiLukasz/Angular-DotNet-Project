@@ -21,10 +21,9 @@
                     <app-filtered-dropdown *ngIf="isProducersLoaded" [inputElement]="producerInput" [list]="producerList" (selectIdEvent)="selectProducer($event)"></app-filtered-dropdown>
                 </div>
 
-                <div class="form__div">
+                <div class="form__div" *ngIf="!expand">
                     <input type="text" class="form__input" formControlName="description" placeholder=" ">
-                    <label for="description" class="form__label">{{'admin.product.create.description' |
-                        translate}}</label>
+                    <label for="description" class="form__label">{{'admin.product.create.description' | translate}}</label>
                 </div>
 
                 <div class="form__divSmall" style="margin-right: 5px;">
@@ -44,7 +43,7 @@
                     <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="categoryInput" [list]="categoryList" (selectIdEvent)="selectCategory($event)"></app-filtered-dropdown>
                 </div>
             </div>
-            <app-expand-form *ngIf="expand"></app-expand-form>
+            <app-expand-form *ngIf="expand" [descriptionFormControl]="descriptionControl" [fileFormControl]="fileControl" (fileSelected)="onFileSelected($event)"></app-expand-form>
         </div>
         <div class="formButtonContainer2">
             <div style="margin-left: auto;display: flex;">

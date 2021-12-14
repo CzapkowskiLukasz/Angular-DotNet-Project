@@ -1,9 +1,9 @@
 <div class="expandContainer">
     <div class="descriptionDiv">
-        <textarea class="descriptionInput " formControlName="name" placeholder=" "></textarea>
-        <label for="name" class="descriptionLabel">Description</label>
+        <textarea class="descriptionInput" id="expandedDescription" [formControl]="descriptionFormControl" placeholder=" "></textarea>
+        <label for="expandedDescription" class="descriptionLabel">Description</label>
     </div>
     <div class="inputDiv">
-        <input type="file" id="myFile" name="filename">
+        <input type="file" id="file" [formControl]="fileFormControl" (change)="onFileSelected($event)">
     </div>
 </div>

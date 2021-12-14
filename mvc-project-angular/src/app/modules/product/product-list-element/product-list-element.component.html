@@ -1,25 +1,24 @@
 <div (mouseover)="showProduct = true" (mouseleave)="showProduct = false">
     <div class="relative">
         <div class="productSpotlight" *ngIf="showProduct">
-            <img class="spotlightImg" src="assets/toffifee.png">
+            <img class="spotlightImg" src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
             <div class="spotlightDescription">
-                <h2 style="margin-left: auto;margin-right: auto;">{{itemName.name}}</h2>
-                <h2 class="price" style="margin-left: auto;margin-right: auto;">{{itemName.price.toFixed(2)}}</h2>
-                <h2 class="producer" style="margin-left: auto;margin-right: auto;">{{itemName.producerName}}</h2>
+                <h2 style="margin-left: auto;margin-right: auto;">{{item.name}}</h2>
+                <h2 class="price" style="margin-left: auto;margin-right: auto;">{{item.price.toFixed(2)}}</h2>
+                <h2 class="producer" style="margin-left: auto;margin-right: auto;">{{item.producerName}}</h2>
                 <div class="productButton">
                     <p class="productButtonText">
                         Add to cart
                     </p>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
             </div>
         </div>
     </div>
     <div class="listElement">
-        <img src="assets/toffifee.png">
-        <h2 >{{itemName.name}}</h2>
-        <h2 class="price">{{itemName.price.toFixed(2)}}</h2>
-        <h2 class="producer" style="margin-right: 10px;">{{itemName.producerName}}</h2>
+        <img src="{{apiUrl}}/image/product-thumbnail/{{item.productId}}">
+        <h2>{{item.name}}</h2>
+        <h2 class="price">{{item.price.toFixed(2)}}</h2>
+        <h2 class="producer" style="margin-right: 10px;">{{item.producerName}}</h2>
     </div>
 </div>

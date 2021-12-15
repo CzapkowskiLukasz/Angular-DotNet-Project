@@ -5,8 +5,7 @@ import { SlideItem } from 'src/app/shared/models/slide-item';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./home.component.css']
 })
 
 export class HomeComponent implements OnInit {

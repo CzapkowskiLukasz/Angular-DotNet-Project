@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/authorization/auth.guard';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: 'register/step2', component: RegisterStep2Component },
   { path: 'register/step3', component: RegisterStep3Component },
   { path: 'register/step4', component: RegisterStep4Component },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductListComponent },
   { path: 'admin/products/new-product', component: AdminProductCreateComponent },

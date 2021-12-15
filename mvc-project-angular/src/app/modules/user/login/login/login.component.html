@@ -1,30 +1,32 @@
 <div class="loginBackground">
     <div style="position:relative;">
-      <form action="">
-        <h1 class="form__title">Sign In</h1>
-  
-        <div class="form__div">
-          <input type="text" class="form__input" placeholder=" ">
-          <label for="" class="form__label">E-mail</label>
-        </div>
-  
-        <div class="form__div">
-          <input type="password" class="form__input" placeholder=" ">
-          <label for="" class="form__label">Password</label>
-        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <h1 class="form__title">Sign In</h1>
+
+            <div class="form__div">
+                <input type="text" class="form__input" formControlName="email" placeholder=" ">
+                <label for="email" class="form__label">E-mail</label>
+            </div>
+
+            <div class="form__div">
+                <input type="password" class="form__input" formControlName="password" placeholder=" ">
+                <label for="password" class="form__label">Password</label>
+            </div>
+
+            <div class="form__div_a">
+                <a class="form__a" href="google.com">Forgotten your password?</a>
+            </div>
+            <div class="form__div__button">
+                <input type="submit" class="form__button" value="Sign In">
+            </div>
+        </form>
+
         <div class="form__div_a">
-          <a class="form__a" href="google.com">Forgotten your password?</a>
+            <p style="color: gray; padding-right: 5px;">Are you not with us? </p><a class="form__a" [routerLink]="['../register']">Join for free!</a>
         </div>
-        <div class="form__div__button">
-          <input type="submit" class="form__button" value="Sign In" [routerLink]="['../profile']">
-        </div>
-      </form>
-      <div class="form__div_a">
-        <p style="color: gray; padding-right: 5px;">Are you not with us? </p><a class="form__a" [routerLink]="['../register']">Join for free!</a>
-      </div>
-      <div>
-        <h2 class="lines"><span class="textInLines">OR</span></h2>
-        <button class="signUpWithBox">
+        <div>
+            <h2 class="lines"><span class="textInLines">OR</span></h2>
+            <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24"
           class="signUpWithLogo">
           <path
@@ -33,7 +35,7 @@
         </svg>
           <span class="signUpWithText">Continue with Apple</span>
         </button>
-        <button class="signUpWithBox">
+            <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
             class="signUpWithLogo">
             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -49,7 +51,7 @@
           </svg>
           <span class="signUpWithText">Continue with Facebook</span>
         </button>
-        <button class="signUpWithBox">
+            <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48"
             class="signUpWithLogo">
             <path fill="#fbc02d"
@@ -67,5 +69,5 @@
           </svg>
           <span class="signUpWithText">Continue with Google</span>
         </button>
-      </div>
+        </div>
     </div>

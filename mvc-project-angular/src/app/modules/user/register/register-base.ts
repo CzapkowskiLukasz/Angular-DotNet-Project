@@ -22,6 +22,10 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
         this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
             if (obj.key == this.requestValueKey) {
                 this.registerRequest = obj.value;
+
+                if (!this.requestIsValid())
+                    this.invalidRequestMove();
+
                 this.prepareView();
             }
         });
@@ -36,12 +40,16 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
         this.router.navigate(['/register/step' + stepNumber]);
     }
 
+    protected abstract requestIsValid();
+
+    protected abstract prepareView();
+
+    protected abstract invalidRequestMove();
+
     protected resetRegister() {
         this.registerRequest = new RegisterRequest();
         this.router.navigate(['/register']);
     }
-
-    protected prepareView() { }
 
     protected sendRequest() {
         const preparedValue: ValueObject = {

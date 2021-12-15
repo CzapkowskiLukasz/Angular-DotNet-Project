@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/authorization/auth.guard';
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { AdminProductCreateComponent } from './modules/admin/product/admin-product-create/admin-product-create.component';
 import { AdminProductListComponent } from './modules/admin/product/admin-product-list/admin-product-list.component';

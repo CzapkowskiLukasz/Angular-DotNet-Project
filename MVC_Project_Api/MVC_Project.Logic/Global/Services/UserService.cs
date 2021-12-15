@@ -79,7 +79,11 @@ namespace MVC_Project.Logic.Global.Services
                 Surname = request.Surname,
                 Email = request.Email,
                 UserName = request.Email,
-                PasswordHash = request.Password
+                PasswordHash = request.Password,
+                LanguageId = 1,
+                ThemeId = 1,
+                ProductOnPageCount = 0,
+                Provider = 1
             };
 
             var createdUser = await _userManager.CreateAsync(user, request.Password);

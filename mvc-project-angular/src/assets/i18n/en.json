@@ -35,6 +35,34 @@
                 "category": "Category",
                 "submitBtn": "Create product"
             }
+        },
+        "delete": {
+            "textAboutDeleting": "Do you want to delete",
+            "textAboutActionException": "This action can not be undone",
+            "cancel": "Cancel",
+            "delete": "Delete"
+        },
+        "statistics": {
+            "viewsNumber": "Number of views",
+            "usersNumber": "Number of users",
+            "usersNewsletterNumber": "Number of users signed to newsletter",
+            "productNumber": "Number of product",
+            "producentNumber": "Number of producents",
+            "cmpltOrdersNumber": "Number of completed orders",
+            "allOrdersNumber": "Number of all orders",
+            "averageOrderPrice": "Average order price"
+        },
+        "category": {
+            "create": {
+                "editCategory": "Edit category",
+                "newCategory": "New category",
+                "category": "Category",
+                "name": "Name",
+                "parentCategory": "Parent category",
+                "submit": "Submit",
+                "cancel": "Cancel"
+            }
         }
     }
+    
 }

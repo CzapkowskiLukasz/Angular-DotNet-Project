@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
+import { OrderService } from 'src/app/core/order/order.service';
 import { UserService } from 'src/app/core/user/user.service';
+import { OrderListItem } from 'src/app/shared/models/order-list-item';
 import { UserListItem } from 'src/app/shared/models/user-list-item';
 
 @Component({
@@ -16,9 +18,13 @@ export class UserListComponent implements OnInit {
 
   userId
 
+  userWithOrders
+
   users: UserListItem[] = [];
 
-  constructor(private userService: UserService, private componentConnection: ComponentConnectionService) { }
+  orders: OrderListItem[] = []
+
+  constructor(private userService: UserService, private componentConnection: ComponentConnectionService, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -49,6 +55,7 @@ export class UserListComponent implements OnInit {
   }
 
   openUserInfo(id) {
+    this.fetchOrders(id)
     this.userId = id;
     const user = this.users.find(x => x.userId == id)
     const preparedValue = {
@@ -59,6 +66,11 @@ export class UserListComponent implements OnInit {
     this.componentConnection.sendValue(preparedValue);
     this.componentConnection.sendCommand('userInfo');
     this.setSubscribtion();
+  }
+
+  fetchOrders(userId) {
+    this.orderService.getOrderByUserIdList(userId).subscribe(result =>
+      this.orders = result.orders);
   }
 
   fetchUsers() {

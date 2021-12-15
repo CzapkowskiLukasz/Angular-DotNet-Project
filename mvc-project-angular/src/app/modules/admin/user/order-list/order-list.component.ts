@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-order-list',
@@ -8,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
+  @Input() item;
+  
   constructor() { }
 
   ngOnInit(): void {

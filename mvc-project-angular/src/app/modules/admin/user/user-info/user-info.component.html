@@ -8,8 +8,5 @@
 <h4 class="cardLines"><span class="cardTextInLines">User orders</span></h4>
 
 <div class="scrollableDiv" style="height: 230px;">
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
+    <app-order-list *ngFor='let order of orders' [item]="order"></app-order-list>
 </div>

@@ -34,6 +34,7 @@ namespace MVC_Project.Logic.Admin.Services
         {
             var result = new HandleResult<AdminGetUserById>();
             var user = await _dataContext.Users
+                .Include(x=>x.PhoneNumber)
 
               .SingleOrDefaultAsync(x => x.Id == id);
 

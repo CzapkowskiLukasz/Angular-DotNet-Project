@@ -12,11 +12,11 @@
             <app-create-discount *ngIf="mainComponent == 'bargains'" (cancelEvent)="onCancelCard()"></app-create-discount>
             <app-producers-add *ngIf="mainComponent == 'producers'"></app-producers-add>
             <app-admin-product-create *ngIf="mainComponent == 'products'"></app-admin-product-create>
-            <app-user-voucher *ngIf="mainComponent == 'users'" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-voucher>
+            <app-user-info *ngIf="mainComponent == 'users'"></app-user-info>
         </div>
         <app-admin-delete-confirm *ngIf="secondComponent == 'delete'"></app-admin-delete-confirm>
         <app-admin-statistics *ngIf="secondComponent == 'statistics'"></app-admin-statistics>
-        <app-user-info *ngIf="secondComponent == 'userInfo'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-info>
+        <app-user-info *ngIf="secondComponent == 'userInfo'"></app-user-info>
     </div>
 
     <div class="basicDiv" style="width: 600px;height: 434px;">
@@ -151,7 +151,7 @@
 
         <container-element [ngSwitch]="mainComponent">
             <app-admin-product-list *ngSwitchCase="'products'"></app-admin-product-list>
-            <app-user-list *ngSwitchCase="'users'" (createUserInfoEvent)="onOpenUserInfoCard()" (createVoucherEvent)="onOpenCreateVoucher()"></app-user-list>
+            <app-user-list *ngSwitchCase="'users'" (createUserInfoEvent)="onOpenUserInfoCard()"></app-user-list>
             <app-discount-list *ngSwitchCase="'bargains'"></app-discount-list>
             <app-producers-list *ngSwitchCase="'producers'" (createProducerEvent)="onOpenCreateProducer()"></app-producers-list>
             <app-country-list *ngSwitchCase="'countries'"></app-country-list>

@@ -1,23 +1,21 @@
 <app-navbar></app-navbar>
 
 <div style="display: flex;flex-direction: column; justify-content: center; align-items: center;">
-        <div style="display: flex;margin-bottom: 10px; margin-top: 60px;">
-            <div class="basicDiv" style="padding: 20px;">
-                <div class="photoContainer">
-                    <img src="assets/toffifee.png">
-                </div>
+    <div style="display: flex;margin-bottom: 10px; margin-top: 60px;">
+        <div class="basicDiv" style="padding: 20px;">
+            <div class="photoContainer">
+                <img src="{{apiUrl}}/image/product-thumbnail/{{product.productId}}">
             </div>
-            <div class="basicDiv" style="width: 394px;margin-right: 0;">
-                <h4 class="cardLines"><span class="cardTextInLines">{{product.name}}</span></h4>
-                <div style="display: flex;flex-direction: column; align-items: center; justify-content: space-between;">
-                    <p class="shortInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat
-                        hendrerit. </p>
-                    <h2>{{product.price.toFixed(2)}} zł</h2>
-                    <div class="buttonsContainer">
-                        <div class="counter" style="margin-bottom:10px;">
-                            <div class="buttonCounter">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
+        </div>
+        <div class="basicDiv" style="width: 394px;margin-right: 0;">
+            <h4 class="cardLines"><span class="cardTextInLines">{{product.name}}</span></h4>
+            <div style="display: flex;flex-direction: column; align-items: center; justify-content: space-between;">
+                <p class="shortInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat hendrerit. </p>
+                <h2>{{product.price.toFixed(2)}} zł</h2>
+                <div class="buttonsContainer">
+                    <div class="counter" style="margin-bottom:10px;">
+                        <div class="buttonCounter">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
                                         stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
                                         stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
@@ -28,11 +26,10 @@
                                         </g>
                                     </g>
                                 </svg>
-                            </div>
-                            <p class="counterNumber">1</p>
-                            <div class="buttonCounter">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
+                        </div>
+                        <p class="counterNumber">1</p>
+                        <div class="buttonCounter">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
                                         stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
                                         stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
@@ -45,58 +42,55 @@
                                         </g>
                                     </g>
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="productButton">
-                            <p class="productButtonText">
-                                Add to cart
-                            </p>
                         </div>
                     </div>
-                    <div style="width: 55%;">
-                        <div class="bottomInfoContainer">
-                            <div class="infoBottom">
-                                <p class="shortInfoDescription bottomInfo">Availability: </p>
-                            </div>
-                            <div class="infoBottom" *ngIf="product.warehouseQuantity == 0">
-                                <p class="shortInfo bottomInfo">No available</p>
-                                <div class="grayDot"></div>
-                            </div>
-                            <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
-                                <p class="shortInfo bottomInfo">Low availability</p>
-                                <div class="redDot"></div>
-                            </div>
-                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
-                                <p class="shortInfo bottomInfo">Medium availability</p>
-                                <div class="orangeDot"></div>
-                            </div>
-                            <div class="infoBottom" *ngIf="product.warehouseQuantity > 40">
-                                <p class="shortInfo bottomInfo">Hight availability</p>
-                                <div class="greenDot"></div>
-                            </div>
+                    <div class="productButton">
+                        <p class="productButtonText">
+                            Add to cart
+                        </p>
+                    </div>
+                </div>
+                <div style="width: 55%;">
+                    <div class="bottomInfoContainer">
+                        <div class="infoBottom">
+                            <p class="shortInfoDescription bottomInfo">Availability: </p>
                         </div>
-
-                        <div class="infoBottom" style="justify-content: center;">
-                            <p class="shortInfoDescription bottomInfo">Producer:</p>
-                            <p class="shortInfo bottomInfo" style="margin-left: 5px;">{{product.producerName}}</p>
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity == 0">
+                            <p class="shortInfo bottomInfo">No available</p>
+                            <div class="grayDot"></div>
                         </div>
-
-                        <div class="infoBottom" style="justify-content: center;">
-                            <p class="shortInfoDescription bottomInfo">Mass brutto:</p>
-                            <p class="shortInfo bottomInfo" style="margin-left: 5px;">5kg</p>
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
+                            <p class="shortInfo bottomInfo">Low availability</p>
+                            <div class="redDot"></div>
+                        </div>
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
+                            <p class="shortInfo bottomInfo">Medium availability</p>
+                            <div class="orangeDot"></div>
+                        </div>
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity > 40">
+                            <p class="shortInfo bottomInfo">Hight availability</p>
+                            <div class="greenDot"></div>
                         </div>
                     </div>
+
+                    <div class="infoBottom" style="justify-content: center;">
+                        <p class="shortInfoDescription bottomInfo">Producer:</p>
+                        <p class="shortInfo bottomInfo" style="margin-left: 5px;">{{product.producerName}}</p>
+                    </div>
+
+                    <!-- <div class="infoBottom" style="justify-content: center;">
+                        <p class="shortInfoDescription bottomInfo">Mass brutto:</p>
+                        <p class="shortInfo bottomInfo" style="margin-left: 5px;">5kg</p>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="basicDiv" style="margin-right: 0;width: 800px;">
-            <h4 class="cardLines"><span class="cardTextInLines">Product description</span></h4>
-            <p class="productMainDescription">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat hendrerit. Ut feugiat
-                volutpat odio, a gravida lacus egestas ut. Nulla consequat blandit tincidunt. Cras sollicitudin nulla et
-                ipsum pretium facilisis sit amet sed mauris. Donec lacinia imperdiet nibh. In vel vehicula urna.
-                Maecenas vitae lectus dapibus, iaculis augue eget, aliquam augue. Cras dictum mi eu nunc ornare ornare.
-                Ut bibendum blandit aliquam.
-            </p>
-        </div>
+    </div>
+    <div class="basicDiv" style="margin-right: 0;width: 800px;">
+        <h4 class="cardLines"><span class="cardTextInLines">Product description</span></h4>
+        <p class="productMainDescription">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat hendrerit. Ut feugiat volutpat odio, a gravida lacus egestas ut. Nulla consequat blandit tincidunt. Cras sollicitudin nulla et ipsum pretium facilisis sit amet sed mauris.
+            Donec lacinia imperdiet nibh. In vel vehicula urna. Maecenas vitae lectus dapibus, iaculis augue eget, aliquam augue. Cras dictum mi eu nunc ornare ornare. Ut bibendum blandit aliquam.
+        </p>
+    </div>
 </div>

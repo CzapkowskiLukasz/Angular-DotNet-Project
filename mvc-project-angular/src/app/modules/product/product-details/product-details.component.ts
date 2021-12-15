@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/product/product.service';
 import { ProductDetails } from 'src/app/shared/models/product';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -13,8 +14,7 @@ export class ProductDetailsComponent implements OnInit {
 
   id$
 
-  dupa
-
+  apiUrl = environment.api_url;
 
   product?: ProductDetails
 

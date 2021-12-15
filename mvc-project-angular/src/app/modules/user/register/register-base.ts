@@ -6,7 +6,7 @@ import { ValueObject } from "src/app/core/componentConnection/value-object";
 import { RegisterRequest } from "src/app/shared/models/register-request";
 
 @Component({ template: '' })
-export class RegisterBase implements OnInit, OnDestroy {
+export abstract class RegisterBase implements OnInit, OnDestroy {
 
     protected registerRequest: RegisterRequest;
 
@@ -34,6 +34,11 @@ export class RegisterBase implements OnInit, OnDestroy {
 
     next(stepNumber) {
         this.router.navigate(['/register/step' + stepNumber]);
+    }
+
+    protected resetRegister() {
+        this.registerRequest = new RegisterRequest();
+        this.router.navigate(['/register']);
     }
 
     protected prepareView() { }

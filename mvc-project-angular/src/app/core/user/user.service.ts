@@ -35,4 +35,8 @@ export class UserService {
   isLogged(): boolean {
     return this.cookieService.get('jwt-authorization') == 'true';
   }
+
+  getToken(): string {
+    return this.cookieService.get('jwt-token');
+  }
 }

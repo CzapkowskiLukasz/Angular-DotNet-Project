@@ -223,6 +223,19 @@ namespace MVC_Project.Controllers
             return Ok(result.Response);
         }
 
+        [HttpGet("user/by-id/{userId}")]
+        public async Task<IActionResult> GetUserByIdAsync([FromRoute] int userId)
+        {
+            var result = await _userService.GetUserByIdAsync(userId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
+
         [HttpGet("discount")]
         public async Task<IActionResult> GetDiscountListAsync()
         {

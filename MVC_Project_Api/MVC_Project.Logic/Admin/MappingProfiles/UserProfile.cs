@@ -16,6 +16,10 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
             CreateMap<List<User>, AdminGetUserListResponse>()
                 .ForMember(dest => dest.Users, opt =>
                    opt.MapFrom(src => src));
+
+            CreateMap<User, AdminGetUserById>()
+                .ForMember(dest => dest.UserId, opt =>
+opt.MapFrom(src => src.Id));
         }
     }
 }

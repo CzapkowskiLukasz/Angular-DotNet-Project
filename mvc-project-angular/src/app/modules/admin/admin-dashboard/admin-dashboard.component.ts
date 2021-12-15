@@ -43,6 +43,9 @@ export class AdminDashboardComponent implements OnInit {
       else if (command == 'openDelete') {
         this.secondComponent = 'delete';
       }
+      else if(command == 'userInfo'){
+        this.secondComponent = 'userInfo'
+      }
     });
   }
 

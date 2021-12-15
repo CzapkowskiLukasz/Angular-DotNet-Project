@@ -1,15 +1,12 @@
 <h4 class="cardLines"><span class="cardTextInLines">User info</span></h4>
-<p>ID</p>
-<p>E-mail</p>
-<p>Name</p>
-<p>Surname</p>
+<p>ID #{{itemName.userId}}</p>
+<p>Name: {{itemName.name}}</p>
+<p>Surname: {{itemName.surname}}</p>
+<p>Email: {{itemName.email}}</p>
 <p>Register date</p>
 <p>Last order date</p>
 <h4 class="cardLines"><span class="cardTextInLines">User orders</span></h4>
 
 <div class="scrollableDiv" style="height: 230px;">
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
-    <app-order-list></app-order-list>
+    <app-order-list *ngFor='let order of orders' [item]="order"></app-order-list>
 </div>

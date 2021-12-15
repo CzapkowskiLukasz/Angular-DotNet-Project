@@ -29,5 +29,24 @@ namespace MVC_Project.Logic.Admin.Services
 
             return result;
         }
+
+        public async Task<HandleResult<AdminGetUserById>> GetUserByIdAsync(int id)
+        {
+            var result = new HandleResult<AdminGetUserById>();
+            var user = await _dataContext.Users
+                //.Include(x=>x.PhoneNumber)
+
+              .SingleOrDefaultAsync(x => x.Id == id);
+
+            if (user == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found", 404);
+            }
+            else
+            {
+                result.Response = _mapper.Map<AdminGetUserById>(user);
+            }
+            return result;
+        }
     }
 }

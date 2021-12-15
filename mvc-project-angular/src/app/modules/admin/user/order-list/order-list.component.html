@@ -1,18 +1,18 @@
 <div class="orderContainer" style="padding-top: 5px;padding-bottom: 5px;">
-    <h4 class="orderTitle">Order #213769</h4>
+    <h4 class="orderTitle">Order #{{item.orderId}}</h4>
     <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
-    <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
-        <div>
+    <div class="dupa">
+        <div style="text-align: left;">
             <h5>Order date</h5>
-            <p class="orderDescription">15.11.2021</p>
+            <p class="orderDescription">{{item.date}}</p>
         </div>
         <div>
             <h5>Price</h5>
             <p class="orderDescription">150.47 zł</p>
         </div>
-        <div>
+        <div style="text-align: right;">
             <h5>Status</h5>
-            <p class="orderDescription">Sent</p>
+            <p class="orderDescription">{{item.status}}</p>
         </div>
     </div>
 </div>

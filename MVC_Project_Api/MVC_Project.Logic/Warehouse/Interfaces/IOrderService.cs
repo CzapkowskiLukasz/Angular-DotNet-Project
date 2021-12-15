@@ -10,6 +10,8 @@ namespace MVC_Project.Logic.Warehouse.Interfaces
 
         public Task<HandleResult<GetOrderByIdResponse>> GetOrderByIdAsync(int orderId);
 
+        public Task<HandleResult<GetOrderListResponse>> GetOrderByUserIdAsync(int userId);
+
         public Task<HandleResult<string>> DeleteOrderAsync(int orderId);
     }
 }

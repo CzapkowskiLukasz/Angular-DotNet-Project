@@ -38,6 +38,15 @@ namespace MVC_Project.Controllers
             }
         }
 
+
+        [HttpGet("by-userId/{userId}")]
+        public async Task<IActionResult> GetOrderByUserIdAsync([FromRoute] int userId)
+        {
+            var result = await _orderService.GetOrderByUserIdAsync(userId);
+
+            return Ok(result.Response);
+        }
+
         [HttpDelete("{orderId}")]
         public async Task<IActionResult> DeleteOrder([FromRoute] int orderId)
         {

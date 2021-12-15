@@ -25,9 +25,9 @@ export class RegisterStep1Component implements OnInit, OnDestroy {
     this.isEnglish = false;
     this.isPolish = false;
 
-    this.valueSubscribtion=this.componentConnection.lastValue.subscribe(obj=>{
-      if(obj.key=='registerRequest'){
-        this.registerRequest=obj.value;
+    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
+      if (obj.key == 'registerRequest') {
+        this.registerRequest = obj.value;
       }
     })
   }
@@ -36,13 +36,20 @@ export class RegisterStep1Component implements OnInit, OnDestroy {
     this.valueSubscribtion.unsubscribe();
   }
 
-  selectEnglish() {
-    this.isEnglish = true
-    this.isPolish = false
+  get languageId() {
+    if (!this.registerRequest) {
+      this.registerRequest = new RegisterRequest();
+    }
+
+    return this.registerRequest.languageId;
   }
 
   selectPolish() {
-    this.isPolish = true
-    this.isEnglish = false
+    this.registerRequest.languageId = 1;
   }
+
+  selectEnglish() {
+    this.registerRequest.languageId = 2;
+  }
+
 }

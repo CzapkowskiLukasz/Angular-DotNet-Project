@@ -20,8 +20,10 @@ export class RegisterBase implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
-            if (obj.key == this.requestValueKey)
+            if (obj.key == this.requestValueKey) {
                 this.registerRequest = obj.value;
+                this.prepareView();
+            }
         });
     }
 
@@ -33,6 +35,8 @@ export class RegisterBase implements OnInit, OnDestroy {
     next(stepNumber) {
         this.router.navigate(['/register/step' + stepNumber]);
     }
+
+    protected prepareView() { }
 
     protected sendRequest() {
         const preparedValue: ValueObject = {

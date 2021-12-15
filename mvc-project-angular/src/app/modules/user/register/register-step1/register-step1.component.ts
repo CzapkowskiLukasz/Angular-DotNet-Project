@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { RegisterRequest } from 'src/app/shared/models/register-request';
+import { Router } from '@angular/router';
+import { RegisterBase } from '../register-base';
+
 
 @Component({
   selector: 'app-register-step1',
@@ -9,31 +11,11 @@ import { RegisterRequest } from 'src/app/shared/models/register-request';
   styleUrls: ['./register-step1.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class RegisterStep1Component implements OnInit, OnDestroy {
+export class RegisterStep1Component extends RegisterBase {
 
-  isEnglish: boolean;
-  isPolish: boolean;
-
-  registerRequest: RegisterRequest;
-
-  valueSubscribtion: Subscription;
-
-  constructor(private componentConnection: ComponentConnectionService) {
-  }
-
-  ngOnInit(): void {
-    this.isEnglish = false;
-    this.isPolish = false;
-
-    this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
-      if (obj.key == 'registerRequest') {
-        this.registerRequest = obj.value;
-      }
-    })
-  }
-
-  ngOnDestroy() {
-    this.valueSubscribtion.unsubscribe();
+  constructor(protected componentConnection: ComponentConnectionService,
+    protected router: Router) {
+    super(componentConnection, router);
   }
 
   get languageId() {
@@ -52,4 +34,7 @@ export class RegisterStep1Component implements OnInit, OnDestroy {
     this.registerRequest.languageId = 2;
   }
 
+  // next() {
+  //   super.next(2);
+  // }
 }

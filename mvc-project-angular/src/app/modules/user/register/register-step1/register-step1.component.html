@@ -14,7 +14,7 @@
         <img (click)="selectEnglish()" [ngClass]="languageId == 2 ? 'flagActive' : 'flag'" src="assets/uk-flag-icon.png" />
     </div>
     <div class="form__div__button">
-        <a class="form__button" [routerLink]="['step2']">Next step!<img class="icon" src="assets/forward-icon.png">
+        <a class="form__button" (click)="next(2)">Next step!<img class="icon" src="assets/forward-icon.png">
         </a>
     </div>
 </div>

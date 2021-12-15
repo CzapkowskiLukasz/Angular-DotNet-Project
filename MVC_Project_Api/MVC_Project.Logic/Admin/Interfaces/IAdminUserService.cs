@@ -7,5 +7,7 @@ namespace MVC_Project.Logic.Admin.Interfaces
     public interface IAdminUserService
     {
         public Task<HandleResult<AdminGetUserListResponse>> GetListAsync();
+        public Task<HandleResult<AdminGetUserById>> GetUserByIdAsync(int id);
+
     }
 }

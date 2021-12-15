@@ -31,4 +31,8 @@ export class UserService {
         })
       );
   }
+
+  isLogged(): boolean {
+    return this.cookieService.get('jwt-authorization') == 'true';
+  }
 }

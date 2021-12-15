@@ -15,6 +15,10 @@ export class UserService {
 
   baseGlobalUrl = `${environment.api_url}/user`;
 
+  private authorizationCookieName = 'jwt-authorization';
+
+  private tokenCookieName = 'jwt-token';
+
   constructor(private http: HttpClient,
     private cookieService: CookieService) { }
 
@@ -26,17 +30,22 @@ export class UserService {
     return this.http.post<any>(this.baseGlobalUrl + '/login', request)
       .pipe(
         tap(result => {
-          this.cookieService.set('jwt-authorization', 'true');
-          this.cookieService.set('jwt-token', result.token);
+          this.cookieService.set(this.authorizationCookieName, 'true');
+          this.cookieService.set(this.tokenCookieName, result.token);
         })
       );
   }
 
   isLogged(): boolean {
-    return this.cookieService.get('jwt-authorization') == 'true';
+    return this.cookieService.get(this.authorizationCookieName) == 'true';
   }
 
   getToken(): string {
-    return this.cookieService.get('jwt-token');
+    return this.cookieService.get(this.tokenCookieName);
+  }
+
+  logout() {
+    this.cookieService.delete(this.authorizationCookieName);
+    this.cookieService.delete(this.tokenCookieName);
   }
 }

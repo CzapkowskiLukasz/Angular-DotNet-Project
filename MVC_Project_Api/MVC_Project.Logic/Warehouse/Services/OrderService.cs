@@ -5,6 +5,7 @@ using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Global.Responses;
 using MVC_Project.Logic.Warehouse.Interfaces;
 using MVC_Project.Logic.Warehouse.Responses;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Logic.Warehouse.Services
@@ -52,6 +53,22 @@ namespace MVC_Project.Logic.Warehouse.Services
             {
                 result.Response = _mapper.Map<GetOrderByIdResponse>(order);
             }
+
+            return result;
+        }
+
+        public async Task<HandleResult<GetOrderListResponse>> GetOrderByUserIdAsync(int userId)
+        {
+            var result = new HandleResult<GetOrderListResponse>();
+
+            var orders = await _dataContext.Orders.Where(x=>x.UserId == userId)
+              
+            .Include(x => x.OrderStatus)
+            .Include(x => x.User)
+            
+            .ToListAsync();
+
+            result.Response = _mapper.Map<GetOrderListResponse>(orders);
 
             return result;
         }

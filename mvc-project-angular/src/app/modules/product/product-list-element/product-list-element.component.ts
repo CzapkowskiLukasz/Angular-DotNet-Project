@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-list-element',
@@ -8,9 +9,11 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProductListElementComponent implements OnInit {
 
-  @Input() itemName;
+  @Input() item;
 
   showProduct: boolean
+
+  apiUrl = environment.api_url;
 
   constructor() {
     this.showProduct = false

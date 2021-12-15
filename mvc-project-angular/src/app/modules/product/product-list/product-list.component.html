@@ -3,11 +3,9 @@
 <div style="margin-top: 60px;">
     <h1 class="mainLines"><span class="textInMainLines">PRODUCT LIST</span></h1>
     <div style="text-align: center;">
-        <p class="homeDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <p class="homeDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
         <p class="homeDescriptionText">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. </p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
     </div>
 </div>
 
@@ -21,6 +19,6 @@
     </div>
 
     <div style="width: 60%;">
-        <app-product-list-element style="outline: none;" *ngFor='let product of products' [itemName]="product" [routerLink]="['/product', product.productId]"></app-product-list-element>
+        <app-product-list-element style="outline: none;" *ngFor='let product of products' [item]="product" [routerLink]="['/product', product.productId]"></app-product-list-element>
     </div>
 </div>

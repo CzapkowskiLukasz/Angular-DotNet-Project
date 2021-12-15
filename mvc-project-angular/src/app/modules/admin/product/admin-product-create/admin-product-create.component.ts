@@ -146,9 +146,9 @@ export class AdminProductCreateComponent implements OnInit, OnDestroy {
   private checkAndUploadFile(result) {
     const productId = result.productId;
     if (productId && this.file) {
-      this.fileService.uploadThumbnail(productId, this.file).subscribe(() => { },
-        err => console.log(err)),
-        () => this.finish();
+      this.fileService.uploadThumbnail(productId, this.file).subscribe(
+        () => this.finish(),
+        err => console.log(err));
     }
     else {
       this.finish();

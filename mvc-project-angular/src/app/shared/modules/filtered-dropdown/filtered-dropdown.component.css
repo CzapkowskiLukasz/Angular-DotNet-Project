@@ -2,7 +2,7 @@
     position: absolute;
     background-color: #ffffff;
     left: 0;
-    z-index: 2;
+    z-index: 100;
     padding: .5rem;
     margin-top: 1.5rem;
     min-width: 100%;

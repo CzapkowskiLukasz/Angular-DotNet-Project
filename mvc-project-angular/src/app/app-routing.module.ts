@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'register/step2', component: RegisterStep2Component },
   { path: 'register/step3', component: RegisterStep3Component },
   { path: 'register/step4', component: RegisterStep4Component },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductListComponent },
   { path: 'admin/products/new-product', component: AdminProductCreateComponent },

@@ -80,6 +80,7 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
             userData: new RegisterRequest(),
             address: new Address()
         };
+        this.registerRequest.newsletterOn=true;
     }
 
     protected sendRequest() {

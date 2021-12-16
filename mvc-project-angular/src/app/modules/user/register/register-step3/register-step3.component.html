@@ -1,22 +1,22 @@
 <div class="loginBackground">
     <div class="progressContainer">
         <ul class="progress">
-            <li class="active">Language</li>
-            <li class="active">Login data</li>
-            <li>Address</li>
-            <li>Agreements</li>
+            <li class="active">{{ 'register.language' | translate }}</li>
+            <li class="active">{{ 'register.loginData' | translate }}</li>
+            <li>{{ 'register.address' | translate }}</li>
+            <li>{{ 'register.agreements' | translate }}</li>
         </ul>
     </div>
-    <p class="register-title">Add Your first address</p>
+    <p class="register-title">{{ 'register.addFirstAddress' | translate }}</p>
     <form [formGroup]="form">
         <div class="form__div">
             <input type="text" class="form__input" formControlName="name" placeholder=" ">
-            <label for="name" class="form__label1">Name</label>
+            <label for="name" class="form__label1">{{ 'register.name' | translate }}</label>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="surname" placeholder=" ">
-            <label for="surname" class="form__label1">Surname</label>
+            <label for="surname" class="form__label1">{{ 'register.surname' | translate }}</label>
         </div>
 
         <div class="form__div">
@@ -27,24 +27,24 @@
         <div style="padding-left: 2.5rem;padding-right: 2.5rem;">
             <div class="form__divSmall" style="margin-right: 2px;">
                 <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="houseNumber" placeholder=" ">
-                <label for="houseNumber" class="form__labelSmall">House number</label>
+                <label for="houseNumber" class="form__labelSmall">{{ 'register.street' | translate }}</label>
             </div>
 
             <div class="form__divSmall">
                 <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="apartmentNumber" placeholder=" ">
-                <label for="apartmentNumber" class="form__labelSmall">Apartment</label>
+                <label for="apartmentNumber" class="form__labelSmall">{{ 'register.houseNo' | translate }}</label>
             </div>
         </div>
 
         <div>
             <div class="form__divSmall">
                 <input type="text" class="form__inputSmall" style="width: 110px; margin-right: 2px;" formControlName="code" placeholder=" ">
-                <label for="code" class="form__labelSmall">Code</label>
+                <label for="code" class="form__labelSmall">{{ 'register.code' | translate }}</label>
             </div>
 
             <div class="form__divSmall">
                 <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="city" placeholder=" ">
-                <label for="city" class="form__labelSmall">City</label>
+                <label for="city" class="form__labelSmall">{{ 'register.city' | translate }}</label>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form__div__button" style="float: center;">
-            <a class="form__button" (click)="next(4)">Next step</a>
+            <a class="form__button" (click)="next(4)">{{ 'register.nextStep' | translate }}</a>
         </div>
     </form>
 </div>

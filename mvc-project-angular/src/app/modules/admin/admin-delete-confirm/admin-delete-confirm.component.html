@@ -1,12 +1,12 @@
-<h4 class="cardLines"><span class="cardTextInLines">Delete</span></h4>
+<h4 class="cardLines"><span class="cardTextInLines">{{'admin.delete.delete' | translate}}</span></h4>
 
-<p class="text">Do you want to delete {{itemName}}?</p>
-<p class="text">This action can not be undone.</p>
+<p class="text">{{'admin.delete.textAboutDeleting' | translate}} {{itemName}}?</p>
+<p class="text"> {{'admin.delete.textAboutActionException' | translate}} </p> 
 <div style="display: flex; justify-content: center;margin-bottom: 0; margin-top: 15px;">
     <button class="buttonBase buttonColor buttonText" (click)="cancel()">
-        Cancel
+        {{'admin.delete.cancel' | translate}}
     </button>
     <button class="buttonBase buttonDeleteText buttonText" (click)="submit()">
-        Delete
+        {{'admin.delete.delete' | translate}}
     </button>
 </div>

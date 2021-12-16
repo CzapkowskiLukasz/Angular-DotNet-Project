@@ -2,7 +2,7 @@
     <div *ngFor="let producer of producers">
         <div class="orderContainer" style="padding-top: 0;padding-bottom: 5px;">
             <div class="descriptionContainer">
-                <h4 class="orderTitle" style="margin-bottom: 0;">Producer #{{producer.producerId}}</h4>
+                <h4 class="orderTitle" style="margin-bottom: 0;">{{'admin.producers.add.producer' | translate}} #{{producer.producerId}}</h4>
                 <div style="margin-left: auto;padding: 5px; display: flex;">
                     <div class="profileButton" style="margin-right: 5px;" (click)="openEditForm(producer)">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
@@ -39,11 +39,11 @@
             <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
             <div class="descriptionContainer">
                 <div style="margin-left: 0;margin-right: auto;">
-                    <h5>Name</h5>
+                    <h5>{{'admin.producers.add.name' | translate}}</h5>
                     <p class="orderDescription">{{producer.name}}</p>
                 </div>
                 <div style="margin-left: auto;margin-right: auto;">
-                    <h5>Country</h5>
+                    <h5>{{'admin.producers.add.country' | translate}}</h5>
                     <p class="orderDescription">{{producer.countryName}}</p>
                 </div>
             </div>

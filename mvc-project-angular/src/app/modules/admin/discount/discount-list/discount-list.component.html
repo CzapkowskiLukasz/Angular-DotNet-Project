@@ -1,7 +1,7 @@
 <div class="container">
     <div class="orderContainer" *ngFor="let discount of discounts" style="padding-top: 0;padding-bottom: 5px;">
         <div class="descriptionContainer">
-            <h4 class="orderTitle" style="margin-bottom: 0;">Discount #{{discount.discountId}}</h4>
+            <h4 class="orderTitle" style="margin-bottom: 0;">{{'admin.discount.create.discount' | translate}} #{{discount.discountId}}</h4>
             <div style="margin-left: auto;padding: 5px; display: flex;">
                 <div class="profileButton" style="margin-right: 5px;">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
@@ -38,15 +38,15 @@
         <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
         <div class="descriptionContainer">
             <div style="margin-left: 0;margin-right: auto;">
-                <h5>Discount name</h5>
+                <h5>{{'admin.discount.create.discountName' | translate}}</h5>
                 <p class="orderDescription">{{discount.name}}</p>
             </div>
             <div style="margin-left: auto;margin-right: auto;">
-                <h5>Percent</h5>
+                <h5>{{'admin.discount.create.percent' | translate}}</h5>
                 <p class="orderDescription">{{discount.percent}}%</p>
             </div>
             <div style="margin-right: 0; margin-left: auto;">
-                <h5>End date</h5>
+                <h5>{{'admin.discount.create.endDate' | translate}}</h5>
                 <p class="orderDescription" *ngIf="discount.endDate; else elseBlock">{{discount.endDate}}</p>
                 <ng-template #elseBlock>
                     <p class="orderDescription">N/A</p>

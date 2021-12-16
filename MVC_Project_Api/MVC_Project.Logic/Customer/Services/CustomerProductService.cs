@@ -33,5 +33,17 @@ namespace MVC_Project.Logic.Customer.Services
 
             return result;
         }
+
+        public async Task<HandleResult<GetProductsResponse>> GetProductsByCategoryAsync(int categoryId)
+        {
+            var result = new HandleResult<GetProductsResponse>();
+
+            var products = await _dataContext.Products.Where(x=> x.CategoryId == categoryId)
+                .Include(x => x.Producer).ToListAsync();
+
+            result.Response = _mapper.Map<GetProductsResponse>(products);
+
+            return result;
+        }
     }
 }

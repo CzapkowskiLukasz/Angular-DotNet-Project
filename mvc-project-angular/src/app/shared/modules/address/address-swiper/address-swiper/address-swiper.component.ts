@@ -50,7 +50,6 @@ export class AddressSwiperComponent implements OnInit {
     loop: true,
     slidesPerView: 1,
     centeredSlides: true,
-    autoplay: false,
     navigation: true
   }
 }

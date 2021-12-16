@@ -22,7 +22,9 @@ export class ProfileComponent implements OnInit {
 
   user: UserListItem
 
-  userId
+  userId: number
+
+  name
 
   addresses: Address[] = []
 
@@ -46,6 +48,12 @@ export class ProfileComponent implements OnInit {
     this.orderService.getOrderByUserIdList(this.userId).subscribe(result => {
       this.orders = result.orders
     })
+
+    this.userService.getUserById(this.userId).subscribe(result => {
+      this.user = result
+    })
+
+    this.name = this.user.name
   }
 
   showAddAddress() {

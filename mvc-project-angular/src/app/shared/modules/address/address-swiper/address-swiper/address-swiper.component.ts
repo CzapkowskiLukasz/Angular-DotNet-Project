@@ -40,6 +40,8 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 export class AddressSwiperComponent implements OnInit {
 
   @Input() items: Address[] = [];
+
+  @Input() name: string
   
   constructor() { }
 

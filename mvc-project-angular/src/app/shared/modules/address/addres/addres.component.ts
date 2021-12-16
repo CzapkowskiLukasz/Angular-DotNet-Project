@@ -11,6 +11,8 @@ export class AddresComponent implements OnInit {
 
   @Input() item: Address
 
+  @Input() name: string
+
   constructor() { }
 
   ngOnInit(): void {

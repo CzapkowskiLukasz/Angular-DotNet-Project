@@ -28,7 +28,8 @@ export class RegisterStep3Component extends RegisterBase {
       houseNumber: ['', Validators.required],
       apartmentNumber: [''],
       code: ['', Validators.required],
-      city: ['', Validators.required]
+      city: ['', Validators.required],
+      country: ['', Validators.required]
     });
 
     super.ngOnInit();
@@ -44,6 +45,7 @@ export class RegisterStep3Component extends RegisterBase {
     this.address.apartmentNumber = formData.apartmentNumber;
     this.address.code = formData.code;
     this.address.city = formData.city;
+    this.address.country = formData.country;
 
     super.ngOnDestroy();
   }

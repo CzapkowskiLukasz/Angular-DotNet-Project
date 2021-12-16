@@ -19,7 +19,8 @@
         </div>
 
         <h4 class="lines"><span class="textInLines">Adresses</span></h4>
-        <div class="addressContainer">
+        <app-address-swiper [items]="addresses"></app-address-swiper>
+        <!-- <div class="addressContainer">
             <svg class="addressNavigation" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -47,7 +48,7 @@
                     </g>
                 </g>
             </svg>
-        </div>
+        </div> -->
 
         <h4 class="lines"><span class="textInLines">Language</span></h4>
         <app-change-language></app-change-language>
@@ -192,3 +193,6 @@
         </div>
     </div>
 </div>
+
+
+<p>{{addresses[0].street}}</p>

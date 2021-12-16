@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Address } from 'src/app/shared/models/address';
 
 @Component({
   selector: 'app-addres',
@@ -7,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AddresComponent implements OnInit {
+
+  @Input() item: Address
 
   constructor() { }
 

@@ -2,8 +2,8 @@ export class Address {
     userId: number;
     city: string;
     street: string;
-    houseNumber: string;
+    buildingNumber: string;
     apartmentNumber: string;
-    code: string;
+    zipCode: string;
     country: string;
 }

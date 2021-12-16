@@ -126,6 +126,9 @@ namespace MVC_Project.Domain
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.SvgLogo)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.ParentCategory)
                     .WithMany(p => p.ChildCategories)
                     .HasForeignKey(d => d.ParentCategoryId)

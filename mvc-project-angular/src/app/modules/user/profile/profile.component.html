@@ -8,7 +8,7 @@
 
 <div class="mainContainer">
     <aside class="basicDiv" style="width: 300px;">
-        <h4 class="lines"><span class="textInLines">{{ 'profile.' | translate }}</span></h4>
+        <h4 class="lines"><span class="textInLines">{{ 'profile.yourProfile' | translate }}</span></h4>
         <div class="yourProfileContainer">
             <div style="width: 230px;">
                 <p>{{user.name + ' ' + user.surname}}</p>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <h4 class="lines"><span class="textInLines">Adresses</span></h4>
+        <h4 class="lines"><span class="textInLines">{{ 'profile.adresses' | translate }}</span></h4>
         <app-address-swiper [items]="addresses" [name]="user.name + ' ' + user.surname"></app-address-swiper>
         <!-- <div class="addressContainer">
             <svg class="addressNavigation" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172" style=" fill:#000000;">
@@ -54,17 +54,11 @@
         <app-change-language></app-change-language>
     </aside>
     <div class="basicDiv" style="width: 600px;">
-<<<<<<< HEAD
         <h4 class="lines"><span class="textInLines">Orders</span></h4>
         <div style="min-height: 300px;   overflow: hidden;
         overflow-y: scroll;">
             <app-order-list *ngFor="let order of orders | slice:0:3" [item]="order"></app-order-list>
             <!-- <div class="orderContainer" style="padding-top: 0;padding-bottom: 5px;">
-=======
-        <h4 class="lines"><span class="textInLines">{{ 'profile.orders' | translate }}</span></h4>
-        <div>
-            <div class="orderContainer" style="padding-top: 0;padding-bottom: 5px;">
->>>>>>> Tlumaczenia-Ma
                 <h4 class="orderTitle" style="margin-bottom: 0;">Order #213769</h4>
                 <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
                 <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
@@ -206,5 +200,3 @@
         </div>
     </div>
 </div>
-
-{{name}}

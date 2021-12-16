@@ -12,12 +12,12 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
 
     protected request;
 
-    protected get registerRequest() {
+    protected get registerRequest(): RegisterRequest {
         return this.request.userData;
     }
 
-    protected get address() {
-        return this.registerRequest.address;
+    protected get address(): Address {
+        return this.request.address;
     }
 
     protected valueSubscribtion: Subscription;

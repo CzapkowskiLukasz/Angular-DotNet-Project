@@ -23,6 +23,8 @@ namespace MVC_Project.Logic.Admin.MappingProfiles
                    opt.MapFrom(src => src.Id));
 
             CreateMap<RegisterRequest, User>()
+                .ForMember(dest => dest.UserName, opt =>
+                   opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.ThemeId, opt =>
                    opt.MapFrom(src => 1))
                 .ForMember(dest => dest.ProductOnPageCount, opt =>

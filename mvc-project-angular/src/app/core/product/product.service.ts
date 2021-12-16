@@ -46,10 +46,10 @@ export class ProductService {
   }
 
   getCustomerList(): Observable<any> {
-    return this.http.get<ProductListItem[]>(this.baseUrl);
+    return this.http.get<ProductListItem[]>(this.baseCustomerUrl);
   }
 
   getProductsByCategoryIdList(categoryId): Observable<any> {
-    return this.http.get<ProductListItem[]>(this.baseUrl + '/by-categoryId/' + categoryId);
+    return this.http.get<ProductListItem[]>(this.baseCustomerUrl + '/by-categoryId/' + categoryId);
   }
 }

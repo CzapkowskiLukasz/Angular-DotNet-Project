@@ -39,6 +39,12 @@ export class RegisterStep3Component extends RegisterBase {
     this.registerRequest.name = formData.name;
     this.registerRequest.surname = formData.surname;
 
+    this.address.street = formData.street;
+    this.address.houseNumber = formData.houseNumber;
+    this.address.apartmentNumber = formData.apartmentNumber;
+    this.address.code = formData.code;
+    this.address.city = formData.city;
+
     super.ngOnDestroy();
   }
 
@@ -56,6 +62,7 @@ export class RegisterStep3Component extends RegisterBase {
 
   protected prepareView() {
     this.form.patchValue(this.registerRequest);
+    this.form.patchValue(this.address);
   }
 
   protected invalidIncomingAction() {

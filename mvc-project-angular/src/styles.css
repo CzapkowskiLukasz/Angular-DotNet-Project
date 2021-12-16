@@ -38,6 +38,7 @@ html {
     border-width: 1px;
     border-color: var(--accent-color);
     margin-right: 10px;
+    height: fit-content;
 }
 
 .mainContainer {

@@ -61,6 +61,10 @@ export class UserService {
       );
   }
 
+  getUserById(userId): Observable<any> {
+    return this.http.get<UserListItem>(this.baseAdminUrl + '/by-id/' + userId);
+  }
+
   private setAuthCookie(token) {
     this.cookieService.set(this.authorizationCookieName, 'true');
     this.cookieService.set(this.tokenCookieName, token);

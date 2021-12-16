@@ -48,4 +48,8 @@ export class ProductService {
   getCustomerList(): Observable<any> {
     return this.http.get<ProductListItem[]>(this.baseUrl);
   }
+
+  getProductsByCategoryIdList(categoryId): Observable<any> {
+    return this.http.get<ProductListItem[]>(this.baseUrl + '/by-categoryId/' + categoryId);
+  }
 }

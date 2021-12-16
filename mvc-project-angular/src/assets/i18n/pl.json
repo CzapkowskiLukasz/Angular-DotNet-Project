@@ -3,19 +3,95 @@
         "cart": {
             "name": "KOSZYK",
             "empty": "Twój koszyk jest pusty",
-            "engage": "Dodaj produkty aby go wypełnić"
+            "engage": "Dodaj produkty aby go wypełnić",
+            "shopName": "Nazwa sklepu",
+            "increase": "zwiększ",
+            "deleteLater": "usuń później",
+            "bestsellers": "NAJCHĘTNIEJ KUPOWANE",
+            "hotstuff": "GORĄCY TOWAREK"
         },
         "searchText": "Wprowadź nazwę produktu"
     },
+    "product": {
+        "categories": {
+            "lolipops": "Lizaki",
+            "jelly": "Żelki",
+            "soda": "Napoje",
+            "snacks": "Przekąski",
+            "noodles": "Noodle"
+        },
+        "details": {
+            "addToCart": "Dodaj do koszyka",
+            "availability": "Dostępność",
+            "noAvailable": "Niedostępny",
+            "lowAvailability": "Mało dostępny",
+            "mediumAvailability": "Średnio dostępny",
+            "highAvailability": "Duża ilość",
+            "producer": "Producent",
+            "productDescription": "Opis produktu",
+            "productList": "LISTA PRODUKTÓW"
+        }
+    },
+    "user": {
+        "login": {
+            "signIn": "Zaloguj się",
+            "password": "Hasło",
+            "forgottenPass": "Nie pamiętasz hasła?",
+            "notWithUs": "Nie dołączyłeś do nas?",
+            "or": "LUB",
+            "continueWithApple": "Kontynuuj z Apple",
+            "continueWithFacebook": "Kontynuuj z Facebook",
+            "continueWithGoogle": "Kontynuuj z Google"
+        }
+    },
+    "register": {
+        "language": "Język",
+        "loginData": "Dane Logowania",
+        "address": "Adres",
+        "agreements": "Zgody",
+        "languageChoice": "Wybierz swój język",
+        "languageChangeText": "Nie martw się. Możesz zmienić to później!",
+        "nextStep": "Następny krok!",
+        "addFirstAddress": "Dodaj swój pierwszy adres",
+        "name": "Imię",
+        "surname": "Nazwisko",
+        "street": "Ulica",
+        "houseNo": "Numer domu",
+        "code": "Kod pocztowy",
+        "city": "Miasto",
+        "repeatPassword": "Powtórz hasło",
+        "password": "Hasło",
+        "title": "Proszę wprowadzić e-mail i hasło",
+        "agreement1": "Zgoda1",
+        "agreement2": "Zgoda2",
+        "agreement3": "Zgoda3",
+        "acceptAgreements": "Aby przejść dalej musisz zaakceptować zgody!",
+        "signNewsletter": "Możesz również dołączyć do Newslettera"
+    },
     "profile": {
-        "title": "MOJE KONTO"
+        "title": "MOJE KONTO",
+        "yourProfile": "Twój profil",
+        "name": "Imię",
+        "surname": "Nazwisko",
+        "phoneNumber": "Nr telefonu",
+        "registerDate": "Data rejestracji",
+        "adresses": "Adresy",
+        "language": "Język",
+        "orders": "Zamówienia",
+        "order": "Zamówienie",
+        "orderDate": "Data zamówienia",
+        "price": "Cena",
+        "status": "Status",
+        "sent": "Wysłane",
+        "settings": "Ustawienia",
+        "others": "Inne"
     },
     "admin": {
         "dashboard": {
             "title": "PANEL ADMINISTRATORA",
             "statisticsHeader": "Statystyki",
             "languageHeader": "Język",
-            "othersHeader": "Ustawienia i inne"
+            "othersHeader": "Ustawienia & Inne"
         },
         "product": {
             "list": {
@@ -33,8 +109,118 @@
                 "price": "Cena",
                 "count": "Ilość",
                 "category": "Kategoria",
-                "submitBtn": "Utwórz produkt"
+                "submitBtn": "Dodaj produkt",
+                "editProduct": "Edytuj produkt",
+                "submit": "Zatwierdź",
+                "cancel": "Anuluj",
+                "product": "Produkt"
+            }
+        },
+        "delete": {
+            "textAboutDeleting": "Czy chcesz usunąć?",
+            "textAboutActionException": "Ta akcja nie może zostać wykonana",
+            "cancel": "Anuluj",
+            "delete": "Usuń"
+        },
+        "statistics": {
+            "viewsNumber": "Liczba wyświetleń",
+            "usersNumber": "Liczba użytkowników",
+            "usersNewsletterNumber": "Liczba użytkowników subskrybujących Newsletter",
+            "productNumber": "Liczba produktów",
+            "producentNumber": "Liczba producentów",
+            "cmpltOrdersNumber": "Liczba skompletowanych zamówień",
+            "allOrdersNumber": "Liczba wszystkich zamówień",
+            "averageOrderPrice": "Średnia cena zamówienia"
+        },
+        "category": {
+            "create": {
+                "editCategory": "Edytuj kategorię",
+                "newCategory": "Nowa kategoria",
+                "category": "Kategoria",
+                "name": "Nazwa",
+                "parentCategory": "Kategoria nadrzędna",
+                "submit": "Zatwierdź",
+                "cancel": "Anuluj"
+            }
+        },
+        "countries": {
+            "create": {
+                "newCountry": "Nowe Państwo",
+                "name": "Nazwa",
+                "continent": "Kontynent",
+                "create": "Dodaj",
+                "cancel": "Anuluj",
+                "country": "Kraj"
+            }
+        },
+        "delivery": {
+            "create": {
+                "deliveryCompany": "Firma kurierska",
+                "companyName": "Nazwa firmy",
+                "phoneNumber": "Numer telefonu",
+                "email": "E-mail"
+            }
+        },
+        "discount": {
+            "create": {
+                "newDiscount": "Nowa przecena",
+                "name": "Nazwa",
+                "percent": "Procent",
+                "endDate": "Data zakończenia",
+                "cancel": "Anuluj",
+                "create": "Dodaj",
+                "discount": "Przecena",
+                "discountName": "Nazwa przeceny"
+            }
+        },
+        "producers": {
+            "add": {
+                "editProducer": "Edytuj producenta",
+                "newProducer": "Nowy producent",
+                "name": "Nazwa",
+                "country": "Kraj",
+                "submit": "Zatwierdź",
+                "cancel": "Anuluj",
+                "producer": "Producent"
+            }
+        },
+        "user": {
+            "list": {
+                "order": "Zamówienie",
+                "orderDate": "Data zamówienia",
+                "price": "Cena",
+                "status": "Status",
+                "sent": "Wysłane"
+            },
+            "info": {
+                "user": "Użytkownik",
+                "userInfo": "Informacje użytkownika",
+                "name": "Nazwa",
+                "surname": "Nazwisko",
+                "registerDate": "Data rejestracji",
+                "lastOrderDate": "Data ostatniego zamówienia",
+                "userOrders": "Zamówienia użytkownika"
+            },
+            "voucher": {
+                "newVoucher": "Nowy kupon",
+                "endDate": "Data końcowa",
+                "cancel": "Anuluj",
+                "create": "Dodaj",
+                "price": "Cena",
+                "code": "Kod"
+            }
+        },
+        "cart": {
+            "checkout": {
+                "cartCheckout": "POGLĄD KOSZYKA",
+                "adresses": "Adresy",
+                "delivery": "Dostawa",
+                "yourOrder": "Twoje zamówienie",
+                "payment": "Płatność",
+                "orderNow": "Kup teraz"
             }
         }
+      
     }
+    
 }

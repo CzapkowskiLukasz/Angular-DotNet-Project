@@ -1,7 +1,7 @@
 <div class="expandContainer">
     <div class="descriptionDiv">
         <textarea class="descriptionInput" id="expandedDescription" [formControl]="descriptionFormControl" placeholder=" "></textarea>
-        <label for="expandedDescription" class="descriptionLabel">Description</label>
+        <label for="expandedDescription" class="descriptionLabel">{{'admin.product.create.description' | translate}}</label>
     </div>
     <div class="inputDiv">
         <input type="file" id="file" [formControl]="fileFormControl" (change)="onFileSelected($event)">

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="orderContainer" *ngFor="let category of categories" style="padding-top: 0;padding-bottom: 5px;">
         <div class="descriptionContainer">
-            <h4 class="orderTitle" style="margin-bottom: 0;">Category #{{category.categoryId}}</h4>
+            <h4 class="orderTitle" style="margin-bottom: 0;">{{'admin.category.create.category' | translate}} #{{category.categoryId}}</h4>
             <div style="margin-left: auto;padding: 5px; display: flex;">
                 <div class="profileButton" style="margin-right: 5px;" (click)="openForm(category.categoryId)">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
@@ -38,11 +38,11 @@
         <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
         <div class="descriptionContainer">
             <div style="margin-left: auto;margin-right: auto;">
-                <h5>Name</h5>
+                <h5>{{'admin.category.create.name' | translate}}</h5>
                 <p class="orderDescription">{{category.name}}</p>
             </div>
             <div style="margin-right: auto; margin-left: auto;">
-                <h5>Parent category</h5>
+                <h5>{{'admin.category.create.parentCategory' | translate}}</h5>
                 <p class="orderDescription">{{category.parentName}}</p>
             </div>
         </div>

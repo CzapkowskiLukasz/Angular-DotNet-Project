@@ -1,7 +1,7 @@
 <div class="loginBackground">
     <div style="position:relative;">
         <form [formGroup]="form" (ngSubmit)="submit()">
-            <h1 class="form__title">Sign In</h1>
+            <h1 class="form__title">{{ 'user.login.signIn' | translate }}</h1>
 
             <div class="form__div">
                 <input type="text" class="form__input" formControlName="email" placeholder=" ">
@@ -10,11 +10,11 @@
 
             <div class="form__div">
                 <input type="password" class="form__input" formControlName="password" placeholder=" ">
-                <label for="password" class="form__label">Password</label>
+                <label for="password" class="form__label">{{ 'user.login.password' | translate }}</label>
             </div>
 
             <div class="form__div_a">
-                <a class="form__a" href="google.com">Forgotten your password?</a>
+                <a class="form__a" href="google.com">{{ 'user.login.forgottenPass' | translate }}</a>
             </div>
             <div class="form__div__button">
                 <input type="submit" class="form__button" value="Sign In">
@@ -22,10 +22,10 @@
         </form>
 
         <div class="form__div_a">
-            <p style="color: gray; padding-right: 5px;">Are you not with us? </p><a class="form__a" [routerLink]="['../register']">Join for free!</a>
+            <p style="color: gray; padding-right: 5px;">{{ 'user.login.notWithUs' | translate }} </p><a class="form__a" [routerLink]="['../register']">Join for free!</a>
         </div>
         <div>
-            <h2 class="lines"><span class="textInLines">OR</span></h2>
+            <h2 class="lines"><span class="textInLines">{{ 'user.login.or' | translate }}</span></h2>
             <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24"
           class="signUpWithLogo">
@@ -33,7 +33,7 @@
             d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z">
           </path>
         </svg>
-          <span class="signUpWithText">Continue with Apple</span>
+          <span class="signUpWithText">{{ 'user.login.continueWithApple' | translate }}</span>
         </button>
             <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
@@ -49,7 +49,7 @@
               </g>
             </g>
           </svg>
-          <span class="signUpWithText">Continue with Facebook</span>
+          <span class="signUpWithText">{{ 'user.login.continueWithFacebook' | translate }}</span>
         </button>
             <button class="signUpWithBox">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48"
@@ -67,7 +67,7 @@
               d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z">
             </path>
           </svg>
-          <span class="signUpWithText">Continue with Google</span>
+          <span class="signUpWithText">{{ 'user.login.continueWithGoogle' | translate }}</span>
         </button>
         </div>
     </div>

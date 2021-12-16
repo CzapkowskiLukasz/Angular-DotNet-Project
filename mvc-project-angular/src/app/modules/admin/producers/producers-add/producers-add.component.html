@@ -1,28 +1,28 @@
 <h4 class="cardLines">
-    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit producer</span>
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">{{'admin.producers.add.editProducer' | translate}}</span>
     <ng-template #creating>
-        <span class="cardTextInLines">New producer</span>
+        <span class="cardTextInLines">{{'admin.producers.add.newProducer' | translate}}</span>
     </ng-template>
 </h4>
 
 <form [formGroup]="form">
     <div class="form__div">
         <input type="text" class="form__input" formControlName="name" placeholder=" ">
-        <label for="name" class="form__label">Name</label>
+        <label for="name" class="form__label">{{'admin.producers.add.name' | translate}}</label>
     </div>
 
     <div class="form__div">
         <input #countryInput type="text" class="form__input" formControlName="country" placeholder=" ">
-        <label for="country" class="form__label">Country</label>
+        <label for="country" class="form__label">{{'admin.producers.add.country' | translate}}</label>
         <app-filtered-dropdown *ngIf="isCountriesLoaded" [inputElement]="countryInput" [list]="countryList" (selectIdEvent)="selectCountry($event)"></app-filtered-dropdown>
     </div>
 
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-            Submit
+            {{'admin.producers.add.submit' | translate}}
         </div>
         <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
-            Cancel
+            {{'admin.producers.add.cancel' | translate}}
         </div>
     </div>
 </form>

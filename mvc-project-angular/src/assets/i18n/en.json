@@ -3,12 +3,88 @@
         "cart": {
             "name": "CART",
             "empty": "Your cart is empty",
-            "engage": "Add products to fill him"
+            "engage": "Add products to fill him",
+            "shopName": "Shop name",
+            "increase": "increase",
+            "deleteLater": "delete later",
+            "bestsellers": "BESTSELLERS",
+            "hotstuff": "HOT STUFF"
         },
         "searchText": "Enter product name"
     },
+    "product": {
+        "categories": {
+            "lolipops": "Lolipops",
+            "jelly": "Jelly",
+            "soda": "Soda",
+            "snacks": "Snacks",
+            "noodles": "Noodles"
+        },
+        "details": {
+            "addToCart": "Add to cart",
+            "availability": "Availability",
+            "noAvailable": "No available",
+            "lowAvailability": "Low availability",
+            "mediumAvailability": "Medium availability",
+            "highAvailability": "High availability",
+            "producer": "Producer",
+            "productDescription": "Product description",
+            "productList": "PRODUCT LIST"
+        }
+    },
+    "user": {
+        "login": {
+            "signIn": "Sign In",
+            "password": "Password",
+            "forgottenPass": "Forgotten your password?",
+            "notWithUs": "Are you not with us?",
+            "or": "OR",
+            "continueWithApple": "Continue with Apple",
+            "continueWithFacebook": "Continue with Facebook",
+            "continueWithGoogle": "Continue with Google"
+        }
+    },
+    "register": {
+        "language": "Language",
+        "loginData": "Login data",
+        "address": "Address",
+        "agreements": "Agreements",
+        "languageChoice": "Choose your language.",
+        "languageChangeText": "Don't worry You can change it later!",
+        "nextStep": "Next step!",
+        "addFirstAddress": "Add Your first address",
+        "name": "Name",
+        "surname": "Surname",
+        "street": "Street",
+        "houseNo": "House No",
+        "code": "Code",
+        "city": "City",
+        "repeatPassword": "Repeat Password",
+        "password": "Password",
+        "title": "Please enter your e-mail and password",
+        "agreement1": "agreement1",
+        "agreement2": "agreement2",
+        "agreement3": "agreement3",
+        "acceptAgreements": "To use our shop You need to accept those agreements.",
+        "signNewsletter": "You can sign up to your newsletter too."
+    },
     "profile": {
-        "title": "MY ACCOUNT"
+        "title": "MY ACCOUNT",
+        "yourProfile": "Your profile",
+        "name": "Name",
+        "surname": "Surname",
+        "phoneNumber": "Phone number",
+        "registerDate": "Register date",
+        "adresses": "Adresses",
+        "language": "Language",
+        "orders": "Orders",
+        "order": "Order",
+        "orderDate": "Order date",
+        "price": "Price",
+        "status": "Status",
+        "sent": "Sent",
+        "settings": "Settings",
+        "others": "Others"
     },
     "admin": {
         "dashboard": {
@@ -33,8 +109,118 @@
                 "price": "Price",
                 "count": "Count",
                 "category": "Category",
-                "submitBtn": "Create product"
+                "submitBtn": "Create product",
+                "editProduct": "Edit product",
+                "submit": "Submit",
+                "cancel": "Cancel",
+                "product": "Product"
+            }
+        },
+        "delete": {
+            "textAboutDeleting": "Do you want to delete",
+            "textAboutActionException": "This action can not be undone",
+            "cancel": "Cancel",
+            "delete": "Delete"
+        },
+        "statistics": {
+            "viewsNumber": "Number of views",
+            "usersNumber": "Number of users",
+            "usersNewsletterNumber": "Number of users signed to newsletter",
+            "productNumber": "Number of product",
+            "producentNumber": "Number of producents",
+            "cmpltOrdersNumber": "Number of completed orders",
+            "allOrdersNumber": "Number of all orders",
+            "averageOrderPrice": "Average order price"
+        },
+        "category": {
+            "create": {
+                "editCategory": "Edit category",
+                "newCategory": "New category",
+                "category": "Category",
+                "name": "Name",
+                "parentCategory": "Parent category",
+                "submit": "Submit",
+                "cancel": "Cancel"
+            }
+        },
+        "countries": {
+            "create": {
+                "newCountry": "New Country",
+                "name": "Name",
+                "continent": "Continent",
+                "create": "Create",
+                "cancel": "Cancel",
+                "country": "Country"
+            }
+        },
+        "delivery": {
+            "create": {
+                "deliveryCompany": "Delivery company",
+                "companyName": "Company Name",
+                "phoneNumber": "Phone number",
+                "email": "E-mail"
+            }
+        },
+        "discount": {
+            "create": {
+                "newDiscount": "New discount",
+                "name": "Name",
+                "percent": "Percent",
+                "endDate": "End date",
+                "cancel": "Cancel",
+                "create": "Create",
+                "discount": "Discount",
+                "discountName": "Discount name"
+            }
+        },
+        "producers": {
+            "add": {
+                "editProducer": "Edit producer",
+                "newProducer": "New producer",
+                "name": "Name",
+                "country": "Country",
+                "submit": "Submit",
+                "cancel": "Cancel",
+                "producer": "Producer"
+            }
+        },
+        "user": {
+            "list": {
+                "order": "Order",
+                "orderDate": "Order date",
+                "price": "Price",
+                "status": "Status",
+                "sent": "Sent"
+            },
+            "info": {
+                "user": "User",
+                "userInfo": "User info",
+                "name": "Name",
+                "surname": "Surname",
+                "registerDate": "Register date",
+                "lastOrderDate": "Last order date",
+                "userOrders": "User orders"
+            },
+            "voucher": {
+                "newVoucher": "New voucher",
+                "endDate": "End date",
+                "cancel": "Cancel",
+                "create": "Create",
+                "price": "Price",
+                "code": "Code"
+            }
+        },
+        "cart": {
+            "checkout": {
+                "cartCheckout": "CART CHECKOUT",
+                "adresses": "Adresses",
+                "delivery": "Delivery",
+                "yourOrder": "Your order",
+                "payment": "Payment",
+                "orderNow": "Order now"
             }
         }
+      
     }
+    
 }

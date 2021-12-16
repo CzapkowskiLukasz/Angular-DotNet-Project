@@ -1,5 +1,5 @@
 <h4 class="cardLines">
-    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit product</span>
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">{{'admin.product.create.editProduct' | translate}}</span>
     <ng-template #creating>
         <span class="cardTextInLines">{{'admin.product.create.title' | translate}}</span>
     </ng-template>
@@ -48,10 +48,10 @@
         <div class="formButtonContainer2">
             <div style="margin-left: auto;display: flex;">
                 <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-                    Submit
+                    {{'admin.product.create.submit' | translate}}
                 </div>
                 <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
-                    Cancel
+                    {{'admin.product.create.cancel' | translate}}
                 </div>
             </div>
 

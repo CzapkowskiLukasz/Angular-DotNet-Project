@@ -26,6 +26,7 @@ export class RegisterStep3Component extends RegisterBase {
       surname: ['', Validators.required],
       street: ['', Validators.required],
       houseNumber: ['', Validators.required],
+      apartmentNumber: [''],
       code: ['', Validators.required],
       city: ['', Validators.required]
     });
@@ -35,8 +36,8 @@ export class RegisterStep3Component extends RegisterBase {
 
   ngOnDestroy(): void {
     const formData = this.form.value;
-    this.registerRequest.name=formData.name;
-    this.registerRequest.surname=formData.surname;
+    this.registerRequest.name = formData.name;
+    this.registerRequest.surname = formData.surname;
 
     super.ngOnDestroy();
   }

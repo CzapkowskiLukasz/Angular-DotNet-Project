@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -40,6 +41,12 @@ export class UserService {
 
   getToken(): string {
     return this.cookieService.get(this.tokenCookieName);
+  }
+
+  getUserId(): number {
+    const token = this.getToken();
+    const decodedToken = jwtDecode(token);
+    return decodedToken['id'];
   }
 
   logout() {

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddressService } from 'src/app/core/address/address.service';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { UserService } from 'src/app/core/user/user.service';
 import { RegisterBase } from '../register-base';
@@ -18,7 +19,8 @@ export class RegisterStep4Component extends RegisterBase {
 
   constructor(protected componentConnection: ComponentConnectionService,
     protected router: Router,
-    private userService:UserService) {
+    private userService: UserService,
+    private addressService: AddressService) {
     super(componentConnection, router);
   }
 
@@ -38,9 +40,18 @@ export class RegisterStep4Component extends RegisterBase {
   submit() {
     if (!this.outcomingIsValid()) {
       this.invalidOutcomingAction();
+      return;
     }
 
-    // this.userService.register(this.registerRequest).subscribe()
+    this.userService.register(this.registerRequest).subscribe(result => {
+      const userId = this.userService.getUserId();
+      this.address.userId = userId;
+
+      this.addressService.add(this.address).subscribe(result => {
+        if (result.result)
+          this.router.navigate(['/register/step5']);
+      });
+    });
   }
 
   protected incomingIsValid(): boolean {
@@ -52,7 +63,9 @@ export class RegisterStep4Component extends RegisterBase {
   }
 
   protected outcomingIsValid(): boolean {
-    return this.incomingIsValid();
+    const agreementsChecked = !this.agreements.includes(false);
+    return this.incomingIsValid()
+      && agreementsChecked;
   }
 
   protected prepareView() {

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/core/address/address.service';
 import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
@@ -62,6 +63,9 @@ export class ProfileComponent implements OnInit {
 
   hideAddAddress() {
     this.addAddress = false;
+    this.addressService.getByUserId(this.userId).subscribe(result => {
+      this.addresses = result.addresses
+    });
   }
 
   increse() {

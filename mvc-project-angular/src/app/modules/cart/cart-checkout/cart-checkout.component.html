@@ -1,4 +1,4 @@
-<app-addres-create *ngIf="addAddress" (cancelEvent)="hideAddAddress()"></app-addres-create>
+<app-addres-create *ngIf="addAddress" (cancelEvent)="hideAddAddress()" [userId]="user.userId"></app-addres-create>
 <app-navbar></app-navbar>
 
 <div style="margin-top: 60px;">
@@ -10,7 +10,7 @@
         <div class="basicDiv mainCard" style="width: 300px;">
             
                 <h4 class="lines"><span class="textInLines">Adresses</span></h4>
-                <app-address-swiper [items]="addresses"></app-address-swiper>
+                <app-address-swiper [items]="addresses" [name]="user.name + ' ' + user.surname"></app-address-swiper>
             <div>
                 <div class="profileButton" (click)="showAddAddress()" style="margin-left: auto;margin-right: 0;">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"

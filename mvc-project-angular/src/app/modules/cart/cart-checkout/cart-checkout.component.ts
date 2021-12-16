@@ -12,6 +12,7 @@ import { Address } from 'src/app/shared/models/address';
 export class CartCheckoutComponent implements OnInit {
   addresses: Address[] = []
   addAddress: boolean;
+  user
   constructor(private addressService: AddressService, private userService: UserService) {
     this.addAddress = false;
   }
@@ -20,6 +21,10 @@ export class CartCheckoutComponent implements OnInit {
     this.addressService.getByUserId(this.userService.getUserId()).subscribe(result => {
       this.addresses = result.addresses
     });
+
+    this.userService.getUserById(this.userService.getUserId()).subscribe(result => {
+      this.user = result
+    })
   }
 
   showAddAddress() {
@@ -28,5 +33,8 @@ export class CartCheckoutComponent implements OnInit {
 
   hideAddAddress() {
     this.addAddress = false;
+    this.addressService.getByUserId(this.userService.getUserId()).subscribe(result => {
+      this.addresses = result.addresses
+    });
   }
 }

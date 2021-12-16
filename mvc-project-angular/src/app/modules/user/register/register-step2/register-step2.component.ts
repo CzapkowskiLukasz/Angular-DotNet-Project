@@ -34,14 +34,17 @@ export class RegisterStep2Component extends RegisterBase {
   }
 
   ngOnDestroy(): void {
-    if (this.form)
+    if (this.form) {
       this.registerRequest.email = this.form.get('email').value;
+      this.registerRequest.password = this.form.get('password').value;
+    }
 
     super.ngOnDestroy();
   }
 
   protected incomingIsValid(): boolean {
-    return this.registerRequest && this.registerRequest.languageId != 0;
+    return this.isNotEmpty(this.registerRequest)
+      && this.isNotEmpty(this.registerRequest.languageId);
   }
 
   protected outcomingIsValid(): boolean {

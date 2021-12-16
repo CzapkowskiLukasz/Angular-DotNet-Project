@@ -2,6 +2,7 @@
 using MVC_Project.Domain.Entities;
 using MVC_Project.Logic.Customer.Responses;
 using System.Collections.Generic;
+using MVC_Project.Logic.Customer.Requests;
 
 namespace MVC_Project.Logic.Customer.MappingProfiles
 {
@@ -18,6 +19,11 @@ namespace MVC_Project.Logic.Customer.MappingProfiles
             CreateMap<List<Address>, GetAddressesResponse>()
     .ForMember(dest => dest.Addresses, opt =>
         opt.MapFrom(src => src));
+            CreateMap<AddAddressRequest, Address>()
+                .ForMember(dest => dest.BuildingNumber, opt =>
+                    opt.MapFrom(src => src.HouseNumber))
+                .ForMember(dest => dest.ZipCode, opt =>
+                    opt.MapFrom(src => src.Code));
         }
     }
 }

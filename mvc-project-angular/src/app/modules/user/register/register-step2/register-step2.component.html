@@ -9,24 +9,24 @@
     </div>
     <p class="register-title">Please enter your e-mail and password
     </p>
-    <form>
+    <form [formGroup]="form" autocomplete="off">
         <div class="form__div">
-            <input type="text" class="form__input" placeholder=" ">
-            <label for="" class="form__label">E-mail</label>
+            <input type="text" class="form__input" formControlName="email" placeholder=" ">
+            <label for="email" class="form__label">E-mail</label>
         </div>
 
         <div class="form__div">
-            <input type="password" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Password</label>
+            <input type="password" class="form__input" formControlName="password" placeholder=" ">
+            <label for="password" class="form__label">Password</label>
         </div>
 
         <div class="form__div">
-            <input type="password" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Repeat password</label>
+            <input type="password" class="form__input" formControlName="repeatPassword" placeholder=" ">
+            <label for="repeatPassword" class="form__label">Repeat password</label>
         </div>
 
         <div class="form__div__button" style="float: center;">
-            <a class="form__button" [routerLink]="['../step3']">Next step!<img class="icon" src="assets/forward-icon.png"></a>
+            <a class="form__button" (click)="next(3)">Next step!<img class="icon" src="assets/forward-icon.png"></a>
         </div>
     </form>
 </div>

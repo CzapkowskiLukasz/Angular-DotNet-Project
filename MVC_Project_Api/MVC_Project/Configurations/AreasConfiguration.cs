@@ -42,6 +42,7 @@ namespace MVC_Project.Api.Configurations
         {
             services.AddScoped<ICustomerProductService, CustomerProductService>();
             services.AddScoped<ICustomerAddressService, CustomerAddressService>();
+            services.AddScoped<IAddressService, AddressService>();
         }
 
         public static void AddAreas(this IServiceCollection services)

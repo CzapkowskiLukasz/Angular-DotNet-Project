@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using MVC_Project.Domain;
 using MVC_Project.Domain.Entities;
@@ -19,13 +20,15 @@ namespace MVC_Project.Logic.Global.Services
         private readonly JwtSettings _jwtSettings;
         private readonly UserManager<User> _userManager;
         private readonly HttpContext _httpContext;
+        private readonly IMapper _mapper;
 
-        public UserService(DataContext dataContext, JwtSettings jwtSettings, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
+        public UserService(DataContext dataContext, JwtSettings jwtSettings, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
             _dataContext = dataContext;
             _jwtSettings = jwtSettings;
             _userManager = userManager;
             _httpContext = httpContextAccessor.HttpContext;
+            _mapper = mapper;
         }
 
         public Task<bool> DeleteAsync(int id)
@@ -73,24 +76,17 @@ namespace MVC_Project.Logic.Global.Services
             if (existingUser != null)
                 throw new Exception($"Email {request.Email} is already used.");
 
-            var user = new User
-            {
-                Name = request.Name,
-                Surname = request.Surname,
-                Email = request.Email,
-                UserName = request.Email,
-                PasswordHash = request.Password,
-                LanguageId = 1,
-                ThemeId = 1,
-                ProductOnPageCount = 0,
-                Provider = 1
-            };
+            var user = _mapper.Map<User>(request);
 
             var createdUser = await _userManager.CreateAsync(user, request.Password);
             if (!createdUser.Succeeded)
-                result.ErrorResponse = new ErrorResponse("Register error", 404);
-
-            result.Response = GenerateAuthenticationResponse(user);
+            {
+                result.ErrorResponse = new ErrorResponse("Register error", 500);
+            }
+            else
+            {
+                result.Response = GenerateAuthenticationResponse(user);
+            }
 
             return result;
         }

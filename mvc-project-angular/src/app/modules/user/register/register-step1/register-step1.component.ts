@@ -40,7 +40,7 @@ export class RegisterStep1Component extends RegisterBase {
   }
 
   protected outcomingIsValid(): boolean {
-    return this.registerRequest.languageId && this.registerRequest.languageId != 0;
+    return this.isNotEmpty(this.registerRequest.languageId);
   }
 
   protected prepareView() { }

@@ -74,4 +74,13 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
 
         this.componentConnection.sendValue(preparedValue);
     }
+
+    protected isNotEmpty(property): boolean {
+        return property
+            && property != null
+            && property != 0
+            && property != NaN
+            && property != false
+            && property != '';
+    }
 }

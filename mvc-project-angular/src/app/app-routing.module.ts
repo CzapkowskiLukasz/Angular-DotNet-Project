@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesComponent },
   { path: 'cart/checkout', component: CartCheckoutComponent },
   { path: 'product/:id', component: ProductDetailsComponent },
-  { path: 'product-list', component: ProductListComponent }
+  { path: 'product-list/:id', component: ProductListComponent }
 ];
 
 @NgModule({

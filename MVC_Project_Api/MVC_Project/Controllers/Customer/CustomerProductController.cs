@@ -25,7 +25,15 @@ namespace MVC_Project.Api.Controllers.Customer
             return Ok(result.Response);
         }
 
-        [HttpGet("/addresses/by-userId/{userId}")]
+        [HttpGet("/product/by-categoryId/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategoryAsync([FromRoute] int categoryId)
+        {
+            var result = await _productService.GetProductsByCategoryAsync(categoryId);
+
+            return Ok(result.Response);
+        }
+
+        [HttpGet("/address/by-userId/{userId}")]
         public async Task<IActionResult> GetAddressesAsync([FromRoute] int userId)
         {
             var result = await _addressService.GetAddressesByUser(userId);

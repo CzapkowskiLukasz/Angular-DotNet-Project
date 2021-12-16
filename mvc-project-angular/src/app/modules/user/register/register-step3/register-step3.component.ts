@@ -41,9 +41,9 @@ export class RegisterStep3Component extends RegisterBase {
     this.registerRequest.surname = formData.surname;
 
     this.address.street = formData.street;
-    this.address.houseNumber = formData.houseNumber;
+    this.address.buildingNumber = formData.houseNumber;
     this.address.apartmentNumber = formData.apartmentNumber;
-    this.address.code = formData.code;
+    this.address.zipCode = formData.code;
     this.address.city = formData.city;
     this.address.country = formData.country;
 

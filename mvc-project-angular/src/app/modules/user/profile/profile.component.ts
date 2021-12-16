@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddressService } from 'src/app/core/address/address.service';
 import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
 import { UserService } from 'src/app/core/user/user.service';
+import { Address } from 'src/app/shared/models/address';
+import { UserListItem } from 'src/app/shared/models/user-list-item';
 
 @Component({
   selector: 'app-profile',
@@ -13,15 +16,25 @@ export class ProfileComponent implements OnInit {
   count: number;
   showCart: boolean;
 
+  users: UserListItem[] = []
+
+  user
+
+  addresses: Address[] = []
+
   addAddress: boolean;
+
   constructor(private userService: UserService,
-    private router: Router) {
+    private router: Router, private addressService: AddressService) {
     this.addAddress = false;
     this.count = 0;
     this.showCart = false;
   }
 
   ngOnInit(): void {
+    this.addressService.getByUserId(this.userService.getUserId()).subscribe(result => {
+      this.addresses = result.addresses
+    });
   }
 
   showAddAddress() {

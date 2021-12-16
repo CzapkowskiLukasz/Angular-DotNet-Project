@@ -17,6 +17,14 @@ namespace MVC_Project.Logic.Customer.MappingProfiles
             CreateMap<List<Product>, GetBestsellersResponse>()
                 .ForMember(dest => dest.Bestsellers, opt =>
                     opt.MapFrom(src => src));
+
+            CreateMap<Product, ProductListItem>()
+    .ForMember(dest => dest.Name, opt =>
+        opt.MapFrom(src => src.Name));
+
+            CreateMap<List<Product>, GetProductsResponse>()
+                .ForMember(dest => dest.Products, opt =>
+                    opt.MapFrom(src => src));
         }
     }
 }

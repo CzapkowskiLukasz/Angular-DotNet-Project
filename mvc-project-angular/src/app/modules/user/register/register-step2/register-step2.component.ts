@@ -1,8 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { RegisterBase } from '../register-base';
+import { ConfirmedValidator } from './confirmed.validator';
 
 @Component({
   selector: 'app-register-step2',
@@ -22,9 +23,11 @@ export class RegisterStep2Component extends RegisterBase {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [''],
-      password: [''],
-      repeatPassword: ['']
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      repeatPassword: ['', Validators.required]
+    }, {
+      validator: ConfirmedValidator('password', 'repeatPassword')
     });
 
     super.ngOnInit();
@@ -57,6 +60,6 @@ export class RegisterStep2Component extends RegisterBase {
   }
 
   protected invalidOutcomingAction() {
-    console.log('Form is not valid');
+    console.log(this.form.status);
   }
 }

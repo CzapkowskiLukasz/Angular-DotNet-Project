@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { RegisterRequest } from 'src/app/shared/models/register-request';
 import { UserListItem } from 'src/app/shared/models/user-list-item';
 import { environment } from 'src/environments/environment';
 
@@ -29,10 +30,7 @@ export class UserService {
   login(request): Observable<any> {
     return this.http.post<any>(this.baseGlobalUrl + '/login', request)
       .pipe(
-        tap(result => {
-          this.cookieService.set(this.authorizationCookieName, 'true');
-          this.cookieService.set(this.tokenCookieName, result.token);
-        })
+        tap(result => this.setAuthCookie(result.token))
       );
   }
 
@@ -47,5 +45,14 @@ export class UserService {
   logout() {
     this.cookieService.delete(this.authorizationCookieName);
     this.cookieService.delete(this.tokenCookieName);
+  }
+
+  register(request: RegisterRequest): Observable<any> {
+    return this.http.post<any>(this.baseGlobalUrl + '/register', request);
+  }
+
+  private setAuthCookie(token) {
+    this.cookieService.set(this.authorizationCookieName, 'true');
+    this.cookieService.set(this.tokenCookieName, token);
   }
 }

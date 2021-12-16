@@ -127,7 +127,6 @@ namespace MVC_Project.Domain
                     .IsUnicode(false);
 
                 entity.Property(e => e.SvgLogo)
-                    .IsRequired()
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.ParentCategory)

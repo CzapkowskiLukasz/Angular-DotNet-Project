@@ -10,28 +10,28 @@
     <p class="register-title">To use our shop You need to accept those agreements.</p>
     <div class="agreements">
         <div class="checkbox">
-            <input type="checkbox" id="Agreement 1" class="" name="Agreement 1" checked>
+            <input type="checkbox" id="Agreement 1" class="" name="Agreement 1" [checked]="agreements[0]" (change)="changeAgreement(0)">
             <label for="Agreement 1">Agreement 1</label>
         </div>
 
         <div class="checkbox">
-            <input type="checkbox" id="Agreement 2" name="Agreement 2">
+            <input type="checkbox" id="Agreement 2" name="Agreement 2" [checked]="agreements[1]" (change)="changeAgreement(1)">
             <label for="Agreement 2">Agreement 2</label>
         </div>
 
         <div class="checkbox">
-            <input type="checkbox" id="Agreement 3" name="Agreement 3">
+            <input type="checkbox" id="Agreement 3" name="Agreement 3" [checked]="agreements[2]" (change)="changeAgreement(2)">
             <label for="Agreement 3">Agreement 3</label>
         </div>
     </div>
     <p class="register-title" style="padding-top: 15px;">You can sign up to your newsletter too.</p>
     <div class="agreements">
         <div class="checkbox">
-            <input type="checkbox" id="newsletter" class="" name="newsletter" checked>
+            <input type="checkbox" id="newsletter" class="" name="newsletter" [checked]="newsletterOn" (change)="changeNewsletterOn()">
             <label for="newsletter">Newsletter</label>
         </div>
     </div>
     <div class="form__div__button">
-        <a class="form__button">Next step!<img class="icon" src="assets/forward-icon.png"></a>
+        <a class="form__button" (click)="submit()">Next step!<img class="icon" src="assets/forward-icon.png"></a>
     </div>
 </div>

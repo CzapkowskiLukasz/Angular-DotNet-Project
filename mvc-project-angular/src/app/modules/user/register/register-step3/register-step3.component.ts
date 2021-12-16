@@ -1,4 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
+import { RegisterBase } from '../register-base';
 
 @Component({
   selector: 'app-register-step3',
@@ -6,11 +10,68 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./register-step3.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class RegisterStep3Component implements OnInit {
+export class RegisterStep3Component extends RegisterBase {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor(protected componentConnection: ComponentConnectionService,
+    protected router: Router,
+    private fb: FormBuilder) {
+    super(componentConnection, router);
   }
 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      street: ['', Validators.required],
+      houseNumber: ['', Validators.required],
+      apartmentNumber: [''],
+      code: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
+    });
+
+    super.ngOnInit();
+  }
+
+  ngOnDestroy(): void {
+    const formData = this.form.value;
+    this.registerRequest.name = formData.name;
+    this.registerRequest.surname = formData.surname;
+
+    this.address.street = formData.street;
+    this.address.houseNumber = formData.houseNumber;
+    this.address.apartmentNumber = formData.apartmentNumber;
+    this.address.code = formData.code;
+    this.address.city = formData.city;
+    this.address.country = formData.country;
+
+    super.ngOnDestroy();
+  }
+
+  protected incomingIsValid(): boolean {
+    return this.isNotEmpty(this.request)
+      && this.isNotEmpty(this.registerRequest)
+      && this.isNotEmpty(this.registerRequest.languageId)
+      && this.isNotEmpty(this.registerRequest.email)
+      && this.isNotEmpty(this.registerRequest.password);
+  }
+
+  protected outcomingIsValid(): boolean {
+    return this.form.valid;
+  }
+
+  protected prepareView() {
+    this.form.patchValue(this.registerRequest);
+    this.form.patchValue(this.address);
+  }
+
+  protected invalidIncomingAction() {
+    this.resetRegister();
+  }
+
+  protected invalidOutcomingAction() {
+    console.log(this.form.status);
+  }
 }

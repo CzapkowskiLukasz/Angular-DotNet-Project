@@ -10,11 +10,11 @@
     <p class="register-title">Choose your language.</p>
     <p class="register-title">Don't worry You can change it later!</p>
     <div class="flagContainer">
-        <img (click)="selectPolish()" [ngClass]="isPolish ? 'flagActive' : 'flag'"  src="assets/poland-flag-icon.png" />
-        <img (click)="selectEnglish()" [ngClass]="isEnglish ? 'flagActive' : 'flag'" src="assets/uk-flag-icon.png" />
+        <img (click)="selectPolish()" [ngClass]="languageId == 1 ? 'flagActive' : 'flag'" src="assets/poland-flag-icon.png" />
+        <img (click)="selectEnglish()" [ngClass]="languageId == 2 ? 'flagActive' : 'flag'" src="assets/uk-flag-icon.png" />
     </div>
     <div class="form__div__button">
-        <a class="form__button" [routerLink]="['step2']">Next step!<img class="icon" src="assets/forward-icon.png">
+        <a class="form__button" (click)="next(2)">Next step!<img class="icon" src="assets/forward-icon.png">
         </a>
     </div>
 </div>

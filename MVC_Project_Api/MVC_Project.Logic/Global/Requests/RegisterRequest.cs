@@ -9,5 +9,9 @@
         public string Email { get; set; }
 
         public string Password { get; set; }
+
+        public int LanguageId { get; set; }
+
+        public bool NewsletterOn { get; set; }
     }
 }

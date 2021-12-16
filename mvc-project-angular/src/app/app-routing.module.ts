@@ -15,6 +15,7 @@ import { RegisterStep1Component } from './modules/user/register/register-step1/r
 import { RegisterStep2Component } from './modules/user/register/register-step2/register-step2.component';
 import { RegisterStep3Component } from './modules/user/register/register-step3/register-step3.component';
 import { RegisterStep4Component } from './modules/user/register/register-step4/register-step4.component';
+import { RegisterStep5Component } from './modules/user/register/register-step5/register-step5/register-step5.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'register/step2', component: RegisterStep2Component },
   { path: 'register/step3', component: RegisterStep3Component },
   { path: 'register/step4', component: RegisterStep4Component },
+  { path: 'register/step5', component: RegisterStep5Component },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductListComponent },

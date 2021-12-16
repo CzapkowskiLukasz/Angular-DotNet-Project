@@ -8,43 +8,53 @@
         </ul>
     </div>
     <p class="register-title">Add Your first address</p>
-    <form>
+    <form [formGroup]="form">
         <div class="form__div">
-            <input type="text" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Name</label>
+            <input type="text" class="form__input" formControlName="name" placeholder=" ">
+            <label for="name" class="form__label">Name</label>
         </div>
 
         <div class="form__div">
-            <input type="text" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Surname</label>
+            <input type="text" class="form__input" formControlName="surname" placeholder=" ">
+            <label for="surname" class="form__label">Surname</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="street" placeholder=" ">
+            <label for="street" class="form__label">Street</label>
         </div>
 
         <div style="padding-left: 2.5rem;padding-right: 2.5rem;">
             <div class="form__divSmall" style="margin-right: 2px;">
-                <input type="text" class="form__inputSmall" style="width: 160px;" placeholder=" ">
-                <label for="" class="form__labelSmall">Street</label>
+                <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="houseNumber" placeholder=" ">
+                <label for="houseNumber" class="form__labelSmall">House number</label>
             </div>
 
             <div class="form__divSmall">
-                <input type="text" class="form__inputSmall" style="width: 60px;" placeholder=" ">
-                <label for="" class="form__labelSmall">House No</label>
+                <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="apartmentNumber" placeholder=" ">
+                <label for="apartmentNumber" class="form__labelSmall">Apartment</label>
             </div>
         </div>
 
         <div>
             <div class="form__divSmall">
-                <input type="text" class="form__inputSmall" style="width: 50px; margin-right: 2px;" placeholder=" ">
-                <label for="" class="form__labelSmall">Code</label>
+                <input type="text" class="form__inputSmall" style="width: 50px; margin-right: 2px;" formControlName="code" placeholder=" ">
+                <label for="code" class="form__labelSmall">Code</label>
             </div>
 
             <div class="form__divSmall">
-                <input type="text" class="form__inputSmall" style="width: 120px;" placeholder=" ">
-                <label for="" class="form__labelSmall">City</label>
+                <input type="text" class="form__inputSmall" style="width: 120px;" formControlName="city" placeholder=" ">
+                <label for="city" class="form__labelSmall">City</label>
             </div>
         </div>
 
+        <div class="form__div">
+            <input type="text" class="form__input" formControlName="country" placeholder=" ">
+            <label for="country" class="form__label">Country</label>
+        </div>
+
         <div class="form__div__button" style="float: center;">
-            <a class="form__button" [routerLink]="['../step4']">Next step!<img class="icon" src="assets/forward-icon.png"></a>
+            <a class="form__button" (click)="next(4)">Next step!<img class="icon" src="assets/forward-icon.png"></a>
         </div>
     </form>
 </div>

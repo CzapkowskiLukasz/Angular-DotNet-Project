@@ -174,3 +174,28 @@ html {
 .icon{
     margin-top: -3px;
 }
+
+.form__label1 {
+    position: absolute;
+    left: 5.5rem;
+    color: grey;
+    top: 1rem;
+    padding: 0 .25rem;
+    background-color: var(--body-color);
+    transition: .3s;
+}
+
+.form__input:focus+.form__label1 {
+    top: -.5rem;
+    left: 5.5rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label1 {
+    top: -.5rem;
+    left: 5.5rem;
+    font-weight: 500;
+    z-index: 10;
+}

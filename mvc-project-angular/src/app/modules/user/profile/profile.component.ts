@@ -46,10 +46,6 @@ export class ProfileComponent implements OnInit {
     this.orderService.getOrderByUserIdList(this.userId).subscribe(result => {
       this.orders = result.orders
     })
-
-    // this.userService.getUserById(this.userId).subscribe(result => {
-    //   this.user = result.user
-    // })
   }
 
   showAddAddress() {

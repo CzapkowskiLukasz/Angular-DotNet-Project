@@ -81,7 +81,7 @@ namespace MVC_Project.Logic.Global.Services
             var createdUser = await _userManager.CreateAsync(user, request.Password);
             if (!createdUser.Succeeded)
             {
-                result.ErrorResponse = new ErrorResponse("Register error", 404);
+                result.ErrorResponse = new ErrorResponse("Register error", 500);
             }
             else
             {

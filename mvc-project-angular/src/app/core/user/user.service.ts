@@ -55,7 +55,10 @@ export class UserService {
   }
 
   register(request: RegisterRequest): Observable<any> {
-    return this.http.post<any>(this.baseGlobalUrl + '/register', request);
+    return this.http.post<any>(this.baseGlobalUrl + '/register', request)
+      .pipe(
+        tap(result => this.setAuthCookie(result.token))
+      );
   }
 
   private setAuthCookie(token) {

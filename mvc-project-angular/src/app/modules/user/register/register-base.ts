@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { timeout } from "rxjs/operators";
 import { ComponentConnectionService } from "src/app/core/componentConnection/component-connection.service";
 import { ValueObject } from "src/app/core/componentConnection/value-object";
 import { RegisterRequest } from "src/app/shared/models/register-request";
@@ -19,32 +20,46 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.valueSubscribtion = this.componentConnection.lastValue.subscribe(obj => {
-            if (obj.key == this.requestValueKey) {
-                this.registerRequest = obj.value;
+        this.valueSubscribtion = this.componentConnection.lastValue
+            .pipe(timeout(100))
+            .subscribe(obj => {
+                if (obj.key == this.requestValueKey) {
+                    this.registerRequest = obj.value;
 
-                if (!this.requestIsValid())
-                    this.invalidRequestMove();
+                    if (!this.incomingIsValid())
+                        this.invalidIncomingAction();
 
-                this.prepareView();
-            }
-        });
+                    this.prepareView();
+                }
+            }, err => {
+                if (err.name == 'TimeoutError' && !this.incomingIsValid())
+                    this.resetRegister();
+            });
     }
 
     ngOnDestroy() {
-        this.valueSubscribtion.unsubscribe();
+        if (this.valueSubscribtion)
+            this.valueSubscribtion.unsubscribe();
+
         this.sendRequest();
     }
 
     next(stepNumber) {
-        this.router.navigate(['/register/step' + stepNumber]);
+        if (this.outcomingIsValid())
+            this.router.navigate(['/register/step' + stepNumber]);
+        else
+            this.invalidOutcomingAction();
     }
 
-    protected abstract requestIsValid();
+    protected abstract incomingIsValid(): boolean;
+
+    protected abstract outcomingIsValid(): boolean;
 
     protected abstract prepareView();
 
-    protected abstract invalidRequestMove();
+    protected abstract invalidIncomingAction();
+
+    protected abstract invalidOutcomingAction();
 
     protected resetRegister() {
         this.registerRequest = new RegisterRequest();

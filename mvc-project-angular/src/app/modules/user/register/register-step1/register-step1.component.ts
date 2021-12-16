@@ -21,6 +21,9 @@ export class RegisterStep1Component extends RegisterBase {
   }
 
   get languageId() {
+    if (!this.registerRequest)
+      this.registerRequest = new RegisterRequest();
+
     return this.registerRequest.languageId;
   }
 
@@ -32,15 +35,21 @@ export class RegisterStep1Component extends RegisterBase {
     this.registerRequest.languageId = 2;
   }
 
-  protected requestIsValid() {
+  protected incomingIsValid(): boolean {
     return !this.userService.isLogged();
   }
 
-  protected prepareView() {
-    if (!this.registerRequest)
-      this.registerRequest = new RegisterRequest();
+  protected outcomingIsValid(): boolean {
+    return this.registerRequest.languageId && this.registerRequest.languageId != 0;
   }
-  protected invalidRequestMove() {
+
+  protected prepareView() { }
+
+  protected invalidIncomingAction() {
     this.router.navigate(['']);
+  }
+
+  protected invalidOutcomingAction() {
+    console.log('Language not selected');
   }
 }

@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { RegisterBase } from '../register-base';
 
@@ -31,12 +31,18 @@ export class RegisterStep2Component extends RegisterBase {
   }
 
   ngOnDestroy(): void {
-    this.registerRequest.email = this.form.get('email').value;
+    if (this.form)
+      this.registerRequest.email = this.form.get('email').value;
+
     super.ngOnDestroy();
   }
 
-  protected requestIsValid() {
+  protected incomingIsValid(): boolean {
     return this.registerRequest && this.registerRequest.languageId != 0;
+  }
+
+  protected outcomingIsValid(): boolean {
+    return this.form.valid;
   }
 
   protected prepareView(): void {
@@ -46,7 +52,11 @@ export class RegisterStep2Component extends RegisterBase {
     this.form.get('email').setValue(this.registerRequest.email);
   }
 
-  protected invalidRequestMove() {
+  protected invalidIncomingAction() {
     this.resetRegister();
+  }
+
+  protected invalidOutcomingAction() {
+    console.log('Form is not valid');
   }
 }

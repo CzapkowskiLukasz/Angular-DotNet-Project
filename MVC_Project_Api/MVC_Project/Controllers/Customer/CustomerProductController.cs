@@ -5,20 +5,30 @@ using System.Threading.Tasks;
 namespace MVC_Project.Api.Controllers.Customer
 {
     [ApiController]
-    [Route("customer/product")]
+    [Route("customer")]
     public class CustomerProductController : ControllerBase
     {
         private readonly ICustomerProductService _productService;
+        private readonly ICustomerAddressService _addressService;
 
-        public CustomerProductController(ICustomerProductService productService)
+        public CustomerProductController(ICustomerProductService productService, ICustomerAddressService addressService)
         {
             _productService = productService;
+            _addressService = addressService;
         }
 
-        [HttpGet("bestsellers/{count}")]
+        [HttpGet("/product/bestsellers/{count}")]
         public async Task<IActionResult> GetBestsellersAsync([FromRoute] int count)
         {
             var result = await _productService.GetBestsellersAsync(count);
+
+            return Ok(result.Response);
+        }
+
+        [HttpGet("/addresses/by-userId/{userId}")]
+        public async Task<IActionResult> GetAddressesAsync([FromRoute] int userId)
+        {
+            var result = await _addressService.GetAddressesByUser(userId);
 
             return Ok(result.Response);
         }

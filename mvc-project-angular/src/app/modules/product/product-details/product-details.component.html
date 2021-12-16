@@ -46,35 +46,35 @@
                     </div>
                     <div class="productButton">
                         <p class="productButtonText">
-                            Add to cart
+                            {{'product.details.addToCart' | translate}}
                         </p>
                     </div>
                 </div>
                 <div style="width: 55%;">
                     <div class="bottomInfoContainer">
                         <div class="infoBottom">
-                            <p class="shortInfoDescription bottomInfo">Availability: </p>
+                            <p class="shortInfoDescription bottomInfo">{{'product.details.availability' | translate}}: </p>
                         </div>
                         <div class="infoBottom" *ngIf="product.warehouseQuantity == 0">
-                            <p class="shortInfo bottomInfo">No available</p>
+                            <p class="shortInfo bottomInfo">{{'product.details.noAvailable' | translate}}</p>
                             <div class="grayDot"></div>
                         </div>
                         <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
-                            <p class="shortInfo bottomInfo">Low availability</p>
+                            <p class="shortInfo bottomInfo">{{'product.details.lowAvailability' | translate}}</p>
                             <div class="redDot"></div>
                         </div>
                         <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
-                            <p class="shortInfo bottomInfo">Medium availability</p>
+                            <p class="shortInfo bottomInfo">{{'product.details.mediumAvailability' | translate}}</p>
                             <div class="orangeDot"></div>
                         </div>
                         <div class="infoBottom" *ngIf="product.warehouseQuantity > 40">
-                            <p class="shortInfo bottomInfo">Hight availability</p>
+                            <p class="shortInfo bottomInfo">{{'product.details.highAvailability' | translate}}</p>
                             <div class="greenDot"></div>
                         </div>
                     </div>
 
                     <div class="infoBottom" style="justify-content: center;">
-                        <p class="shortInfoDescription bottomInfo">Producer:</p>
+                        <p class="shortInfoDescription bottomInfo">{{'product.details.producer' | translate}}:</p>
                         <p class="shortInfo bottomInfo" style="margin-left: 5px;">{{product.producerName}}</p>
                     </div>
 
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="basicDiv" style="margin-right: 0;width: 800px;">
-        <h4 class="cardLines"><span class="cardTextInLines">Product description</span></h4>
+        <h4 class="cardLines"><span class="cardTextInLines">{{'product.details.productDescription' | translate}}</span></h4>
         <p class="productMainDescription">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat hendrerit. Ut feugiat volutpat odio, a gravida lacus egestas ut. Nulla consequat blandit tincidunt. Cras sollicitudin nulla et ipsum pretium facilisis sit amet sed mauris.
             Donec lacinia imperdiet nibh. In vel vehicula urna. Maecenas vitae lectus dapibus, iaculis augue eget, aliquam augue. Cras dictum mi eu nunc ornare ornare. Ut bibendum blandit aliquam.

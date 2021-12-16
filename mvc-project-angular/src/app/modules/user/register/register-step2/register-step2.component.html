@@ -1,13 +1,13 @@
 <div class="loginBackground">
     <div class="progressContainer">
         <ul class="progress">
-            <li class="active">Language</li>
-            <li>Login data</li>
-            <li>Address</li>
-            <li>Agreements</li>
+            <li class="active"></li>
+            <li>{{ 'register.loginData' | translate }}</li>
+            <li>{{ 'register.address' | translate }}</li>
+            <li>{{ 'register.agreements' | translate }}</li>
         </ul>
     </div>
-    <p class="register-title">Please enter your e-mail and password
+    <p class="register-title">{{ 'register.title' | translate }}
     </p>
     <form>
         <div class="form__div">
@@ -17,16 +17,16 @@
 
         <div class="form__div">
             <input type="password" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Password</label>
+            <label for="" class="form__label">{{ 'register.password' | translate }}</label>
         </div>
 
         <div class="form__div">
             <input type="password" class="form__input" placeholder=" ">
-            <label for="" class="form__label">Repeat password</label>
+            <label for="" class="form__label">{{ 'register.repeatPassword' | translate }}</label>
         </div>
 
         <div class="form__div__button" style="float: center;">
-            <a class="form__button" [routerLink]="['../step3']">Next step!<img class="icon" src="assets/forward-icon.png"></a>
+            <a class="form__button" [routerLink]="['../step3']">{{ 'register.nextStep' | translate }}<img class="icon" src="assets/forward-icon.png"></a>
         </div>
     </form>
 </div>

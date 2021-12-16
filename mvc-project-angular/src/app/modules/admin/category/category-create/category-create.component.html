@@ -1,28 +1,28 @@
 <h4 class="cardLines">
-    <span class="cardTextInLines" *ngIf="isItEditing; else creating">Edit category</span>
+    <span class="cardTextInLines" *ngIf="isItEditing; else creating">{{'admin.category.create.editCategory' | translate}}</span>
     <ng-template #creating>
-        <span class="cardTextInLines">New category</span>
+        <span class="cardTextInLines">{{'admin.category.create.newCategory' | translate}}</span>
     </ng-template>
 </h4>
 
 <form [formGroup]="form">
     <div class="form__div">
         <input type="text" class="form__input" formControlName="name" placeholder=" ">
-        <label for="name" class="form__label">Name</label>
+        <label for="name" class="form__label">{{'admin.category.create.name' | translate}}</label>
     </div>
 
     <div class="form__div">
         <input #parentInput type="text" class="form__input" formControlName="parent" placeholder=" ">
-        <label for="parent" class="form__label">Parent category</label>
+        <label for="parent" class="form__label">{{'admin.category.create.parentCategory' | translate}}</label>
         <app-filtered-dropdown *ngIf="isCategoriesLoaded" [inputElement]="parentInput" [list]="categoryList" (selectIdEvent)="selectParent($event)"></app-filtered-dropdown>
     </div>
 
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-            Submit
+            {{'admin.category.create.submit | translate}}
         </div>
         <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
-            Cancel
+            {{'admin.category.create.cancel' | translate}}
         </div>
     </div>
 </form>

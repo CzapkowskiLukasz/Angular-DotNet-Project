@@ -1,20 +1,20 @@
 <div class="loginBackground">
     <div class="progressContainer">
         <ul class="progress">
-            <li>Language</li>
-            <li>Login data</li>
-            <li>Address</li>
-            <li>Agreements</li>
+            <li>{{ 'register.language' | translate }}</li>
+            <li>{{ 'register.loginData' | translate }}</li>
+            <li>{{ 'register.address' | translate }}</li>
+            <li>{{ 'register.agreements' | translate }}</li>
         </ul>
     </div>
-    <p class="register-title">Choose your language.</p>
-    <p class="register-title">Don't worry You can change it later!</p>
+    <p class="register-title">{{ 'register.languageChoice' | translate }}</p>
+    <p class="register-title">{{ 'register.languageChangeText' | translate }}</p>
     <div class="flagContainer">
         <img (click)="selectPolish()" [ngClass]="isPolish ? 'flagActive' : 'flag'"  src="assets/poland-flag-icon.png" />
         <img (click)="selectEnglish()" [ngClass]="isEnglish ? 'flagActive' : 'flag'" src="assets/uk-flag-icon.png" />
     </div>
     <div class="form__div__button">
-        <a class="form__button" [routerLink]="['step2']">Next step!<img class="icon" src="assets/forward-icon.png">
+        <a class="form__button" [routerLink]="['step2']">{{ 'register.nextStep' | translate }}<img class="icon" src="assets/forward-icon.png">
         </a>
     </div>
 </div>

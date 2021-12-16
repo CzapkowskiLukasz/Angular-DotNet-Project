@@ -1,27 +1,27 @@
-<h4 class="cardLines"><span class="cardTextInLines">New discount</span></h4>
+<h4 class="cardLines"><span class="cardTextInLines">{{'admin.discount.create.newDiscount' | translate}}</span></h4>
 
 <form>
     <div class="form__div">
         <input type="text" class="form__input" formControlName="name" placeholder=" ">
-        <label for="name" class="form__label">Name</label>
+        <label for="name" class="form__label">{{'admin.discount.create.name' | translate}}</label>
     </div>
 
     <div class="form__div">
         <input type="text" class="form__input" formControlName="description" placeholder=" ">
-        <label for="description" class="form__label">Percent</label>
+        <label for="description" class="form__label">{{'admin.discount.create.percent' | translate}}</label>
     </div>
 
     <div class="form__div">
         <input type="text" class="form__input" formControlName="description" placeholder=" ">
-        <label for="description" class="form__label">End date</label>
+        <label for="description" class="form__label">{{'admin.discount.create.endDate' | translate}}</label>
     </div>
 
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton">
-            Create
+            {{'admin.discount.create.create' | translate}}
         </div>
         <div class="buttonBase buttonText buttonWhite formButton" (click)="cancel()">
-            Cancel
+            {{'admin.discount.create.cancel' | translate}}
         </div>
     </div>
 </form>

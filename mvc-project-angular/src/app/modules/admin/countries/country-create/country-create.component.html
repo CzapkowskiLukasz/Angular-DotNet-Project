@@ -1,23 +1,23 @@
-<h4 class="cardLines"><span class="cardTextInLines">New Country</span></h4>
+<h4 class="cardLines"><span class="cardTextInLines">{{'admin.countries.create.newCountry' | translate}}</span></h4>
 
 <form [formGroup]="form">
     <div class="form__div">
         <input type="text" class="form__input" formControlName="name" placeholder=" ">
-        <label for="name" class="form__label">Name</label>
+        <label for="name" class="form__label">{{'admin.countries.create.name' | translate}}</label>
     </div>
 
     <div class="form__div">
         <input #continentInput type="text" class="form__input" formControlName="continent" placeholder=" ">
-        <label for="continent" class="form__label">Continent</label>
+        <label for="continent" class="form__label">{{'admin.countries.create.continent' | translate}}</label>
         <app-filtered-dropdown *ngIf="isContinentsLoaded" [inputElement]="continentInput" [list]="continentList" (selectIdEvent)="selectContinent($event)"></app-filtered-dropdown>
     </div>
 
     <div class="formButtonContainer">
         <div class="buttonBase buttonText buttonColor formButton" (click)="submit()">
-            Create
+            {{'admin.countries.create.create' | translate}}
         </div>
         <div class="buttonBase buttonText buttonWhite formButton" (click)="close()">
-            Cancel
+            {{'admin.countries.create.cancel' | translate}}
         </div>
     </div>
 </form>

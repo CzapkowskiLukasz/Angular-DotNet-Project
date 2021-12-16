@@ -1,4 +1,4 @@
-<app-addres-create *ngIf="addAddress" (cancelEvent)="hideAddAddress()"></app-addres-create>
+<app-addres-create *ngIf="addAddress" [userId]="userId" (cancelEvent)="hideAddAddress()"></app-addres-create>
 
 <app-navbar></app-navbar>
 
@@ -11,15 +11,15 @@
         <h4 class="lines"><span class="textInLines">Your profile</span></h4>
         <div class="yourProfileContainer">
             <div style="width: 230px;">
-                <p>Name & Surname</p>
-                <p>Email</p>
+                <p>{{user.name + ' ' + user.surname}}</p>
+                <p>{{user.email}}</p>
                 <p>Phone number</p>
                 <p>Regiser date</p>
             </div>
         </div>
 
         <h4 class="lines"><span class="textInLines">Adresses</span></h4>
-        <app-address-swiper [items]="addresses"></app-address-swiper>
+        <app-address-swiper [items]="addresses" [name]="user.name + ' ' + user.surname"></app-address-swiper>
         <!-- <div class="addressContainer">
             <svg class="addressNavigation" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -200,3 +200,5 @@
         </div>
     </div>
 </div>
+
+{{name}}

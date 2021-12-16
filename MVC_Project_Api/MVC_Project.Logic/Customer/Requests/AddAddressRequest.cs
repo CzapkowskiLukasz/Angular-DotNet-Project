@@ -8,11 +8,11 @@
         
         public string Street { get; set; }
         
-        public string HouseNumber { get; set; }
+        public string BuildingNumber { get; set; }
         
         public string ApartmentNumber { get; set; }
         
-        public string Code { get; set; }
+        public string ZipCode { get; set; }
         
         public string Country { get; set; }
     }

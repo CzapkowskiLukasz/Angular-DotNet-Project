@@ -407,7 +407,7 @@ html {
 
 .form__label {
     position: absolute;
-    left: 5.5rem;
+    left: 10rem;
     color: grey;
     top: 1rem;
     padding: 0 .25rem;

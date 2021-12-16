@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/core/address/address.service';
 import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
@@ -22,7 +23,9 @@ export class ProfileComponent implements OnInit {
 
   user: UserListItem
 
-  userId
+  userId: number
+
+  name
 
   addresses: Address[] = []
 
@@ -47,9 +50,11 @@ export class ProfileComponent implements OnInit {
       this.orders = result.orders
     })
 
-    // this.userService.getUserById(this.userId).subscribe(result => {
-    //   this.user = result.user
-    // })
+    this.userService.getUserById(this.userId).subscribe(result => {
+      this.user = result
+    })
+
+    this.name = this.user.name
   }
 
   showAddAddress() {
@@ -58,6 +63,9 @@ export class ProfileComponent implements OnInit {
 
   hideAddAddress() {
     this.addAddress = false;
+    this.addressService.getByUserId(this.userId).subscribe(result => {
+      this.addresses = result.addresses
+    });
   }
 
   increse() {

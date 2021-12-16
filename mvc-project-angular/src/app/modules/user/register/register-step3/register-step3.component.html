@@ -11,17 +11,17 @@
     <form [formGroup]="form">
         <div class="form__div">
             <input type="text" class="form__input" formControlName="name" placeholder=" ">
-            <label for="name" class="form__label">Name</label>
+            <label for="name" class="form__label1">Name</label>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="surname" placeholder=" ">
-            <label for="surname" class="form__label">Surname</label>
+            <label for="surname" class="form__label1">Surname</label>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="street" placeholder=" ">
-            <label for="street" class="form__label">Street</label>
+            <label for="street" class="form__label1">Street</label>
         </div>
 
         <div style="padding-left: 2.5rem;padding-right: 2.5rem;">
@@ -38,23 +38,23 @@
 
         <div>
             <div class="form__divSmall">
-                <input type="text" class="form__inputSmall" style="width: 50px; margin-right: 2px;" formControlName="code" placeholder=" ">
+                <input type="text" class="form__inputSmall" style="width: 110px; margin-right: 2px;" formControlName="code" placeholder=" ">
                 <label for="code" class="form__labelSmall">Code</label>
             </div>
 
             <div class="form__divSmall">
-                <input type="text" class="form__inputSmall" style="width: 120px;" formControlName="city" placeholder=" ">
+                <input type="text" class="form__inputSmall" style="width: 110px;" formControlName="city" placeholder=" ">
                 <label for="city" class="form__labelSmall">City</label>
             </div>
         </div>
 
         <div class="form__div">
             <input type="text" class="form__input" formControlName="country" placeholder=" ">
-            <label for="country" class="form__label">Country</label>
+            <label for="country" class="form__label1">Country</label>
         </div>
 
         <div class="form__div__button" style="float: center;">
-            <a class="form__button" (click)="next(4)">Next step!<img class="icon" src="assets/forward-icon.png"></a>
+            <a class="form__button" (click)="next(4)">Next step</a>
         </div>
     </form>
 </div>

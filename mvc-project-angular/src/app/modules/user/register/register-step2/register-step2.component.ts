@@ -43,7 +43,8 @@ export class RegisterStep2Component extends RegisterBase {
   }
 
   protected incomingIsValid(): boolean {
-    return this.isNotEmpty(this.registerRequest)
+    return this.isNotEmpty(this.request)
+      && this.isNotEmpty(this.registerRequest)
       && this.isNotEmpty(this.registerRequest.languageId);
   }
 

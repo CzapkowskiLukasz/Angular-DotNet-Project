@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
-import { RegisterRequest } from 'src/app/shared/models/register-request';
 import { Router } from '@angular/router';
 import { RegisterBase } from '../register-base';
 import { UserService } from 'src/app/core/user/user.service';
@@ -21,8 +20,8 @@ export class RegisterStep1Component extends RegisterBase {
   }
 
   get languageId() {
-    if (!this.registerRequest)
-      this.registerRequest = new RegisterRequest();
+    if (!this.request)
+      this.buildEmptyRequest();
 
     return this.registerRequest.languageId;
   }

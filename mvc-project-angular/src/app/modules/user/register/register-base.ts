@@ -4,12 +4,21 @@ import { Subscription } from "rxjs";
 import { timeout } from "rxjs/operators";
 import { ComponentConnectionService } from "src/app/core/componentConnection/component-connection.service";
 import { ValueObject } from "src/app/core/componentConnection/value-object";
+import { Address } from "src/app/shared/models/address";
 import { RegisterRequest } from "src/app/shared/models/register-request";
 
 @Component({ template: '' })
 export abstract class RegisterBase implements OnInit, OnDestroy {
 
-    protected registerRequest: RegisterRequest;
+    protected request;
+
+    protected get registerRequest() {
+        return this.request.userData;
+    }
+
+    protected get address() {
+        return this.registerRequest.address;
+    }
 
     protected valueSubscribtion: Subscription;
 
@@ -24,7 +33,7 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
             .pipe(timeout(100))
             .subscribe(obj => {
                 if (obj.key == this.requestValueKey) {
-                    this.registerRequest = obj.value;
+                    this.request = obj.value;
 
                     if (!this.incomingIsValid())
                         this.invalidIncomingAction();
@@ -62,14 +71,21 @@ export abstract class RegisterBase implements OnInit, OnDestroy {
     protected abstract invalidOutcomingAction();
 
     protected resetRegister() {
-        this.registerRequest = new RegisterRequest();
+        this.buildEmptyRequest();
         this.router.navigate(['/register']);
+    }
+
+    protected buildEmptyRequest() {
+        this.request = {
+            userData: new RegisterRequest(),
+            address: new Address()
+        };
     }
 
     protected sendRequest() {
         const preparedValue: ValueObject = {
             key: this.requestValueKey,
-            value: this.registerRequest
+            value: this.request
         }
 
         this.componentConnection.sendValue(preparedValue);

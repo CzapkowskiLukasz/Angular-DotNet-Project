@@ -4,6 +4,7 @@ import { AddressService } from 'src/app/core/address/address.service';
 import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
 import { UserService } from 'src/app/core/user/user.service';
 import { Address } from 'src/app/shared/models/address';
+import { UserListItem } from 'src/app/shared/models/user-list-item';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,10 @@ import { Address } from 'src/app/shared/models/address';
 export class ProfileComponent implements OnInit {
   count: number;
   showCart: boolean;
+
+  users: UserListItem[] = []
+
+  user
 
   addresses: Address[] = []
 

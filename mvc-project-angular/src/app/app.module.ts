@@ -52,7 +52,6 @@ import { OrderListComponent } from './modules/admin/user/order-list/order-list.c
 import { UserListElementComponent } from './modules/admin/user/user-list-element/user-list-element.component';
 import { AuthInterceptor } from './core/authorization/auth.interceptor';
 import { RegisterStep5Component } from './modules/user/register/register-step5/register-step5/register-step5.component';
-import { AddressSlideComponent } from './shared/modules/address/address-slide/address-slide/address-slide.component';
 import { AddressSwiperComponent } from './shared/modules/address/address-swiper/address-swiper/address-swiper.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -105,7 +104,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderListComponent,
     UserListElementComponent,
     RegisterStep5Component,
-    AddressSlideComponent,
     AddressSwiperComponent
   ],
   imports: [

@@ -59,11 +59,11 @@
                             <p class="shortInfo bottomInfo">{{'product.details.noAvailable' | translate}}</p>
                             <div class="grayDot"></div>
                         </div>
-                        <div class="infoBottom" *ngIf="product.warehouseQuantity < 10 && product.warehouseQuantity> 0">
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity <= 20 && product.warehouseQuantity > 0">
                             <p class="shortInfo bottomInfo">{{'product.details.lowAvailability' | translate}}</p>
                             <div class="redDot"></div>
                         </div>
-                        <div class="infoBottom" *ngIf="product.warehouseQuantity > 20">
+                        <div class="infoBottom" *ngIf="product.warehouseQuantity > 20 && product.warehouseQuantity <=40">
                             <p class="shortInfo bottomInfo">{{'product.details.mediumAvailability' | translate}}</p>
                             <div class="orangeDot"></div>
                         </div>

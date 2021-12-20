@@ -18,7 +18,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getBestsellers(count): Observable<any> {
-    return this.http.get<SlideItem[]>(this.baseCustomerUrl + '/bestsellers/' + count);
+    return this.http.get<SlideItem[]>(this.baseUrl + '/bestsellers/' + count);
   }
 
   getAdminList(): Observable<any> {

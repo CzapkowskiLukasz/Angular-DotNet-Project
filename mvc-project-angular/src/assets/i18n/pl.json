@@ -7,8 +7,8 @@
             "shopName": "Nazwa sklepu",
             "increase": "zwiększ",
             "deleteLater": "usuń później",
-            "bestsellers": "NAJCHĘTNIEJ KUPOWANE",
-            "hotstuff": "GORĄCY TOWAREK"
+            "bestsellers": "BESTSELLERS",
+            "hotstuff": "HOT STUFF"
         },
         "searchText": "Wprowadź nazwę produktu"
     },

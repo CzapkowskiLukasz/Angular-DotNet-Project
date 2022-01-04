@@ -1,7 +1,9 @@
-﻿namespace MVC_Project.Logic.Customer.Responses
+﻿using System.Collections.Generic;
+
+namespace MVC_Project.Logic.Customer.Responses
 {
     public class GetUserCartResponse
     {
-        public int Products { get; set; }
+        public List<UserCartListItem> Products { get; set; }
     }
 }

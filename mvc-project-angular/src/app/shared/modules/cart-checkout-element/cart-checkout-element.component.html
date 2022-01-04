@@ -1,15 +1,15 @@
 <div style="padding: 0; padding-left: 0; display: flex; align-items: center; justify-content: center;">
     <div class="cartProduct">
-        <p class="cartProductName">Nazwa</p>
+        <p class="cartProductName">{{product.name}}</p>
         <h3 class="cartProductLine"></h3>
         <div style="display: flex; justify-content: center;">
             <div class="descriptionDiv">
                 <p class="cartDescriptionText">Count:&nbsp;</p>
-                <p class="cartDescriptionVar">3</p>
+                <p class="cartDescriptionVar">{{product.count}}</p>
             </div>
             <div class="descriptionDiv last">
                 <p class="cartDescriptionText">Price:&nbsp;</p>
-                <p class="cartDescriptionVar">30.00 &nbsp;</p>
+                <p class="cartDescriptionVar">{{product.price}} &nbsp;</p>
                 <p class="cartDescriptionText">zł</p>
             </div>
         </div>

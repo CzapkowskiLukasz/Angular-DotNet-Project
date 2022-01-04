@@ -10,11 +10,40 @@
         <div class="basicDiv mainCard" style="width: 300px;">
             
                 <h4 class="lines"><span class="textInLines">Adresses</span></h4>
+                <div class="addressContainer">
+                    <svg class="addressNavigation" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172" style=" fill:#000000;">
+                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                            <g fill="#fcb001">
+                                <path
+                                    d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM107.5,121.83333h-18.05283c-2.17867,0 -4.2355,-0.989 -5.59717,-2.6875l-22.93333,-28.66667c-2.09267,-2.61583 -2.09267,-6.33533 0,-8.95117l22.93333,-28.66667c1.36167,-1.70567 3.4185,-2.69467 5.59717,-2.69467h18.05283l-28.66667,35.83333z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <app-addres></app-addres>
+                    <svg class="addressNavigation" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172" style=" fill:#000000;">
+                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                            <g fill="#fcb001">
+                                <path
+                                    d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM73.45833,116.96717v0c-2.967,-2.967 -2.967,-7.783 0,-10.75l20.21717,-20.21717l-20.21717,-20.21717c-2.967,-2.967 -2.967,-7.783 0,-10.75v0c2.967,-2.967 7.783,-2.967 10.75,0l25.90033,25.90033c2.80217,2.80217 2.80217,7.33867 0,10.13367l-25.90033,25.90033c-2.967,2.967 -7.783,2.967 -10.75,0z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
                 <app-address-swiper [items]="addresses" [name]="user.name + ' ' + user.surname"></app-address-swiper>
             <div>
                 <div class="profileButton" (click)="showAddAddress()" style="margin-left: auto;margin-right: 0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -35,8 +64,7 @@
             <div class="row">
                 <div>
                     <div class="first deliveryContainer">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45"
-                            viewBox="0 0 172 172" style=" fill:#000000;">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45" viewBox="0 0 172 172" style=" fill:#000000;">
                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                                 font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -64,8 +92,7 @@
                     </div>
                 </div>
                 <div class="middle deliveryContainer">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -80,8 +107,7 @@
                     </svg>
                 </div>
                 <div class="last deliveryContainer">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -101,8 +127,7 @@
 
             <div class="row" style="margin-top: 10px;">
                 <div class="first deliveryContainer">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60"
-                        height="60" viewBox="0 0 539.622 371.311" version="1.1">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 539.622 371.311" version="1.1">
                         <defs>
                             <clipPath id="clip1">
                                 <path d="M 0 0 L 539.621094 0 L 539.621094 371 L 0 371 Z M 0 0 " />
@@ -138,8 +163,7 @@
 
                 </div>
                 <div class="middle deliveryContainer">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -154,8 +178,7 @@
                     </svg>
                 </div>
                 <div class="last deliveryContainer">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                        style=" fill:#000000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                             font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -173,17 +196,13 @@
         </div>
     </div>
     <div class="basicDiv card">
-        <h4 class="lines"><span class="textInLines">{{'admin.cart.checkout.yourOrder' | translate}}</span></h4>
-        <app-cart-checkout-element></app-cart-checkout-element>
-        <app-cart-checkout-element></app-cart-checkout-element>
-        <app-cart-checkout-element></app-cart-checkout-element>
-        <h4 class="lines"><span class="textInLines">{{'admin.cart.checkout.payment' | translate}}</span></h4>
-        <p class="paymentInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus congue nunc,
-            quis feugiat ex consequat ac.</p>
+        <h4 class="lines"><span class="textInLines">Your order</span></h4>
+        <app-cart-checkout-element *ngFor="let product of products" [product]="product"></app-cart-checkout-element>
+        <h4 class="lines"><span class="textInLines">Payment</span></h4>
+        <p class="paymentInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus congue nunc, quis feugiat ex consequat ac.</p>
         <div class="row">
             <div class="paymentMethod">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -198,8 +217,7 @@
                 </svg>
             </div>
             <div class="paymentMethod" style="margin-left: 5px;margin-right: 5px;">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -214,8 +232,7 @@
                 </svg>
             </div>
             <div class="paymentMethod">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -232,8 +249,7 @@
         </div>
         <div class="row">
             <div class="paymentMethod">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -248,8 +264,7 @@
                 </svg>
             </div>
             <div class="paymentMethod" style="margin-left: 5px;margin-right: 5px;">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
@@ -264,8 +279,7 @@
                 </svg>
             </div>
             <div class="paymentMethod">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
-                    style=" fill:#000000;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;">
                     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"

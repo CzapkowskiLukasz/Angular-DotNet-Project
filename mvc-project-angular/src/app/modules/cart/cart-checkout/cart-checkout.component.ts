@@ -14,17 +14,18 @@ export class CartCheckoutComponent implements OnInit {
   addresses: Address[] = []
   addAddress: boolean;
 
-  products:[]=[];
+  user
+  products: [] = [];
 
-      constructor(private addressService: AddressService,
-          private userService: UserService,
-private productService: ProductService      ) {
+  constructor(private addressService: AddressService,
+    private userService: UserService,
+    private productService: ProductService) {
     this.addAddress = false;
   }
 
   ngOnInit(): void {
-    this.productService.getProductByOrder(1).subscribe(result=>{
-      this.products=result.products;
+    this.productService.getProductByOrder(1).subscribe(result => {
+      this.products = result.products;
     })
     this.addressService.getByUserId(this.userService.getUserId()).subscribe(result => {
       this.addresses = result.addresses

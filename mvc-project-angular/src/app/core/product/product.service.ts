@@ -14,6 +14,7 @@ export class ProductService {
   baseUrl = `${environment.api_url}/product`;
   baseAdminUrl = `${environment.api_url}/admin/product`;
   baseCustomerUrl = `${environment.api_url}/customer/product`;
+  baseWarehouseUrl = `${environment.api_url}/product`;
 
   constructor(private http: HttpClient) { }
 
@@ -51,5 +52,9 @@ export class ProductService {
 
   getProductsByCategoryIdList(categoryId): Observable<any> {
     return this.http.get<ProductListItem[]>(this.baseCustomerUrl + '/by-categoryId/' + categoryId);
+  }
+
+  getProductByOrder(orderId): Observable<any> {
+    return this.http.get<any>(this.baseWarehouseUrl + '/by-order/' + orderId);
   }
 }

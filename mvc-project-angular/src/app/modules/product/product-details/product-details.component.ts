@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/core/cart/cart.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { ProductDetails } from 'src/app/shared/models/product';
 import { environment } from 'src/environments/environment';
@@ -18,11 +19,17 @@ export class ProductDetailsComponent implements OnInit {
 
   product?: ProductDetails
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  cartCount: number;
+
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService,
+    private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.getProduct()
+    this.getProduct();
+    this.cartCount = 1;
   }
 
   getProduct(): void {
@@ -30,6 +37,29 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productService.getDetails(id)
       .subscribe(product => this.product = product);
+  }
+
+  increaseCartCount() {
+    if (this.cartCount < this.product.warehouseQuantity)
+      this.cartCount++;
+  }
+
+  decreaseCartCount() {
+    if (this.cartCount > 1)
+      this.cartCount--;
+  }
+
+  changeCartCount() {
+    const request = {
+      productId: this.product.productId,
+      count: this.cartCount
+    };
+
+    this.cartService.changeProductCount(request).subscribe(result => {
+      if (result.result) {
+        this.router.navigate(['cart/checkout']);
+      }
+    });
   }
 
   // getProduct(id) {

@@ -8,6 +8,7 @@ using MVC_Project.Logic.Commons;
 using MVC_Project.Logic.Customer.Interfaces;
 using MVC_Project.Logic.Customer.Requests;
 using MVC_Project.Logic.Customer.Responses;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Logic.Customer.Services
@@ -140,7 +141,9 @@ namespace MVC_Project.Logic.Customer.Services
                 return result;
             }
 
-            var cart = await _dataContext.Carts.Include(x => x.CartProducts)
+            var cart = await _dataContext.Carts
+                .Include(x => x.CartProducts)
+                .ThenInclude(x => x.Product)
                 .SingleOrDefaultAsync(x => x.CartId == user.TemporaryCartId);
 
             if (cart == null)
@@ -149,9 +152,9 @@ namespace MVC_Project.Logic.Customer.Services
                 return result;
             }
 
-            var cartProducts = cart.CartProducts;
+            var products = cart.CartProducts.ToList();
 
-            result.Response = _mapper.Map<GetUserCartResponse>(cartProducts);
+            result.Response = _mapper.Map<GetUserCartResponse>(products);
             return result;
         }
     }

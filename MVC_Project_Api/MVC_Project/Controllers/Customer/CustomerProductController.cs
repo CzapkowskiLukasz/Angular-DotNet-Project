@@ -56,5 +56,13 @@ namespace MVC_Project.Api.Controllers.Customer
 
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
+
+        [HttpGet("cart/user-cart")]
+        public async Task<IActionResult> GetUserCartAsync()
+        {
+            var result = await _cartService.GetUserCartAsync();
+
+            return Ok(result.Response);
+        }
     }
 }

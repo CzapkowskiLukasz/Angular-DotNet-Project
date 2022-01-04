@@ -126,5 +126,33 @@ namespace MVC_Project.Logic.Customer.Services
 
             return result;
         }
+
+        public async Task<HandleResult<GetUserCartResponse>> GetUserCartAsync()
+        {
+            var result = new HandleResult<GetUserCartResponse>();
+
+            var loggedInUserEmail = _userManager.GetUserId(_httpContext.User);
+            var user = await _userManager.FindByEmailAsync(loggedInUserEmail);
+
+            if (user == null)
+            {
+                result.ErrorResponse = new ErrorResponse("User not found", 404);
+                return result;
+            }
+
+            var cart = await _dataContext.Carts.Include(x => x.CartProducts)
+                .SingleOrDefaultAsync(x => x.CartId == user.TemporaryCartId);
+
+            if (cart == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Cart not found", 404);
+                return result;
+            }
+
+            var cartProducts = cart.CartProducts;
+
+            result.Response = _mapper.Map<GetUserCartResponse>(cartProducts);
+            return result;
+        }
     }
 }

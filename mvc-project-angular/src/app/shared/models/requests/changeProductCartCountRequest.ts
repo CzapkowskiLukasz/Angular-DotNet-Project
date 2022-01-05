@@ -1,4 +1,4 @@
-export interface addProductToCartRequest {
+export interface ChangeProductCartCountRequest {
     productId: number,
     count: number
 }

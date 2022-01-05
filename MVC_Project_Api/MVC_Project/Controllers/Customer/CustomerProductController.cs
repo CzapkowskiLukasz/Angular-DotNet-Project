@@ -64,5 +64,18 @@ namespace MVC_Project.Api.Controllers.Customer
 
             return Ok(result.Response);
         }
+
+        [HttpPost("cart/add-product")]
+        public async Task<IActionResult> AddProductToCartAsync([FromBody] AddProductToCartRequest request)
+        {
+            var result = await _cartService.AddProductToCartAsync(request);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
     }
 }

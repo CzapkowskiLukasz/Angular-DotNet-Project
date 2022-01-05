@@ -20,6 +20,12 @@ namespace MVC_Project.Logic.Customer.Services
         private readonly HttpContext _httpContext;
         private readonly UserManager<User> _userManager;
 
+        private User _user;
+        private Product _product;
+        private Cart _cart;
+        private CartProduct _cartProduct;
+        private ErrorResponse _errorResponse;
+
         public CartService(DataContext dataContext, IMapper mapper, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
         {
             _dataContext = dataContext;
@@ -27,6 +33,26 @@ namespace MVC_Project.Logic.Customer.Services
             _httpContext = httpContextAccessor.HttpContext;
             _userManager = userManager;
         }
+
+        public async Task<HandleResult<AddProductToCartResponse>> AddProductToCartAsync(AddProductToCartRequest request)
+        {
+            var result = new HandleResult<AddProductToCartResponse>();
+
+            
+            if (!await GetLoggedUser())
+            {
+                result.ErrorResponse=_errorResponse;
+                return result;
+            }
+
+            result.Response = new AddProductToCartResponse
+            {
+                Result = true
+            };
+            return result;
+        }
+
+        
 
         public async Task<HandleResult<ChangeProductCartCountResponse>> ChangeProductCartCountAsync(ChangeProductCartCountRequest request)
         {
@@ -156,6 +182,23 @@ namespace MVC_Project.Logic.Customer.Services
 
             result.Response = _mapper.Map<GetUserCartResponse>(products);
             return result;
+        }
+
+        private async Task<bool> GetLoggedUser()
+        {
+            var loggedInUserEmail = _userManager.GetUserId(_httpContext.User);
+            if (loggedInUserEmail != null)
+            {
+                _user = await _userManager.FindByEmailAsync(loggedInUserEmail);
+            }
+
+            if (_user == null)
+            {
+                _errorResponse = new ErrorResponse("User not found", 404);
+                return false;
+            }
+
+            return true;
         }
     }
 }

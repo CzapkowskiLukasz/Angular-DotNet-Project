@@ -38,10 +38,10 @@ namespace MVC_Project.Logic.Customer.Services
         {
             var result = new HandleResult<AddProductToCartResponse>();
 
-            
-            if (!await GetLoggedUser())
+
+            if (!await GetLoggedUser() || !await GetProductAsync(request))
             {
-                result.ErrorResponse=_errorResponse;
+                result.ErrorResponse = _errorResponse;
                 return result;
             }
 
@@ -199,6 +199,22 @@ namespace MVC_Project.Logic.Customer.Services
             }
 
             return true;
+        }
+
+        private async Task<bool> GetProductAsync(AddProductToCartRequest request)
+        {
+            _product = await _dataContext.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId);
+
+            if (_product == null)
+            {
+                _errorResponse = new ErrorResponse("Product not found", 404);
+            }
+            else if (_product.WarehouseQuantity < request.Count)
+            {
+                _errorResponse = new ErrorResponse("Product has insufficient quantity in warehouse", 400);
+            }
+
+            return _errorResponse == null;
         }
     }
 }

@@ -39,7 +39,8 @@ namespace MVC_Project.Logic.Customer.Services
             var result = new HandleResult<AddProductToCartResponse>();
 
 
-            if (!await GetLoggedUser()
+            if (!CheckRequest(request)
+                || !await GetLoggedUser()
                 || !await GetProductAsync(request)
                 || !await GetCartAsync())
             {
@@ -54,7 +55,7 @@ namespace MVC_Project.Logic.Customer.Services
             return result;
         }
 
-        
+
 
         public async Task<HandleResult<ChangeProductCartCountResponse>> ChangeProductCartCountAsync(ChangeProductCartCountRequest request)
         {
@@ -184,6 +185,17 @@ namespace MVC_Project.Logic.Customer.Services
 
             result.Response = _mapper.Map<GetUserCartResponse>(products);
             return result;
+        }
+
+        private bool CheckRequest(AddProductToCartRequest request)
+        {
+            if (request.ProductId <= 0 || request.Count <= 0)
+            {
+                _errorResponse = new ErrorResponse("Bad request", 400);
+                return false;
+            }
+
+            return true;
         }
 
         private async Task<bool> GetLoggedUser()

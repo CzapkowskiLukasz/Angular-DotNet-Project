@@ -50,14 +50,10 @@ namespace MVC_Project.Logic.Customer.Services
 
             await GetCartProductAsync();
 
-            _cartProduct.Quantity += request.Count;
-            _cartProduct.Price = _product.Price * _cartProduct.Quantity;
-            
-            var changes = await _dataContext.SaveChangesAsync();
 
-            if (changes != 1)
+            if (!await TryChangeProductCartCount(request))
             {
-                result.ErrorResponse = new ErrorResponse("Change cart count error", 500);
+                result.ErrorResponse = _errorResponse;
                 return result;
             }
 
@@ -296,5 +292,27 @@ namespace MVC_Project.Logic.Customer.Services
             }
         }
 
+        private async Task<bool> TryChangeProductCartCount(AddProductToCartRequest request)
+        {
+            _cartProduct.Quantity += request.Count;
+
+            if (_cartProduct.Quantity > _product.WarehouseQuantity)
+            {
+                _errorResponse = new ErrorResponse("Too few products in warehouse", 400);
+                return false;
+            }
+
+            _cartProduct.Price = _product.Price * _cartProduct.Quantity;
+
+            var changes = await _dataContext.SaveChangesAsync();
+
+            if (changes != 1)
+            {
+                _errorResponse = new ErrorResponse("Change cart count error", 500);
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -39,7 +39,9 @@ namespace MVC_Project.Logic.Customer.Services
             var result = new HandleResult<AddProductToCartResponse>();
 
 
-            if (!await GetLoggedUser() || !await GetProductAsync(request))
+            if (!await GetLoggedUser()
+                || !await GetProductAsync(request)
+                || !await GetCartAsync())
             {
                 result.ErrorResponse = _errorResponse;
                 return result;
@@ -212,6 +214,37 @@ namespace MVC_Project.Logic.Customer.Services
             else if (_product.WarehouseQuantity < request.Count)
             {
                 _errorResponse = new ErrorResponse("Product has insufficient quantity in warehouse", 400);
+            }
+
+            return _errorResponse == null;
+        }
+
+        private async Task<bool> GetCartAsync()
+        {
+            _cart = await _dataContext.Carts.SingleOrDefaultAsync(x => x.CartId == _user.TemporaryCartId);
+
+            if (_cart == null)
+            {
+                _cart = new Cart();
+
+                await _dataContext.Carts.AddAsync(_cart);
+
+                var added = await _dataContext.SaveChangesAsync();
+
+                if (added != 1)
+                {
+                    _errorResponse = new ErrorResponse("Error occured while adding the new cart", 500);
+                }
+
+
+                _user.TemporaryCartId = _cart.CartId;
+
+                var updated = await _dataContext.SaveChangesAsync();
+
+                if (updated != 1)
+                {
+                    _errorResponse = new ErrorResponse("Assign new temporary cart error", 500);
+                }
             }
 
             return _errorResponse == null;

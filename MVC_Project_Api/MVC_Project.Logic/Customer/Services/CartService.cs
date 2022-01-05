@@ -48,6 +48,19 @@ namespace MVC_Project.Logic.Customer.Services
                 return result;
             }
 
+            await GetCartProductAsync();
+
+            _cartProduct.Quantity += request.Count;
+            _cartProduct.Price = _product.Price * _cartProduct.Quantity;
+            
+            var changes = await _dataContext.SaveChangesAsync();
+
+            if (changes != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Change cart count error", 500);
+                return result;
+            }
+
             result.Response = new AddProductToCartResponse
             {
                 Result = true
@@ -233,7 +246,9 @@ namespace MVC_Project.Logic.Customer.Services
 
         private async Task<bool> GetCartAsync()
         {
-            _cart = await _dataContext.Carts.SingleOrDefaultAsync(x => x.CartId == _user.TemporaryCartId);
+            _cart = await _dataContext.Carts
+                .Include(x => x.CartProducts)
+                .SingleOrDefaultAsync(x => x.CartId == _user.TemporaryCartId);
 
             if (_cart == null)
             {
@@ -261,5 +276,25 @@ namespace MVC_Project.Logic.Customer.Services
 
             return _errorResponse == null;
         }
+
+        private async Task GetCartProductAsync()
+        {
+            _cartProduct = _cart.CartProducts.SingleOrDefault(x =>
+                x.ProductId == _product.ProductId);
+
+            if (_cartProduct == null)
+            {
+                _cartProduct = new CartProduct
+                {
+                    CartId = _cart.CartId,
+                    ProductId = _product.ProductId,
+                    Quantity = 0,
+                    Price = 0
+                };
+
+                await _dataContext.CartProducts.AddAsync(_cartProduct);
+            }
+        }
+
     }
 }

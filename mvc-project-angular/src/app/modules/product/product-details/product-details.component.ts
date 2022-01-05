@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/core/cart/cart.service';
 import { ProductService } from 'src/app/core/product/product.service';
 import { ProductDetails } from 'src/app/shared/models/product';
+import { ChangeProductCartCountRequest } from 'src/app/shared/models/requests/changeProductCartCountRequest';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -49,16 +50,15 @@ export class ProductDetailsComponent implements OnInit {
       this.cartCount--;
   }
 
-  changeCartCount() {
-    const request = {
+  addProductToCart() {
+    const request: ChangeProductCartCountRequest = {
       productId: this.product.productId,
-      count: this.cartCount
+      count: this.cartCount,
     };
 
-    this.cartService.changeProductCount(request).subscribe(result => {
-      if (result.result) {
+    this.cartService.addProductToCart(request).subscribe(result => {
+      if (result)
         this.router.navigate(['cart/checkout']);
-      }
     });
   }
 

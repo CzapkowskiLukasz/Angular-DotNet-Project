@@ -19,4 +19,13 @@ export class CartService {
       map((val) => val.result)
     );
   }
+
+  addOneProductToCart(productId: number): Observable<boolean> {
+    const request: ChangeProductCartCountRequest = {
+      productId: productId,
+      count: 1
+    };
+
+    return this.addProductToCart(request);
+  }
 }

@@ -99,7 +99,7 @@ namespace MVC_Project.Logic.Customer.Services
 
         private bool CheckRequest(ChangeProductCartCountRequest request)
         {
-            if (request.ProductId <= 0 || request.Count <= 0)
+            if (request.ProductId <= 0 || request.Count == 0)
             {
                 _errorResponse = new ErrorResponse("Bad request", 400);
                 return false;
@@ -203,7 +203,15 @@ namespace MVC_Project.Logic.Customer.Services
                 return false;
             }
 
-            _cartProduct.Price = _product.Price * _cartProduct.Quantity;
+            if (_cartProduct.Quantity <= 0)
+            {
+                _cartProduct.Quantity = 0;
+                _cartProduct.Price = 0;
+            }
+            else
+            {
+                _cartProduct.Price = _product.Price * _cartProduct.Quantity;
+            }
 
             var changes = await _dataContext.SaveChangesAsync();
 

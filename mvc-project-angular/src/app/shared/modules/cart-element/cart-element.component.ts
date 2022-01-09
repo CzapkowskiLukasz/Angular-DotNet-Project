@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { CartItem } from '../../models/cart-item';
 
 @Component({
   selector: 'app-cart-element',
@@ -7,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CartElementComponent implements OnInit {
+
+  @Input() item: CartItem;
 
   constructor() { }
 

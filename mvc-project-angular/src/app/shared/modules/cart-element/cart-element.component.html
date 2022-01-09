@@ -1,21 +1,23 @@
 <div style="padding: 0; padding-left: 0; display: flex; align-items: center;">
     <div class="cartProduct">
-        <p class="cartProductName">Nazwa</p>
+        <p class="cartProductName">{{item.productName}}</p>
         <h3 class="cartProductLine"></h3>
         <div style="display: flex; justify-content: center;">
             <div class="descriptionDiv">
                 <p class="cartDescriptionText">Count:&nbsp;</p>
-                <p class="cartDescriptionVar">3</p>
+                <button class="changeCountButton">-</button>
+                <p class="cartDescriptionVar">{{item.count}}</p>
+                <button class="changeCountButton">+</button>
             </div>
             <div class="descriptionDiv">
                 <p class="cartDescriptionText">Price per item:&nbsp;</p>
-                <p class="cartDescriptionVar">10.00 &nbsp;</p>
+                <p class="cartDescriptionVar">{{item.pricePerItem | number:'1.2'}} &nbsp;</p>
                 <p class="cartDescriptionText">zł</p>
             </div>
         </div>
     </div>
     <div class="cartPriceForItemsDiv">
-        <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">30.00 &nbsp;</p>
+        <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">{{item.price | number:'1.2'}} &nbsp;</p>
         <p class="cartDescriptionText" style="font-size: 15px;">zł</p>
     </div>
     <div class="cartDeleteItem">

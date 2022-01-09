@@ -1,0 +1,11 @@
+.changeCountButton {
+    border-style: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    text-align: center;
+    padding: 0px;
+    vertical-align: middle;
+}

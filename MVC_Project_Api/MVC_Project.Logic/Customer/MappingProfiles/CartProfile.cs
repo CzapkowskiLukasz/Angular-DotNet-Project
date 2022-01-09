@@ -39,7 +39,9 @@ namespace MVC_Project.Logic.Customer.MappingProfiles
 
             CreateMap<List<CartProduct>, GetUserCartResponse>()
                 .ForMember(dest => dest.Products, opt =>
-                    opt.MapFrom(src => src));
+                    opt.MapFrom(src => src))
+                .ForMember(dest => dest.Sum, opt =>
+                   opt.MapFrom((src, dest, destMember, ctx) => ctx.Items["Sum"]));
         }
     }
 }

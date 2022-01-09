@@ -191,8 +191,8 @@ namespace MVC_Project.Logic.Customer.Services
             }
 
             var products = cart.CartProducts.ToList();
-
-            result.Response = _mapper.Map<GetUserCartResponse>(products);
+            result.Response = _mapper.Map<GetUserCartResponse>(products, opt =>
+                opt.Items["Sum"] = cart.Sum);
             return result;
         }
 

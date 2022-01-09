@@ -314,5 +314,41 @@ namespace MVC_Project.Logic.Customer.Services
 
             return true;
         }
+
+        public async Task<HandleResult<bool>> CalculateAsync(int cartId)
+        {
+            var result = new HandleResult<bool>();
+
+            _cart = await _dataContext.Carts.Include(x => x.CartProducts)
+                .SingleOrDefaultAsync(x => x.CartId == cartId);
+
+            if (_cart == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found cart", 404);
+                return result;
+            }
+
+            decimal sum = 0;
+
+            foreach (var item in _cart.CartProducts)
+            {
+                sum += item.Price.Value;
+            }
+
+            _cart.Sum = sum;
+
+            int updated = await _dataContext.SaveChangesAsync();
+
+            if (updated != 1)
+            {
+                result.ErrorResponse = new ErrorResponse("Cart calculating error", 500);
+            }
+            else
+            {
+                result.Response = true;
+            }
+
+            return result;
+        }
     }
 }

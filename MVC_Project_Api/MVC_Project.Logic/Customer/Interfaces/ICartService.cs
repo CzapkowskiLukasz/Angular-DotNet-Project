@@ -12,5 +12,7 @@ namespace MVC_Project.Logic.Customer.Interfaces
         public Task<HandleResult<ChangeProductCartCountResponse>> ChangeProductCartCountAsync(ChangeProductCartCountRequest request);
 
         public Task<HandleResult<GetUserCartResponse>> GetUserCartAsync();
+
+        public Task<HandleResult<bool>> CalculateAsync(int cartId);
     }
 }

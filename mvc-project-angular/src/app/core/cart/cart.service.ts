@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ChangeProductCartCountRequest } from 'src/app/shared/models/requests/changeProductCartCountRequest';
+import { GetCartResponse } from 'src/app/shared/models/get-cart-response';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class CartService {
     };
 
     return this.addProductToCart(request);
+  }
+
+  getUserCart(): Observable<GetCartResponse> {
+    return this.http.get<GetCartResponse>(this.baseUrl + '/user-cart');
   }
 }

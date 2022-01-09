@@ -2,9 +2,13 @@
 {
     public class UserCartListItem
     {
+        public int ProductId { get; set; }
+
         public string ProductName { get; set; }
         
-        public string Count { get; set; }
+        public int Count { get; set; }
+
+        public decimal PricePerItem { get; set; }
 
         public decimal Price { get; set; }
     }

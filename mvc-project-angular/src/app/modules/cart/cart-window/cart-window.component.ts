@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/core/cart/cart.service';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { CartItem } from 'src/app/shared/models/cart-item';
 
 @Component({
@@ -13,9 +15,18 @@ export class CartWindowComponent implements OnInit {
 
   products: CartItem[] = [];
 
-  constructor(private cartService: CartService) { }
+  commandSubscribtion: Subscription;
+
+  constructor(private cartService: CartService,
+    private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
+    this.commandSubscribtion = this.componentConnection.currentCommand.subscribe(command => {
+      if (command == 'refreshCart') {
+        this.getCart();
+      }
+    });
+
     this.getCart();
   }
 

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { CartService } from 'src/app/core/cart/cart.service';
+import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 import { CartItem } from '../../models/cart-item';
+import { ChangeProductCartCountRequest } from '../../models/requests/changeProductCartCountRequest';
 
 @Component({
   selector: 'app-cart-element',
@@ -11,9 +14,30 @@ export class CartElementComponent implements OnInit {
 
   @Input() item: CartItem;
 
-  constructor() { }
+  constructor(private cartService: CartService,
+    private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
   }
 
+  addOneProduct() {
+    this.changeCount(1);
+  }
+
+  subtractOneProduct() {
+    this.changeCount(-1);
+  }
+
+  changeCount(count: number) {
+    const request: ChangeProductCartCountRequest = {
+      productId: this.item.productId,
+      count: count
+    };
+
+    this.cartService.changeProductCartCount(request).subscribe(result => {
+      if (result) {
+        this.componentConnection.sendCommand('refreshCart');
+      }
+    })
+  }
 }

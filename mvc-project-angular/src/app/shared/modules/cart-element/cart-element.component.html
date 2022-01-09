@@ -5,9 +5,9 @@
         <div style="display: flex; justify-content: center;">
             <div class="descriptionDiv">
                 <p class="cartDescriptionText">Count:&nbsp;</p>
-                <button class="changeCountButton">-</button>
+                <button class="changeCountButton" (click)="subtractOneProduct()">-</button>
                 <p class="cartDescriptionVar">{{item.count}}</p>
-                <button class="changeCountButton">+</button>
+                <button class="changeCountButton" (click)="addOneProduct()">+</button>
             </div>
             <div class="descriptionDiv">
                 <p class="cartDescriptionText">Price per item:&nbsp;</p>

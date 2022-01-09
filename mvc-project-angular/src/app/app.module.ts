@@ -53,6 +53,7 @@ import { UserListElementComponent } from './modules/admin/user/user-list-element
 import { AuthInterceptor } from './core/authorization/auth.interceptor';
 import { RegisterStep5Component } from './modules/user/register/register-step5/register-step5/register-step5.component';
 import { AddressSwiperComponent } from './shared/modules/address/address-swiper/address-swiper/address-swiper.component';
+import { CartWindowComponent } from './modules/cart/cart-window/cart-window.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -104,7 +105,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderListComponent,
     UserListElementComponent,
     RegisterStep5Component,
-    AddressSwiperComponent
+    AddressSwiperComponent,
+    CartWindowComponent
   ],
   imports: [
     BrowserModule,

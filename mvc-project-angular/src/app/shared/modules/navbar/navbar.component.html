@@ -23,40 +23,7 @@
     <div class="buttonContainer" [routerLink]="['../categories']">
         <div class="mainButton" (mouseover)="showCart = true" (mouseleave)="showCart = false">
             <div class="cartDiv" *ngIf="showCart">
-                <h3 class="cartLine"><span class="cartTitle">{{ 'home.cart.name' | translate }}</span></h3>
-                <!-- <p *ngIf="count==0" class="emptyCart">
-                    {{ 'home.cart.empty' | translate }} :(
-                </p>
-                <p *ngIf="count==0" class="emptyCart">
-                    {{ 'home.cart.engage' | translate }}
-                </p> -->
-
-                <div>
-                    <app-cart-element></app-cart-element>
-                    <app-cart-element></app-cart-element>
-                    <app-cart-element></app-cart-element>
-
-                    <h3 class="cartLine" style="margin-bottom: 15px;margin-top: 20px;"><span class="cartTitle">SUMMARY</span></h3>
-
-                    <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 15px;">
-                        <p class="cartDescriptionText" style="font-size: 15px;">You will pay &nbsp;</p>
-                        <p class="cartDescriptionVar" style="font-size: 15px;align-items: center;">90.00 &nbsp;</p>
-                        <p class="cartDescriptionText" style="font-size: 15px;">zł for Your order.</p>
-                    </div>
-
-                    <div style="display: block;padding: 0 20px;">
-                        <div class="cartDetails">
-                            <p class="cartDetailsText">
-                                Cart details
-                            </p>
-                        </div>
-                        <div class="cartCheckout" [routerLink]="['../cart/checkout']">
-                            <p class="cartCheckoutText">
-                                Cart checkout
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <app-cart-window></app-cart-window>
             </div>
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"

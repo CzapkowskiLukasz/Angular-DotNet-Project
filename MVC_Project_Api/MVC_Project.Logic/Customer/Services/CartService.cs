@@ -88,7 +88,10 @@ namespace MVC_Project.Logic.Customer.Services
                 return result;
             }
 
-            var products = cart.CartProducts.ToList();
+            var products = cart.CartProducts
+                .Where(x => x.Quantity > 0)
+                .ToList();
+
             result.Response = _mapper.Map<GetUserCartResponse>(products, opt =>
                 opt.Items["Sum"] = cart.Sum);
             return result;

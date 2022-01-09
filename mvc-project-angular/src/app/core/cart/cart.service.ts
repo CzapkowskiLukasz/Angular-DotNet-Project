@@ -16,7 +16,7 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   addProductToCart(request: ChangeProductCartCountRequest): Observable<boolean> {
-    return this.http.post<any>(this.baseUrl + '/add-product', request).pipe(
+    return this.http.post<any>(this.baseUrl + '/change-product-count', request).pipe(
       map((val) => val.result)
     );
   }

@@ -7,8 +7,6 @@ namespace MVC_Project.Logic.Customer.Interfaces
 {
     public interface ICartService
     {
-        public Task<HandleResult<AddProductToCartResponse>> AddProductToCartAsync(AddProductToCartRequest request);
-
         public Task<HandleResult<ChangeProductCartCountResponse>> ChangeProductCartCountAsync(ChangeProductCartCountRequest request);
 
         public Task<HandleResult<GetUserCartResponse>> GetUserCartAsync();

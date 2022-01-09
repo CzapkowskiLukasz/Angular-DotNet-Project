@@ -28,6 +28,10 @@ export class CartElementComponent implements OnInit {
     this.changeCount(-1);
   }
 
+  removeProduct(){
+    this.changeCount(-this.item.count);
+  }
+
   changeCount(count: number) {
     const request: ChangeProductCartCountRequest = {
       productId: this.item.productId,

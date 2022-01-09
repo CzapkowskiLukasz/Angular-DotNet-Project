@@ -49,5 +49,18 @@ namespace MVC_Project.Api.Controllers.Customer
 
             return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
+
+        [HttpPost("calculate/{cartId}")]
+        public async Task<IActionResult> CalculateCartAsync([FromRoute] int cartId)
+        {
+            var result = await _cartService.CalculateAsync(cartId);
+
+            if (result.ErrorResponse == null)
+            {
+                return Ok(result.Response);
+            }
+
+            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
+        }
     }
 }

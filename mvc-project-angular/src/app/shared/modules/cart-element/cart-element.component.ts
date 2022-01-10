@@ -26,13 +26,10 @@ export class CartElementComponent implements OnInit, OnDestroy {
     private componentConnection: ComponentConnectionService) { }
 
   ngOnInit(): void {
-    this.valueSubject = new Subject();
-
-    this.setSubscribtion();
   }
 
   ngOnDestroy(): void {
-    if (this.valueSubject) {
+    if (this.valueSubscribtion) {
       this.valueSubscribtion.unsubscribe();
     }
   }
@@ -46,23 +43,29 @@ export class CartElementComponent implements OnInit, OnDestroy {
   }
 
   removeProduct() {
-    this.setValue(-this.item.count);
+    this.changeCountValue -= this.item.count;
+    this.changeCount();
   }
 
   private setValue(count: number) {
+    this.setSubscribtion();
     this.changeCountValue += count;
-
     this.valueSubject.next();
   }
 
   private setSubscribtion() {
-    this.valueSubscribtion = this.valueSubject
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.changeCount());
+    if (!this.valueSubscribtion || !this.valueSubject.closed) {
+      this.valueSubject = new Subject();
+      this.valueSubscribtion = this.valueSubject
+        .pipe(debounceTime(1000))
+        .subscribe(() => this.changeCount());
+    }
   }
 
   private changeCount() {
-    this.valueSubject.complete();
+    if (this.valueSubject && !this.valueSubject.closed) {
+      this.valueSubject.complete();
+    }
 
     const request: ChangeProductCartCountRequest = {
       productId: this.item.productId,
@@ -74,5 +77,7 @@ export class CartElementComponent implements OnInit, OnDestroy {
         this.componentConnection.sendCommand('refreshCart');
       }
     });
+
+    this.changeCountValue = 0;
   }
 }

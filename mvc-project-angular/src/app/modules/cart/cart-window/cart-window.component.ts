@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/core/cart/cart.service';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
@@ -9,7 +9,7 @@ import { CartItem } from 'src/app/shared/models/cart-item';
   templateUrl: './cart-window.component.html',
   styleUrls: ['./cart-window.component.css']
 })
-export class CartWindowComponent implements OnInit {
+export class CartWindowComponent implements OnInit, OnDestroy {
 
   sum: number;
 
@@ -28,6 +28,10 @@ export class CartWindowComponent implements OnInit {
     });
 
     this.getCart();
+  }
+
+  ngOnDestroy() {
+    this.commandSubscribtion.unsubscribe();
   }
 
   getCart() {

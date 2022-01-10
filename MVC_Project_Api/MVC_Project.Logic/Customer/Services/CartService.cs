@@ -34,6 +34,31 @@ namespace MVC_Project.Logic.Customer.Services
             _userManager = userManager;
         }
 
+        public async Task<HandleResult<bool>> CalculateAsync(int cartId)
+        {
+            var result = new HandleResult<bool>();
+
+            _cart = await _dataContext.Carts.Include(x => x.CartProducts)
+                .SingleOrDefaultAsync(x => x.CartId == cartId);
+
+            if (_cart == null)
+            {
+                result.ErrorResponse = new ErrorResponse("Not found cart", 404);
+                return result;
+            }
+
+            if (await TryCalculateAsync())
+            {
+                result.Response = true;
+            }
+            else
+            {
+                result.ErrorResponse = new ErrorResponse("Cart calculating error", 500);
+            }
+
+            return result;
+        }
+
         public async Task<HandleResult<ChangeProductCartCountResponse>> ChangeProductCartCountAsync(ChangeProductCartCountRequest request)
         {
             var result = new HandleResult<ChangeProductCartCountResponse>();
@@ -50,7 +75,6 @@ namespace MVC_Project.Logic.Customer.Services
 
             await GetCartProductAsync();
 
-
             if (!await TryChangeProductCartCount(request))
             {
                 result.ErrorResponse = _errorResponse;
@@ -59,7 +83,7 @@ namespace MVC_Project.Logic.Customer.Services
 
             result.Response = new ChangeProductCartCountResponse
             {
-                Result = true
+                Result = await TryCalculateAsync()
             };
             return result;
         }
@@ -224,19 +248,10 @@ namespace MVC_Project.Logic.Customer.Services
             return true;
         }
 
-        public async Task<HandleResult<bool>> CalculateAsync(int cartId)
+
+
+        private async Task<bool> TryCalculateAsync()
         {
-            var result = new HandleResult<bool>();
-
-            _cart = await _dataContext.Carts.Include(x => x.CartProducts)
-                .SingleOrDefaultAsync(x => x.CartId == cartId);
-
-            if (_cart == null)
-            {
-                result.ErrorResponse = new ErrorResponse("Not found cart", 404);
-                return result;
-            }
-
             decimal sum = 0;
 
             foreach (var item in _cart.CartProducts)
@@ -247,17 +262,7 @@ namespace MVC_Project.Logic.Customer.Services
             _cart.Sum = sum;
 
             int updated = await _dataContext.SaveChangesAsync();
-
-            if (updated != 1)
-            {
-                result.ErrorResponse = new ErrorResponse("Cart calculating error", 500);
-            }
-            else
-            {
-                result.Response = true;
-            }
-
-            return result;
+            return updated == 1;
         }
     }
 }

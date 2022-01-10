@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/core/address/address.service';
-import { LocalTranslateService } from 'src/app/core/internationalization/local-translate.service';
 import { OrderService } from 'src/app/core/order/order.service';
 import { UserService } from 'src/app/core/user/user.service';
 import { Address } from 'src/app/shared/models/address';
@@ -13,7 +11,7 @@ import { UserListItem } from 'src/app/shared/models/user-list-item';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ProfileComponent implements OnInit {
   count: number;

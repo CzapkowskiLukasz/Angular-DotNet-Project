@@ -4,7 +4,7 @@ import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@ang
   selector: 'app-create-discount',
   templateUrl: './create-discount.component.html',
   styleUrls: ['./create-discount.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CreateDiscountComponent implements OnInit {
 

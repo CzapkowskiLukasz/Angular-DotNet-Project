@@ -10,7 +10,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   selector: 'app-producers-add',
   templateUrl: './producers-add.component.html',
   styleUrls: ['./producers-add.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ProducersAddComponent implements OnInit {
 

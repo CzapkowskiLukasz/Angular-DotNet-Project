@@ -8,7 +8,7 @@ import { ProducerListItem } from 'src/app/shared/models/producer-list-item';
   selector: 'app-producers-list',
   templateUrl: './producers-list.component.html',
   styleUrls: ['./producers-list.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProducersListComponent implements OnInit, OnDestroy {
 

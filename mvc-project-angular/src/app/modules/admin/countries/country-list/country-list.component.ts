@@ -8,7 +8,7 @@ import { CountryListItem } from 'src/app/shared/models/country-list-item';
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CountryListComponent implements OnInit, OnDestroy {
 

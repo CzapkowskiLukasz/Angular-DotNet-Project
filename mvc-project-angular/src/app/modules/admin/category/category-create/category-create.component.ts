@@ -9,7 +9,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   selector: 'app-category-create',
   templateUrl: './category-create.component.html',
   styleUrls: ['./category-create.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CategoryCreateComponent implements OnInit, OnDestroy {
 

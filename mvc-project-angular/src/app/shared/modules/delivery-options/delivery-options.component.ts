@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-delivery-options',
   templateUrl: './delivery-options.component.html',
   styleUrls: ['./delivery-options.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class DeliveryOptionsComponent implements OnInit {
 

@@ -10,7 +10,7 @@ import { UserListItem } from 'src/app/shared/models/user-list-item';
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class UserListComponent implements OnInit {
 

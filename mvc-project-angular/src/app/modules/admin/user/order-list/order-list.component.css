@@ -2,3 +2,225 @@
     display: flex;
     justify-content: space-between;
 }
+.yourProfileContainer {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+
+.lines {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-color);
+    line-height: 0.1em;
+    margin-bottom: 15px;
+}
+
+.textInLines {
+    background: #fff;
+    padding: 0 10px;
+    font-size: 13px;
+    color: var(--accent-color);
+}
+
+p {
+    color: gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.orderDescription {
+    color: gray;
+    margin-bottom: 0;
+    font-size: small;
+}
+
+.addressContainer {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+
+.orderContainer {
+    border-radius: 25px;
+    background-color: var(--body-color);
+    padding: 15px;
+    border-style: solid;
+    text-align: center;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.addressNavigation {
+    margin-top: 31px;
+    display: block;
+}
+
+.flag {
+    margin: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 3px;
+    border-color: grey;
+    cursor: pointer;
+}
+
+.flagActive {
+    margin: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 4px;
+    border-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.flagContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderTitle {
+    color: var(--accent-color);
+    text-align: left;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
+
+h5 {
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bookmarkContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.active {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+.productLine {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-color);
+    line-height: 0.1em;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.category {
+    height: 10px;
+    padding: 5px;
+    border-style: solid;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: white;
+    text-align: center;
+}
+
+h6 {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    color: var(--accent-color);
+}
+
+.category {
+    display: flex;
+    justify-content: left;
+    margin-left: 11px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.mainLines {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    line-height: 0px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.textInMainLines {
+    margin-top: 20px;
+    font-size: 36px;
+    background: whitesmoke;
+    padding: 0 10px;
+    color: gray;
+}
+
+h1 {
+    color: gray;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.text {
+    padding-top: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.textContainer {
+    text-align: center;
+}
+
+.buttonCancelSmall {
+    border-radius: 25px;
+    margin-right: 10px;
+    display: flex;
+    background-color: var(--accent-color);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cancelText {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.buttonDeleteSmall {
+    margin-left: 5px;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(223, 23, 23);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.deleteText {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: rgb(223, 23, 23);
+}
+
+.card {
+    width: fit-content;
+    height: fit-content;
+    min-width: 400px;
+}

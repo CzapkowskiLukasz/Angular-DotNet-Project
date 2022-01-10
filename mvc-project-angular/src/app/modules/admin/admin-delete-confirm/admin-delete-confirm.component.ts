@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
 
 @Component({
   selector: 'app-admin-delete-confirm',
   templateUrl: './admin-delete-confirm.component.html',
-  styleUrls: ['./admin-delete-confirm.component.css']
+  styleUrls: ['./admin-delete-confirm.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminDeleteConfirmComponent implements OnInit {
 

@@ -58,60 +58,6 @@
         <div style="min-height: 300px;   overflow: hidden;
         overflow-y: scroll;">
             <app-order-list *ngFor="let order of orders | slice:0:3" [item]="order"></app-order-list>
-            <!-- <div class="orderContainer" style="padding-top: 0;padding-bottom: 5px;">
-                <h4 class="orderTitle" style="margin-bottom: 0;">Order #213769</h4>
-                <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
-                <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
-                    <div>
-                        <h5>{{ 'profile.orderDate' | translate }}</h5>
-                        <p class="orderDescription">15.11.2021</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.price' | translate }}</h5>
-                        <p class="orderDescription">150.47 zł</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.status' | translate }}</h5>
-                        <p class="orderDescription">{{ 'profile.sent' | translate }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="orderContainer" style="margin-top: 10px;margin-bottom: 10px;">
-                <h4 class="orderTitle">{{ 'profile.order' | translate }} #213769</h4>
-                <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
-                <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
-                    <div>
-                        <h5>{{ 'profile.orderDate' | translate }}</h5>
-                        <p class="orderDescription">15.11.2021</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.price' | translate }}</h5>
-                        <p class="orderDescription">150.47 zł</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.status' | translate }}</h5>
-                        <p class="orderDescription">{{ 'profile.sent' | translate }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="orderContainer">
-                <h4 class="orderTitle">{{ 'profile.order' | translate }} #213769</h4>
-                <h2 class="lines" style="padding-top: 0;margin-top: 0;margin-bottom: 5px;"></h2>
-                <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
-                    <div>
-                        <h5>{{ 'profile.orderDate' | translate }}</h5>
-                        <p class="orderDescription">15.11.2021</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.price' | translate }}/h5>
-                        <p class="orderDescription">150.47 zł</p>
-                    </div>
-                    <div>
-                        <h5>{{ 'profile.status' | translate }}</h5>
-                        <p class="orderDescription">{{ 'profile.sent' | translate }}</p>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <h4 class="lines"><span class="textInLines">{{ 'profile.settings' | translate }} & {{ 'profile.others' | translate }}</span></h4>
         <div class="profileButton" style="float: left;margin-right: 5px;" [routerLink]="['../admin/dashboard']">

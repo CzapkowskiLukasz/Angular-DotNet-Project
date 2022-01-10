@@ -6,7 +6,7 @@ import { DiscountListItem } from 'src/app/shared/models/discount-list-item';
   selector: 'app-discount-list',
   templateUrl: './discount-list.component.html',
   styleUrls: ['./discount-list.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class DiscountListComponent implements OnInit {
 

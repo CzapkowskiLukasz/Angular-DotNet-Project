@@ -8,7 +8,7 @@ import { CategoryListItem } from 'src/app/shared/models/category-list-item';
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CategoryListComponent implements OnInit, OnDestroy {
 

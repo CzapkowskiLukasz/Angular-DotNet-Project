@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
   selector: 'app-expand-form',
   templateUrl: './expand-form.component.html',
   styleUrls: ['./expand-form.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ExpandFormComponent implements OnInit {
 

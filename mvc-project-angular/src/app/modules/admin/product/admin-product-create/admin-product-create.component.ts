@@ -13,7 +13,7 @@ import { ExpandFormComponent } from '../../shared/expand-form/expand-form.compon
   selector: 'app-admin-product-create',
   templateUrl: './admin-product-create.component.html',
   styleUrls: ['./admin-product-create.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminProductCreateComponent implements OnInit, OnDestroy {
 

@@ -4,7 +4,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-user-list-element',
   templateUrl: './user-list-element.component.html',
   styleUrls: ['./user-list-element.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class UserListElementComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import { OrderListItem } from 'src/app/shared/models/order-list-item';
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class UserInfoComponent implements OnInit {
 

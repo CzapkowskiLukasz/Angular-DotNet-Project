@@ -10,7 +10,7 @@ import { FilteredDropdownListItem } from 'src/app/shared/models/filtered-dropdow
   selector: 'app-country-create',
   templateUrl: './country-create.component.html',
   styleUrls: ['./country-create.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CountryCreateComponent implements OnInit, OnDestroy {
 

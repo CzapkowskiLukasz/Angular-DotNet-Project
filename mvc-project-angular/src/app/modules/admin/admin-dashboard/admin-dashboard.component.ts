@@ -1,16 +1,12 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentConnectionService } from 'src/app/core/componentConnection/component-connection.service';
-import { CategoryListComponent } from '../category/category-list/category-list.component';
-import { CountryListComponent } from '../countries/country-list/country-list.component';
-import { ProducersListComponent } from '../producers/producers-list/producers-list.component';
-import { AdminProductListComponent } from '../product/admin-product-list/admin-product-list.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminDashboardComponent implements OnInit {
 

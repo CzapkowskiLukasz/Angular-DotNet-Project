@@ -20,6 +20,8 @@ namespace MVC_Project.Logic.Warehouse.MappingProfiles
                     opt.MapFrom(src => src));
 
             CreateMap<Product, GetProductByIdResponse>()
+                 .ForMember(dest => dest.Description, opt =>
+                    opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.CategoryName, opt =>
                     opt.MapFrom(src => src.Category.Name))
                 .ForMember(dest => dest.ProducerName, opt =>

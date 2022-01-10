@@ -56,7 +56,7 @@ export class ProductDetailsComponent implements OnInit {
       count: this.cartCount,
     };
 
-    this.cartService.addProductToCart(request).subscribe(result => {
+    this.cartService.changeProductCartCount(request).subscribe(result => {
       if (result)
         this.router.navigate(['cart/checkout']);
     });

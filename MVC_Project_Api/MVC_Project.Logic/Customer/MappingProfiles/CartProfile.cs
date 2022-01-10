@@ -9,17 +9,39 @@ namespace MVC_Project.Logic.Customer.MappingProfiles
     {
         public CartProfile()
         {
+            //CreateMap<CartProduct, UserCartListItem>()
+            //    .ForMember(dest => dest.ProductName, opt =>
+            //        opt.MapFrom(src => src.Product.Name))
+            //    .ForMember(dest => dest.Count, opt =>
+            //        opt.MapFrom(src => src.Quantity))
+            //    .ForMember(dest => dest.Price, opt =>
+            //        opt.MapFrom(src => src.Price));
+
             CreateMap<CartProduct, UserCartListItem>()
-                .ForMember(dest => dest.ProductName, opt =>
-                    opt.MapFrom(src => src.Product.Name))
-                .ForMember(dest => dest.Count, opt =>
-                    opt.MapFrom(src => src.Quantity))
-                .ForMember(dest => dest.Price, opt =>
-                    opt.MapFrom(src => src.Price));
+                .ConvertUsing((src, dest) =>
+                {
+                    if(src == null)
+                    {
+                        return null;
+                    }
+
+                    dest = new UserCartListItem
+                    {
+                        ProductId = src.ProductId,
+                        ProductName = src.Product.Name,
+                        Count = src.Quantity,
+                        PricePerItem = src.Product.Price,
+                        Price = src.Price.Value
+                    };
+
+                    return dest;
+                });
 
             CreateMap<List<CartProduct>, GetUserCartResponse>()
                 .ForMember(dest => dest.Products, opt =>
-                    opt.MapFrom(src => src));
+                    opt.MapFrom(src => src))
+                .ForMember(dest => dest.Sum, opt =>
+                   opt.MapFrom((src, dest, destMember, ctx) => ctx.Items["Sum"]));
         }
     }
 }

@@ -33,7 +33,7 @@ export class ProductListElementComponent implements OnInit {
       count: 1,
     };
 
-    this.cartService.addProductToCart(request).subscribe(result => {
+    this.cartService.changeProductCartCount(request).subscribe(result => {
       if (result) 
         this.router.navigate(['cart/checkout']);
     });

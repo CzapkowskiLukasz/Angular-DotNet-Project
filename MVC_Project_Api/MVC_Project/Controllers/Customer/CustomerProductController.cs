@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Project.Logic.Customer.Interfaces;
-using MVC_Project.Logic.Customer.Requests;
 using System.Threading.Tasks;
 
 namespace MVC_Project.Api.Controllers.Customer
@@ -11,13 +10,11 @@ namespace MVC_Project.Api.Controllers.Customer
     {
         private readonly ICustomerProductService _productService;
         private readonly ICustomerAddressService _addressService;
-        private readonly ICartService _cartService;
 
-        public CustomerProductController(ICustomerProductService productService, ICustomerAddressService addressService, ICartService cartService)
+        public CustomerProductController(ICustomerProductService productService, ICustomerAddressService addressService)
         {
             _productService = productService;
             _addressService = addressService;
-            _cartService = cartService;
         }
 
         [HttpGet("product/bestsellers/{count}")]
@@ -42,40 +39,6 @@ namespace MVC_Project.Api.Controllers.Customer
             var result = await _addressService.GetAddressesByUser(userId);
 
             return Ok(result.Response);
-        }
-
-        [HttpPost("cart/change-product-count")]
-        public async Task<IActionResult> ChangeProductCartCountAsync([FromBody] ChangeProductCartCountRequest request)
-        {
-            var result = await _cartService.ChangeProductCartCountAsync(request);
-
-            if (result.ErrorResponse == null)
-            {
-                return Ok(result.Response);
-            }
-
-            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
-        }
-
-        [HttpGet("cart/user-cart")]
-        public async Task<IActionResult> GetUserCartAsync()
-        {
-            var result = await _cartService.GetUserCartAsync();
-
-            return Ok(result.Response);
-        }
-
-        [HttpPost("cart/add-product")]
-        public async Task<IActionResult> AddProductToCartAsync([FromBody] AddProductToCartRequest request)
-        {
-            var result = await _cartService.AddProductToCartAsync(request);
-
-            if (result.ErrorResponse == null)
-            {
-                return Ok(result.Response);
-            }
-
-            return StatusCode(result.ErrorResponse.ErrorCode, result.ErrorResponse);
         }
     }
 }

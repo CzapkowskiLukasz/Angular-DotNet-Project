@@ -88,9 +88,8 @@
     </div>
     <div class="basicDiv" style="margin-right: 0;width: 800px;">
         <h4 class="cardLines"><span class="cardTextInLines">{{'product.details.productDescription' | translate}}</span></h4>
-        <p class="productMainDescription">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus feugiat hendrerit. Ut feugiat volutpat odio, a gravida lacus egestas ut. Nulla consequat blandit tincidunt. Cras sollicitudin nulla et ipsum pretium facilisis sit amet sed mauris.
-            Donec lacinia imperdiet nibh. In vel vehicula urna. Maecenas vitae lectus dapibus, iaculis augue eget, aliquam augue. Cras dictum mi eu nunc ornare ornare. Ut bibendum blandit aliquam.
+        <p class="productMainDescription" [innerHTML]="product.description">
+        
         </p>
     </div>
 </div>

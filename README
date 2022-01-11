@@ -2,6 +2,11 @@ WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP WIP 
 
 It's a copy of repository on Bitbucket that me and https://github.com/pawjo using while developing this project.
 
+I wrote almost all front-end code (after I design how should site look like) and I some of the basic API, rest is 
+the https://github.com/pawjo part (he alsohelped me with more advanced Angular things at the beggining).
+
+Due to my mistake, I was commiting from lukasz47.
+
 Admin login and password:
 Login: test@test.com
 Password: Haslo123!

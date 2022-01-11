@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CartService } from 'src/app/core/cart/cart.service';
@@ -23,7 +24,8 @@ export class CartElementComponent implements OnInit, OnDestroy {
   changeCountValue: number = 0;
 
   constructor(private cartService: CartService,
-    private componentConnection: ComponentConnectionService) { }
+    private componentConnection: ComponentConnectionService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +47,10 @@ export class CartElementComponent implements OnInit, OnDestroy {
   removeProduct() {
     this.changeCountValue -= this.item.count;
     this.changeCount();
+  }
+
+  goToProductPage() {
+    this.router.navigateByUrl('/product/' + this.item.productId);
   }
 
   private setValue(count: number) {
